@@ -1,0 +1,46 @@
+{
+  "M1_backend": true,
+  "M1_migration": true,
+  "M1_requirements": true,
+  "M1_frontend": true,
+  "M1_compose": true,
+  "M2_tests": true,
+  "M2_config": true,
+  "M3_gitignore": true,
+  "M4_dockerfiles": true,
+  "M5_workflow": true,
+  "M7_terraform": true,
+  "M7_tfvars_example": true,
+  "M8_namespace": true,
+  "M8_helm": true,
+  "M9_monitoring_values": true,
+  "M9_dashboard": true,
+  "M10_readme": true,
+  "saved_junit": [
+    {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "16",
+      "time": "0.300",
+      "timestamp": "2026-10-16T16:49:54.815530+05:30",
+      "hostname": "omarchy"
+    }
+  ],
+  "metrics_contains_real_app_counter": true,
+  "metrics_is_not_html": true,
+  "trivy-backend.json": {
+    "image_id": "sha256:583215497072d9c9dae00347ae0ddb1397a41f7a54bf976aeffd76eeec9158ba",
+    "high_critical_reported": 0
+  },
+  "trivy-frontend.json": {
+    "image_id": "sha256:84a727f943514076b49f99655591689d0ac324b2a87fbfecf93930a22f1e8ecc",
+    "high_critical_reported": 0
+  },
+  "frontend_source_files": [
+    "frontend/src/api.js",
+    "frontend/src/main.jsx",
+    "frontend/src/styles.css"
+  ]
+}

@@ -1,0 +1,119 @@
+[
+  {
+    "screenshot": "evidence/m3-git-history.png",
+    "command": "git remote -v\ngit log --oneline -14",
+    "raw_output": "evidence/audit/m3-git-history.txt",
+    "exit_code": 0,
+    "captured_at_utc": "2026-10-16T12:30:33Z",
+    "sha256": "36557f5c0bddb25094858b7836b066ec720024fa78108055b2e8efb8a5a9c1f4",
+    "method": "Actual foot terminal, cropped using its Hyprland window geometry and grim; no compositing or generated text image"
+  },
+  {
+    "screenshot": "evidence/m2-pytest.png",
+    "command": "cd backend\n.venv/bin/pytest -v",
+    "raw_output": "evidence/audit/m2-pytest.txt",
+    "exit_code": 0,
+    "captured_at_utc": "2026-10-16T12:30:37Z",
+    "sha256": "14756fca8b8ba29b4c682e00519130f5b9c43c86bd1abc7fb2e1d1f52bfb89fb",
+    "method": "Actual foot terminal, cropped using its Hyprland window geometry and grim; no compositing or generated text image"
+  },
+  {
+    "screenshot": "evidence/m1-health-database.png",
+    "command": "curl -fsS http://127.0.0.1:8000/health\nprintf '\\n'\ncurl -fsS http://127.0.0.1:8000/ready\nprintf '\\n'\ndocker compose exec -T backend alembic current\ndocker compose exec -T postgres psql -U relaydesk -d relaydesk -c '\\dt' -c 'SELECT version_num FROM alembic_version;' -c 'SELECT id, subject, status, priority FROM tickets ORDER BY id DESC LIMIT 3;' ",
+    "raw_output": "evidence/audit/m1-health-database.txt",
+    "exit_code": 0,
+    "captured_at_utc": "2026-10-16T12:30:41Z",
+    "sha256": "5877f3424cfa8e3f90467a0ce3e974d0d30877d16f422334b37355f55fd6db14",
+    "method": "Actual foot terminal, cropped using its Hyprland window geometry and grim; no compositing or generated text image"
+  },
+  {
+    "screenshot": "evidence/m6-trivy-backend.png",
+    "command": "python /tmp/relaydesk-evidence-audit/trivy_excerpt.py backend",
+    "raw_output": "evidence/audit/m6-trivy-backend.txt",
+    "exit_code": 0,
+    "captured_at_utc": "2026-10-16T12:34:15Z",
+    "sha256": "dc3ccd4244e46f01e061405ee251644f77bbfda1be8e8ca421c75ab85fdcd282",
+    "method": "Actual foot terminal, cropped using its Hyprland window geometry and grim; no compositing or generated text image"
+  },
+  {
+    "screenshot": "evidence/m6-trivy-frontend.png",
+    "command": "python /tmp/relaydesk-evidence-audit/trivy_excerpt.py frontend",
+    "raw_output": "evidence/audit/m6-trivy-frontend.txt",
+    "exit_code": 0,
+    "captured_at_utc": "2026-10-16T12:34:16Z",
+    "sha256": "813a5811835b90f5da8d38b60d9011b5bdf70a834d5986723d9d4e7d22713a2d",
+    "method": "Actual foot terminal, cropped using its Hyprland window geometry and grim; no compositing or generated text image"
+  },
+  {
+    "screenshot": "evidence/m7-terraform-plan-saved.png",
+    "command": "printf 'SAVED historical no-refresh dry-run; not a refreshed or approved apply plan.\\n'\nprintf 'Source: evidence/terraform-plan-refresh-false.txt\\n'\nrg '^  # ' evidence/terraform-plan-refresh-false.txt\nrg '^Plan:|cluster_name|kubectl_configure_command' evidence/terraform-plan-refresh-false.txt",
+    "raw_output": "evidence/audit/m7-terraform-plan-saved.txt",
+    "exit_code": 0,
+    "captured_at_utc": "2026-10-16T12:30:46Z",
+    "sha256": "8a2f504dc9d0db57406da8a61fc5110087bf91a3500b7ab81ddef991e3c5b8e0",
+    "method": "Actual foot terminal, cropped using its Hyprland window geometry and grim; no compositing or generated text image"
+  },
+  {
+    "screenshot": "evidence/m8-pods.png",
+    "command": "kubectl --context helpdesk-capstone -n relaydesk get pods -o wide\nkubectl --context helpdesk-capstone -n relaydesk get deploy,hpa,pvc\nkubectl --context helpdesk-capstone -n relaydesk get ingress",
+    "raw_output": "evidence/audit/m8-pods.txt",
+    "exit_code": 0,
+    "captured_at_utc": "2026-10-16T12:30:48Z",
+    "sha256": "a4acad91091eda45782e69b4d270134df78cf41612bccf74e248056659544e86",
+    "method": "Actual foot terminal, cropped using its Hyprland window geometry and grim; no compositing or generated text image"
+  },
+  {
+    "screenshot": "evidence/m8-services.png",
+    "command": "kubectl --context helpdesk-capstone -n relaydesk get svc\nkubectl --context helpdesk-capstone -n relaydesk get endpointslices -l kubernetes.io/service-name=relaydesk-backend\nkubectl --context helpdesk-capstone -n relaydesk get endpointslices -l kubernetes.io/service-name=relaydesk-frontend",
+    "raw_output": "evidence/audit/m8-services.txt",
+    "exit_code": 0,
+    "captured_at_utc": "2026-10-16T12:30:50Z",
+    "sha256": "1153e1762bdfa94d4a22427c0014d9dad362e3aa8f298802ea27cb31550218b5",
+    "method": "Actual foot terminal, cropped using its Hyprland window geometry and grim; no compositing or generated text image"
+  },
+  {
+    "screenshot": "evidence/m8-helm.png",
+    "command": "helm list --kube-context helpdesk-capstone -n relaydesk\nhelm status relaydesk --kube-context helpdesk-capstone -n relaydesk\nkubectl --context helpdesk-capstone -n relaydesk get deploy relaydesk-backend relaydesk-frontend -o jsonpath='{range .items[*]}{.metadata.name}{\"\\n\"}{.spec.template.spec.containers[*].image}{\"\\n\"}{end}'",
+    "raw_output": "evidence/audit/m8-helm.txt",
+    "exit_code": 0,
+    "captured_at_utc": "2026-10-16T12:30:52Z",
+    "sha256": "3cfc736fdfe127eeda692b708e32da681de097754cfb8e5d3f1880ac891950ff",
+    "method": "Actual foot terminal, cropped using its Hyprland window geometry and grim; no compositing or generated text image"
+  },
+  {
+    "screenshot": "evidence/m9-metrics.png",
+    "command": "curl -fsS -D evidence/audit/metrics-response-headers.txt http://127.0.0.1:8000/metrics -o evidence/application-metrics.txt\nhead -n 5 evidence/audit/metrics-response-headers.txt\nsed -n '/^# HELP relaydesk_http_requests_total/,+19p' evidence/application-metrics.txt",
+    "raw_output": "evidence/audit/m9-metrics.txt",
+    "exit_code": 0,
+    "captured_at_utc": "2026-10-16T12:30:54Z",
+    "sha256": "06d30cb456d7ee46f15acac7e47333945d74325a23bbfc8613cbce1c8e837e04",
+    "method": "Actual foot terminal, cropped using its Hyprland window geometry and grim; no compositing or generated text image"
+  },
+  {
+    "screenshot": "evidence/m4-compose.png",
+    "command": "set +x\ncapstone_ids_before=$(docker compose ps -q backend frontend postgres | sort)\nprintf '%s\\n' '$ docker compose up --build --no-recreate --no-deps -d --wait backend frontend postgres'\nset +x\ndocker compose up --build --no-recreate --no-deps -d --wait backend frontend postgres > evidence/audit/compose-build-no-recreate.txt 2>&1\ncapstone_build_rc=$?\ntail -n 16 evidence/audit/compose-build-no-recreate.txt\ntest \"$capstone_build_rc\" -eq 0\ncapstone_ids_after=$(docker compose ps -q backend frontend postgres | sort)\ntest \"$capstone_ids_before\" = \"$capstone_ids_after\"\nprintf 'PASS: original container IDs unchanged; no containers recreated.\\n'\nset -x\ndocker compose ps --format 'table {{.Service}}\\t{{.Status}}\\t{{.Ports}}'\ndocker image inspect relaydesk-backend:local relaydesk-frontend:local --format '{{.RepoTags}} user={{.Config.User}}' ",
+    "raw_output": "evidence/audit/m4-compose.txt",
+    "exit_code": 0,
+    "captured_at_utc": "2026-10-16T12:34:13Z",
+    "sha256": "7ca7d4b1233599fcd5a83e1792b12754f691f69d3beac79cfed4a15206006794",
+    "method": "Actual foot terminal, cropped using its Hyprland window geometry and grim; no compositing or generated text image"
+  },
+  {
+    "screenshot": "evidence/m7-terraform-validation.png",
+    "command": "cd terraform\nterraform init -input=false -lockfile=readonly -no-color\nterraform fmt -check -recursive\nterraform validate -no-color",
+    "raw_output": "evidence/audit/m7-terraform-validation.txt",
+    "exit_code": 0,
+    "captured_at_utc": "2026-10-16T12:36:27Z",
+    "sha256": "ec7c901901bfce396649bce55b65a57a53c651647902f98d6b963ca3cb089b2f",
+    "method": "Actual foot terminal, cropped using its Hyprland window geometry and grim; no compositing or generated text image"
+  },
+  {
+    "screenshot": "evidence/m7-aws-restriction.png",
+    "command": "set +e\naws ec2 describe-availability-zones --profile devops-capstone --region ap-south-1 --no-cli-pager\ncapstone_ec2_rc=$?\naws eks list-clusters --profile devops-capstone --region ap-south-1 --no-cli-pager\ncapstone_eks_rc=$?\nset -e\nprintf 'Read-only EC2 check exit code: %s; EKS check exit code: %s.\\n' \"$capstone_ec2_rc\" \"$capstone_eks_rc\"\nprintf 'No apply or destroy operation was run. This is restriction evidence, not deployment evidence.\\n' ",
+    "raw_output": "evidence/audit/m7-aws-restriction.txt",
+    "exit_code": 0,
+    "captured_at_utc": "2026-10-16T12:36:33Z",
+    "sha256": "fe252047629743299ae2142a41fb7e0519a929121cf4871f9d3d5574c1235316",
+    "method": "Actual foot terminal, cropped using its Hyprland window geometry and grim; no compositing or generated text image"
+  }
+]

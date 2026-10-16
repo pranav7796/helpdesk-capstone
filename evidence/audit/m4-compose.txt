@@ -1,0 +1,29 @@
+Captured: 2026-10-16 12:34:02 UTC
+Evidence: m4-compose
++ set +x
+$ docker compose up --build --no-recreate --no-deps -d --wait backend frontend postgres
+
+#37 [frontend] resolving provenance for metadata file
+#37 DONE 0.0s
+ Image relaydesk-backend:local Built 
+ Image relaydesk-frontend:local Built 
+ Container relaydesk-frontend-1 Running 
+ Container relaydesk-postgres-1 Running 
+ Container relaydesk-backend-1 Running 
+ Container relaydesk-backend-1 Waiting 
+ Container relaydesk-backend-1 Healthy 
+ Container relaydesk-postgres-1 Waiting 
+ Container relaydesk-backend-1 Waiting 
+ Container relaydesk-frontend-1 Waiting 
+ Container relaydesk-backend-1 Healthy 
+ Container relaydesk-postgres-1 Healthy 
+ Container relaydesk-frontend-1 Healthy 
+PASS: original container IDs unchanged; no containers recreated.
++ docker compose ps --format 'table {{.Service}}\t{{.Status}}\t{{.Ports}}'
+SERVICE    STATUS                       PORTS
+backend    Up About an hour (healthy)   127.0.0.1:8000->8000/tcp
+frontend   Up 7 hours (healthy)         127.0.0.1:3000->8080/tcp
+postgres   Up 7 hours (healthy)         5432/tcp
++ docker image inspect relaydesk-backend:local relaydesk-frontend:local --format '{{.RepoTags}} user={{.Config.User}}'
+[relaydesk-backend:local] user=10001:10001
+[relaydesk-frontend:local] user=101:101

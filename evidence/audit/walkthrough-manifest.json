@@ -1,0 +1,49 @@
+{
+  "path": "evidence/m10-automated-walkthrough.webm",
+  "captured_at_utc": "2026-10-16T13:00:23.696Z",
+  "sha256": "2ccfd1b08dc86dc0d66ecd4642a3c9a97ac50ce38e3019cb3de5ea6f02681f62",
+  "method": "Actual isolated browser viewport recording by Playwright. No synthetic slides, no new commit, no rollout, no student narration.",
+  "timeline": [
+    {
+      "from": 0,
+      "to": 11.009,
+      "url": "http://localhost:3000/",
+      "http_status": 200,
+      "caption": "Automated visual walkthrough of the existing Relaydesk deployment. This recording does not perform a new commit or rollout."
+    },
+    {
+      "from": 11.009,
+      "to": 17.631,
+      "url": "http://localhost:3000/",
+      "caption": "Original helpdesk ticket editor with status and priority. No ticket is saved."
+    },
+    {
+      "from": 17.631,
+      "to": 35.84,
+      "url": "https://github.com/pranav7796/helpdesk-capstone/actions/runs/38893336596",
+      "http_status": 200,
+      "caption": "Historical successful CI run for deployed commit d07bca6: tests, image build/security/publish, and Helm validation."
+    },
+    {
+      "from": 35.84,
+      "to": 46.949,
+      "url": "https://github.com/pranav7796/helpdesk-capstone/pkgs/container/helpdesk-capstone%2Fbackend",
+      "http_status": 200,
+      "caption": "Public GHCR backend package with immutable SHA tags. The deployed release uses the historical d07bca6 tag."
+    },
+    {
+      "from": 46.949,
+      "to": 58.346,
+      "url": "http://127.0.0.1:9090/targets",
+      "http_status": 200,
+      "caption": "Live Prometheus Targets page: relaydesk-backend is UP and scraped at /metrics."
+    },
+    {
+      "from": 58.346,
+      "to": 72.059,
+      "url": "http://127.0.0.1:3001/d/relaydesk-http/relaydesk-http-traffic?orgId=1&from=now-30m&to=now&timezone=browser&refresh=10s",
+      "http_status": 200,
+      "caption": "Live Grafana request-rate panel contains actual application HTTP traffic."
+    }
+  ]
+}

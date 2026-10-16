@@ -1,0 +1,20 @@
+Captured: 2026-10-16 12:30:32 UTC
+Evidence: m3-git-history
++ git remote -v
+origin	https://github.com/pranav7796/helpdesk-capstone.git (fetch)
+origin	https://github.com/pranav7796/helpdesk-capstone.git (push)
++ git log --oneline -14
+15b303b docs(evidence): add responsive mobile screenshot
+e49cc86 docs(submission): record passing CI and live SHA rollout
+d07bca6 docs(evidence): capture verified local deployment and monitoring
+aae7ffa security(container): gate images with patched dependency inventory
+3f965a0 fix(terraform): allow a no-refresh regional EKS plan
+54ecf40 fix(kubernetes): repair local services and database storage initialization
+fb194c1 security(backend): upgrade Python libraries flagged by the Trivy scan
+593c303 build(platform): package Relaydesk in Helm and gate CI with Trivy scans
+ecec4bb infra(terraform): define tagged VPC network and isolated EKS worker deployment
+32076dd build(containers): add non-root images and health-gated PostgreSQL Compose stack
+444820a feat(web): build responsive support inbox with ticket editor and priority management
+74a06ca test(api): cover isolated CRUD, validation, metrics and database readiness failures
+bfa2641 feat(api): implement ticket lifecycle API and migration-managed support schema
+7a44ca0 docs: establish Relaydesk scope and complete grading evidence checklist

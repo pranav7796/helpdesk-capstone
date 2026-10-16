@@ -1,0 +1,16 @@
+Captured: 2026-10-16 12:36:28 UTC
+Evidence: m7-aws-restriction
++ set +e
++ aws ec2 describe-availability-zones --profile devops-capstone --region ap-south-1 --no-cli-pager
+
+aws: [ERROR]: An error occurred (OptInRequired) when calling the DescribeAvailabilityZones operation: You are not subscribed to this service. Please go to http://aws.amazon.com to subscribe.
++ capstone_ec2_rc=254
++ aws eks list-clusters --profile devops-capstone --region ap-south-1 --no-cli-pager
+
+aws: [ERROR]: An error occurred (SubscriptionRequiredException) when calling the ListClusters operation: The AWS Access Key Id needs a subscription for the service
++ capstone_eks_rc=254
++ set -e
++ printf 'Read-only EC2 check exit code: %s; EKS check exit code: %s.\n' 254 254
+Read-only EC2 check exit code: 254; EKS check exit code: 254.
++ printf 'No apply or destroy operation was run. This is restriction evidence, not deployment evidence.\n'
+No apply or destroy operation was run. This is restriction evidence, not deployment evidence.

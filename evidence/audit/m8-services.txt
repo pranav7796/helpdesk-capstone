@@ -1,0 +1,16 @@
+Captured: 2026-10-16 12:30:49 UTC
+Evidence: m8-services
++ kubectl --context helpdesk-capstone -n relaydesk get svc
+NAME                 TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+backend              ClusterIP   10.101.131.39    <none>        8000/TCP   124m
+grafana              ClusterIP   10.111.247.204   <none>        3000/TCP   109m
+prometheus           ClusterIP   10.98.188.229    <none>        9090/TCP   109m
+relaydesk-backend    ClusterIP   10.104.238.119   <none>        8000/TCP   128m
+relaydesk-frontend   ClusterIP   10.101.174.34    <none>        80/TCP     128m
+relaydesk-postgres   ClusterIP   10.101.21.164    <none>        5432/TCP   128m
++ kubectl --context helpdesk-capstone -n relaydesk get endpointslices -l kubernetes.io/service-name=relaydesk-backend
+NAME                      ADDRESSTYPE   PORTS   ENDPOINTS                 AGE
+relaydesk-backend-fwvsw   IPv4          8000    10.244.0.33,10.244.0.37   128m
++ kubectl --context helpdesk-capstone -n relaydesk get endpointslices -l kubernetes.io/service-name=relaydesk-frontend
+NAME                       ADDRESSTYPE   PORTS   ENDPOINTS                 AGE
+relaydesk-frontend-kc6qt   IPv4          8080    10.244.0.34,10.244.0.36   128m

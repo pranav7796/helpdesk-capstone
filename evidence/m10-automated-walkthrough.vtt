@@ -1,0 +1,25 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:11.009
+Automated visual walkthrough of the existing Relaydesk deployment. This recording does not perform a new commit or rollout.
+
+2
+00:00:11.009 --> 00:00:17.631
+Original helpdesk ticket editor with status and priority. No ticket is saved.
+
+3
+00:00:17.631 --> 00:00:35.840
+Historical successful CI run for deployed commit d07bca6: tests, image build/security/publish, and Helm validation.
+
+4
+00:00:35.840 --> 00:00:46.949
+Public GHCR backend package with immutable SHA tags. The deployed release uses the historical d07bca6 tag.
+
+5
+00:00:46.949 --> 00:00:58.346
+Live Prometheus Targets page: relaydesk-backend is UP and scraped at /metrics.
+
+6
+00:00:58.346 --> 00:01:12.059
+Live Grafana request-rate panel contains actual application HTTP traffic.

@@ -4,7 +4,9 @@ Started 2026-10-16 10:40 IST. Working deadline estimate: 20:40 IST (10 hours fro
 
 Source: [teacher repository](https://github.com/Nency-Ravaliya/devops-heros/tree/main/session21-python), commit `a4e39b6b3a54dab1efd386c75ab86bf1d8a23454`. Full rubric and submission instructions: [docs/TEACHER-GRADING.md](docs/TEACHER-GRADING.md).
 
-**Verified score now: 91/100.** Only demonstrated outcomes count here; the instructor gives the final grade. Run [38893336596](https://github.com/pranav7796/helpdesk-capstone/actions/runs/38893336596) succeeded, then its two SHA-tagged GHCR images were rolled out to Minikube. Both application Deployments became Ready and ingress CRUD/persistence smoke passed. AWS account restrictions leave the VPC, EKS, and destroy marks blocked.
+**Audit-adjusted verified estimate: 86/100; achievable submission estimate: 91/100 after the form and presentation requirements are completed.** The earlier 91 estimate counted the public-repository submission and the presentation as complete; neither has confirmation. The saved no-refresh Terraform plan contributes 2 of these estimated marks, subject to instructor acceptance (84 if a fresh authenticated plan is required). Only the instructor awards marks. See [EVIDENCE-AUDIT.md](EVIDENCE-AUDIT.md).
+
+Run [38893336596](https://github.com/pranav7796/helpdesk-capstone/actions/runs/38893336596) succeeded and its SHA images were deployed to Minikube. This technical sequence is evidenced by logs; no recording of the actual commit-to-rollout event or completed student presentation exists. The new automated browser walkthrough is supplementary. AWS deployment/destroy remains blocked (9 marks).
 
 Status: VERIFIED means observed in a running system or command output. IMPLEMENTED means configuration exists but the graded runtime result is not yet demonstrated. BLOCKED means an external restriction prevents the requirement. FAILED means an attempted verification failed. NOT STARTED means no work exists.
 
@@ -19,8 +21,8 @@ Status: VERIFIED means observed in a running system or command output. IMPLEMENT
 | M2 | At least 5 tests across 3 endpoints | 4 | VERIFIED | `backend/tests/test_tickets.py`, 16 passed |
 | M2 | Isolated test DB | 2 | VERIFIED | SQLite test fixture; `backend/tests/conftest.py` |
 | M2 | Pytest config | 1 | VERIFIED | `backend/pytest.ini` |
-| M3 | Public GitHub repository | 2 | VERIFIED | https://github.com/pranav7796/helpdesk-capstone |
-| M3 | At least 10 meaningful commits | 2 | VERIFIED | `git log`; 14 meaningful commits on public `main` |
+| M3 | Public GitHub repository linked in submission form | 2 | IMPLEMENTED | Public URL verified; submission-form confirmation is still missing |
+| M3 | At least 10 meaningful commits | 2 | VERIFIED | `evidence/m3-git-history.png` captures 14 meaningful commits before the audit follow-up |
 | M3 | `.gitignore` excludes secrets/build caches | 1 | VERIFIED | Root `.gitignore`; no credentials tracked |
 | M4 | Backend Docker image builds | 2 | VERIFIED | Compose runtime; `evidence/docker-compose-ps.txt` |
 | M4 | Multi-stage frontend image | 3 | VERIFIED | `frontend/Dockerfile`; running Nginx frontend |
@@ -38,14 +40,14 @@ Status: VERIFIED means observed in a running system or command output. IMPLEMENT
 | M6 | Explain a finding and disposition | 1 | VERIFIED | `docs/SECURITY.md`; scoped SBOM false-positive exceptions |
 | M7 | Valid Terraform HCL | 2 | VERIFIED | `terraform validate`; `evidence/terraform-validate.txt` |
 | M7 | Terraform init | 1 | VERIFIED | Successful init with locked AWS provider |
-| M7 | Non-empty Terraform plan | 2 | VERIFIED | Saved 22-resource `-refresh=false` dry run; `evidence/terraform-plan-refresh-false.txt` |
-| M7 | VPC with two public subnets provisioned | 3 | BLOCKED | EC2 `OptInRequiredException`; no apply |
+| M7 | Non-empty Terraform plan | 2 | VERIFIED | Historical 22-resource `-refresh=false` output only; screenshot `evidence/m7-terraform-plan-saved.png`; fresh plan replay failed; marks are qualified |
+| M7 | VPC with two public subnets provisioned | 3 | BLOCKED | EC2 `OptInRequired`; no apply; `evidence/m7-aws-restriction.png` |
 | M7 | EKS and worker node group provisioned | 4 | BLOCKED | EKS `SubscriptionRequiredException`; no apply |
 | M7 | Terraform destroy demonstrated | 2 | BLOCKED | No AWS resources were created |
 | M7 | Example tfvars, no secrets | 1 | VERIFIED | `terraform/terraform.tfvars.example` |
 | M8 | Namespace applies | 1 | VERIFIED | Minikube namespace `relaydesk` |
 | M8 | Helm chart structure | 3 | VERIFIED | `helm/helpdesk`; rendered output in `evidence/helm-rendered.yaml` |
-| M8 | Helm install/upgrade succeeds | 3 | VERIFIED | Release `relaydesk`, status deployed, revision 9 |
+| M8 | Helm install/upgrade succeeds | 3 | VERIFIED | Release `relaydesk`, status deployed, revision 10; `evidence/m8-helm.png` |
 | M8 | Frontend and backend each have 2 replicas | 2 | VERIFIED | `evidence/minikube-status.txt` |
 | M8 | ClusterIP services | 2 | VERIFIED | Backend, frontend, PostgreSQL service evidence |
 | M8 | Ingress routes frontend and `/api` | 2 | VERIFIED | Minikube ingress `192.168.58.2`; frontend/API smoke passed |
@@ -55,10 +57,10 @@ Status: VERIFIED means observed in a running system or command output. IMPLEMENT
 | M9 | Grafana installed and accessible | 2 | VERIFIED | Running local service and dashboard screenshot |
 | M9 | Live request metrics panel | 3 | VERIFIED | `evidence/grafana-relaydesk-dashboard.png`; traffic query evidence |
 | M10 | Root README explains application | 2 | VERIFIED | `README.md` |
-| M10 | Commit → CI → deployment update demo | 3 | VERIFIED | Commit `d07bca6`; run 38893336596 passed; SHA images deployed and ingress CRUD passed; see `evidence/live-demo.txt` |
+| M10 | Live or recorded commit → CI → deployment update presentation | 3 | IMPLEMENTED | Historical technical sequence verified in logs. Automated current-state browser walkthrough captured; actual student presentation/live sequence recording still pending |
 
 ## Highest-value remaining work
 
-1. Get the pushed GitHub Actions workflow green, including Trivy and GHCR SHA image publication.
-2. Deploy those published SHA-tagged images to Minikube and capture the complete commit → CI → rollout evidence.
-3. AWS provisioning is currently blocked by account service restrictions and remains approval-gated regardless.
+1. Submit the public repository URL and the screenshot checklist in `SUBMISSION.md` to the teacher's form.
+2. Complete the live presentation or an accepted recorded commit → pipeline → deployment walkthrough.
+3. Disclose the AWS limitation; VPC/EKS and destroy screenshots cannot be produced without a real approved deployment.

@@ -1,0 +1,17 @@
+Captured: 2026-10-16 12:30:51 UTC
+Evidence: m8-helm
++ helm list --kube-context helpdesk-capstone -n relaydesk
+NAME     	NAMESPACE	REVISION	UPDATED                                	STATUS  	CHART          	APP VERSION
+relaydesk	relaydesk	10      	2026-10-16 16:58:46.659780485 +0530 IST	deployed	relaydesk-1.0.0	1.0.0      
++ helm status relaydesk --kube-context helpdesk-capstone -n relaydesk
+NAME: relaydesk
+LAST DEPLOYED: Fri Oct 16 16:58:46 2026
+NAMESPACE: relaydesk
+STATUS: deployed
+REVISION: 10
+TEST SUITE: None
++ kubectl --context helpdesk-capstone -n relaydesk get deploy relaydesk-backend relaydesk-frontend -o 'jsonpath={range .items[*]}{.metadata.name}{"\n"}{.spec.template.spec.containers[*].image}{"\n"}{end}'
+relaydesk-backend
+ghcr.io/pranav7796/helpdesk-capstone/backend:d07bca6accc35f0224aaae8c4057076a9c4c9261
+relaydesk-frontend
+ghcr.io/pranav7796/helpdesk-capstone/frontend:d07bca6accc35f0224aaae8c4057076a9c4c9261

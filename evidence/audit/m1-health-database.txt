@@ -1,0 +1,30 @@
+Captured: 2026-10-16 12:30:37 UTC
+Evidence: m1-health-database
++ curl -fsS http://127.0.0.1:8000/health
+{"status":"UP","service":"relaydesk"}+ printf '\n'
+
++ curl -fsS http://127.0.0.1:8000/ready
+{"status":"READY"}+ printf '\n'
+
++ docker compose exec -T backend alembic current
+0001_tickets (head)
++ docker compose exec -T postgres psql -U relaydesk -d relaydesk -c '\dt' -c 'SELECT version_num FROM alembic_version;' -c 'SELECT id, subject, status, priority FROM tickets ORDER BY id DESC LIMIT 3;'
+              List of relations
+ Schema |      Name       | Type  |   Owner   
+--------+-----------------+-------+-----------
+ public | alembic_version | table | relaydesk
+ public | tickets         | table | relaydesk
+(2 rows)
+
+ version_num  
+--------------
+ 0001_tickets
+(1 row)
+
+ id |               subject               |   status    | priority 
+----+-------------------------------------+-------------+----------
+ 13 | Verify support workspace deployment | IN_PROGRESS | HIGH
+ 11 | Verify support workspace deployment | IN_PROGRESS | HIGH
+  9 | Verify support workspace deployment | IN_PROGRESS | HIGH
+(3 rows)
+

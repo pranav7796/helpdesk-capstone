@@ -1,0 +1,174 @@
+r.
+relaydesk
+SUPPORT WORKSPACE
+WORKSPACE
+▤   Ticket inbox
+7
+ Support, in good hands.
+
+One place to track every request, from the first message to the final fix.
+
+P
+Pranav
+Support engineer
+Workspace / Ticket inbox
+RELAYDESK / 01
+KEEP WORK MOVING
+A little clarity.
+A lot less back-and-forth.
+
+Your team's requests, priorities, and resolutions in one place.
+
+＋ New ticket
+All requests
+7
+Every conversation counts
+Needs attention
+7
+Open or in progress
+High priority
+7
+Keep these moving
+Resolved
+0
+A job well done
+Ticket inbox 7
+
+Pick up a request. Make someone's day easier.
+
+All tickets
+Open
+In progress
+Resolved
+REQUEST	REQUESTER / OWNER	PRIORITY	STATUS	ACTIONS
+
+RD-0013
+Verify support workspace deployment
+
+Created through the frontend proxy; stored in PostgreSQL.
+
+	
+Capstone demo
+↳ Pranav	High	
+Open
+In progress
+Resolved
+	
+Edit
+Delete
+
+
+RD-0011
+Verify support workspace deployment
+
+Created through the frontend proxy; stored in PostgreSQL.
+
+	
+Capstone demo
+↳ Pranav	High	
+Open
+In progress
+Resolved
+	
+Edit
+Delete
+
+
+RD-0009
+Verify support workspace deployment
+
+Created through the frontend proxy; stored in PostgreSQL.
+
+	
+Capstone demo
+↳ Pranav	High	
+Open
+In progress
+Resolved
+	
+Edit
+Delete
+
+
+RD-0007
+Verify support workspace deployment
+
+Created through the frontend proxy; stored in PostgreSQL.
+
+	
+Capstone demo
+↳ Pranav	High	
+Open
+In progress
+Resolved
+	
+Edit
+Delete
+
+
+RD-0005
+Verify support workspace deployment
+
+Created through the frontend proxy; stored in PostgreSQL.
+
+	
+Capstone demo
+↳ Pranav	High	
+Open
+In progress
+Resolved
+	
+Edit
+Delete
+
+
+RD-0003
+Verify support workspace deployment
+
+Created through the frontend proxy; stored in PostgreSQL.
+
+	
+Capstone demo
+↳ Pranav	High	
+Open
+In progress
+Resolved
+	
+Edit
+Delete
+
+
+RD-0001
+Verify support workspace deployment
+
+Created through the frontend proxy; stored in PostgreSQL.
+
+	
+Capstone demo
+↳ Pranav	High	
+Open
+In progress
+Resolved
+	
+Edit
+Delete
+RELAYDESK
+Thoughtful support. Clear outcomes.
+SUPPORT REQUEST
+Open a new ticket
+×
+Subject
+Details
+Requester
+Assigned to
+Priority
+LOW
+MEDIUM
+HIGH
+URGENT
+Status
+Open
+In progress
+Resolved
+Cancel
+Create ticket

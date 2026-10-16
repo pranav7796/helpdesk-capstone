@@ -1,0 +1,26 @@
+Captured: 2026-10-16 12:30:47 UTC
+Evidence: m8-pods
++ kubectl --context helpdesk-capstone -n relaydesk get pods -o wide
+NAME                                  READY   STATUS    RESTARTS   AGE    IP            NODE                NOMINATED NODE   READINESS GATES
+grafana-6d89446f54-7bwn2              1/1     Running   0          105m   10.244.0.30   helpdesk-capstone   <none>           <none>
+prometheus-75dc6f79ff-pj2sx           1/1     Running   0          108m   10.244.0.29   helpdesk-capstone   <none>           <none>
+relaydesk-backend-c68f99986-6bd55     1/1     Running   0          61m    10.244.0.37   helpdesk-capstone   <none>           <none>
+relaydesk-backend-c68f99986-vw467     1/1     Running   0          62m    10.244.0.33   helpdesk-capstone   <none>           <none>
+relaydesk-frontend-68fc9f58b6-c9qxs   1/1     Running   0          62m    10.244.0.34   helpdesk-capstone   <none>           <none>
+relaydesk-frontend-68fc9f58b6-g7n86   1/1     Running   0          61m    10.244.0.36   helpdesk-capstone   <none>           <none>
+relaydesk-postgres-0                  1/1     Running   0          61m    10.244.0.35   helpdesk-capstone   <none>           <none>
++ kubectl --context helpdesk-capstone -n relaydesk get deploy,hpa,pvc
+NAME                                 READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/grafana              1/1     1            1           108m
+deployment.apps/prometheus           1/1     1            1           108m
+deployment.apps/relaydesk-backend    2/2     2            2           128m
+deployment.apps/relaydesk-frontend   2/2     2            2           128m
+
+NAME                                                    REFERENCE                      TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+horizontalpodautoscaler.autoscaling/relaydesk-backend   Deployment/relaydesk-backend   cpu: 4%/70%   2         4         2          128m
+
+NAME                                            STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMEATTRIBUTESCLASS   AGE
+persistentvolumeclaim/relaydesk-postgres-data   Bound    pvc-3eb5991d-c004-47d6-b845-814bca60f183   2Gi        RWO            standard       <unset>                 128m
++ kubectl --context helpdesk-capstone -n relaydesk get ingress
+NAME        CLASS   HOSTS   ADDRESS        PORTS   AGE
+relaydesk   nginx   *       192.168.58.2   80      110m

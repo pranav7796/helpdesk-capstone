@@ -65,6 +65,7 @@ The first security scan found a `setuptools` path-traversal CVE and stale versio
 - [Progress scorecard](PROGRESS.md) — each rubric row and current verified marks.
 - [Verification record](VERIFICATION.md) — commands and observed outcomes.
 - [Submission checklist](SUBMISSION.md) — required links and evidence.
+- [Evidence audit](EVIDENCE-AUDIT.md) — required screenshots, provenance, and remaining submission gaps.
 - [Troubleshooting guide](docs/TROUBLESHOOTING.md) and recovery exercise templates in `troubleshooting/`.
 - [AWS plan, eligibility, and cost estimate](docs/AWS-PLAN.md).
 - Screenshots and captured outputs are in [`evidence/`](evidence/).

@@ -16,6 +16,6 @@ At the same baseline, uninterrupted month-long use is roughly **$219/month befor
 
 ## Current account result
 
-The read-only account checks found AWS account plan `FREE`, status `NOT_STARTED`. EKS returned `SubscriptionRequiredException` and EC2/AZ discovery returned `OptInRequiredException` with the message that the account is not subscribed to the service. Do not apply this plan while that restriction remains. Account plan, billing, security, and service subscriptions were not changed.
+The read-only account checks found AWS account plan `FREE`, status `NOT_STARTED`. EKS returned `SubscriptionRequiredException` and EC2/AZ discovery returned `OptInRequired` with the message that the account is not subscribed to the service. Do not apply this plan while that restriction remains. Account plan, billing, security, and service subscriptions were not changed.
 
 If AWS eligibility changes, the Terraform plan must first be refreshed using the actual admin CIDR and reviewed again. The current saved plan is deliberately not an approval artifact. Any AWS apply or cleanup requires a new cost and exact-resource review; no resources should be removed until the demo evidence is captured.

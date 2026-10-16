@@ -1,0 +1,19 @@
+Captured: 2026-10-16 12:34:15 UTC
+Evidence: m6-trivy-frontend
++ python /tmp/relaydesk-evidence-audit/trivy_excerpt.py frontend
+GITHUB ACTIONS PIPELINE OUTPUT (saved genuine run log)
+Run: https://github.com/pranav7796/helpdesk-capstone/actions/runs/38893336596
+Commit: d07bca6accc35f0224aaae8c4057076a9c4c9261
+Step: Scan frontend image with Trivy
+Workflow gate: HIGH,CRITICAL; exit-code=1; ignore-unfixed=true
+Exact package-PURL SBOM exceptions: docs/SECURITY.md.
+
+Report Summary — exact table excerpt from the pipeline log
+┌─────────────────────────────────────────────────────────────────────────────┬────────┬─────────────────┬─────────┐
+│                                   Target                                    │  Type  │ Vulnerabilities │ Secrets │
+├─────────────────────────────────────────────────────────────────────────────┼────────┼─────────────────┼─────────┤
+│ relaydesk-frontend:d07bca6accc35f0224aaae8c4057076a9c4c9261 (alpine 3.24.2) │ alpine │        0        │    -    │
+└─────────────────────────────────────────────────────────────────────────────┴────────┴─────────────────┴─────────┘
+Legend from pipeline: '0': Clean (no security findings detected).
+
+Source: evidence/actions-run.txt (full unabridged workflow log)
