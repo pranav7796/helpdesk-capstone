@@ -19,3 +19,8 @@ dist/
 *.db
 .DS_Store
 evidence/private/
+terraform/terraform.tfstate
+terraform/terraform.tfstate.*
+terraform/.terraform/
+terraform/*.tfplan
+terraform/terraform.tfvars
