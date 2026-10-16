@@ -1,9 +1,9 @@
 {
-  "audited_at_utc": "2026-10-16T17:02:49.392650+00:00",
+  "audited_at_utc": "2026-10-16T17:07:51.915736+00:00",
   "scope": "Every evidence file except this self-referential inventory file",
   "png_count": 42,
   "new_pngs_with_capture_manifest": 37,
-  "file_count": 154,
+  "file_count": 156,
   "errors": [],
   "files": [
     {
@@ -39,7 +39,7 @@
     {
       "path": "evidence/audit/limited-secret-signature-check.json",
       "bytes": 300,
-      "sha256": "d651d255083e8ac4150c586fe5dea8ac6a3494a27ea001a83aca14a7962baabc"
+      "sha256": "a05c778aac7d9fcda8a34dc5e7079704193286a6805575d4c81bc801f9fd78b6"
     },
     {
       "path": "evidence/audit/m1-health-database.txt",
@@ -553,6 +553,16 @@
       "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
       "visual_review": "Historical top-only mobile viewport; partial evidence. Current mobile table and actions captures supplement it.",
       "capture_provenance": "Historical capture from earlier observed session; no new capture manifest"
+    },
+    {
+      "path": "evidence/sydney/actions-final.json",
+      "bytes": 7742,
+      "sha256": "705956cecb809740e69f2f7c643f645f5289a3773865480af9ac1376a8da7dac"
+    },
+    {
+      "path": "evidence/sydney/actions-final.txt",
+      "bytes": 375509,
+      "sha256": "815658a616fae35621a06538f1e1f752774a3d9119757ea96d7ab340aacd06fd"
     },
     {
       "path": "evidence/sydney/actions-run.json",

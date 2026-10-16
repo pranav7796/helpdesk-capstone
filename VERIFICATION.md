@@ -42,7 +42,7 @@ Trivy HIGH/CRITICAL findings with available fixes fail the pipeline; `ignore-unf
 
 `python scripts/troubleshooting-lab.py` exited 0 after diagnosing and recovering all five failures in the isolated local namespace. Actual HTTP 404/503 probe responses, empty selector endpoints, repeated exit-1 crashes with BackOff events, fixed rollouts and HTTP 200 are captured in [full output](evidence/sydney/troubleshooting.txt) and [recovery screenshot](evidence/sydney/troubleshooting-recovery.png). The namespace was removed; the working release stayed healthy. Initial observation/startup failures are retained and explained in [the troubleshooting guide](docs/TROUBLESHOOTING.md). The invalid-image exercise also exposed a local Minikube registry-DNS failure; cached-image recovery succeeded and no claim is made that node-external DNS was repaired.
 
-The successful CI log reported Ubuntu 24.04.5 and announced that `ubuntu-latest` starts migrating to Ubuntu 26 on October 19, the deadline. The workflow is now pinned to `ubuntu-24.04` to retain the verified runner OS; a final run verifies that pin. Existing action Node-runtime deprecation annotations are non-failing.
+The successful CI log reported Ubuntu 24.04.5 and announced that `ubuntu-latest` starts migrating to Ubuntu 26 on October 19, the deadline. The workflow is now pinned to `ubuntu-24.04` to retain the verified runner OS; final run [38936702532](https://github.com/pranav7796/helpdesk-capstone/actions/runs/38936702532) succeeded with all jobs green. [Metadata](evidence/sydney/actions-final.json), [full log](evidence/sydney/actions-final.txt). Existing action Node-runtime deprecation annotations are non-failing.
 
 ## Original plan and cloud boundary
 

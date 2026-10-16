@@ -2,6 +2,8 @@
 
 **Not ready for a complete 100-point submission yet.** Local application and DevOps evidence are verified; AWS deployment/destroy awaits explicit approval and actual execution. Estimated verified marks: **86/100**, subject to instructor grading. Teacher-form submission (2), accepted student presentation (3), and AWS provisioning/cleanup (9) remain pending.
 
+Final runner-pin verification also passed: [38936702532](https://github.com/pranav7796/helpdesk-capstone/actions/runs/38936702532), commit `d5ad1ab83c035fd75852e741e3f6482bb92afec5`. [Actual final run metadata](evidence/sydney/actions-final.json). A subsequent commit only records verification evidence.
+
 ## Submit these links
 
 - Public repository: https://github.com/pranav7796/helpdesk-capstone
