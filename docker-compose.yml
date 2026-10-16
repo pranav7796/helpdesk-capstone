@@ -1,0 +1,52 @@
+name: relaydesk
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: relaydesk
+      POSTGRES_USER: relaydesk
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-relaydesk-local-only}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U relaydesk -d relaydesk']
+      interval: 3s
+      timeout: 3s
+      retries: 30
+  migrate:
+    build: ./backend
+    image: relaydesk-backend:local
+    command: [alembic, upgrade, head]
+    environment:
+      DATABASE_URL: postgresql+psycopg://relaydesk:${POSTGRES_PASSWORD:-relaydesk-local-only}@postgres:5432/relaydesk
+    depends_on:
+      postgres:
+        condition: service_healthy
+  backend:
+    build: ./backend
+    image: relaydesk-backend:local
+    environment:
+      DATABASE_URL: postgresql+psycopg://relaydesk:${POSTGRES_PASSWORD:-relaydesk-local-only}@postgres:5432/relaydesk
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    ports: ['127.0.0.1:8000:8000']
+    healthcheck:
+      test: [CMD, python, -c, 'import urllib.request; urllib.request.urlopen("http://localhost:8000/ready")']
+      interval: 5s
+      timeout: 3s
+      retries: 15
+  frontend:
+    build: ./frontend
+    image: relaydesk-frontend:local
+    ports: ['127.0.0.1:3000:8080']
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: [CMD, wget, -q, -O, /dev/null, 'http://127.0.0.1:8080/healthz']
+      interval: 5s
+      timeout: 3s
+      retries: 15
+volumes:
+  postgres-data:
