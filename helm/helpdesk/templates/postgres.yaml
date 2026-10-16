@@ -27,6 +27,9 @@ metadata:
   namespace: {{ .Values.namespace }}
 spec:
   accessModes: [ReadWriteOnce]
+  {{- with .Values.database.storageClass }}
+  storageClassName: {{ . | quote }}
+  {{- end }}
   resources:
     requests: { storage: {{ .Values.database.storage }} }
 ---
@@ -51,6 +54,11 @@ spec:
           ports: [{ name: postgres, containerPort: 5432 }]
           envFrom:
             - secretRef: { name: {{ include "relaydesk.name" . }}-database }
+          {{- with .Values.database.pgdata }}
+          env:
+            - name: PGDATA
+              value: {{ . | quote }}
+          {{- end }}
           volumeMounts: [{ name: data, mountPath: /var/lib/postgresql/data }]
           readinessProbe:
             exec: { command: ["sh", "-c", "pg_isready -U $POSTGRES_USER -d $POSTGRES_DB"] }

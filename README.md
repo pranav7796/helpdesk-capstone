@@ -18,7 +18,7 @@ Stop the containers with `docker compose down`. The named database volume stays 
 
 | Method | Path | Purpose |
 |---|---|---|
-| GET | `/api/tickets` | List tickets; supports status, priority, and search filters |
+| GET | `/api/tickets` | List tickets; API status filter, with frontend search |
 | POST | `/api/tickets` | Create a ticket |
 | GET | `/api/tickets/{id}` | Read one ticket |
 | PUT | `/api/tickets/{id}` | Edit fields, status, or priority |
@@ -71,4 +71,4 @@ The first security scan found a `setuptools` path-traversal CVE and stale versio
 - Screenshots and captured outputs are in [`evidence/`](evidence/).
 - Teacher rubric and source snapshot reference: [`docs/TEACHER-GRADING.md`](docs/TEACHER-GRADING.md).
 
-The AWS account currently reports EC2/EKS opt-in restrictions; no AWS resources have been provisioned. See `VERIFICATION.md` for the actual response and local Minikube evidence.
+The current AWS target is account `525426877661`, profile `devops-new`, Sydney `ap-southeast-2`. The reviewed, account-restricted plan has 28 additions; AWS deployment and later cleanup await separate explicit approval. Sydney service checks pass; the old Mumbai/account restriction evidence is historical. See [scope and current costs](docs/AWS-PLAN.md), [deployment runbook](docs/EKS-RUNBOOK.md), and [grading checklist](GRADING-CHECKLIST.md). Deadline: October 19, 2026.

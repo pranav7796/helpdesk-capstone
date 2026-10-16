@@ -1,5 +1,25 @@
 # Evidence audit against GRADING.md
 
+## Current Sydney audit — October 16, 2026, after account change
+
+This section and [the current submission guide](SUBMISSION.md) supersede the old-account/Mumbai restriction and historical-plan-only conclusions below. Current target: `525426877661 / devops-new / ap-southeast-2`; deadline October 19. Sydney reads and account-guarded planning pass; **AWS apply is awaiting approval, not blocked by the former account's subscription error**.
+
+- Every rubric row is mapped to implementation, actual verification and screenshot filenames in [GRADING-CHECKLIST.md](GRADING-CHECKLIST.md); estimated verified marks remain 86/100. Missing: VPC/EKS/destroy 9, teacher form 2, accepted student presentation 3.
+- **11 new screenshots** in `evidence/sydney/` were captured from actual terminal windows/browser pages and visually opened for review: plan, account, pricing, validation, tests, runtime, failure recovery, Compose/Ingress app, Prometheus UP, Grafana populated panel. All are genuine, readable, and support their stated scope; terminal plan/cost captures explicitly do not claim deployment.
+- Current plan screenshot shows all 28 create actions, plan result and account/profile/region/CIDR/source/hash checks. The original 22-resource plan is preserved separately; it lacked later safeguards. [Complete current plan](evidence/sydney/terraform-plan.txt).
+- Real serial AWS checks report the correct assumed role, available Sydney AZs, empty EKS/project-VPC inventory and PAID/ACTIVE with USD120 credits. Credit grant coverage/expiry/sharing remains unverified.
+- Local rechecks: 16 tests passed; frontend build passed; Compose and Ingress CRUD passed; all seven main Pods Ready; HPA CPU metrics valid; Prometheus up=1; populated current Grafana screenshot.
+- Five local failure exercises recovered; the temporary namespace was removed. The capture labels its exact saved-log excerpts and also runs current Pod/namespace checks. Initial observation/startup failures and the local external-registry DNS limitation are disclosed in [troubleshooting](docs/TROUBLESHOOTING.md).
+- Source commands/URLs, capture timestamps, exit codes/status and SHA-256 hashes: `evidence/sydney/terminal-capture-manifest.json` and `browser-capture-manifest.json`. Extended inventory: `evidence/sydney/inventory.json`.
+- The existing local release remains Helm revision 10 with unchanged data path/storage class. EKS storage/ingress/monitoring manifests are locally validated **IMPLEMENTED**, not verified cloud deployments.
+- Still missing: actual AWS Console resource screenshots and successful destroy output, accepted presentation/actual commit-to-rollout recording, and teacher form receipt. These cannot be replaced by generated files, a plan screenshot, or current-state video.
+
+## Historical first-account screenshot audit
+
+The following records the earlier audit and its conclusions at that time; use the current section and submission guide for the new account.
+
+Subsequent AWS setup update: [fresh authenticated plan](evidence/terraform-plan-aws-login.txt) now succeeds using the project's credential-process adapter. This supersedes the plan-replay failure and potential 2-mark deduction described in the historical audit below. The existing plan screenshot still shows the historical artifact. EC2/EKS deployment remains unverified and EKS still rejects service access. See [AWS setup](docs/AWS-PLAN.md). Newly added AWS artifacts postdate the screenshot audit inventory.
+
 Audit date: 2026-10-16. Baseline public commit: `15b303b` (14 commits). Scope: all files in `evidence/`, every module's "What to Submit", and the teacher's final submission checklist in [docs/TEACHER-GRADING.md](docs/TEACHER-GRADING.md). Per-criterion grading status remains in [PROGRESS.md](PROGRESS.md).
 
 **Result:** visual evidence for M1–M6, M8, and M9 is complete. M7 is partial. M10 has a README and a supplementary automated visual walkthrough, but the required student presentation or a recording of the actual commit → pipeline → rollout event remains unverified. The teacher's submission form has not been completed. This is an AWS-limited submission package, not proof of all 100 marks.

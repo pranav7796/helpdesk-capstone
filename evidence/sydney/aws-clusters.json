@@ -1,0 +1,18 @@
+{
+  "command": [
+    "aws",
+    "eks",
+    "list-clusters",
+    "--profile",
+    "devops-new",
+    "--region",
+    "ap-southeast-2",
+    "--no-cli-pager"
+  ],
+  "captured_at_utc": "2026-10-16T16:41:13.652917+00:00",
+  "exit_code": 0,
+  "stderr": "",
+  "response": {
+    "clusters": []
+  }
+}

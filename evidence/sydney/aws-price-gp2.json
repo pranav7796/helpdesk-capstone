@@ -1,0 +1,27 @@
+{
+  "command": [
+    "aws",
+    "pricing",
+    "get-products",
+    "--service-code",
+    "AmazonEC2",
+    "--filters",
+    "Type=TERM_MATCH,Field=location,Value=Asia Pacific (Sydney)",
+    "Type=TERM_MATCH,Field=volumeApiName,Value=gp2",
+    "Type=TERM_MATCH,Field=productFamily,Value=Storage",
+    "--profile",
+    "devops-new",
+    "--region",
+    "us-east-1",
+    "--no-cli-pager"
+  ],
+  "captured_at_utc": "2026-10-16T16:41:43.191684+00:00",
+  "exit_code": 0,
+  "stderr": "",
+  "response": {
+    "PriceList": [
+      "{\"product\":{\"productFamily\":\"Storage\",\"attributes\":{\"maxThroughputvolume\":\"250 MiB/s\",\"volumeType\":\"General Purpose\",\"maxIopsvolume\":\"16000\",\"usagetype\":\"APS2-EBS:VolumeUsage.gp2\",\"locationType\":\"AWS Region\",\"maxVolumeSize\":\"16 TiB\",\"maxIopsBurstPerformance\":\"3000 for volumes <= 1 TiB\",\"storageMedia\":\"SSD-backed\",\"regionCode\":\"ap-southeast-2\",\"servicecode\":\"AmazonEC2\",\"volumeApiName\":\"gp2\",\"location\":\"Asia Pacific (Sydney)\",\"servicename\":\"Amazon Elastic Compute Cloud\",\"operation\":\"\"},\"sku\":\"5ES53GWNC5G54Q44\"},\"serviceCode\":\"AmazonEC2\",\"terms\":{\"OnDemand\":{\"5ES53GWNC5G54Q44.JRTCKXETXF\":{\"priceDimensions\":{\"5ES53GWNC5G54Q44.JRTCKXETXF.6YS6EN2CT7\":{\"unit\":\"GB-Mo\",\"endRange\":\"Inf\",\"description\":\"$0.12 per GB-month of General Purpose SSD (gp2) provisioned storage  - Asia Pacific (Sydney)\",\"appliesTo\":[],\"rateCode\":\"5ES53GWNC5G54Q44.JRTCKXETXF.6YS6EN2CT7\",\"beginRange\":\"0\",\"pricePerUnit\":{\"USD\":\"0.1200000000\"}}},\"sku\":\"5ES53GWNC5G54Q44\",\"effectiveDate\":\"2026-10-01T00:00:00Z\",\"offerTermCode\":\"JRTCKXETXF\",\"termAttributes\":{}}}},\"version\":\"20261015191316\",\"publicationDate\":\"2026-10-15T19:13:16Z\"}"
+    ],
+    "FormatVersion": "aws_v1"
+  }
+}

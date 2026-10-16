@@ -1,0 +1,170 @@
+{
+  "worker": [
+    {
+      "sku": "5ZTHF34UHKZZBAYK",
+      "usage_type": "APS2-BoxUsage:t3.medium",
+      "effective_date": "2026-10-01T00:00:00Z",
+      "unit": "Hrs",
+      "endRange": "Inf",
+      "description": "$0.0528 per On Demand Linux t3.medium Instance Hour",
+      "appliesTo": [],
+      "rateCode": "5ZTHF34UHKZZBAYK.JRTCKXETXF.6YS6EN2CT7",
+      "beginRange": "0",
+      "pricePerUnit": {
+        "USD": "0.0528000000"
+      }
+    }
+  ],
+  "nat": [
+    {
+      "sku": "2VRX3DBVJ36HV98Z",
+      "usage_type": "APS2-RegionalNatGateway-Bytes",
+      "effective_date": "2026-10-01T00:00:00Z",
+      "unit": "GB",
+      "endRange": "Inf",
+      "description": "Charge for per GB data processed by NAT Gateways",
+      "appliesTo": [],
+      "rateCode": "2VRX3DBVJ36HV98Z.JRTCKXETXF.6YS6EN2CT7",
+      "beginRange": "0",
+      "pricePerUnit": {
+        "USD": "0.0590000000"
+      }
+    },
+    {
+      "sku": "KSHYFCUNWFSUXCAV",
+      "usage_type": "APS2-NatGateway-Bytes",
+      "effective_date": "2026-10-01T00:00:00Z",
+      "unit": "GB",
+      "endRange": "Inf",
+      "description": "$0.059 per GB Data Processed by NAT Gateways",
+      "appliesTo": [],
+      "rateCode": "KSHYFCUNWFSUXCAV.JRTCKXETXF.6YS6EN2CT7",
+      "beginRange": "0",
+      "pricePerUnit": {
+        "USD": "0.0590000000"
+      }
+    },
+    {
+      "sku": "NUKV5QPTHVFBW7DE",
+      "usage_type": "APS2-NatGateway-Hours",
+      "effective_date": "2026-10-01T00:00:00Z",
+      "unit": "Hrs",
+      "endRange": "Inf",
+      "description": "$0.059 per NAT Gateway Hour",
+      "appliesTo": [],
+      "rateCode": "NUKV5QPTHVFBW7DE.JRTCKXETXF.6YS6EN2CT7",
+      "beginRange": "0",
+      "pricePerUnit": {
+        "USD": "0.0590000000"
+      }
+    },
+    {
+      "sku": "TB9G32ZP98NJG9WT",
+      "usage_type": "APS2-RegionalNatGateway-Hours",
+      "effective_date": "2026-10-01T00:00:00Z",
+      "unit": "Hrs",
+      "endRange": "Inf",
+      "description": "Hourly charge for Regional NAT Gateways",
+      "appliesTo": [],
+      "rateCode": "TB9G32ZP98NJG9WT.JRTCKXETXF.6YS6EN2CT7",
+      "beginRange": "0",
+      "pricePerUnit": {
+        "USD": "0.0590000000"
+      }
+    }
+  ],
+  "gp3": [
+    {
+      "sku": "QR74UAP3E9WUYT9B",
+      "usage_type": "APS2-EBS:VolumeUsage.gp3",
+      "effective_date": "2026-10-01T00:00:00Z",
+      "unit": "GB-Mo",
+      "endRange": "Inf",
+      "description": "$0.096 per GB-month of General Purpose (gp3) provisioned storage - Asia Pacific (Sydney)",
+      "appliesTo": [],
+      "rateCode": "QR74UAP3E9WUYT9B.JRTCKXETXF.6YS6EN2CT7",
+      "beginRange": "0",
+      "pricePerUnit": {
+        "USD": "0.0960000000"
+      }
+    }
+  ],
+  "gp2": [
+    {
+      "sku": "5ES53GWNC5G54Q44",
+      "usage_type": "APS2-EBS:VolumeUsage.gp2",
+      "effective_date": "2026-10-01T00:00:00Z",
+      "unit": "GB-Mo",
+      "endRange": "Inf",
+      "description": "$0.12 per GB-month of General Purpose SSD (gp2) provisioned storage  - Asia Pacific (Sydney)",
+      "appliesTo": [],
+      "rateCode": "5ES53GWNC5G54Q44.JRTCKXETXF.6YS6EN2CT7",
+      "beginRange": "0",
+      "pricePerUnit": {
+        "USD": "0.1200000000"
+      }
+    }
+  ],
+  "ipv4": [
+    {
+      "sku": "JZP2PURP9VVQ96GH",
+      "usage_type": "APS2-PublicIPv4:InUseAddress",
+      "effective_date": "2026-09-01T00:00:00Z",
+      "unit": "Hrs",
+      "endRange": "Inf",
+      "description": "$0.005 per In-use public IPv4 address per hour",
+      "appliesTo": [],
+      "rateCode": "JZP2PURP9VVQ96GH.JRTCKXETXF.6YS6EN2CT7",
+      "beginRange": "0",
+      "pricePerUnit": {
+        "USD": "0.0050000000"
+      }
+    }
+  ],
+  "clb": [
+    {
+      "sku": "5FGCCCWTF47T8ZNZ",
+      "usage_type": "APS2-DataProcessing-Bytes",
+      "effective_date": "2026-08-01T00:00:00Z",
+      "unit": "GB",
+      "endRange": "Inf",
+      "description": "$0.008 per GB Data Processed by the LoadBalancer",
+      "appliesTo": [],
+      "rateCode": "5FGCCCWTF47T8ZNZ.JRTCKXETXF.6YS6EN2CT7",
+      "beginRange": "0",
+      "pricePerUnit": {
+        "USD": "0.0080000000"
+      }
+    },
+    {
+      "sku": "PX3EDDZ783JKMB8K",
+      "usage_type": "APS2-LoadBalancerUsage",
+      "effective_date": "2026-08-01T00:00:00Z",
+      "unit": "Hrs",
+      "endRange": "Inf",
+      "description": "$0.028 per LoadBalancer-hour (or partial hour)",
+      "appliesTo": [],
+      "rateCode": "PX3EDDZ783JKMB8K.JRTCKXETXF.6YS6EN2CT7",
+      "beginRange": "0",
+      "pricePerUnit": {
+        "USD": "0.0280000000"
+      }
+    }
+  ],
+  "eks": [
+    {
+      "sku": "BMJ7KNTWFFFQPFS4",
+      "usage_type": "APS2-AmazonEKS-Hours:perCluster",
+      "effective_date": "2026-09-01T00:00:00Z",
+      "unit": "Hours",
+      "endRange": "Inf",
+      "description": "Amazon EKS cluster usage in Asia Pacific (Sydney)",
+      "appliesTo": [],
+      "rateCode": "BMJ7KNTWFFFQPFS4.JRTCKXETXF.6YS6EN2CT7",
+      "beginRange": "0",
+      "pricePerUnit": {
+        "USD": "0.1000000000"
+      }
+    }
+  ]
+}

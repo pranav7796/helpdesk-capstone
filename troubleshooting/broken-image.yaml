@@ -1,0 +1,17 @@
+# Only for the isolated, local relaydesk-lab namespace.
+apiVersion: apps/v1
+kind: Deployment
+metadata: {name: broken-image, namespace: relaydesk-lab}
+spec:
+  replicas: 1
+  selector: {matchLabels: {app: broken-image}}
+  template:
+    metadata: {labels: {app: broken-image}}
+    spec:
+      containers:
+        - name: backend
+          image: ghcr.io/pranav7796/helpdesk-capstone/backend:capstone-intentionally-missing
+          command: [python, -m, http.server, "8000"]
+          resources:
+            requests: {cpu: 10m, memory: 32Mi}
+            limits: {cpu: 100m, memory: 128Mi}

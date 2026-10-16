@@ -1,0 +1,23 @@
+Skip to main content
+Grafana
+
+Starred
+
+Dashboards
+
+Alerting
+
+Dashboards
+Relaydesk
+Relaydesk HTTP traffic
+Search...
+ctrl+k
+Sign in
+Last 30 minutes
+Refresh
+10s
+HTTP requests per second
+/api/tickets
+/api/tickets/{ticket_id}
+/health
+/ready

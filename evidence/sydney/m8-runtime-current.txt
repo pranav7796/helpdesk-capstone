@@ -1,0 +1,26 @@
+Captured: 2026-10-16 16:51:44 UTC
+Evidence: m8-runtime-current
++ kubectl --context helpdesk-capstone -n relaydesk get pods,deploy,hpa,pvc
+NAME                                      READY   STATUS    RESTARTS   AGE
+pod/grafana-6d89446f54-7bwn2              1/1     Running   0          6h5m
+pod/prometheus-75dc6f79ff-pj2sx           1/1     Running   0          6h9m
+pod/relaydesk-backend-c68f99986-6bd55     1/1     Running   0          5h22m
+pod/relaydesk-backend-c68f99986-vw467     1/1     Running   0          5h22m
+pod/relaydesk-frontend-68fc9f58b6-c9qxs   1/1     Running   0          5h22m
+pod/relaydesk-frontend-68fc9f58b6-g7n86   1/1     Running   0          5h22m
+pod/relaydesk-postgres-0                  1/1     Running   0          5h22m
+
+NAME                                 READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/grafana              1/1     1            1           6h9m
+deployment.apps/prometheus           1/1     1            1           6h9m
+deployment.apps/relaydesk-backend    2/2     2            2           6h29m
+deployment.apps/relaydesk-frontend   2/2     2            2           6h29m
+
+NAME                                                    REFERENCE                      TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+horizontalpodautoscaler.autoscaling/relaydesk-backend   Deployment/relaydesk-backend   cpu: 4%/70%   2         4         2          6h29m
+
+NAME                                            STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMEATTRIBUTESCLASS   AGE
+persistentvolumeclaim/relaydesk-postgres-data   Bound    pvc-3eb5991d-c004-47d6-b845-814bca60f183   2Gi        RWO            standard       <unset>                 6h29m
++ helm --kube-context helpdesk-capstone list -n relaydesk
+NAME     	NAMESPACE	REVISION	UPDATED                                	STATUS  	CHART          	APP VERSION
+relaydesk	relaydesk	10      	2026-10-16 16:58:46.659780485 +0530 IST	deployed	relaydesk-1.0.0	1.0.0      

@@ -1,0 +1,65 @@
+[
+  {
+    "screenshot": "evidence/sydney/m7-sydney-plan.png",
+    "command": "printf 'REVIEWED SAVED PLAN: no apply has been run.\\n'\npython scripts/audit-plan.py > /tmp/relaydesk-plan-audit-display.txt\nbash scripts/terraform-readonly.sh show -no-color tfplan-reviewed > /tmp/relaydesk-plan-display.txt\nrg '^  # |^Plan:' /tmp/relaydesk-plan-display.txt\npython -c 'import json;d=json.load(open(\"evidence/sydney/plan-audit.json\"));print(\"SHA256:\",d[\"sha256\"]);print(\"All account/profile/region/CIDR/source checks:\",all(d[\"checks\"].values()))'",
+    "raw_output": "evidence/sydney/m7-sydney-plan.txt",
+    "exit_code": 0,
+    "captured_at_utc": "2026-10-16T16:51:12Z",
+    "sha256": "af5cd87a793442a183ecc0331bce56b8c895ad03e4a845b54b75eec50180a2de",
+    "method": "Actual foot terminal, cropped using its Hyprland window geometry and grim; no compositing or generated text image"
+  },
+  {
+    "screenshot": "evidence/sydney/m7-sydney-account.png",
+    "command": "aws sts get-caller-identity --profile devops-new --region ap-southeast-2 --no-cli-pager\naws eks list-clusters --profile devops-new --region ap-southeast-2 --no-cli-pager\npython -c 'import json;d=json.load(open(\"evidence/sydney/aws-credits.json\")); print(\"Saved actual account-plan API response:\");print(json.dumps(d[\"response\"],indent=2))'\nprintf 'No apply performed. Sydney read checks pass; create permissions remain unverified.\\n'",
+    "raw_output": "evidence/sydney/m7-sydney-account.txt",
+    "exit_code": 0,
+    "captured_at_utc": "2026-10-16T16:51:23Z",
+    "sha256": "1d98811b52134cbbb366c98fd29e24cfd637c03dc61a3c16db3b780182354f3a",
+    "method": "Actual foot terminal, cropped using its Hyprland window geometry and grim; no compositing or generated text image"
+  },
+  {
+    "screenshot": "evidence/sydney/m7-sydney-pricing.png",
+    "command": "python scripts/estimate-cost.py",
+    "raw_output": "evidence/sydney/m7-sydney-pricing.txt",
+    "exit_code": 0,
+    "captured_at_utc": "2026-10-16T16:51:25Z",
+    "sha256": "2a0d49f91746182f995199c8aee9fc56a8ca2ca22ea198a2fd94f2267aee54ed",
+    "method": "Actual foot terminal, cropped using its Hyprland window geometry and grim; no compositing or generated text image"
+  },
+  {
+    "screenshot": "evidence/sydney/m7-sydney-validation.png",
+    "command": "bash scripts/terraform-readonly.sh init -input=false -lockfile=readonly -no-color\nbash scripts/terraform-readonly.sh fmt -check -recursive\nbash scripts/terraform-readonly.sh validate -no-color",
+    "raw_output": "evidence/sydney/m7-sydney-validation.txt",
+    "exit_code": 0,
+    "captured_at_utc": "2026-10-16T16:51:39Z",
+    "sha256": "c319496ddca933267b2d2f864e17e84371aa3ace8015e8f1370b6da7f34e07f4",
+    "method": "Actual foot terminal, cropped using its Hyprland window geometry and grim; no compositing or generated text image"
+  },
+  {
+    "screenshot": "evidence/sydney/m2-tests-current.png",
+    "command": "cd backend\n.venv/bin/pytest -v",
+    "raw_output": "evidence/sydney/m2-tests-current.txt",
+    "exit_code": 0,
+    "captured_at_utc": "2026-10-16T16:51:44Z",
+    "sha256": "fd090923d5a41fc91779e00d0adc0c032f135d438c1293a29c87b3f8022e6259",
+    "method": "Actual foot terminal, cropped using its Hyprland window geometry and grim; no compositing or generated text image"
+  },
+  {
+    "screenshot": "evidence/sydney/m8-runtime-current.png",
+    "command": "kubectl --context helpdesk-capstone -n relaydesk get pods,deploy,hpa,pvc\nhelm --kube-context helpdesk-capstone list -n relaydesk",
+    "raw_output": "evidence/sydney/m8-runtime-current.txt",
+    "exit_code": 0,
+    "captured_at_utc": "2026-10-16T16:51:46Z",
+    "sha256": "e75ac76c1eb7a3ca4f754b25f5d1871fb11ee1229287d777dce21aad56e50fe0",
+    "method": "Actual foot terminal, cropped using its Hyprland window geometry and grim; no compositing or generated text image"
+  },
+  {
+    "screenshot": "evidence/sydney/troubleshooting-recovery.png",
+    "command": "printf 'Exact excerpts from the completed local lab: evidence/sydney/troubleshooting.txt\\n'\nrg '^VERIFIED:|^PASS:|successfully rolled out|namespace .relaydesk-lab. deleted|^404$|^503$|^200$' evidence/sydney/troubleshooting.txt\nkubectl --context helpdesk-capstone get ns relaydesk-lab --ignore-not-found\nkubectl --context helpdesk-capstone -n relaydesk get pods",
+    "raw_output": "evidence/sydney/troubleshooting-recovery.txt",
+    "exit_code": 0,
+    "captured_at_utc": "2026-10-16T16:54:23Z",
+    "sha256": "320d542d7087274aec2c87784cee3a2f65dbcd0197eca26fbf8af2f639f72084",
+    "method": "Actual foot terminal, cropped using its Hyprland window geometry and grim; no compositing or generated text image"
+  }
+]

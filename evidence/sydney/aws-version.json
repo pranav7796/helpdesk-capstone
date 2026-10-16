@@ -1,0 +1,33 @@
+{
+  "command": [
+    "aws",
+    "eks",
+    "describe-cluster-versions",
+    "--cluster-versions",
+    "1.35",
+    "--profile",
+    "devops-new",
+    "--region",
+    "ap-southeast-2",
+    "--no-cli-pager"
+  ],
+  "captured_at_utc": "2026-10-16T16:41:22.776376+00:00",
+  "exit_code": 0,
+  "stderr": "",
+  "response": {
+    "clusterVersions": [
+      {
+        "clusterVersion": "1.35",
+        "clusterType": "eks",
+        "defaultPlatformVersion": "eks.25",
+        "defaultVersion": false,
+        "releaseDate": "2026-01-27T05:30:00+05:30",
+        "endOfStandardSupportDate": "2027-03-27T05:30:00+05:30",
+        "endOfExtendedSupportDate": "2028-03-27T05:30:00+05:30",
+        "status": "STANDARD_SUPPORT",
+        "versionStatus": "STANDARD_SUPPORT",
+        "kubernetesPatchVersion": "1.35.8"
+      }
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+SYDNEY ESTIMATE, USD BEFORE CREDITS/TAX — NO RESOURCES PROVISIONED
+Source: evidence/sydney/aws-price-summary.json (official AWS Price List API)
+EKS standard support x1                  $0.100000/hour
+t3.medium Linux workers x2               $0.105600/hour
+NAT gateway x1                           $0.059000/hour
+NAT public IPv4 x1                       $0.005000/hour
+40 GiB root disks (budget gp2)           $0.006575/hour
+2 GiB PostgreSQL gp3 disk                $0.000263/hour
+Classic ELB x1                           $0.028000/hour
+ELB public IPv4 estimate x2              $0.010000/hour
+BASELINE: $0.314438/hour; budget $0.32/hour plus variable charges
+  3 hours: $0.94
+ 10 hours: $3.14
+ 24 hours: $7.55
+ 72 hours: $22.64
+730 hours: $229.54
+Extra: NAT $0.059/GB; ELB $0.008/GB; egress, cross-AZ, CPU surplus, tax.
+Credits reported by account API: $120; grant applicability is UNVERIFIED.
+IPv4 count may vary; storage conversion assumes 730 hours/month.

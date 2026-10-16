@@ -9,7 +9,7 @@ resource "aws_internet_gateway" "this" {
   tags   = { Name = "${var.name}-igw", Project = "relaydesk-capstone" }
 }
 locals {
-  azs             = ["ap-south-1a", "ap-south-1b"]
+  azs             = ["ap-southeast-2a", "ap-southeast-2b"]
   public_subnets  = { for i, az in local.azs : az => cidrsubnet(var.vpc_cidr, 8, 100 + i) }
   private_subnets = { for i, az in local.azs : az => cidrsubnet(var.vpc_cidr, 8, i + 1) }
 }
@@ -108,6 +108,7 @@ resource "aws_eks_node_group" "this" {
   node_role_arn   = aws_iam_role.nodes.arn
   subnet_ids      = values(aws_subnet.private)[*].id
   instance_types  = var.node_instance_types
+  disk_size       = 20
   scaling_config {
     desired_size = var.node_desired_size
     min_size     = var.node_min_size

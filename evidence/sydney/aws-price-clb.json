@@ -1,0 +1,27 @@
+{
+  "command": [
+    "aws",
+    "pricing",
+    "get-products",
+    "--service-code",
+    "AWSELB",
+    "--filters",
+    "Type=TERM_MATCH,Field=location,Value=Asia Pacific (Sydney)",
+    "Type=TERM_MATCH,Field=productFamily,Value=Load Balancer",
+    "--profile",
+    "devops-new",
+    "--region",
+    "us-east-1",
+    "--no-cli-pager"
+  ],
+  "captured_at_utc": "2026-10-16T16:41:47.506553+00:00",
+  "exit_code": 0,
+  "stderr": "",
+  "response": {
+    "PriceList": [
+      "{\"product\":{\"productFamily\":\"Load Balancer\",\"attributes\":{\"regionCode\":\"ap-southeast-2\",\"servicecode\":\"AWSELB\",\"groupDescription\":\"Data processed by Classic Load Balancer\",\"usagetype\":\"APS2-DataProcessing-Bytes\",\"locationType\":\"AWS Region\",\"location\":\"Asia Pacific (Sydney)\",\"servicename\":\"Elastic Load Balancing\",\"operation\":\"LoadBalancing\",\"group\":\"ELB:Balancing\"},\"sku\":\"5FGCCCWTF47T8ZNZ\"},\"serviceCode\":\"AWSELB\",\"terms\":{\"OnDemand\":{\"5FGCCCWTF47T8ZNZ.JRTCKXETXF\":{\"priceDimensions\":{\"5FGCCCWTF47T8ZNZ.JRTCKXETXF.6YS6EN2CT7\":{\"unit\":\"GB\",\"endRange\":\"Inf\",\"description\":\"$0.008 per GB Data Processed by the LoadBalancer\",\"appliesTo\":[],\"rateCode\":\"5FGCCCWTF47T8ZNZ.JRTCKXETXF.6YS6EN2CT7\",\"beginRange\":\"0\",\"pricePerUnit\":{\"USD\":\"0.0080000000\"}}},\"sku\":\"5FGCCCWTF47T8ZNZ\",\"effectiveDate\":\"2026-08-01T00:00:00Z\",\"offerTermCode\":\"JRTCKXETXF\",\"termAttributes\":{}}}},\"version\":\"20260911124544\",\"publicationDate\":\"2026-09-11T12:45:44Z\"}",
+      "{\"product\":{\"productFamily\":\"Load Balancer\",\"attributes\":{\"regionCode\":\"ap-southeast-2\",\"servicecode\":\"AWSELB\",\"groupDescription\":\"LoadBalancer hourly usage by Classic Load Balancer\",\"usagetype\":\"APS2-LoadBalancerUsage\",\"locationType\":\"AWS Region\",\"location\":\"Asia Pacific (Sydney)\",\"servicename\":\"Elastic Load Balancing\",\"operation\":\"LoadBalancing\",\"group\":\"ELB:Balancing\"},\"sku\":\"PX3EDDZ783JKMB8K\"},\"serviceCode\":\"AWSELB\",\"terms\":{\"OnDemand\":{\"PX3EDDZ783JKMB8K.JRTCKXETXF\":{\"priceDimensions\":{\"PX3EDDZ783JKMB8K.JRTCKXETXF.6YS6EN2CT7\":{\"unit\":\"Hrs\",\"endRange\":\"Inf\",\"description\":\"$0.028 per LoadBalancer-hour (or partial hour)\",\"appliesTo\":[],\"rateCode\":\"PX3EDDZ783JKMB8K.JRTCKXETXF.6YS6EN2CT7\",\"beginRange\":\"0\",\"pricePerUnit\":{\"USD\":\"0.0280000000\"}}},\"sku\":\"PX3EDDZ783JKMB8K\",\"effectiveDate\":\"2026-08-01T00:00:00Z\",\"offerTermCode\":\"JRTCKXETXF\",\"termAttributes\":{}}}},\"version\":\"20260911124544\",\"publicationDate\":\"2026-09-11T12:45:44Z\"}"
+    ],
+    "FormatVersion": "aws_v1"
+  }
+}

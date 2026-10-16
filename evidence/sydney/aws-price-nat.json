@@ -1,0 +1,29 @@
+{
+  "command": [
+    "aws",
+    "pricing",
+    "get-products",
+    "--service-code",
+    "AmazonEC2",
+    "--filters",
+    "Type=TERM_MATCH,Field=location,Value=Asia Pacific (Sydney)",
+    "Type=TERM_MATCH,Field=productFamily,Value=NAT Gateway",
+    "--profile",
+    "devops-new",
+    "--region",
+    "us-east-1",
+    "--no-cli-pager"
+  ],
+  "captured_at_utc": "2026-10-16T16:41:34.144588+00:00",
+  "exit_code": 0,
+  "stderr": "",
+  "response": {
+    "PriceList": [
+      "{\"product\":{\"productFamily\":\"NAT Gateway\",\"attributes\":{\"regionCode\":\"ap-southeast-2\",\"servicecode\":\"AmazonEC2\",\"groupDescription\":\"Charge for per GB data processed by NAT Gateways\",\"usagetype\":\"APS2-RegionalNatGateway-Bytes\",\"locationType\":\"AWS Region\",\"location\":\"Asia Pacific (Sydney)\",\"servicename\":\"Amazon Elastic Compute Cloud\",\"operation\":\"RegionalNatGateway\",\"group\":\"NGW:NatGateway\"},\"sku\":\"2VRX3DBVJ36HV98Z\"},\"serviceCode\":\"AmazonEC2\",\"terms\":{\"OnDemand\":{\"2VRX3DBVJ36HV98Z.JRTCKXETXF\":{\"priceDimensions\":{\"2VRX3DBVJ36HV98Z.JRTCKXETXF.6YS6EN2CT7\":{\"unit\":\"GB\",\"endRange\":\"Inf\",\"description\":\"Charge for per GB data processed by NAT Gateways\",\"appliesTo\":[],\"rateCode\":\"2VRX3DBVJ36HV98Z.JRTCKXETXF.6YS6EN2CT7\",\"beginRange\":\"0\",\"pricePerUnit\":{\"USD\":\"0.0590000000\"}}},\"sku\":\"2VRX3DBVJ36HV98Z\",\"effectiveDate\":\"2026-10-01T00:00:00Z\",\"offerTermCode\":\"JRTCKXETXF\",\"termAttributes\":{}}}},\"version\":\"20261015191316\",\"publicationDate\":\"2026-10-15T19:13:16Z\"}",
+      "{\"product\":{\"productFamily\":\"NAT Gateway\",\"attributes\":{\"regionCode\":\"ap-southeast-2\",\"servicecode\":\"AmazonEC2\",\"groupDescription\":\"Charge for per GB data processed by NatGateways\",\"usagetype\":\"APS2-NatGateway-Bytes\",\"locationType\":\"AWS Region\",\"location\":\"Asia Pacific (Sydney)\",\"servicename\":\"Amazon Elastic Compute Cloud\",\"operation\":\"NatGateway\",\"group\":\"NGW:NatGateway\"},\"sku\":\"KSHYFCUNWFSUXCAV\"},\"serviceCode\":\"AmazonEC2\",\"terms\":{\"OnDemand\":{\"KSHYFCUNWFSUXCAV.JRTCKXETXF\":{\"priceDimensions\":{\"KSHYFCUNWFSUXCAV.JRTCKXETXF.6YS6EN2CT7\":{\"unit\":\"GB\",\"endRange\":\"Inf\",\"description\":\"$0.059 per GB Data Processed by NAT Gateways\",\"appliesTo\":[],\"rateCode\":\"KSHYFCUNWFSUXCAV.JRTCKXETXF.6YS6EN2CT7\",\"beginRange\":\"0\",\"pricePerUnit\":{\"USD\":\"0.0590000000\"}}},\"sku\":\"KSHYFCUNWFSUXCAV\",\"effectiveDate\":\"2026-10-01T00:00:00Z\",\"offerTermCode\":\"JRTCKXETXF\",\"termAttributes\":{}}}},\"version\":\"20261015191316\",\"publicationDate\":\"2026-10-15T19:13:16Z\"}",
+      "{\"product\":{\"productFamily\":\"NAT Gateway\",\"attributes\":{\"regionCode\":\"ap-southeast-2\",\"servicecode\":\"AmazonEC2\",\"groupDescription\":\"Hourly charge for NAT Gateways\",\"usagetype\":\"APS2-NatGateway-Hours\",\"locationType\":\"AWS Region\",\"location\":\"Asia Pacific (Sydney)\",\"servicename\":\"Amazon Elastic Compute Cloud\",\"operation\":\"NatGateway\",\"group\":\"NGW:NatGateway\"},\"sku\":\"NUKV5QPTHVFBW7DE\"},\"serviceCode\":\"AmazonEC2\",\"terms\":{\"OnDemand\":{\"NUKV5QPTHVFBW7DE.JRTCKXETXF\":{\"priceDimensions\":{\"NUKV5QPTHVFBW7DE.JRTCKXETXF.6YS6EN2CT7\":{\"unit\":\"Hrs\",\"endRange\":\"Inf\",\"description\":\"$0.059 per NAT Gateway Hour\",\"appliesTo\":[],\"rateCode\":\"NUKV5QPTHVFBW7DE.JRTCKXETXF.6YS6EN2CT7\",\"beginRange\":\"0\",\"pricePerUnit\":{\"USD\":\"0.0590000000\"}}},\"sku\":\"NUKV5QPTHVFBW7DE\",\"effectiveDate\":\"2026-10-01T00:00:00Z\",\"offerTermCode\":\"JRTCKXETXF\",\"termAttributes\":{}}}},\"version\":\"20261015191316\",\"publicationDate\":\"2026-10-15T19:13:16Z\"}",
+      "{\"product\":{\"productFamily\":\"NAT Gateway\",\"attributes\":{\"regionCode\":\"ap-southeast-2\",\"servicecode\":\"AmazonEC2\",\"groupDescription\":\"Hourly charge for Regional NAT Gateways\",\"usagetype\":\"APS2-RegionalNatGateway-Hours\",\"locationType\":\"AWS Region\",\"location\":\"Asia Pacific (Sydney)\",\"servicename\":\"Amazon Elastic Compute Cloud\",\"operation\":\"RegionalNatGateway\",\"group\":\"NGW:NatGateway\"},\"sku\":\"TB9G32ZP98NJG9WT\"},\"serviceCode\":\"AmazonEC2\",\"terms\":{\"OnDemand\":{\"TB9G32ZP98NJG9WT.JRTCKXETXF\":{\"priceDimensions\":{\"TB9G32ZP98NJG9WT.JRTCKXETXF.6YS6EN2CT7\":{\"unit\":\"Hrs\",\"endRange\":\"Inf\",\"description\":\"Hourly charge for Regional NAT Gateways\",\"appliesTo\":[],\"rateCode\":\"TB9G32ZP98NJG9WT.JRTCKXETXF.6YS6EN2CT7\",\"beginRange\":\"0\",\"pricePerUnit\":{\"USD\":\"0.0590000000\"}}},\"sku\":\"TB9G32ZP98NJG9WT\",\"effectiveDate\":\"2026-10-01T00:00:00Z\",\"offerTermCode\":\"JRTCKXETXF\",\"termAttributes\":{}}}},\"version\":\"20261015191316\",\"publicationDate\":\"2026-10-15T19:13:16Z\"}"
+    ],
+    "FormatVersion": "aws_v1"
+  }
+}

@@ -1,0 +1,954 @@
+{
+  "audited_at_utc": "2026-10-16T16:56:25.178649+00:00",
+  "scope": "Every evidence file except this self-referential inventory file",
+  "png_count": 39,
+  "new_pngs_with_capture_manifest": 34,
+  "file_count": 143,
+  "errors": [],
+  "files": [
+    {
+      "path": "evidence/actions-run.json",
+      "bytes": 205,
+      "sha256": "d598065c186d2c6fedebfb72606b68cbcd770611856f727dc8ac610d0e28ba50"
+    },
+    {
+      "path": "evidence/actions-run.txt",
+      "bytes": 390587,
+      "sha256": "159df82b8f7ca95522d5afce043411ddec4f612d4cd2753c14bf1d4599118b35"
+    },
+    {
+      "path": "evidence/application-metrics.txt",
+      "bytes": 16371,
+      "sha256": "1481c04952aeb64da894510c3b9309b44c4da288f38d05e835c7334a579aca67"
+    },
+    {
+      "path": "evidence/audit/browser-capture-manifest.json",
+      "bytes": 5091,
+      "sha256": "d6a0cfd938c983acbabadda9beb9566d4ba4bd34a2de70bc0d12e9fc1b256332"
+    },
+    {
+      "path": "evidence/audit/compose-build-no-recreate.txt",
+      "bytes": 5587,
+      "sha256": "446602c90864657208f00835607f4095989bfd358d677d6c0051e4794bd48599"
+    },
+    {
+      "path": "evidence/audit/grafana-health-current.json",
+      "bytes": 101,
+      "sha256": "6016cdf48123131f3abaa0761122e9d96d0910c9f86933fcadec39734db6a2b1"
+    },
+    {
+      "path": "evidence/audit/limited-secret-signature-check.json",
+      "bytes": 300,
+      "sha256": "fa1fe75f69748ea2159ce9db4422cc37a74529d0c470d54516e3227e373a523b"
+    },
+    {
+      "path": "evidence/audit/m1-health-database.txt",
+      "bytes": 1115,
+      "sha256": "1f6a6f740b1d40d4d8eb23055107b1a2d7ab3a33e66678d2d071aed0c7987a69"
+    },
+    {
+      "path": "evidence/audit/m1-mobile-actions-page.txt",
+      "bytes": 1787,
+      "sha256": "25e90b0d8adbdc01d7df32ddba304161d013471ff47d1da301fbb1e90f2d5be7"
+    },
+    {
+      "path": "evidence/audit/m1-mobile-tickets-page.txt",
+      "bytes": 1787,
+      "sha256": "25e90b0d8adbdc01d7df32ddba304161d013471ff47d1da301fbb1e90f2d5be7"
+    },
+    {
+      "path": "evidence/audit/m1-ticket-editor-page.txt",
+      "bytes": 2123,
+      "sha256": "5e8e0d273da44516c94949150039d43c98ff46b436f986ea95ca9921a2567466"
+    },
+    {
+      "path": "evidence/audit/m2-pytest.txt",
+      "bytes": 2564,
+      "sha256": "a9a5a1766329d9e2ebf68818d3bdd24b9bb8f5478fa34dff8bd28a1794534143"
+    },
+    {
+      "path": "evidence/audit/m3-git-history.txt",
+      "bytes": 1332,
+      "sha256": "d89882bf50e12cfc629d7e5f93e0eb42669dae84611afbed9e2cca2ffeae442b"
+    },
+    {
+      "path": "evidence/audit/m4-compose-browser-page.txt",
+      "bytes": 1962,
+      "sha256": "9dc41b7113ccf4e040714d8b7fba8cafea4c1415e4196cc32a5a700783d8e881"
+    },
+    {
+      "path": "evidence/audit/m4-compose.txt",
+      "bytes": 1311,
+      "sha256": "7cc116c5596255ffd684d8672855db06d8ae28f79649f5e961f825a15bd167a3"
+    },
+    {
+      "path": "evidence/audit/m5-actions-success-page.txt",
+      "bytes": 2677,
+      "sha256": "6cd9603d489794973535172711e4191107e37bccaaebc3f2e8c89584ca954ef5"
+    },
+    {
+      "path": "evidence/audit/m5-ghcr-backend-page.txt",
+      "bytes": 4687,
+      "sha256": "d3ed6c8c21b85a54085a63edc7034eac5d0dee3849138f30da5e83fbb2b67ff8"
+    },
+    {
+      "path": "evidence/audit/m5-ghcr-frontend-page.txt",
+      "bytes": 4722,
+      "sha256": "02e7e31fe7255a65d6082b080d42935d4a8c9bc2fda16c0d4729dfcfadd20b56"
+    },
+    {
+      "path": "evidence/audit/m6-trivy-backend.txt",
+      "bytes": 2651,
+      "sha256": "e35d6158563055c05a81842ab1d25b6bd92ae22a583f030314ff61c897100f5b"
+    },
+    {
+      "path": "evidence/audit/m6-trivy-frontend.txt",
+      "bytes": 1957,
+      "sha256": "43defa298cd28458060cdc0285fedc92dd541474ea1db5e1f5dfa7501765a062"
+    },
+    {
+      "path": "evidence/audit/m7-aws-restriction.txt",
+      "bytes": 1010,
+      "sha256": "bb5a0407a09e77033ce59e5e7b23a4b033eea8e341193d58e4490a04012cf2cf"
+    },
+    {
+      "path": "evidence/audit/m7-terraform-plan-saved.txt",
+      "bytes": 2002,
+      "sha256": "1e269ea5d0d05138278fab4e43c92921fa99ba0ce41f08c43765d7848300637f"
+    },
+    {
+      "path": "evidence/audit/m7-terraform-validation.txt",
+      "bytes": 870,
+      "sha256": "efcea95b7aa8087b8dbbeeb731771e02e0fdabffa218401474fb7971aa16180e"
+    },
+    {
+      "path": "evidence/audit/m8-helm.txt",
+      "bytes": 931,
+      "sha256": "b78439f555caa18e753b6b600e931ddec98bc8667417b146553eb22872c7c28c"
+    },
+    {
+      "path": "evidence/audit/m8-ingress-browser-page.txt",
+      "bytes": 1425,
+      "sha256": "ff9698c468d016a8156e3b65f4d5c20b510a6b994faaa7ecc0428bbe4bbb545e"
+    },
+    {
+      "path": "evidence/audit/m8-pods.txt",
+      "bytes": 2417,
+      "sha256": "64033c37534a30f547c46e4a112145b718e1f6726e5ae92bcd4f3c09573e2945"
+    },
+    {
+      "path": "evidence/audit/m8-services.txt",
+      "bytes": 1227,
+      "sha256": "baf53a6f31b594b16e2a68af56194f76e776c7d5c844a9e627d5fdb408ec108c"
+    },
+    {
+      "path": "evidence/audit/m9-grafana-current-page.txt",
+      "bytes": 235,
+      "sha256": "32c7695c1cda68d0bb3eae0147420903c9be761817eb82ac69419c83b31c100d"
+    },
+    {
+      "path": "evidence/audit/m9-metrics.txt",
+      "bytes": 2165,
+      "sha256": "74dac2216b49478e31115f73eea7a6cc43c24f85dd6db4d51fc8287ee82129d0"
+    },
+    {
+      "path": "evidence/audit/m9-prometheus-targets-page.txt",
+      "bytes": 333,
+      "sha256": "3b4a090b5df4ce8898a89761922f5e612fa0dd604bf94abb18249edfd08b027a"
+    },
+    {
+      "path": "evidence/audit/metrics-response-headers.txt",
+      "bytes": 152,
+      "sha256": "da2679d8060c3cdb2448fe509efe75a15fdb82c82f55b3f654f164bed79d6061"
+    },
+    {
+      "path": "evidence/audit/prometheus-targets-current.json",
+      "bytes": 916,
+      "sha256": "bccc9f85e8ff2792c21e196622b00060542e586f924bcf5a642eed60d11781ec"
+    },
+    {
+      "path": "evidence/audit/prometheus-up-current.json",
+      "bytes": 210,
+      "sha256": "85571a211e41d239934d3d389ac68382faf7cc3248de8452724423d96e31ceb0"
+    },
+    {
+      "path": "evidence/audit/source-checks.json",
+      "bytes": 1167,
+      "sha256": "edf068312bf71f77c5ffd899bc7c35617e2d39e4e3c801e5eda6a69bde8e1935"
+    },
+    {
+      "path": "evidence/audit/terminal-capture-manifest.json",
+      "bytes": 8736,
+      "sha256": "8925e54aa09dc9c80b35fc7d67b406a30ae628985f42a3c9cf158bb1cd14e40c"
+    },
+    {
+      "path": "evidence/audit/trivy-excerpt.py",
+      "bytes": 1122,
+      "sha256": "8fe81ff710137d980a3e39680af9e681e08bc0b455bae45b6add5ce314ae9c47"
+    },
+    {
+      "path": "evidence/audit/walkthrough-manifest.json",
+      "bytes": 1948,
+      "sha256": "ca3c6fe9acb115177226341592ff7bdb23baa08187f7b04f6efbfc0515585b26"
+    },
+    {
+      "path": "evidence/docker-compose-ps.txt",
+      "bytes": 814,
+      "sha256": "81b83bb9c7ef6355bef5c351896707a59305571771536f7fe66dd95721499507"
+    },
+    {
+      "path": "evidence/docker-smoke.txt",
+      "bytes": 264,
+      "sha256": "7417252eac3d7d44dacdf7a7b3e9c3072a694d0a6d4aa8874cd3a5c1368c06a6"
+    },
+    {
+      "path": "evidence/grafana-relaydesk-dashboard.png",
+      "bytes": 54162,
+      "sha256": "9a374dc0774bdac680efbe2fe9f60af5216a167eb2ccbc2cb06fe75e2a8acb9f",
+      "width": 1440,
+      "height": 1100,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Historical genuine populated dashboard; readable; current dashboard screenshot now available.",
+      "capture_provenance": "Historical capture from earlier observed session; no new capture manifest"
+    },
+    {
+      "path": "evidence/helm-rendered.yaml",
+      "bytes": 6957,
+      "sha256": "068c49ebc25e255645411cdae0430a89895341c93dacb6c448f80ad7f5cf9b32"
+    },
+    {
+      "path": "evidence/live-demo.txt",
+      "bytes": 3719,
+      "sha256": "6e8804d108e27e1ce563b42df9a942a5e2d5ebb52426b1fe8d915df41f9a08f4"
+    },
+    {
+      "path": "evidence/m1-health-database.png",
+      "bytes": 73948,
+      "sha256": "5877f3424cfa8e3f90467a0ce3e974d0d30877d16f422334b37355f55fd6db14",
+      "width": 1366,
+      "height": 768,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept: health UP, readiness READY, Alembic head and PostgreSQL tables plus persisted rows.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/m1-mobile-actions.png",
+      "bytes": 34716,
+      "sha256": "b87a6e1bdfd437a522277e6b3bd58608c3962dc6dbff7fe419592d999066f87c",
+      "width": 390,
+      "height": 844,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept with paired ticket image: priority/status/edit/delete visible after actual horizontal scrolling.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/m1-mobile-tickets.png",
+      "bytes": 66643,
+      "sha256": "3cbccd68c8e86091289808ee07f0170e8d29f4c24bfbed8d445c70ba769d3c6d",
+      "width": 390,
+      "height": 844,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept with paired actions image: readable left side of horizontally scrollable mobile table.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/m1-ticket-editor.png",
+      "bytes": 123541,
+      "sha256": "b73222e45db607bea32dbf9e1242590819cd6b2814e2544ab8268a6f697794ba",
+      "width": 1440,
+      "height": 1100,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept: genuine New ticket form opened without saving data.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/m10-automated-walkthrough.vtt",
+      "bytes": 783,
+      "sha256": "f69e9f73d15a9894751409e369464f62177875314d0f9fbac04d644164ae8bb6"
+    },
+    {
+      "path": "evidence/m10-automated-walkthrough.webm",
+      "bytes": 5077226,
+      "sha256": "2ccfd1b08dc86dc0d66ecd4642a3c9a97ac50ce38e3019cb3de5ea6f02681f62"
+    },
+    {
+      "path": "evidence/m2-pytest.png",
+      "bytes": 116035,
+      "sha256": "14756fca8b8ba29b4c682e00519130f5b9c43c86bd1abc7fb2e1d1f52bfb89fb",
+      "width": 1366,
+      "height": 768,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept: all 16 pytest -v results, visible warning and passing summary; readable at native resolution.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/m3-git-history.png",
+      "bytes": 109229,
+      "sha256": "36557f5c0bddb25094858b7836b066ec720024fa78108055b2e8efb8a5a9c1f4",
+      "width": 1366,
+      "height": 768,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept: actual remote URL and 14 meaningful commit messages.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/m4-compose-browser.png",
+      "bytes": 149274,
+      "sha256": "89ecff4478b5e57856bae88637c6ed18269fd3179b13e192b1a89ab042d87a63",
+      "width": 1440,
+      "height": 1352,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept: actual HTTP-200 localhost:3000 app page; source URL in capture manifest.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/m4-compose.png",
+      "bytes": 87504,
+      "sha256": "7ca7d4b1233599fcd5a83e1792b12754f691f69d3beac79cfed4a15206006794",
+      "width": 1366,
+      "height": 768,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept: actual up --build output, healthy services and non-root users; no-recreate kept container IDs.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/m5-actions-success.png",
+      "bytes": 124148,
+      "sha256": "89ae95de48d9f792fa881250cf70792a490b2b0eeb6940770ad2fb9ef6f5c0fe",
+      "width": 1440,
+      "height": 1100,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept: actual public green GitHub Actions overview, branch/commit, and successful jobs.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/m5-ghcr-backend.png",
+      "bytes": 146885,
+      "sha256": "c8af235881f3e7b42b3e794d51f9e7f0c096f15e33bd20c3bc91addb58358965",
+      "width": 1440,
+      "height": 1100,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept: actual public backend package and full immutable SHA tags readable.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/m5-ghcr-frontend.png",
+      "bytes": 147796,
+      "sha256": "0813563008495adf201a7c9b3a88781ec628c8b6021b385658d658c86c0ac005",
+      "width": 1440,
+      "height": 1100,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept: actual public frontend package and full immutable SHA tags readable.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/m6-trivy-backend.png",
+      "bytes": 67826,
+      "sha256": "dc3ccd4244e46f01e061405ee251644f77bbfda1be8e8ca421c75ab85fdcd282",
+      "width": 1366,
+      "height": 768,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept: transparently labeled genuine saved pipeline table excerpt; OS and Python zero reported findings under disclosed policy.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/m6-trivy-frontend.png",
+      "bytes": 61755,
+      "sha256": "813a5811835b90f5da8d38b60d9011b5bdf70a834d5986723d9d4e7d22713a2d",
+      "width": 1366,
+      "height": 768,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept: transparently labeled genuine saved pipeline table; frontend OS zero reported findings under disclosed policy.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/m7-aws-restriction.png",
+      "bytes": 58471,
+      "sha256": "fe252047629743299ae2142a41fb7e0519a929121cf4871f9d3d5574c1235316",
+      "width": 1366,
+      "height": 768,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Restriction only: underlying EC2/EKS commands fail with exit 254; not successful deployment evidence.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/m7-terraform-plan-saved.png",
+      "bytes": 121031,
+      "sha256": "8a2f504dc9d0db57406da8a61fc5110087bf91a3500b7ab81ddef991e3c5b8e0",
+      "width": 1366,
+      "height": 768,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Qualified: readable terminal view of saved historical no-refresh 22-resource plan. Not a fresh authenticated plan or AWS deployment.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/m7-terraform-validation.png",
+      "bytes": 58317,
+      "sha256": "ec7c901901bfce396649bce55b65a57a53c651647902f98d6b963ca3cb089b2f",
+      "width": 1366,
+      "height": 768,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept: current init/fmt/validate succeed.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/m8-helm.png",
+      "bytes": 62697,
+      "sha256": "3cfc736fdfe127eeda692b708e32da681de097754cfb8e5d3f1880ac891950ff",
+      "width": 1366,
+      "height": 768,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept: actual helm list/status deployed revision 10 and immutable deployed image refs.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/m8-ingress-browser.png",
+      "bytes": 115115,
+      "sha256": "d11f12bcef54c9bcb4b528dbafe36575bfb4b884be066b573f506dbdae42589b",
+      "width": 1440,
+      "height": 1100,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept: actual HTTP-200 app through Ingress at 192.168.58.2; URL in manifest.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/m8-pods.png",
+      "bytes": 109705,
+      "sha256": "a4acad91091eda45782e69b4d270134df78cf41612bccf74e248056659544e86",
+      "width": 1366,
+      "height": 768,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept: all Pods Running/Ready, 2/2 application replicas, current HPA metrics, bound PVC and Ingress.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/m8-services.png",
+      "bytes": 68238,
+      "sha256": "1153e1762bdfa94d4a22427c0014d9dad362e3aa8f298802ea27cb31550218b5",
+      "width": 1366,
+      "height": 768,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept: ClusterIP Services and populated backend/frontend EndpointSlices.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/m9-grafana-current.png",
+      "bytes": 62722,
+      "sha256": "05130982c0f253e0299958c74cd731c06f5d64f9d9f7f00627fb5c7d048af729",
+      "width": 1440,
+      "height": 1100,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept: actual current Grafana HTTP traffic dashboard with populated real request series.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/m9-metrics.png",
+      "bytes": 134378,
+      "sha256": "06d30cb456d7ee46f15acac7e47333945d74325a23bbfc8613cbce1c8e837e04",
+      "width": 1366,
+      "height": 768,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept: actual curl backend /metrics, HTTP 200 Prometheus content type and application HTTP counters.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/m9-prometheus-targets.png",
+      "bytes": 45417,
+      "sha256": "121dfc89338a5b5e1e958c81f8d40c62bbf0f0ea1789e663a1df26cff55a2ddd",
+      "width": 1440,
+      "height": 1100,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept: actual Prometheus Targets UI, relaydesk-backend 1/1 UP, endpoint and recent scrape visible.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/minikube-status.txt",
+      "bytes": 2909,
+      "sha256": "7dde6440df9c69845d6d996ffc486bc6c24ea078f651f8af29b8323dabc98afa"
+    },
+    {
+      "path": "evidence/npm-build.txt",
+      "bytes": 390,
+      "sha256": "188a3205700f35d316fc8bf4447e8a73b08e18f9db86bdcd06702d5e4a25f6e9"
+    },
+    {
+      "path": "evidence/prometheus-requests-query.json",
+      "bytes": 440,
+      "sha256": "5c238550d8b1df2600a9a4c818ba3e9edf6ddc830b7115da2e5e01ad083a99c3"
+    },
+    {
+      "path": "evidence/prometheus-target.json",
+      "bytes": 210,
+      "sha256": "7592c2733f82544649678842ad53b549f3adfb6fb42eaa58fe79f11a3ed6c3e5"
+    },
+    {
+      "path": "evidence/pytest.txt",
+      "bytes": 2559,
+      "sha256": "564c672294fa404c206aba9a5dbbc40dc168ea8a27c815f8167cc7cf39585fe8"
+    },
+    {
+      "path": "evidence/pytest.xml",
+      "bytes": 2086,
+      "sha256": "044b285c8258e5ec41036dd38a11816d52f13222e64ce7f90c45760c818e5d6c"
+    },
+    {
+      "path": "evidence/relaydesk-compose.png",
+      "bytes": 93394,
+      "sha256": "99d51d0cde8eb5e688dcd71e48e8b2e14baba49f785cb7827826f066695fd938",
+      "width": 1440,
+      "height": 1100,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Historical app screenshot; readable; replaced as primary by current URL-bound Compose view.",
+      "capture_provenance": "Historical capture from earlier observed session; no new capture manifest"
+    },
+    {
+      "path": "evidence/relaydesk-minikube-sha.png",
+      "bytes": 105191,
+      "sha256": "be7d3ebc7f72376395533fa2976d581887b8ac231ac08de4357626abffc31dca",
+      "width": 1440,
+      "height": 1100,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Readable historical app screenshot; image SHA is proved by Helm/Deployment output, not pixels alone.",
+      "capture_provenance": "Historical capture from earlier observed session; no new capture manifest"
+    },
+    {
+      "path": "evidence/relaydesk-minikube.png",
+      "bytes": 82562,
+      "sha256": "66f7f5be4e2920af42a6b6793dc39230d4cb0f2f1fe3337b52fdfdbae3054ef0",
+      "width": 1440,
+      "height": 1100,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Historical app screenshot; readable; primary current ingress screenshot now available.",
+      "capture_provenance": "Historical capture from earlier observed session; no new capture manifest"
+    },
+    {
+      "path": "evidence/relaydesk-mobile.png",
+      "bytes": 41708,
+      "sha256": "56b974bac61392d51388829b6b7df35fc903b3a7e52f9333c38b4210573ba575",
+      "width": 390,
+      "height": 844,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Historical top-only mobile viewport; partial evidence. Current mobile table and actions captures supplement it.",
+      "capture_provenance": "Historical capture from earlier observed session; no new capture manifest"
+    },
+    {
+      "path": "evidence/sydney/application-metrics.txt",
+      "bytes": 16402,
+      "sha256": "18014fb50fa9b155299e1869ea665084cde11ecef46529599e9398a4c5446516"
+    },
+    {
+      "path": "evidence/sydney/aws-clusters.json",
+      "bytes": 291,
+      "sha256": "edac1109c500bfdf0686dfa8194965ae72bdbc72950f3d197fe2d6ece638f298"
+    },
+    {
+      "path": "evidence/sydney/aws-credits.json",
+      "bytes": 471,
+      "sha256": "cefaa3d4e8ada19d36a5771ae7120c2c25e690dd75076393bb8f41f16efefa2e"
+    },
+    {
+      "path": "evidence/sydney/aws-identity.json",
+      "bytes": 496,
+      "sha256": "440df770b259fe080420e6b384b20c172fc1fc447601b4fd94719a663c596551"
+    },
+    {
+      "path": "evidence/sydney/aws-price-clb.json",
+      "bytes": 2620,
+      "sha256": "d4b6e91c13193c88aeb996f700cc6f4f213e6025c3e3360cd19affa6425c46d0"
+    },
+    {
+      "path": "evidence/sydney/aws-price-eks.json",
+      "bytes": 1549,
+      "sha256": "9d0a6032e6b026e335a83b0bcd968641d31da6d42849c147c737089d811d3224"
+    },
+    {
+      "path": "evidence/sydney/aws-price-gp2.json",
+      "bytes": 1802,
+      "sha256": "6b48bc6d8a7d24ba5a99b62501e202799f5e23ef7ba08179d5e3e6f0b07f7242"
+    },
+    {
+      "path": "evidence/sydney/aws-price-gp3.json",
+      "bytes": 1741,
+      "sha256": "cc99afc66d2c79e398db72d0dc92b6a5cbb870fc0aca6451964d065ee84f02f3"
+    },
+    {
+      "path": "evidence/sydney/aws-price-ipv4.json",
+      "bytes": 1553,
+      "sha256": "a2c7cda0ff1f428747f4e8500252b94dd65b4f22eb84708e1d223d7f2b850543"
+    },
+    {
+      "path": "evidence/sydney/aws-price-nat.json",
+      "bytes": 4744,
+      "sha256": "6aa44476ace9abe6db6c0e90422a54ffd854ad6c029477888a4b547745a02b39"
+    },
+    {
+      "path": "evidence/sydney/aws-price-summary.json",
+      "bytes": 4919,
+      "sha256": "639afeac2b8ca6e0241179c0c8f5101a945943162fbf625c662742e1cfd90059"
+    },
+    {
+      "path": "evidence/sydney/aws-price-worker.json",
+      "bytes": 11460,
+      "sha256": "1f2606a36bd7a25deb5efedbf187bb31f3fab1d690dda34b0930c5f9a9c51d14"
+    },
+    {
+      "path": "evidence/sydney/aws-project-vpcs.json",
+      "bytes": 354,
+      "sha256": "9ea1ca0167df69dad3b01526be7b83038a42c72587f64206df1f4353ffd0aa4a"
+    },
+    {
+      "path": "evidence/sydney/aws-version.json",
+      "bytes": 818,
+      "sha256": "fe350971f807fbeb274cc72e30e0f1365dc6f1b7d27190071b10de1c0d22c39c"
+    },
+    {
+      "path": "evidence/sydney/aws-zones.json",
+      "bytes": 1905,
+      "sha256": "382995b42e3ad4281dc1ba56b3942510aa4508d650b99f6209992acfe2adcd06"
+    },
+    {
+      "path": "evidence/sydney/browser-capture-manifest.json",
+      "bytes": 2019,
+      "sha256": "c5e0619ee2694c1d5d1348c3e1d9e02515773b14a912fd0897cc40adf7e2277b"
+    },
+    {
+      "path": "evidence/sydney/cost-estimate.txt",
+      "bytes": 960,
+      "sha256": "a5a2170bd6ad486d8082621aef7027ea5afed9bc8e7a6ac2dd5811d5f728a7ef"
+    },
+    {
+      "path": "evidence/sydney/docker-smoke.txt",
+      "bytes": 264,
+      "sha256": "564ebe09709597376cff974ed3a9219d9d6fa863e45ef771b428127503403bf4"
+    },
+    {
+      "path": "evidence/sydney/docker-status.txt",
+      "bytes": 759,
+      "sha256": "0d17432aff7af6fde9d5758084cd85e9fbf428737dc6830f7a0607d39a525ff2"
+    },
+    {
+      "path": "evidence/sydney/helm-eks-rendered.yaml",
+      "bytes": 7797,
+      "sha256": "a859dfed007ff919599bf132ce711b729f658224a43487d3b12fad12da05b349"
+    },
+    {
+      "path": "evidence/sydney/helm-status.txt",
+      "bytes": 212,
+      "sha256": "74ba14f952d43863b658f8da4eed5b3e4dcc6f2340f9ae48ba8953814022507c"
+    },
+    {
+      "path": "evidence/sydney/ingress-smoke.txt",
+      "bytes": 261,
+      "sha256": "bb43be78a53d143829cc8a592059498a9f4f34ed72bddd8d32a9fb5622d05ff2"
+    },
+    {
+      "path": "evidence/sydney/m2-tests-current.png",
+      "bytes": 116139,
+      "sha256": "fd090923d5a41fc91779e00d0adc0c032f135d438c1293a29c87b3f8022e6259",
+      "width": 1366,
+      "height": 768,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept: 16 test results and passing summary; non-failing deprecation warning visible.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/sydney/m2-tests-current.txt",
+      "bytes": 2571,
+      "sha256": "62fc07b614493604da2fede149831ec16f5ab6d37c1dfba1d92d1827376ad0f3"
+    },
+    {
+      "path": "evidence/sydney/m4-compose-browser-page.txt",
+      "bytes": 2141,
+      "sha256": "a5c33cc70ac37548fff5a7baab64a687108df2dae8964175392e69d82d3c5798"
+    },
+    {
+      "path": "evidence/sydney/m4-compose-browser.png",
+      "bytes": 123953,
+      "sha256": "67bc39dc2f144c550bc7deb09a35ede2222853f62f1c4eada1625e622a1d440d",
+      "width": 1440,
+      "height": 1100,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept: actual HTTP-200 localhost:3000 app page; source URL in capture manifest.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/sydney/m7-sydney-account.png",
+      "bytes": 71501,
+      "sha256": "1d98811b52134cbbb366c98fd29e24cfd637c03dc61a3c16db3b780182354f3a",
+      "width": 1366,
+      "height": 768,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept: actual STS identity, successful empty EKS listing, labeled saved PAID/ACTIVE USD120 credit response; no deployment claim.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/sydney/m7-sydney-account.txt",
+      "bytes": 1047,
+      "sha256": "8ddb56c39f5305543198fbc86881ff1b366585c4558e975d8c55370de31767de"
+    },
+    {
+      "path": "evidence/sydney/m7-sydney-plan.png",
+      "bytes": 121531,
+      "sha256": "af5cd87a793442a183ecc0331bce56b8c895ad03e4a845b54b75eec50180a2de",
+      "width": 1366,
+      "height": 768,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept: real saved reviewed 28-resource plan display; account/profile/region/CIDR/source checks true, plan hash; explicitly no apply.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/sydney/m7-sydney-plan.txt",
+      "bytes": 2222,
+      "sha256": "afd728474f4601c56ee94f7b9d65deb6ec01f25b41554b576c61a79016931ac8"
+    },
+    {
+      "path": "evidence/sydney/m7-sydney-pricing.png",
+      "bytes": 82304,
+      "sha256": "2a0d49f91746182f995199c8aee9fc56a8ca2ca22ea198a2fd94f2267aee54ed",
+      "width": 1366,
+      "height": 768,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept: real terminal calculating from saved official Price List API; quantities, costs and credit limits readable; not a bill quote.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/sydney/m7-sydney-pricing.txt",
+      "bytes": 1056,
+      "sha256": "2872de002133171b1dd73b9ba5cd231382bc29aaec0ab05a913bd529d14b17dd"
+    },
+    {
+      "path": "evidence/sydney/m7-sydney-validation.png",
+      "bytes": 58793,
+      "sha256": "c319496ddca933267b2d2f864e17e84371aa3ace8015e8f1370b6da7f34e07f4",
+      "width": 1366,
+      "height": 768,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept: actual init/fmt/validate all succeed.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/sydney/m7-sydney-validation.txt",
+      "bytes": 927,
+      "sha256": "48f5d3305e6f33aca3dcde49a7551ff3586f00dd833f77281d25742751b2af4b"
+    },
+    {
+      "path": "evidence/sydney/m8-ingress-browser-page.txt",
+      "bytes": 1604,
+      "sha256": "8361eed84b3ade30a81691c18efb07fdee85938fdb65833f9a5582618b65034f"
+    },
+    {
+      "path": "evidence/sydney/m8-ingress-browser.png",
+      "bytes": 123759,
+      "sha256": "5ba4f72e885e39e7b9383004ba01294e18cf9bb8b8e52223d36ccddc8f185912",
+      "width": 1440,
+      "height": 1100,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept: actual HTTP-200 app through Ingress at 192.168.58.2; URL in manifest.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/sydney/m8-runtime-current.png",
+      "bytes": 95531,
+      "sha256": "e75ac76c1eb7a3ca4f754b25f5d1871fb11ee1229287d777dce21aad56e50fe0",
+      "width": 1366,
+      "height": 768,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept: seven Running/Ready Pods, 2/2 app replicas, valid HPA CPU, Bound PVC and Helm revision 10.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/sydney/m8-runtime-current.txt",
+      "bytes": 2013,
+      "sha256": "53129b2c15b7458b96880cde0d8aaa01cabd13fc17ff25196685d7f803da9ac4"
+    },
+    {
+      "path": "evidence/sydney/m9-grafana-current-page.txt",
+      "bytes": 235,
+      "sha256": "32c7695c1cda68d0bb3eae0147420903c9be761817eb82ac69419c83b31c100d"
+    },
+    {
+      "path": "evidence/sydney/m9-grafana-current.png",
+      "bytes": 73026,
+      "sha256": "6aca6fe3ff93fa7b24eb293ba16fcc633423c5c80c12dfe11df3aad99e909854",
+      "width": 1440,
+      "height": 1100,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept: actual current Grafana HTTP traffic dashboard with populated real request series.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/sydney/m9-prometheus-targets-page.txt",
+      "bytes": 334,
+      "sha256": "b81980ca8edbe202fd08f7c64f6ab35701eee154598e1dd806da4688f33cb85c"
+    },
+    {
+      "path": "evidence/sydney/m9-prometheus-targets.png",
+      "bytes": 45646,
+      "sha256": "2bbbf2d4ef8ca35c16bf720617b2ce9d423f538665f71708a0a14bcaccedb25c",
+      "width": 1440,
+      "height": 1100,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept: actual Prometheus Targets UI, relaydesk-backend 1/1 UP, endpoint and recent scrape visible.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/sydney/minikube-status.txt",
+      "bytes": 2677,
+      "sha256": "f11bbd72bc98c2c28a96370efa1d93f2e07eaa2a3f5fba258d0404f51ec63309"
+    },
+    {
+      "path": "evidence/sydney/monitoring-eks-rendered.yaml",
+      "bytes": 5027,
+      "sha256": "c30585bf33e7b7c309c173c1d3216ae458457cb9f33e3b36e60dfd9fc06d9432"
+    },
+    {
+      "path": "evidence/sydney/npm-build.txt",
+      "bytes": 390,
+      "sha256": "2e59b3b6bd014f7021850ed85a6765461d1783d9a5a494cd7a41b31b0f43de8e"
+    },
+    {
+      "path": "evidence/sydney/plan-audit.json",
+      "bytes": 4224,
+      "sha256": "311e2c3a177f11b686e0f7e137c34f5233e2246bbd1ccee1d79e8e299ffe037d"
+    },
+    {
+      "path": "evidence/sydney/plan-audit.txt",
+      "bytes": 4224,
+      "sha256": "56f878cf2abf176f81396c151d753e3efe5c53e2819b450f60b57b1e5e91fa8d"
+    },
+    {
+      "path": "evidence/sydney/prometheus-up.json",
+      "bytes": 210,
+      "sha256": "9514b1669235360668a96fcbed11b591e12277c148fc9646624ee914610ad74c"
+    },
+    {
+      "path": "evidence/sydney/pytest.txt",
+      "bytes": 2566,
+      "sha256": "82c2d4a61325af3f5a8527437dfaab96f47622983d90c1e8f09df208da861889"
+    },
+    {
+      "path": "evidence/sydney/pytest.xml",
+      "bytes": 2086,
+      "sha256": "072562e92ffc258b4954a2ec4e735fb4a0e3c992ed35dfa960a117009d51d778"
+    },
+    {
+      "path": "evidence/sydney/terminal-capture-manifest.json",
+      "bytes": 4660,
+      "sha256": "68a401823135a48e8eccf6f326218e3019a3c475bb589af017d5b9e32ea8dd0e"
+    },
+    {
+      "path": "evidence/sydney/terraform-init.txt",
+      "bytes": 625,
+      "sha256": "e9c09c5736ff9fa2d07872ba6290876a1aadcf54e54f904e0b65228fbfad0b8b"
+    },
+    {
+      "path": "evidence/sydney/terraform-plan.txt",
+      "bytes": 26262,
+      "sha256": "15b982c5e440c1234d3cf59b98a4dc81d62af04234f5fe7c086ebf9227f0b4c2"
+    },
+    {
+      "path": "evidence/sydney/terraform-validate.txt",
+      "bytes": 38,
+      "sha256": "f7997225125835fdd14060ac776d273f394b874f9a481b9e2122c83dc8adc5c1"
+    },
+    {
+      "path": "evidence/sydney/traefik-rendered.yaml",
+      "bytes": 7029,
+      "sha256": "508212ec90ebbbb2644812a59efe5cf0b49e35bd34a56612e2459b0f3a457814"
+    },
+    {
+      "path": "evidence/sydney/troubleshooting-initial-failure.txt",
+      "bytes": 22191,
+      "sha256": "8b9fb87f14bbad7a3aa6b5a60fc68d8c4476ad357b4dce5e8a861ebbd042d11b"
+    },
+    {
+      "path": "evidence/sydney/troubleshooting-recovery.png",
+      "bytes": 107972,
+      "sha256": "320d542d7087274aec2c87784cee3a2f65dbcd0197eca26fbf8af2f639f72084",
+      "width": 1366,
+      "height": 768,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept: labeled exact saved recovery-log excerpts; actual current main Pods Running and temporary namespace absent.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/sydney/troubleshooting-recovery.txt",
+      "bytes": 1710,
+      "sha256": "2240ebcf7c06a526723d343aa3300132beb31b440a0d12f0398633bef3844a64"
+    },
+    {
+      "path": "evidence/sydney/troubleshooting-startup-failure.txt",
+      "bytes": 105383,
+      "sha256": "6d9f2719fdcb6c882a2742b405ad64a352f88f74b3b45e694ef50b96d9aae89b"
+    },
+    {
+      "path": "evidence/sydney/troubleshooting.txt",
+      "bytes": 91901,
+      "sha256": "4d5a18a43eeca911b234db9be0842209c715247049f6c3777bf147133df21ab0"
+    },
+    {
+      "path": "evidence/terraform-plan-aws-login.txt",
+      "bytes": 21552,
+      "sha256": "1f5f79b51d2d19ea12ab1e2808b2b944a5b03840231560abb7f1c43aa681b851"
+    },
+    {
+      "path": "evidence/terraform-plan-refresh-false.txt",
+      "bytes": 21169,
+      "sha256": "15d829d9961cd4be5a3ac70f542aa0ab78ae0ae6a80f05fd4416e2c16e082b0f"
+    },
+    {
+      "path": "evidence/terraform-sydney-original-plan.txt",
+      "bytes": 21252,
+      "sha256": "4b1c025b78c8926e1f9131d2a12eae13d57fd7376a1d19459c9adae088f8d1fc"
+    },
+    {
+      "path": "evidence/terraform-validate.txt",
+      "bytes": 55,
+      "sha256": "2ff6f7b7b494d0f8d596def971d585d29ee3e06359aa4662e84c1988f7b74cbb"
+    },
+    {
+      "path": "evidence/trivy-backend.json",
+      "bytes": 125759,
+      "sha256": "966b477aca066e740b07181831acf3e0272ac8b1c92393093ed07fecffb0a7b7"
+    },
+    {
+      "path": "evidence/trivy-frontend.json",
+      "bytes": 163719,
+      "sha256": "4f9223b41eba17e59c7d349711ff5d2df8c3d85c84af9a39d0c4792e20a5c7df"
+    }
+  ]
+}

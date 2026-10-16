@@ -1,0 +1,8 @@
+POST /api/tickets 201
+GET /api/tickets 200
+PUT /api/tickets/15 200
+GET /api/tickets/15 200
+POST /api/tickets 201
+DELETE /api/tickets/16 204
+GET /api/tickets 200
+PASS: create, list, read, edit, status, priority and delete through frontend proxy; retained ticket 15

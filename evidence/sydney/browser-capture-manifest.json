@@ -1,0 +1,42 @@
+[
+  {
+    "screenshot": "evidence/sydney/m9-prometheus-targets.png",
+    "requested_url": "http://127.0.0.1:9090/targets",
+    "response_url": "http://127.0.0.1:9090/targets",
+    "http_status": 200,
+    "title": "Prometheus Time Series Collection and Processing Server",
+    "captured_at_utc": "2026-10-16T16:54:32.293Z",
+    "sha256": "2bbbf2d4ef8ca35c16bf720617b2ce9d423f538665f71708a0a14bcaccedb25c",
+    "method": "Unmodified Playwright screenshot of the actual live browser page"
+  },
+  {
+    "screenshot": "evidence/sydney/m9-grafana-current.png",
+    "requested_url": "http://127.0.0.1:3001/d/relaydesk-http/relaydesk-http-traffic?orgId=1&from=now-30m&to=now",
+    "response_url": "http://127.0.0.1:3001/d/relaydesk-http/relaydesk-http-traffic?orgId=1&from=now-30m&to=now&timezone=browser&refresh=10s",
+    "http_status": 200,
+    "title": "Relaydesk HTTP traffic - Relaydesk - Dashboards - Grafana",
+    "captured_at_utc": "2026-10-16T16:54:41.103Z",
+    "sha256": "6aca6fe3ff93fa7b24eb293ba16fcc633423c5c80c12dfe11df3aad99e909854",
+    "method": "Unmodified Playwright screenshot of the actual live browser page"
+  },
+  {
+    "screenshot": "evidence/sydney/m4-compose-browser.png",
+    "requested_url": "http://localhost:3000/",
+    "response_url": "http://localhost:3000/",
+    "http_status": 200,
+    "title": "Relaydesk · Support workspace",
+    "captured_at_utc": "2026-10-16T16:54:48.095Z",
+    "sha256": "67bc39dc2f144c550bc7deb09a35ede2222853f62f1c4eada1625e622a1d440d",
+    "method": "Unmodified Playwright screenshot of the actual live browser page"
+  },
+  {
+    "screenshot": "evidence/sydney/m8-ingress-browser.png",
+    "requested_url": "http://192.168.58.2/",
+    "response_url": "http://192.168.58.2/",
+    "http_status": 200,
+    "title": "Relaydesk · Support workspace",
+    "captured_at_utc": "2026-10-16T16:54:56.687Z",
+    "sha256": "5ba4f72e885e39e7b9383004ba01294e18cf9bb8b8e52223d36ccddc8f185912",
+    "method": "Unmodified Playwright screenshot of the actual live browser page"
+  }
+]

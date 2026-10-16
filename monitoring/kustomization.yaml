@@ -1,0 +1,36 @@
+# EKS variant: dashboard included; Grafana password comes from a private Secret.
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - local-stack.yaml
+configMapGenerator:
+  - name: grafana-dashboard
+    namespace: relaydesk
+    files:
+      - relaydesk-dashboard.json
+generatorOptions:
+  disableNameSuffixHash: true
+patches:
+  - target:
+      kind: Deployment
+      name: grafana
+    patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: grafana
+        namespace: relaydesk
+      spec:
+        template:
+          spec:
+            containers:
+              - name: grafana
+                env:
+                  - name: GF_SECURITY_ADMIN_PASSWORD
+                    value: null
+                    valueFrom:
+                      secretKeyRef:
+                        name: grafana-admin
+                        key: password
+                  - name: GF_AUTH_ANONYMOUS_ENABLED
+                    value: "false"

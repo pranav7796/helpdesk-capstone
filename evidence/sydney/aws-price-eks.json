@@ -1,0 +1,26 @@
+{
+  "command": [
+    "aws",
+    "pricing",
+    "get-products",
+    "--service-code",
+    "AmazonEKS",
+    "--filters",
+    "Type=TERM_MATCH,Field=location,Value=Asia Pacific (Sydney)",
+    "Type=TERM_MATCH,Field=usagetype,Value=APS2-AmazonEKS-Hours:perCluster",
+    "--profile",
+    "devops-new",
+    "--region",
+    "us-east-1",
+    "--no-cli-pager"
+  ],
+  "captured_at_utc": "2026-10-16T16:41:49.783262+00:00",
+  "exit_code": 0,
+  "stderr": "",
+  "response": {
+    "PriceList": [
+      "{\"product\":{\"productFamily\":\"Compute\",\"attributes\":{\"tiertype\":\"HAStandard\",\"regionCode\":\"ap-southeast-2\",\"servicecode\":\"AmazonEKS\",\"usagetype\":\"APS2-AmazonEKS-Hours:perCluster\",\"locationType\":\"AWS Region\",\"location\":\"Asia Pacific (Sydney)\",\"servicename\":\"Amazon Elastic Container Service for Kubernetes\",\"operation\":\"CreateOperation\"},\"sku\":\"BMJ7KNTWFFFQPFS4\"},\"serviceCode\":\"AmazonEKS\",\"terms\":{\"OnDemand\":{\"BMJ7KNTWFFFQPFS4.JRTCKXETXF\":{\"priceDimensions\":{\"BMJ7KNTWFFFQPFS4.JRTCKXETXF.6YS6EN2CT7\":{\"unit\":\"Hours\",\"endRange\":\"Inf\",\"description\":\"Amazon EKS cluster usage in Asia Pacific (Sydney)\",\"appliesTo\":[],\"rateCode\":\"BMJ7KNTWFFFQPFS4.JRTCKXETXF.6YS6EN2CT7\",\"beginRange\":\"0\",\"pricePerUnit\":{\"USD\":\"0.1000000000\"}}},\"sku\":\"BMJ7KNTWFFFQPFS4\",\"effectiveDate\":\"2026-09-01T00:00:00Z\",\"offerTermCode\":\"JRTCKXETXF\",\"termAttributes\":{}}}},\"version\":\"20260928194255\",\"publicationDate\":\"2026-09-28T19:42:55Z\"}"
+    ],
+    "FormatVersion": "aws_v1"
+  }
+}

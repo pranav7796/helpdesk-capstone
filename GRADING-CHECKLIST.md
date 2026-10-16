@@ -1,0 +1,56 @@
+# Every grading criterion: implementation, verification, screenshot
+
+Source: [teacher GRADING.md snapshot](docs/TEACHER-GRADING.md); [current scorecard](PROGRESS.md). Screenshot filenames below are relative to `evidence/`. October 16 audit; deadline October 19, 2026. Only actual demonstrated results are VERIFIED. AWS runtime work awaits approval.
+
+| Module | Grading criterion | Points | Status | Implementation | Actual verification / missing result | Screenshot evidence |
+|---|---|---:|---|---|---|---|
+| M1 | FastAPI `/health` responds | 2 | VERIFIED | backend/app; backend/alembic; frontend/src | Compose and Minikube; `evidence/docker-compose-ps.txt` | m1-health-database.png; sydney/m4-compose-browser.png; m1-ticket-editor.png; m1-mobile-actions.png |
+| M1 | GET/POST/PUT/DELETE ticket API | 3 | VERIFIED | backend/app; backend/alembic; frontend/src | `evidence/docker-smoke.txt` | m1-health-database.png; sydney/m4-compose-browser.png; m1-ticket-editor.png; m1-mobile-actions.png |
+| M1 | PostgreSQL table managed by Alembic | 2 | VERIFIED | backend/app; backend/alembic; frontend/src | Compose migration service and retained ticket; smoke evidence | m1-health-database.png; sydney/m4-compose-browser.png; m1-ticket-editor.png; m1-mobile-actions.png |
+| M1 | React frontend renders and calls API | 2 | VERIFIED | backend/app; backend/alembic; frontend/src | Compose screenshot and proxied CRUD smoke | m1-health-database.png; sydney/m4-compose-browser.png; m1-ticket-editor.png; m1-mobile-actions.png |
+| M1 | Responsive usable UI | 1 | VERIFIED | backend/app; backend/alembic; frontend/src | Desktop and 390 px screenshots: `evidence/relaydesk-compose.png`, `evidence/relaydesk-mobile.png` | m1-health-database.png; sydney/m4-compose-browser.png; m1-ticket-editor.png; m1-mobile-actions.png |
+| M2 | Pytest runs | 3 | VERIFIED | backend/tests; backend/pytest.ini | `evidence/pytest.txt` (16 passed) | sydney/m2-tests-current.png |
+| M2 | At least 5 tests across 3 endpoints | 4 | VERIFIED | backend/tests; backend/pytest.ini | `backend/tests/test_tickets.py`, 16 passed | sydney/m2-tests-current.png |
+| M2 | Isolated test DB | 2 | VERIFIED | backend/tests; backend/pytest.ini | SQLite test fixture; `backend/tests/conftest.py` | sydney/m2-tests-current.png |
+| M2 | Pytest config | 1 | VERIFIED | backend/tests; backend/pytest.ini | `backend/pytest.ini` | sydney/m2-tests-current.png |
+| M3 | Public GitHub repository linked in submission form | 2 | IMPLEMENTED | .gitignore; Git history; public repository | Public URL verified; submission-form confirmation is still missing | m3-git-history.png (form submission missing) |
+| M3 | At least 10 meaningful commits | 2 | VERIFIED | .gitignore; Git history; public repository | `evidence/m3-git-history.png` captures 14 meaningful commits before the audit follow-up | m3-git-history.png (form submission missing) |
+| M3 | `.gitignore` excludes secrets/build caches | 1 | VERIFIED | .gitignore; Git history; public repository | Root `.gitignore`; no credentials tracked | m3-git-history.png (form submission missing) |
+| M4 | Backend Docker image builds | 2 | VERIFIED | backend/Dockerfile; frontend/Dockerfile; docker-compose.yml | Compose runtime; `evidence/docker-compose-ps.txt` | m4-compose.png; sydney/m4-compose-browser.png |
+| M4 | Multi-stage frontend image | 3 | VERIFIED | backend/Dockerfile; frontend/Dockerfile; docker-compose.yml | `frontend/Dockerfile`; running Nginx frontend | m4-compose.png; sydney/m4-compose-browser.png |
+| M4 | Both application images use non-root users | 2 | VERIFIED | backend/Dockerfile; frontend/Dockerfile; docker-compose.yml | Backend UID 10001, frontend UID 101 in `evidence/docker-compose-ps.txt` | m4-compose.png; sydney/m4-compose-browser.png |
+| M4 | Compose runs frontend/backend/PostgreSQL | 3 | VERIFIED | backend/Dockerfile; frontend/Dockerfile; docker-compose.yml | All three healthy; `evidence/docker-compose-ps.txt` | m4-compose.png; sydney/m4-compose-browser.png |
+| M5 | Workflow file exists | 1 | VERIFIED | .github/workflows/ci.yml | `.github/workflows/ci.yml` | m5-actions-success.png; m5-ghcr-backend.png; m5-ghcr-frontend.png |
+| M5 | Push-to-main trigger | 1 | VERIFIED | .github/workflows/ci.yml | Push `d07bca6` triggered run 38893336596 | m5-actions-success.png; m5-ghcr-backend.png; m5-ghcr-frontend.png |
+| M5 | CI pytest job | 3 | VERIFIED | .github/workflows/ci.yml | Run 38893336596 test job succeeded (16 tests) | m5-actions-success.png; m5-ghcr-backend.png; m5-ghcr-frontend.png |
+| M5 | CI frontend build | 2 | VERIFIED | .github/workflows/ci.yml | Run 38893336596 Vite build succeeded | m5-actions-success.png; m5-ghcr-backend.png; m5-ghcr-frontend.png |
+| M5 | CI builds both container images | 3 | VERIFIED | .github/workflows/ci.yml | Both build steps succeeded in run 38893336596 | m5-actions-success.png; m5-ghcr-backend.png; m5-ghcr-frontend.png |
+| M5 | GHCR image publication | 3 | VERIFIED | .github/workflows/ci.yml | Both image pushes succeeded in run 38893336596 | m5-actions-success.png; m5-ghcr-backend.png; m5-ghcr-frontend.png |
+| M5 | Immutable commit SHA tags | 2 | VERIFIED | .github/workflows/ci.yml | Full SHA tag `d07bca6accc35f0224aaae8c4057076a9c4c9261` | m5-actions-success.png; m5-ghcr-backend.png; m5-ghcr-frontend.png |
+| M6 | CI Trivy scans both images | 3 | VERIFIED | .github/workflows/ci.yml; .trivyignore.yaml; docs/SECURITY.md | Both HIGH/CRITICAL scans succeeded in run 38893336596 | m6-trivy-backend.png; m6-trivy-frontend.png |
+| M6 | HIGH/CRITICAL gate | 1 | VERIFIED | .github/workflows/ci.yml; .trivyignore.yaml; docs/SECURITY.md | `exit-code: 1`, `ignore-unfixed: true`; both scans passed | m6-trivy-backend.png; m6-trivy-frontend.png |
+| M6 | Explain a finding and disposition | 1 | VERIFIED | .github/workflows/ci.yml; .trivyignore.yaml; docs/SECURITY.md | `docs/SECURITY.md`; scoped SBOM false-positive exceptions | m6-trivy-backend.png; m6-trivy-frontend.png |
+| M7 | Valid Terraform HCL | 2 | VERIFIED | terraform/*.tf; terraform.tfvars.example; scripts/audit-plan.py | `terraform validate`; `evidence/terraform-validate.txt` | sydney/m7-sydney-plan.png; sydney/m7-sydney-validation.png (AWS Console/destroy missing) |
+| M7 | Terraform init | 1 | VERIFIED | terraform/*.tf; terraform.tfvars.example; scripts/audit-plan.py | Successful init with locked AWS provider | sydney/m7-sydney-plan.png; sydney/m7-sydney-validation.png (AWS Console/destroy missing) |
+| M7 | Non-empty Terraform plan | 2 | VERIFIED | terraform/*.tf; terraform.tfvars.example; scripts/audit-plan.py | Account-guarded Sydney plan: `evidence/sydney/terraform-plan.txt`, `plan-audit.json`; 28 additions; actual admin CIDR; no apply | sydney/m7-sydney-plan.png; sydney/m7-sydney-validation.png (AWS Console/destroy missing) |
+| M7 | VPC with two public subnets provisioned | 3 | IMPLEMENTED | terraform/*.tf; terraform.tfvars.example; scripts/audit-plan.py | Sydney plan includes VPC and two public subnets; apply awaits explicit approval | sydney/m7-sydney-plan.png; sydney/m7-sydney-validation.png (AWS Console/destroy missing) |
+| M7 | EKS and worker node group provisioned | 4 | IMPLEMENTED | terraform/*.tf; terraform.tfvars.example; scripts/audit-plan.py | Sydney EKS 1.35 supported; 2-worker group planned; apply awaits approval | sydney/m7-sydney-plan.png; sydney/m7-sydney-validation.png (AWS Console/destroy missing) |
+| M7 | Terraform destroy demonstrated | 2 | NOT STARTED | terraform/*.tf; terraform.tfvars.example; scripts/audit-plan.py | Cleanup procedure prepared; no resources provisioned; separate cleanup approval required | sydney/m7-sydney-plan.png; sydney/m7-sydney-validation.png (AWS Console/destroy missing) |
+| M7 | Example tfvars, no secrets | 1 | VERIFIED | terraform/*.tf; terraform.tfvars.example; scripts/audit-plan.py | `terraform/terraform.tfvars.example` | sydney/m7-sydney-plan.png; sydney/m7-sydney-validation.png (AWS Console/destroy missing) |
+| M8 | Namespace applies | 1 | VERIFIED | k8s/; helm/helpdesk/ | Minikube namespace `relaydesk` | sydney/m8-runtime-current.png; m8-services.png; sydney/m8-ingress-browser.png |
+| M8 | Helm chart structure | 3 | VERIFIED | k8s/; helm/helpdesk/ | `helm/helpdesk`; rendered output in `evidence/helm-rendered.yaml` | sydney/m8-runtime-current.png; m8-services.png; sydney/m8-ingress-browser.png |
+| M8 | Helm install/upgrade succeeds | 3 | VERIFIED | k8s/; helm/helpdesk/ | Release `relaydesk`, status deployed, revision 10; `evidence/m8-helm.png` | sydney/m8-runtime-current.png; m8-services.png; sydney/m8-ingress-browser.png |
+| M8 | Frontend and backend each have 2 replicas | 2 | VERIFIED | k8s/; helm/helpdesk/ | `evidence/minikube-status.txt` | sydney/m8-runtime-current.png; m8-services.png; sydney/m8-ingress-browser.png |
+| M8 | ClusterIP services | 2 | VERIFIED | k8s/; helm/helpdesk/ | Backend, frontend, PostgreSQL service evidence | sydney/m8-runtime-current.png; m8-services.png; sydney/m8-ingress-browser.png |
+| M8 | Ingress routes frontend and `/api` | 2 | VERIFIED | k8s/; helm/helpdesk/ | Minikube ingress `192.168.58.2`; frontend/API smoke passed | sydney/m8-runtime-current.png; m8-services.png; sydney/m8-ingress-browser.png |
+| M8 | Pods running and ready | 2 | VERIFIED | k8s/; helm/helpdesk/ | `evidence/minikube-status.txt` | sydney/m8-runtime-current.png; m8-services.png; sydney/m8-ingress-browser.png |
+| M9 | Prometheus `/metrics` output | 2 | VERIFIED | backend/app/main.py; monitoring/ | `evidence/application-metrics.txt` | m9-metrics.png; sydney/m9-prometheus-targets.png; sydney/m9-grafana-current.png |
+| M9 | Prometheus scrapes application | 3 | VERIFIED | backend/app/main.py; monitoring/ | `evidence/prometheus-target.json` (`up == 1`) | m9-metrics.png; sydney/m9-prometheus-targets.png; sydney/m9-grafana-current.png |
+| M9 | Grafana installed and accessible | 2 | VERIFIED | backend/app/main.py; monitoring/ | Running local service and dashboard screenshot | m9-metrics.png; sydney/m9-prometheus-targets.png; sydney/m9-grafana-current.png |
+| M9 | Live request metrics panel | 3 | VERIFIED | backend/app/main.py; monitoring/ | `evidence/grafana-relaydesk-dashboard.png`; traffic query evidence | m9-metrics.png; sydney/m9-prometheus-targets.png; sydney/m9-grafana-current.png |
+| M10 | Root README explains application | 2 | VERIFIED | README.md; docs/; presentation pending | `README.md` | README source; video supplementary (presentation missing) |
+| M10 | Live or recorded commit → CI → deployment update presentation | 3 | IMPLEMENTED | README.md; docs/; presentation pending | Historical technical sequence verified in logs. Automated current-state browser walkthrough captured; actual student presentation/live sequence recording still pending | README source; video supplementary (presentation missing) |
+
+**Total: 100; estimated VERIFIED: 86.** Instructor grading is final. Pending: AWS VPC/EKS/destroy 9, form submission 2, accepted student presentation 3.
+
+README requirements beyond individual point rows: HPA has valid CPU metrics; health/readiness endpoints are exercised; five troubleshooting failures are recovered in `evidence/sydney/troubleshooting.txt`; AWS workflow/runbook prepared but not deployed. [Submission filenames, URLs and next actions](SUBMISSION.md).

@@ -1,0 +1,4 @@
+NAME                   IMAGE                                                                     COMMAND                  SERVICE    CREATED        STATUS                  PORTS
+relaydesk-backend-1    sha256:583215497072d9c9dae00347ae0ddb1397a41f7a54bf976aeffd76eeec9158ba   "uvicorn app.main:ap…"   backend    5 hours ago    Up 5 hours (healthy)    127.0.0.1:8000->8000/tcp
+relaydesk-frontend-1   sha256:92b39fc346b8f7ef8d4392f88736bf1cf002559a8af0198589c5cbd240c72907   "/docker-entrypoint.…"   frontend   11 hours ago   Up 11 hours (healthy)   127.0.0.1:3000->8080/tcp
+relaydesk-postgres-1   postgres:17-alpine                                                        "docker-entrypoint.s…"   postgres   11 hours ago   Up 11 hours (healthy)   5432/tcp

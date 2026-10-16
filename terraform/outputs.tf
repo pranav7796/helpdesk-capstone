@@ -3,4 +3,4 @@ output "cluster_endpoint" { value = aws_eks_cluster.this.endpoint }
 output "vpc_id" { value = aws_vpc.this.id }
 output "public_subnet_ids" { value = values(aws_subnet.public)[*].id }
 output "private_subnet_ids" { value = values(aws_subnet.private)[*].id }
-output "kubectl_configure_command" { value = "aws eks update-kubeconfig --region ${var.aws_region} --name ${aws_eks_cluster.this.name} --profile devops-capstone" }
+output "kubectl_configure_command" { value = "aws eks update-kubeconfig --region ${var.aws_region} --name ${aws_eks_cluster.this.name} --profile devops-new" }

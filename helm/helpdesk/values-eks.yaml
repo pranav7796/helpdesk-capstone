@@ -1,0 +1,13 @@
+# Supply database.password via a private values file, not the command line.
+images:
+  backend: ghcr.io/pranav7796/helpdesk-capstone/backend:d07bca6accc35f0224aaae8c4057076a9c4c9261
+  frontend: ghcr.io/pranav7796/helpdesk-capstone/frontend:d07bca6accc35f0224aaae8c4057076a9c4c9261
+database:
+  storageClass: relaydesk-gp3
+  pgdata: /var/lib/postgresql/data/pgdata
+ingress:
+  enabled: true
+  className: traefik
+monitoring:
+  serviceMonitor:
+    enabled: false

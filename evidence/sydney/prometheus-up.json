@@ -1,0 +1,1 @@
+{"status":"success","data":{"resultType":"vector","result":[{"metric":{"__name__":"up","instance":"relaydesk-backend.relaydesk.svc.cluster.local:8000","job":"relaydesk-backend"},"value":[1792168978.495,"1"]}]}}

@@ -1,0 +1,20 @@
+{
+  "command": [
+    "aws",
+    "sts",
+    "get-caller-identity",
+    "--profile",
+    "devops-new",
+    "--region",
+    "ap-southeast-2",
+    "--no-cli-pager"
+  ],
+  "captured_at_utc": "2026-10-16T16:41:07.170524+00:00",
+  "exit_code": 0,
+  "stderr": "",
+  "response": {
+    "UserId": "AROAXUVPB4TOZ4LHL5ND6:f44834e8-d051-7030-1671-7bacd3da612d",
+    "Account": "525426877661",
+    "Arn": "arn:aws:sts::525426877661:assumed-role/AccountFullAccessRole/f44834e8-d051-7030-1671-7bacd3da612d"
+  }
+}

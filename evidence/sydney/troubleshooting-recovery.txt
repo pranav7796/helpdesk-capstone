@@ -1,0 +1,31 @@
+Captured: 2026-10-16 16:54:21 UTC
+Evidence: troubleshooting-recovery
++ printf 'Exact excerpts from the completed local lab: evidence/sydney/troubleshooting.txt\n'
+Exact excerpts from the completed local lab: evidence/sydney/troubleshooting.txt
++ rg '^VERIFIED:|^PASS:|successfully rolled out|namespace .relaydesk-lab. deleted|^404$|^503$|^200$' evidence/sydney/troubleshooting.txt
+deployment "healthy" successfully rolled out
+VERIFIED: Repeated exit-1 crashes observed (crash loop)
+VERIFIED: ImagePullBackOff observed
+VERIFIED: Running but unready probe-failure pod observed
+VERIFIED: incorrect selector produces no endpoints
+404
+VERIFIED: readiness returns HTTP 404
+503
+VERIFIED: database returns HTTP 503
+deployment "crash" successfully rolled out
+deployment "readiness" successfully rolled out
+deployment "broken-image" successfully rolled out
+deployment "database" successfully rolled out
+200
+PASS: all five intentional failures diagnosed and recovered
+namespace "relaydesk-lab" deleted
++ kubectl --context helpdesk-capstone get ns relaydesk-lab --ignore-not-found
++ kubectl --context helpdesk-capstone -n relaydesk get pods
+NAME                                  READY   STATUS    RESTARTS   AGE
+grafana-6d89446f54-7bwn2              1/1     Running   0          6h8m
+prometheus-75dc6f79ff-pj2sx           1/1     Running   0          6h11m
+relaydesk-backend-c68f99986-6bd55     1/1     Running   0          5h25m
+relaydesk-backend-c68f99986-vw467     1/1     Running   0          5h25m
+relaydesk-frontend-68fc9f58b6-c9qxs   1/1     Running   0          5h25m
+relaydesk-frontend-68fc9f58b6-g7n86   1/1     Running   0          5h25m
+relaydesk-postgres-0                  1/1     Running   0          5h25m

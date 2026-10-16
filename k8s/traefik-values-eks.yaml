@@ -1,0 +1,36 @@
+# Traefik chart 42.0.0. Installing this creates one chargeable Classic ELB.
+deployment:
+  replicas: 2
+ingressClass:
+  enabled: true
+  isDefaultClass: false
+  name: traefik
+providers:
+  kubernetesCRD:
+    enabled: false
+  kubernetesIngress:
+    enabled: true
+    publishedService:
+      enabled: true
+  kubernetesGateway:
+    enabled: false
+gateway:
+  enabled: false
+gatewayClass:
+  enabled: false
+ingressRoute:
+  dashboard:
+    enabled: false
+ports:
+  websecure:
+    expose:
+      default: false
+service:
+  type: LoadBalancer
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-additional-resource-tags: Project=relaydesk-capstone
+  spec:
+    loadBalancerSourceRanges: [202.131.146.146/32]
+resources:
+  requests: {cpu: 50m, memory: 64Mi}
+  limits: {cpu: 300m, memory: 192Mi}

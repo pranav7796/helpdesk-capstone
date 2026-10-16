@@ -1,12 +1,12 @@
 # Helpdesk capstone progress
 
-Started 2026-10-16 10:40 IST. Working deadline estimate: 20:40 IST (10 hours from start); exact teacher deadline was not provided.
+Started 2026-10-16. Confirmed submission deadline: **October 19, 2026** (time of day not specified). Current cloud target: account `525426877661`, profile `devops-new`, region `ap-southeast-2`.
 
 Source: [teacher repository](https://github.com/Nency-Ravaliya/devops-heros/tree/main/session21-python), commit `a4e39b6b3a54dab1efd386c75ab86bf1d8a23454`. Full rubric and submission instructions: [docs/TEACHER-GRADING.md](docs/TEACHER-GRADING.md).
 
-**Audit-adjusted verified estimate: 86/100; achievable submission estimate: 91/100 after the form and presentation requirements are completed.** The earlier 91 estimate counted the public-repository submission and the presentation as complete; neither has confirmation. The saved no-refresh Terraform plan contributes 2 of these estimated marks, subject to instructor acceptance (84 if a fresh authenticated plan is required). Only the instructor awards marks. See [EVIDENCE-AUDIT.md](EVIDENCE-AUDIT.md).
+**Verified estimate: 86/100; achievable submission estimate: 91/100 after the form and presentation requirements are completed.** The earlier 91 estimate counted the public-repository submission and the presentation as complete; neither has confirmation. The reviewed Sydney plan contains 28 additions, includes an account guard, EBS CSI/Pod Identity and metrics-server prerequisites, and matches the current source. AWS apply awaits explicit owner approval; Sydney service discovery succeeds. Only the instructor awards marks. See [EVIDENCE-AUDIT.md](EVIDENCE-AUDIT.md) and [AWS setup](docs/AWS-PLAN.md).
 
-Run [38893336596](https://github.com/pranav7796/helpdesk-capstone/actions/runs/38893336596) succeeded and its SHA images were deployed to Minikube. This technical sequence is evidenced by logs; no recording of the actual commit-to-rollout event or completed student presentation exists. The new automated browser walkthrough is supplementary. AWS deployment/destroy remains blocked (9 marks).
+Run [38893336596](https://github.com/pranav7796/helpdesk-capstone/actions/runs/38893336596) succeeded and its SHA images were deployed to Minikube. This technical sequence is evidenced by logs; no recording of the actual commit-to-rollout event or completed student presentation exists. The new automated browser walkthrough is supplementary. AWS deployment/destroy awaits approval and execution (9 marks).
 
 Status: VERIFIED means observed in a running system or command output. IMPLEMENTED means configuration exists but the graded runtime result is not yet demonstrated. BLOCKED means an external restriction prevents the requirement. FAILED means an attempted verification failed. NOT STARTED means no work exists.
 
@@ -40,10 +40,10 @@ Status: VERIFIED means observed in a running system or command output. IMPLEMENT
 | M6 | Explain a finding and disposition | 1 | VERIFIED | `docs/SECURITY.md`; scoped SBOM false-positive exceptions |
 | M7 | Valid Terraform HCL | 2 | VERIFIED | `terraform validate`; `evidence/terraform-validate.txt` |
 | M7 | Terraform init | 1 | VERIFIED | Successful init with locked AWS provider |
-| M7 | Non-empty Terraform plan | 2 | VERIFIED | Historical 22-resource `-refresh=false` output only; screenshot `evidence/m7-terraform-plan-saved.png`; fresh plan replay failed; marks are qualified |
-| M7 | VPC with two public subnets provisioned | 3 | BLOCKED | EC2 `OptInRequired`; no apply; `evidence/m7-aws-restriction.png` |
-| M7 | EKS and worker node group provisioned | 4 | BLOCKED | EKS `SubscriptionRequiredException`; no apply |
-| M7 | Terraform destroy demonstrated | 2 | BLOCKED | No AWS resources were created |
+| M7 | Non-empty Terraform plan | 2 | VERIFIED | Account-guarded Sydney plan: `evidence/sydney/terraform-plan.txt`, `plan-audit.json`; 28 additions; actual admin CIDR; no apply |
+| M7 | VPC with two public subnets provisioned | 3 | IMPLEMENTED | Sydney plan includes VPC and two public subnets; apply awaits explicit approval |
+| M7 | EKS and worker node group provisioned | 4 | IMPLEMENTED | Sydney EKS 1.35 supported; 2-worker group planned; apply awaits approval |
+| M7 | Terraform destroy demonstrated | 2 | NOT STARTED | Cleanup procedure prepared; no resources provisioned; separate cleanup approval required |
 | M7 | Example tfvars, no secrets | 1 | VERIFIED | `terraform/terraform.tfvars.example` |
 | M8 | Namespace applies | 1 | VERIFIED | Minikube namespace `relaydesk` |
 | M8 | Helm chart structure | 3 | VERIFIED | `helm/helpdesk`; rendered output in `evidence/helm-rendered.yaml` |
@@ -63,4 +63,4 @@ Status: VERIFIED means observed in a running system or command output. IMPLEMENT
 
 1. Submit the public repository URL and the screenshot checklist in `SUBMISSION.md` to the teacher's form.
 2. Complete the live presentation or an accepted recorded commit → pipeline → deployment walkthrough.
-3. Disclose the AWS limitation; VPC/EKS and destroy screenshots cannot be produced without a real approved deployment.
+3. Approve the reviewed Sydney deployment after reading `docs/AWS-PLAN.md`; capture actual AWS runtime/Console evidence, then separately approve cleanup.

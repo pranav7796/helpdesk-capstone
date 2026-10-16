@@ -1,11 +1,21 @@
 # Terraform AWS deployment
 
-This directory declares an isolated VPC, two public and two private subnets across two Availability Zones, a single NAT Gateway, an EKS control plane, and two managed `t3.medium` workers. Every resource is named and tagged `relaydesk-capstone`.
+Target: account **525426877661**, profile **devops-new**, Sydney **ap-southeast-2**. The provider rejects other accounts. EKS admin access is restricted by `cluster_admin_cidr`; the reviewed plan uses `202.131.146.146/32`.
 
-The public EKS API accepts requests from only `cluster_admin_cidr` (`/32`). Set it to your trusted public IPv4 address in the ignored `terraform.tfvars` file. The example address is documentation-only.
+From the repository root:
 
-Commands: `terraform init`, `terraform fmt -check`, `terraform validate`, and `terraform plan -var-file=terraform.tfvars`. These do not provision resources. Never run apply without reviewing the current plan, actual price, account eligibility, and explicit owner approval.
+```bash
+bash scripts/terraform-readonly.sh init -input=false -lockfile=readonly
+bash scripts/terraform-readonly.sh fmt -check -recursive
+bash scripts/terraform-readonly.sh validate
+bash scripts/terraform-readonly.sh plan -input=false -var=cluster_admin_cidr=202.131.146.146/32 -out=tfplan-reviewed
+python scripts/audit-plan.py
+```
 
-Plan access on this account currently returns AWS `OptInRequired` for EC2 and `SubscriptionRequiredException` for EKS in `ap-south-1`. Keep cloud deployment blocked until the account owner resolves eligibility; do not change account or billing settings.
+The credential-process adapter reuses the AWS CLI login; it contains no credentials. Renew an expired session with `aws login --profile devops-new --region ap-southeast-2`. The original `tfplan` is preserved for audit but lacks the later account/storage/metrics safeguards. Do not apply it.
 
-The remote state is not configured yet. A local Terraform state file is sensitive and remains ignored by Git. Approved cleanup: `terraform destroy -var-file=terraform.tfvars`, followed by independent checks that EKS, NAT, EIP, and VPC resources tagged for Relaydesk are gone.
+The reviewed plan creates 28 Terraform resources, including VPC/networking, EKS, two private managed workers, EBS CSI with Pod Identity, and Metrics Server. Application Helm deployment also needs the gp3 StorageClass and an ingress controller. Kubernetes creates a chargeable ingress ELB and a 2-GiB EBS volume separately from this plan.
+
+**No apply has been performed.** Review [exact scope and costs](../docs/AWS-PLAN.md) and get explicit owner approval first. Follow [the deployment and cleanup runbook](../docs/EKS-RUNBOOK.md). Destroy also needs separate approval.
+
+State is local at `terraform/terraform.tfstate`; state, plan files and real tfvars remain ignored. No shared/remote state backend is needed by this assignment; keep a private state backup for reliable cleanup.

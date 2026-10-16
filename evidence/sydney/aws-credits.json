@@ -1,0 +1,24 @@
+{
+  "command": [
+    "aws",
+    "freetier",
+    "get-account-plan-state",
+    "--profile",
+    "devops-new",
+    "--region",
+    "ap-southeast-2",
+    "--no-cli-pager"
+  ],
+  "captured_at_utc": "2026-10-16T16:41:25.571851+00:00",
+  "exit_code": 0,
+  "stderr": "",
+  "response": {
+    "accountId": "525426877661",
+    "accountPlanType": "PAID",
+    "accountPlanStatus": "ACTIVE",
+    "accountPlanRemainingCredits": {
+      "amount": 120.0,
+      "unit": "USD"
+    }
+  }
+}

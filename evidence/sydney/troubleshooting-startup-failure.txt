@@ -1,0 +1,2315 @@
+$ kubectl --context helpdesk-capstone -n relaydesk-lab create namespace relaydesk-lab
+namespace/relaydesk-lab created
+
+$ kubectl --context helpdesk-capstone -n relaydesk-lab apply -f -
+deployment.apps/healthy created
+
+$ kubectl --context helpdesk-capstone -n relaydesk-lab apply -f -
+deployment.apps/crash created
+
+$ kubectl --context helpdesk-capstone -n relaydesk-lab apply -f -
+deployment.apps/readiness created
+
+$ kubectl --context helpdesk-capstone -n relaydesk-lab apply -f -
+deployment.apps/database created
+
+$ kubectl --context helpdesk-capstone -n relaydesk-lab apply -f /home/pranav/Projects/helpdesk-capstone/troubleshooting/broken-image.yaml
+deployment.apps/broken-image created
+
+$ kubectl --context helpdesk-capstone -n relaydesk-lab apply -f /home/pranav/Projects/helpdesk-capstone/troubleshooting/broken-service.yaml
+service/broken-service created
+
+$ kubectl --context helpdesk-capstone -n relaydesk-lab rollout status deploy/healthy --timeout=90s
+Waiting for deployment "healthy" rollout to finish: 0 of 1 updated replicas are available...
+deployment "healthy" successfully rolled out
+
+$ kubectl --context helpdesk-capstone -n relaydesk-lab get pods -o wide
+NAME                           READY   STATUS             RESTARTS      AGE   IP            NODE                NOMINATED NODE   READINESS GATES
+broken-image-fcf577b6b-67fh7   0/1     ImagePullBackOff   0             15s   10.244.0.52   helpdesk-capstone   <none>           <none>
+crash-557667c58-zqp5b          0/1     CrashLoopBackOff   1 (11s ago)   16s   10.244.0.49   helpdesk-capstone   <none>           <none>
+database-74db7d787-5wkxt       0/1     Running            0             15s   10.244.0.51   helpdesk-capstone   <none>           <none>
+healthy-77c76b9848-m6ft5       1/1     Running            0             16s   10.244.0.48   helpdesk-capstone   <none>           <none>
+readiness-6bb77d88c4-782hm     0/1     Running            0             15s   10.244.0.50   helpdesk-capstone   <none>           <none>
+
+$ kubectl --context helpdesk-capstone -n relaydesk-lab describe deploy/crash
+Name:                   crash
+Namespace:              relaydesk-lab
+CreationTimestamp:      Fri, 16 Oct 2026 22:18:56 +0530
+Labels:                 <none>
+Annotations:            deployment.kubernetes.io/revision: 1
+Selector:               app=crash
+Replicas:               1 desired | 1 updated | 1 total | 0 available | 1 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:  app=crash
+  Containers:
+   backend:
+    Image:      ghcr.io/pranav7796/helpdesk-capstone/backend:d07bca6accc35f0224aaae8c4057076a9c4c9261
+    Port:       <none>
+    Host Port:  <none>
+    Command:
+      sh
+      -c
+      echo 'Intentional capstone lab crash'; sleep 1; exit 1
+    Limits:
+      cpu:     100m
+      memory:  128Mi
+    Requests:
+      cpu:         10m
+      memory:      32Mi
+    Environment:   <none>
+    Mounts:        <none>
+  Volumes:         <none>
+  Node-Selectors:  <none>
+  Tolerations:     <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Progressing    True    NewReplicaSetAvailable
+  Available      False   MinimumReplicasUnavailable
+OldReplicaSets:  <none>
+NewReplicaSet:   crash-557667c58 (1/1 replicas created)
+Events:
+  Type    Reason             Age   From                   Message
+  ----    ------             ----  ----                   -------
+  Normal  ScalingReplicaSet  16s   deployment-controller  Scaled up replica set crash-557667c58 from 0 to 1
+
+VERIFIED: Repeated exit-1 crashes observed (crash loop)
+VERIFIED: ImagePullBackOff observed
+VERIFIED: Running but unready probe-failure pod observed
+$ kubectl --context helpdesk-capstone -n relaydesk-lab get pods -o wide
+NAME                           READY   STATUS             RESTARTS      AGE   IP            NODE                NOMINATED NODE   READINESS GATES
+broken-image-fcf577b6b-67fh7   0/1     ImagePullBackOff   0             16s   10.244.0.52   helpdesk-capstone   <none>           <none>
+crash-557667c58-zqp5b          1/1     Running            2 (12s ago)   17s   10.244.0.49   helpdesk-capstone   <none>           <none>
+database-74db7d787-5wkxt       0/1     Running            0             16s   10.244.0.51   helpdesk-capstone   <none>           <none>
+healthy-77c76b9848-m6ft5       1/1     Running            0             17s   10.244.0.48   helpdesk-capstone   <none>           <none>
+readiness-6bb77d88c4-782hm     0/1     Running            0             16s   10.244.0.50   helpdesk-capstone   <none>           <none>
+
+$ kubectl --context helpdesk-capstone -n relaydesk-lab get events --sort-by=.lastTimestamp
+LAST SEEN   TYPE      REASON              OBJECT                              MESSAGE
+17s         Normal    Scheduled           pod/crash-557667c58-zqp5b           Successfully assigned relaydesk-lab/crash-557667c58-zqp5b to helpdesk-capstone
+17s         Normal    SuccessfulCreate    replicaset/crash-557667c58          Created pod: crash-557667c58-zqp5b
+17s         Normal    ScalingReplicaSet   deployment/crash                    Scaled up replica set crash-557667c58 from 0 to 1
+17s         Normal    Scheduled           pod/healthy-77c76b9848-m6ft5        Successfully assigned relaydesk-lab/healthy-77c76b9848-m6ft5 to helpdesk-capstone
+17s         Normal    ScalingReplicaSet   deployment/healthy                  Scaled up replica set healthy-77c76b9848 from 0 to 1
+17s         Normal    SuccessfulCreate    replicaset/healthy-77c76b9848       Created pod: healthy-77c76b9848-m6ft5
+16s         Normal    SuccessfulCreate    replicaset/broken-image-fcf577b6b   Created pod: broken-image-fcf577b6b-67fh7
+16s         Normal    ScalingReplicaSet   deployment/broken-image             Scaled up replica set broken-image-fcf577b6b from 0 to 1
+16s         Normal    ScalingReplicaSet   deployment/readiness                Scaled up replica set readiness-6bb77d88c4 from 0 to 1
+16s         Normal    Created             pod/healthy-77c76b9848-m6ft5        Container created
+16s         Normal    Started             pod/healthy-77c76b9848-m6ft5        Container started
+16s         Normal    Pulled              pod/healthy-77c76b9848-m6ft5        Container image "ghcr.io/pranav7796/helpdesk-capstone/backend:d07bca6accc35f0224aaae8c4057076a9c4c9261" already present on machine and can be accessed by the pod
+16s         Normal    Scheduled           pod/readiness-6bb77d88c4-782hm      Successfully assigned relaydesk-lab/readiness-6bb77d88c4-782hm to helpdesk-capstone
+16s         Normal    Scheduled           pod/broken-image-fcf577b6b-67fh7    Successfully assigned relaydesk-lab/broken-image-fcf577b6b-67fh7 to helpdesk-capstone
+16s         Normal    SuccessfulCreate    replicaset/readiness-6bb77d88c4     Created pod: readiness-6bb77d88c4-782hm
+16s         Normal    Scheduled           pod/database-74db7d787-5wkxt        Successfully assigned relaydesk-lab/database-74db7d787-5wkxt to helpdesk-capstone
+16s         Normal    ScalingReplicaSet   deployment/database                 Scaled up replica set database-74db7d787 from 0 to 1
+16s         Normal    SuccessfulCreate    replicaset/database-74db7d787       Created pod: database-74db7d787-5wkxt
+15s         Normal    Started             pod/database-74db7d787-5wkxt        Container started
+15s         Normal    Pulled              pod/readiness-6bb77d88c4-782hm      Container image "ghcr.io/pranav7796/helpdesk-capstone/backend:d07bca6accc35f0224aaae8c4057076a9c4c9261" already present on machine and can be accessed by the pod
+15s         Normal    Created             pod/database-74db7d787-5wkxt        Container created
+15s         Normal    Pulled              pod/database-74db7d787-5wkxt        Container image "ghcr.io/pranav7796/helpdesk-capstone/backend:d07bca6accc35f0224aaae8c4057076a9c4c9261" already present on machine and can be accessed by the pod
+15s         Normal    Started             pod/readiness-6bb77d88c4-782hm      Container started
+15s         Normal    Created             pod/readiness-6bb77d88c4-782hm      Container created
+14s         Warning   Failed              pod/broken-image-fcf577b6b-67fh7    Error: ImagePullBackOff
+14s         Normal    BackOff             pod/broken-image-fcf577b6b-67fh7    Back-off pulling image "ghcr.io/pranav7796/helpdesk-capstone/backend:capstone-intentionally-missing"
+11s         Warning   BackOff             pod/crash-557667c58-zqp5b           Back-off restarting failed container backend in pod crash-557667c58-zqp5b_relaydesk-lab(f237ed82-2b17-4f4c-aaa1-e3dcd5259fe0)
+4s          Warning   Unhealthy           pod/readiness-6bb77d88c4-782hm      Readiness probe failed: Get "http://10.244.0.50:8000/intentionally-missing": dial tcp 10.244.0.50:8000: connect: connection refused
+3s          Warning   Unhealthy           pod/healthy-77c76b9848-m6ft5        Readiness probe failed: Get "http://10.244.0.48:8000/": dial tcp 10.244.0.48:8000: connect: connection refused
+3s          Warning   Failed              pod/broken-image-fcf577b6b-67fh7    Error: ErrImagePull
+3s          Warning   Failed              pod/broken-image-fcf577b6b-67fh7    Failed to pull image "ghcr.io/pranav7796/helpdesk-capstone/backend:capstone-intentionally-missing": failed to pull and unpack image "ghcr.io/pranav7796/helpdesk-capstone/backend:capstone-intentionally-missing": failed to resolve reference "ghcr.io/pranav7796/helpdesk-capstone/backend:capstone-intentionally-missing": failed to do request: Head "https://ghcr.io/v2/pranav7796/helpdesk-capstone/backend/manifests/capstone-intentionally-missing": dial tcp: lookup ghcr.io on 192.168.58.1:53: server misbehaving
+3s          Normal    Pulling             pod/broken-image-fcf577b6b-67fh7    Pulling image "ghcr.io/pranav7796/helpdesk-capstone/backend:capstone-intentionally-missing"
+1s          Normal    Pulled              pod/crash-557667c58-zqp5b           Container image "ghcr.io/pranav7796/helpdesk-capstone/backend:d07bca6accc35f0224aaae8c4057076a9c4c9261" already present on machine and can be accessed by the pod
+1s          Normal    Created             pod/crash-557667c58-zqp5b           Container created
+1s          Normal    Started             pod/crash-557667c58-zqp5b           Container started
+0s          Warning   Unhealthy           pod/database-74db7d787-5wkxt        Readiness probe failed: Get "http://10.244.0.51:8000/ready": dial tcp 10.244.0.51:8000: connect: connection refused
+0s          Warning   Unhealthy           pod/readiness-6bb77d88c4-782hm      Readiness probe failed: HTTP probe failed with statuscode: 404
+
+$ kubectl --context helpdesk-capstone -n relaydesk-lab get events -o json
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-16T16:48:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "broken-image-fcf577b6b-67fh7",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27792",
+                "uid": "08d1d3b4-fdd5-4b98-8222-641feb4cf463"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-16T16:48:57Z",
+            "message": "Successfully assigned relaydesk-lab/broken-image-fcf577b6b-67fh7 to helpdesk-capstone",
+            "metadata": {
+                "creationTimestamp": "2026-10-16T16:48:57Z",
+                "name": "broken-image-fcf577b6b-67fh7.18df108474dd75bf",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27800",
+                "uid": "af114c72-fd15-4a50-8dfe-6799b7c7f6c5"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "",
+            "source": {
+                "component": "default-scheduler"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 2,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-16T16:48:58Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{backend}",
+                "kind": "Pod",
+                "name": "broken-image-fcf577b6b-67fh7",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27795",
+                "uid": "08d1d3b4-fdd5-4b98-8222-641feb4cf463"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-16T16:49:10Z",
+            "message": "Pulling image \"ghcr.io/pranav7796/helpdesk-capstone/backend:capstone-intentionally-missing\"",
+            "metadata": {
+                "creationTimestamp": "2026-10-16T16:48:58Z",
+                "name": "broken-image-fcf577b6b-67fh7.18df1084b821b511",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27873",
+                "uid": "673a5c4d-f312-4171-ac56-541f0516fd5e"
+            },
+            "reason": "Pulling",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "helpdesk-capstone",
+            "source": {
+                "component": "kubelet",
+                "host": "helpdesk-capstone"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 2,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-16T16:48:58Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{backend}",
+                "kind": "Pod",
+                "name": "broken-image-fcf577b6b-67fh7",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27795",
+                "uid": "08d1d3b4-fdd5-4b98-8222-641feb4cf463"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-16T16:49:10Z",
+            "message": "Failed to pull image \"ghcr.io/pranav7796/helpdesk-capstone/backend:capstone-intentionally-missing\": failed to pull and unpack image \"ghcr.io/pranav7796/helpdesk-capstone/backend:capstone-intentionally-missing\": failed to resolve reference \"ghcr.io/pranav7796/helpdesk-capstone/backend:capstone-intentionally-missing\": failed to do request: Head \"https://ghcr.io/v2/pranav7796/helpdesk-capstone/backend/manifests/capstone-intentionally-missing\": dial tcp: lookup ghcr.io on 192.168.58.1:53: server misbehaving",
+            "metadata": {
+                "creationTimestamp": "2026-10-16T16:48:58Z",
+                "name": "broken-image-fcf577b6b-67fh7.18df1084b9c09340",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27875",
+                "uid": "318adcb2-e49b-42f0-bfab-9dd5286811ae"
+            },
+            "reason": "Failed",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "helpdesk-capstone",
+            "source": {
+                "component": "kubelet",
+                "host": "helpdesk-capstone"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 2,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-16T16:48:58Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{backend}",
+                "kind": "Pod",
+                "name": "broken-image-fcf577b6b-67fh7",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27795",
+                "uid": "08d1d3b4-fdd5-4b98-8222-641feb4cf463"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-16T16:49:10Z",
+            "message": "Error: ErrImagePull",
+            "metadata": {
+                "creationTimestamp": "2026-10-16T16:48:58Z",
+                "name": "broken-image-fcf577b6b-67fh7.18df1084b9c3525c",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27876",
+                "uid": "fbbd72f1-6900-4f48-8ac6-baaf1e8319aa"
+            },
+            "reason": "Failed",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "helpdesk-capstone",
+            "source": {
+                "component": "kubelet",
+                "host": "helpdesk-capstone"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-16T16:48:59Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{backend}",
+                "kind": "Pod",
+                "name": "broken-image-fcf577b6b-67fh7",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27795",
+                "uid": "08d1d3b4-fdd5-4b98-8222-641feb4cf463"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-16T16:48:59Z",
+            "message": "Back-off pulling image \"ghcr.io/pranav7796/helpdesk-capstone/backend:capstone-intentionally-missing\"",
+            "metadata": {
+                "creationTimestamp": "2026-10-16T16:48:59Z",
+                "name": "broken-image-fcf577b6b-67fh7.18df1084ca096aa4",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27829",
+                "uid": "faa823bd-5905-42e5-b3a4-78b33b516156"
+            },
+            "reason": "BackOff",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "helpdesk-capstone",
+            "source": {
+                "component": "kubelet",
+                "host": "helpdesk-capstone"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-16T16:48:59Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{backend}",
+                "kind": "Pod",
+                "name": "broken-image-fcf577b6b-67fh7",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27795",
+                "uid": "08d1d3b4-fdd5-4b98-8222-641feb4cf463"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-16T16:48:59Z",
+            "message": "Error: ImagePullBackOff",
+            "metadata": {
+                "creationTimestamp": "2026-10-16T16:48:59Z",
+                "name": "broken-image-fcf577b6b-67fh7.18df1084ca0be5ef",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27831",
+                "uid": "7db2e70d-650b-4907-9492-dbc16bfd19fa"
+            },
+            "reason": "Failed",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "helpdesk-capstone",
+            "source": {
+                "component": "kubelet",
+                "host": "helpdesk-capstone"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-16T16:48:57Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "broken-image-fcf577b6b",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27789",
+                "uid": "e8624424-13b9-40be-9e81-59332b2010a6"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-16T16:48:57Z",
+            "message": "Created pod: broken-image-fcf577b6b-67fh7",
+            "metadata": {
+                "creationTimestamp": "2026-10-16T16:48:57Z",
+                "name": "broken-image-fcf577b6b.18df108473900867",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27796",
+                "uid": "fc4969df-ddc4-42f6-a4e1-4647d7421268"
+            },
+            "reason": "SuccessfulCreate",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-16T16:48:57Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "broken-image",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27788",
+                "uid": "6c0730d9-eb20-444f-84d2-61e9b1910133"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-16T16:48:57Z",
+            "message": "Scaled up replica set broken-image-fcf577b6b from 0 to 1",
+            "metadata": {
+                "creationTimestamp": "2026-10-16T16:48:57Z",
+                "name": "broken-image.18df10847162447b",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27790",
+                "uid": "53d08a89-b6fe-481c-93d0-41d09a993ba8"
+            },
+            "reason": "ScalingReplicaSet",
+            "reportingComponent": "deployment-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "deployment-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-16T16:48:56Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "crash-557667c58-zqp5b",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27748",
+                "uid": "f237ed82-2b17-4f4c-aaa1-e3dcd5259fe0"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-16T16:48:56Z",
+            "message": "Successfully assigned relaydesk-lab/crash-557667c58-zqp5b to helpdesk-capstone",
+            "metadata": {
+                "creationTimestamp": "2026-10-16T16:48:56Z",
+                "name": "crash-557667c58-zqp5b.18df108435d69a43",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27754",
+                "uid": "0a35dfa3-78b3-44dc-895b-bfc500906941"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "",
+            "source": {
+                "component": "default-scheduler"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 3,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-16T16:48:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{backend}",
+                "kind": "Pod",
+                "name": "crash-557667c58-zqp5b",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27750",
+                "uid": "f237ed82-2b17-4f4c-aaa1-e3dcd5259fe0"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-16T16:49:12Z",
+            "message": "Container image \"ghcr.io/pranav7796/helpdesk-capstone/backend:d07bca6accc35f0224aaae8c4057076a9c4c9261\" already present on machine and can be accessed by the pod",
+            "metadata": {
+                "creationTimestamp": "2026-10-16T16:48:57Z",
+                "name": "crash-557667c58-zqp5b.18df1084735d0a71",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27885",
+                "uid": "c1aa48f0-b9cc-4bcd-98b1-3aec1e938d03"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "helpdesk-capstone",
+            "source": {
+                "component": "kubelet",
+                "host": "helpdesk-capstone"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 3,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-16T16:48:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{backend}",
+                "kind": "Pod",
+                "name": "crash-557667c58-zqp5b",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27750",
+                "uid": "f237ed82-2b17-4f4c-aaa1-e3dcd5259fe0"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-16T16:49:12Z",
+            "message": "Container created",
+            "metadata": {
+                "creationTimestamp": "2026-10-16T16:48:57Z",
+                "name": "crash-557667c58-zqp5b.18df10847c9273c5",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27887",
+                "uid": "877efd58-7e32-44a1-a6f0-3b6649b73253"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "helpdesk-capstone",
+            "source": {
+                "component": "kubelet",
+                "host": "helpdesk-capstone"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 3,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-16T16:48:58Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{backend}",
+                "kind": "Pod",
+                "name": "crash-557667c58-zqp5b",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27750",
+                "uid": "f237ed82-2b17-4f4c-aaa1-e3dcd5259fe0"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-16T16:49:12Z",
+            "message": "Container started",
+            "metadata": {
+                "creationTimestamp": "2026-10-16T16:48:58Z",
+                "name": "crash-557667c58-zqp5b.18df108488cdd557",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27888",
+                "uid": "30d9cb6b-a77d-4256-91b0-41b3e34a5431"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "helpdesk-capstone",
+            "source": {
+                "component": "kubelet",
+                "host": "helpdesk-capstone"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-16T16:49:02Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{backend}",
+                "kind": "Pod",
+                "name": "crash-557667c58-zqp5b",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27750",
+                "uid": "f237ed82-2b17-4f4c-aaa1-e3dcd5259fe0"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-16T16:49:02Z",
+            "message": "Back-off restarting failed container backend in pod crash-557667c58-zqp5b_relaydesk-lab(f237ed82-2b17-4f4c-aaa1-e3dcd5259fe0)",
+            "metadata": {
+                "creationTimestamp": "2026-10-16T16:49:02Z",
+                "name": "crash-557667c58-zqp5b.18df10857d94da71",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27849",
+                "uid": "127ccc66-86a2-475b-8e3a-a68bb5f24b6f"
+            },
+            "reason": "BackOff",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "helpdesk-capstone",
+            "source": {
+                "component": "kubelet",
+                "host": "helpdesk-capstone"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-16T16:48:56Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "crash-557667c58",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27746",
+                "uid": "b5e332fc-f01f-4d09-bc94-ee8ee9f66acb"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-16T16:48:56Z",
+            "message": "Created pod: crash-557667c58-zqp5b",
+            "metadata": {
+                "creationTimestamp": "2026-10-16T16:48:56Z",
+                "name": "crash-557667c58.18df1084353f44b4",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27751",
+                "uid": "0771527a-9d3f-45eb-8017-17c9a324b637"
+            },
+            "reason": "SuccessfulCreate",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-16T16:48:56Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "crash",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27745",
+                "uid": "98245c3b-5cb6-481e-b5aa-ad32771ed1e6"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-16T16:48:56Z",
+            "message": "Scaled up replica set crash-557667c58 from 0 to 1",
+            "metadata": {
+                "creationTimestamp": "2026-10-16T16:48:56Z",
+                "name": "crash.18df1084347aa4f3",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27747",
+                "uid": "1c4e56ae-ecbb-4e04-a02f-0aa81f63b2fd"
+            },
+            "reason": "ScalingReplicaSet",
+            "reportingComponent": "deployment-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "deployment-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-16T16:48:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "database-74db7d787-5wkxt",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27774",
+                "uid": "80301870-4237-486e-a2d6-0e15a493fcba"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-16T16:48:57Z",
+            "message": "Successfully assigned relaydesk-lab/database-74db7d787-5wkxt to helpdesk-capstone",
+            "metadata": {
+                "creationTimestamp": "2026-10-16T16:48:57Z",
+                "name": "database-74db7d787-5wkxt.18df10845f2ec285",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27779",
+                "uid": "30b5a5d7-80c3-4ab9-bc99-6a0cdfc38e4b"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "",
+            "source": {
+                "component": "default-scheduler"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-16T16:48:58Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{backend}",
+                "kind": "Pod",
+                "name": "database-74db7d787-5wkxt",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27776",
+                "uid": "80301870-4237-486e-a2d6-0e15a493fcba"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-16T16:48:58Z",
+            "message": "Container image \"ghcr.io/pranav7796/helpdesk-capstone/backend:d07bca6accc35f0224aaae8c4057076a9c4c9261\" already present on machine and can be accessed by the pod",
+            "metadata": {
+                "creationTimestamp": "2026-10-16T16:48:58Z",
+                "name": "database-74db7d787-5wkxt.18df10849d7e1272",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27818",
+                "uid": "88e905d0-c768-4b6b-96d8-a063069c597b"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "helpdesk-capstone",
+            "source": {
+                "component": "kubelet",
+                "host": "helpdesk-capstone"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-16T16:48:58Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{backend}",
+                "kind": "Pod",
+                "name": "database-74db7d787-5wkxt",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27776",
+                "uid": "80301870-4237-486e-a2d6-0e15a493fcba"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-16T16:48:58Z",
+            "message": "Container created",
+            "metadata": {
+                "creationTimestamp": "2026-10-16T16:48:58Z",
+                "name": "database-74db7d787-5wkxt.18df1084a3210c44",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27822",
+                "uid": "f8b427e9-befc-4e5a-9307-10264aacb5e2"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "helpdesk-capstone",
+            "source": {
+                "component": "kubelet",
+                "host": "helpdesk-capstone"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-16T16:48:58Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{backend}",
+                "kind": "Pod",
+                "name": "database-74db7d787-5wkxt",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27776",
+                "uid": "80301870-4237-486e-a2d6-0e15a493fcba"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-16T16:48:58Z",
+            "message": "Container started",
+            "metadata": {
+                "creationTimestamp": "2026-10-16T16:48:58Z",
+                "name": "database-74db7d787-5wkxt.18df1084ae3b672b",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27823",
+                "uid": "f654d93e-a937-4b5e-87c5-3084ceafc070"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "helpdesk-capstone",
+            "source": {
+                "component": "kubelet",
+                "host": "helpdesk-capstone"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 7,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-16T16:49:01Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{backend}",
+                "kind": "Pod",
+                "name": "database-74db7d787-5wkxt",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27776",
+                "uid": "80301870-4237-486e-a2d6-0e15a493fcba"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-16T16:49:13Z",
+            "message": "Readiness probe failed: Get \"http://10.244.0.51:8000/ready\": dial tcp 10.244.0.51:8000: connect: connection refused",
+            "metadata": {
+                "creationTimestamp": "2026-10-16T16:49:01Z",
+                "name": "database-74db7d787-5wkxt.18df10854125e35c",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27894",
+                "uid": "197770ab-2e9e-42b3-a3f9-44e77e27fef0"
+            },
+            "reason": "Unhealthy",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "helpdesk-capstone",
+            "source": {
+                "component": "kubelet",
+                "host": "helpdesk-capstone"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-16T16:48:57Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "database-74db7d787",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27772",
+                "uid": "b742f5ed-7b3c-413f-828d-a0e3b59909ce"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-16T16:48:57Z",
+            "message": "Created pod: database-74db7d787-5wkxt",
+            "metadata": {
+                "creationTimestamp": "2026-10-16T16:48:57Z",
+                "name": "database-74db7d787.18df10845de7a752",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27777",
+                "uid": "94e24381-f174-4698-b10a-d533b4b07253"
+            },
+            "reason": "SuccessfulCreate",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-16T16:48:57Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "database",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27771",
+                "uid": "ec9d1425-eb9e-4f79-bcda-3816e3382665"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-16T16:48:57Z",
+            "message": "Scaled up replica set database-74db7d787 from 0 to 1",
+            "metadata": {
+                "creationTimestamp": "2026-10-16T16:48:57Z",
+                "name": "database.18df10845d24552e",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27773",
+                "uid": "42f0321c-ab08-486e-8b42-e7756954aa5b"
+            },
+            "reason": "ScalingReplicaSet",
+            "reportingComponent": "deployment-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "deployment-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-16T16:48:56Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "healthy-77c76b9848-m6ft5",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27736",
+                "uid": "05a94b46-eaed-4ce6-ba16-d0b975098b8d"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-16T16:48:56Z",
+            "message": "Successfully assigned relaydesk-lab/healthy-77c76b9848-m6ft5 to helpdesk-capstone",
+            "metadata": {
+                "creationTimestamp": "2026-10-16T16:48:56Z",
+                "name": "healthy-77c76b9848-m6ft5.18df108424879265",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27741",
+                "uid": "9485a878-f8b5-43a9-9e9a-f698cf6a0d02"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "",
+            "source": {
+                "component": "default-scheduler"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-16T16:48:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{backend}",
+                "kind": "Pod",
+                "name": "healthy-77c76b9848-m6ft5",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27738",
+                "uid": "05a94b46-eaed-4ce6-ba16-d0b975098b8d"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-16T16:48:57Z",
+            "message": "Container image \"ghcr.io/pranav7796/helpdesk-capstone/backend:d07bca6accc35f0224aaae8c4057076a9c4c9261\" already present on machine and can be accessed by the pod",
+            "metadata": {
+                "creationTimestamp": "2026-10-16T16:48:57Z",
+                "name": "healthy-77c76b9848-m6ft5.18df10846658304e",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27784",
+                "uid": "459989f7-0121-418a-ba89-c273eecbfdcd"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "helpdesk-capstone",
+            "source": {
+                "component": "kubelet",
+                "host": "helpdesk-capstone"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-16T16:48:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{backend}",
+                "kind": "Pod",
+                "name": "healthy-77c76b9848-m6ft5",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27738",
+                "uid": "05a94b46-eaed-4ce6-ba16-d0b975098b8d"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-16T16:48:57Z",
+            "message": "Container created",
+            "metadata": {
+                "creationTimestamp": "2026-10-16T16:48:57Z",
+                "name": "healthy-77c76b9848-m6ft5.18df10846cea7e99",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27786",
+                "uid": "f1ddcee5-c4ca-44cf-9d1d-6ea0654e8617"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "helpdesk-capstone",
+            "source": {
+                "component": "kubelet",
+                "host": "helpdesk-capstone"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-16T16:48:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{backend}",
+                "kind": "Pod",
+                "name": "healthy-77c76b9848-m6ft5",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27738",
+                "uid": "05a94b46-eaed-4ce6-ba16-d0b975098b8d"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-16T16:48:57Z",
+            "message": "Container started",
+            "metadata": {
+                "creationTimestamp": "2026-10-16T16:48:57Z",
+                "name": "healthy-77c76b9848-m6ft5.18df10847264b726",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27793",
+                "uid": "1c53ecd8-86e5-40dd-8179-4f066eceaabb"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "helpdesk-capstone",
+            "source": {
+                "component": "kubelet",
+                "host": "helpdesk-capstone"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 6,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-16T16:49:00Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{backend}",
+                "kind": "Pod",
+                "name": "healthy-77c76b9848-m6ft5",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27738",
+                "uid": "05a94b46-eaed-4ce6-ba16-d0b975098b8d"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-16T16:49:10Z",
+            "message": "Readiness probe failed: Get \"http://10.244.0.48:8000/\": dial tcp 10.244.0.48:8000: connect: connection refused",
+            "metadata": {
+                "creationTimestamp": "2026-10-16T16:49:00Z",
+                "name": "healthy-77c76b9848-m6ft5.18df1085054ee8c8",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27871",
+                "uid": "e57228ea-d82d-405b-a199-9d39e1cd9440"
+            },
+            "reason": "Unhealthy",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "helpdesk-capstone",
+            "source": {
+                "component": "kubelet",
+                "host": "helpdesk-capstone"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-16T16:48:56Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "healthy-77c76b9848",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27733",
+                "uid": "d76ba693-401f-430c-9920-3ff1481ddcbf"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-16T16:48:56Z",
+            "message": "Created pod: healthy-77c76b9848-m6ft5",
+            "metadata": {
+                "creationTimestamp": "2026-10-16T16:48:56Z",
+                "name": "healthy-77c76b9848.18df108423342afa",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27737",
+                "uid": "aae26fbd-6794-4fca-90df-ff1f62c43bef"
+            },
+            "reason": "SuccessfulCreate",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-16T16:48:56Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "healthy",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27732",
+                "uid": "4962c1c8-965e-4d8e-96be-23e33cbb858b"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-16T16:48:56Z",
+            "message": "Scaled up replica set healthy-77c76b9848 from 0 to 1",
+            "metadata": {
+                "creationTimestamp": "2026-10-16T16:48:56Z",
+                "name": "healthy.18df1084223f9f5e",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27735",
+                "uid": "3f316382-79c8-4fa0-9a89-d0fcf98945e0"
+            },
+            "reason": "ScalingReplicaSet",
+            "reportingComponent": "deployment-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "deployment-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-16T16:48:57Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "readiness-6bb77d88c4-782hm",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27761",
+                "uid": "225279b9-87eb-447b-adf2-7120e7d6aef9"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-16T16:48:57Z",
+            "message": "Successfully assigned relaydesk-lab/readiness-6bb77d88c4-782hm to helpdesk-capstone",
+            "metadata": {
+                "creationTimestamp": "2026-10-16T16:48:57Z",
+                "name": "readiness-6bb77d88c4-782hm.18df10844c4991e0",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27766",
+                "uid": "36f76670-6862-4a2a-a98c-e0f8d3901024"
+            },
+            "reason": "Scheduled",
+            "reportingComponent": "default-scheduler",
+            "reportingInstance": "",
+            "source": {
+                "component": "default-scheduler"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-16T16:48:58Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{backend}",
+                "kind": "Pod",
+                "name": "readiness-6bb77d88c4-782hm",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27763",
+                "uid": "225279b9-87eb-447b-adf2-7120e7d6aef9"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-16T16:48:58Z",
+            "message": "Container image \"ghcr.io/pranav7796/helpdesk-capstone/backend:d07bca6accc35f0224aaae8c4057076a9c4c9261\" already present on machine and can be accessed by the pod",
+            "metadata": {
+                "creationTimestamp": "2026-10-16T16:48:58Z",
+                "name": "readiness-6bb77d88c4-782hm.18df10849449f514",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27815",
+                "uid": "50d38011-d4f2-4ec6-91c7-ec6d8b9c23c0"
+            },
+            "reason": "Pulled",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "helpdesk-capstone",
+            "source": {
+                "component": "kubelet",
+                "host": "helpdesk-capstone"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-16T16:48:58Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{backend}",
+                "kind": "Pod",
+                "name": "readiness-6bb77d88c4-782hm",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27763",
+                "uid": "225279b9-87eb-447b-adf2-7120e7d6aef9"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-16T16:48:58Z",
+            "message": "Container created",
+            "metadata": {
+                "creationTimestamp": "2026-10-16T16:48:58Z",
+                "name": "readiness-6bb77d88c4-782hm.18df108498c7bf3c",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27817",
+                "uid": "f9df445b-0012-4ef0-b94c-8c16a528a9d8"
+            },
+            "reason": "Created",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "helpdesk-capstone",
+            "source": {
+                "component": "kubelet",
+                "host": "helpdesk-capstone"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-16T16:48:58Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{backend}",
+                "kind": "Pod",
+                "name": "readiness-6bb77d88c4-782hm",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27763",
+                "uid": "225279b9-87eb-447b-adf2-7120e7d6aef9"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-16T16:48:58Z",
+            "message": "Container started",
+            "metadata": {
+                "creationTimestamp": "2026-10-16T16:48:58Z",
+                "name": "readiness-6bb77d88c4-782hm.18df1084a0b95f63",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27820",
+                "uid": "4b86f9db-164d-4714-8c08-904c9b1d5d29"
+            },
+            "reason": "Started",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "helpdesk-capstone",
+            "source": {
+                "component": "kubelet",
+                "host": "helpdesk-capstone"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 5,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-16T16:49:01Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{backend}",
+                "kind": "Pod",
+                "name": "readiness-6bb77d88c4-782hm",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27763",
+                "uid": "225279b9-87eb-447b-adf2-7120e7d6aef9"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-16T16:49:09Z",
+            "message": "Readiness probe failed: Get \"http://10.244.0.50:8000/intentionally-missing\": dial tcp 10.244.0.50:8000: connect: connection refused",
+            "metadata": {
+                "creationTimestamp": "2026-10-16T16:49:01Z",
+                "name": "readiness-6bb77d88c4-782hm.18df10854125e450",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27869",
+                "uid": "5700b3dc-a5e3-447a-90fb-634e43d99b09"
+            },
+            "reason": "Unhealthy",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "helpdesk-capstone",
+            "source": {
+                "component": "kubelet",
+                "host": "helpdesk-capstone"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 2,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-16T16:49:11Z",
+            "involvedObject": {
+                "apiVersion": "v1",
+                "fieldPath": "spec.containers{backend}",
+                "kind": "Pod",
+                "name": "readiness-6bb77d88c4-782hm",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27763",
+                "uid": "225279b9-87eb-447b-adf2-7120e7d6aef9"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-16T16:49:13Z",
+            "message": "Readiness probe failed: HTTP probe failed with statuscode: 404",
+            "metadata": {
+                "creationTimestamp": "2026-10-16T16:49:11Z",
+                "name": "readiness-6bb77d88c4-782hm.18df1087954bd9da",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27895",
+                "uid": "d577eed3-73c9-47c8-9603-7bb27556b222"
+            },
+            "reason": "Unhealthy",
+            "reportingComponent": "kubelet",
+            "reportingInstance": "helpdesk-capstone",
+            "source": {
+                "component": "kubelet",
+                "host": "helpdesk-capstone"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-16T16:48:57Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "readiness-6bb77d88c4",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27759",
+                "uid": "7ec79e31-803a-4edb-9eb8-661f4998797d"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-16T16:48:57Z",
+            "message": "Created pod: readiness-6bb77d88c4-782hm",
+            "metadata": {
+                "creationTimestamp": "2026-10-16T16:48:57Z",
+                "name": "readiness-6bb77d88c4.18df10844b6487f3",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27764",
+                "uid": "268fbb34-ae89-4002-b421-65169765d911"
+            },
+            "reason": "SuccessfulCreate",
+            "reportingComponent": "replicaset-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "replicaset-controller"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-10-16T16:48:57Z",
+            "involvedObject": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "readiness",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27758",
+                "uid": "74cd5b55-e9d3-4a3b-a948-0458ab2ef903"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-10-16T16:48:57Z",
+            "message": "Scaled up replica set readiness-6bb77d88c4 from 0 to 1",
+            "metadata": {
+                "creationTimestamp": "2026-10-16T16:48:57Z",
+                "name": "readiness.18df108449e701cb",
+                "namespace": "relaydesk-lab",
+                "resourceVersion": "27760",
+                "uid": "50e30e17-3cf9-447c-b00a-3e8412965831"
+            },
+            "reason": "ScalingReplicaSet",
+            "reportingComponent": "deployment-controller",
+            "reportingInstance": "",
+            "source": {
+                "component": "deployment-controller"
+            },
+            "type": "Normal"
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}
+
+$ kubectl --context helpdesk-capstone -n relaydesk-lab logs deploy/crash --previous
+Intentional capstone lab crash
+
+$ kubectl --context helpdesk-capstone -n relaydesk-lab logs deploy/database --tail=15
+
+$ kubectl --context helpdesk-capstone -n relaydesk-lab get endpointslices -l kubernetes.io/service-name=broken-service -o json
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "addressType": "IPv4",
+            "apiVersion": "discovery.k8s.io/v1",
+            "endpoints": null,
+            "kind": "EndpointSlice",
+            "metadata": {
+                "annotations": {
+                    "endpoints.kubernetes.io/last-change-trigger-time": "2026-10-16T16:48:58Z"
+                },
+                "creationTimestamp": "2026-10-16T16:48:58Z",
+                "generateName": "broken-service-",
+                "generation": 1,
+                "labels": {
+                    "endpointslice.kubernetes.io/managed-by": "endpointslice-controller.k8s.io",
+                    "kubernetes.io/service-name": "broken-service"
+                },
+                "name": "broken-service-7cwzt",
+                "namespace": "relaydesk-lab",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Service",
+                        "name": "broken-service",
+                        "uid": "bb7f4a4b-62ac-4d39-88e9-f5272928aa9c"
+                    }
+                ],
+                "resourceVersion": "27814",
+                "uid": "a3383c22-4191-4122-b584-895451cd653f"
+            },
+            "ports": null
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}
+
+VERIFIED: incorrect selector produces no endpoints
+$ kubectl --context helpdesk-capstone -n relaydesk-lab get pods -l app=readiness -o json
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "creationTimestamp": "2026-10-16T16:48:57Z",
+                "generateName": "readiness-6bb77d88c4-",
+                "generation": 1,
+                "labels": {
+                    "app": "readiness",
+                    "pod-template-hash": "6bb77d88c4"
+                },
+                "name": "readiness-6bb77d88c4-782hm",
+                "namespace": "relaydesk-lab",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "ReplicaSet",
+                        "name": "readiness-6bb77d88c4",
+                        "uid": "7ec79e31-803a-4edb-9eb8-661f4998797d"
+                    }
+                ],
+                "resourceVersion": "27821",
+                "uid": "225279b9-87eb-447b-adf2-7120e7d6aef9"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "command": [
+                            "python",
+                            "-m",
+                            "http.server",
+                            "8000"
+                        ],
+                        "image": "ghcr.io/pranav7796/helpdesk-capstone/backend:d07bca6accc35f0224aaae8c4057076a9c4c9261",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "backend",
+                        "readinessProbe": {
+                            "failureThreshold": 3,
+                            "httpGet": {
+                                "path": "/intentionally-missing",
+                                "port": 8000,
+                                "scheme": "HTTP"
+                            },
+                            "initialDelaySeconds": 2,
+                            "periodSeconds": 2,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 1
+                        },
+                        "resources": {
+                            "limits": {
+                                "cpu": "100m",
+                                "memory": "128Mi"
+                            },
+                            "requests": {
+                                "cpu": "10m",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-hzjmw",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "helpdesk-capstone",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-hzjmw",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "allocatedResources": {
+                    "cpu": "10m",
+                    "memory": "32Mi"
+                },
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-16T16:48:58Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodReadyToStartContainers"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-16T16:48:57Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-16T16:48:57Z",
+                        "message": "containers with unready status: [backend]",
+                        "observedGeneration": 1,
+                        "reason": "ContainersNotReady",
+                        "status": "False",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-16T16:48:57Z",
+                        "message": "containers with unready status: [backend]",
+                        "observedGeneration": 1,
+                        "reason": "ContainersNotReady",
+                        "status": "False",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-16T16:48:57Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "allocatedResources": {
+                            "cpu": "10m",
+                            "memory": "32Mi"
+                        },
+                        "containerID": "containerd://528b592567e05ad0f3b6c037fc7d2155cf034e7cd7d43a0de4c10e8b9bad8ed6",
+                        "image": "ghcr.io/pranav7796/helpdesk-capstone/backend:d07bca6accc35f0224aaae8c4057076a9c4c9261",
+                        "imageID": "sha256:5bafdd08a50efec8110646a407b41e181a59be8721f0262c80ee51ca07a73660",
+                        "lastState": {},
+                        "name": "backend",
+                        "ready": false,
+                        "resources": {
+                            "limits": {
+                                "cpu": "100m",
+                                "memory": "128Mi"
+                            },
+                            "requests": {
+                                "cpu": "10m",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "restartCount": 0,
+                        "started": true,
+                        "state": {
+                            "running": {
+                                "startedAt": "2026-10-16T16:48:58Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 10001,
+                                "supplementalGroups": [
+                                    10001
+                                ],
+                                "uid": 10001
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-hzjmw",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    }
+                ],
+                "hostIP": "192.168.58.2",
+                "hostIPs": [
+                    {
+                        "ip": "192.168.58.2"
+                    }
+                ],
+                "observedGeneration": 1,
+                "phase": "Running",
+                "podIP": "10.244.0.50",
+                "podIPs": [
+                    {
+                        "ip": "10.244.0.50"
+                    }
+                ],
+                "qosClass": "Burstable",
+                "resources": {
+                    "limits": {
+                        "cpu": "100m",
+                        "memory": "128Mi"
+                    },
+                    "requests": {
+                        "cpu": "10m",
+                        "memory": "32Mi"
+                    }
+                },
+                "startTime": "2026-10-16T16:48:57Z"
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}
+
+$ kubectl --context helpdesk-capstone -n relaydesk-lab exec deploy/healthy -- python -c import urllib.request,urllib.error;
+try: urllib.request.urlopen('http://10.244.0.50:8000/intentionally-missing')
+except urllib.error.HTTPError as e: print(e.code)
+404
+
+VERIFIED: readiness returns HTTP 404
+$ kubectl --context helpdesk-capstone -n relaydesk-lab get pods -l app=database -o json
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "creationTimestamp": "2026-10-16T16:48:57Z",
+                "generateName": "database-74db7d787-",
+                "generation": 1,
+                "labels": {
+                    "app": "database",
+                    "pod-template-hash": "74db7d787"
+                },
+                "name": "database-74db7d787-5wkxt",
+                "namespace": "relaydesk-lab",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "ReplicaSet",
+                        "name": "database-74db7d787",
+                        "uid": "b742f5ed-7b3c-413f-828d-a0e3b59909ce"
+                    }
+                ],
+                "resourceVersion": "27824",
+                "uid": "80301870-4237-486e-a2d6-0e15a493fcba"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "command": [
+                            "uvicorn",
+                            "app.main:app",
+                            "--host",
+                            "0.0.0.0",
+                            "--port",
+                            "8000"
+                        ],
+                        "env": [
+                            {
+                                "name": "DATABASE_URL",
+                                "value": "postgresql+psycopg://invalid:invalid@127.0.0.1:1/invalid?connect_timeout=2"
+                            }
+                        ],
+                        "image": "ghcr.io/pranav7796/helpdesk-capstone/backend:d07bca6accc35f0224aaae8c4057076a9c4c9261",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "backend",
+                        "readinessProbe": {
+                            "failureThreshold": 3,
+                            "httpGet": {
+                                "path": "/ready",
+                                "port": 8000,
+                                "scheme": "HTTP"
+                            },
+                            "initialDelaySeconds": 2,
+                            "periodSeconds": 2,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 1
+                        },
+                        "resources": {
+                            "limits": {
+                                "cpu": "100m",
+                                "memory": "128Mi"
+                            },
+                            "requests": {
+                                "cpu": "10m",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-7dptq",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "helpdesk-capstone",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-7dptq",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "allocatedResources": {
+                    "cpu": "10m",
+                    "memory": "32Mi"
+                },
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-16T16:48:58Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodReadyToStartContainers"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-16T16:48:57Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-16T16:48:57Z",
+                        "message": "containers with unready status: [backend]",
+                        "observedGeneration": 1,
+                        "reason": "ContainersNotReady",
+                        "status": "False",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-16T16:48:57Z",
+                        "message": "containers with unready status: [backend]",
+                        "observedGeneration": 1,
+                        "reason": "ContainersNotReady",
+                        "status": "False",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-16T16:48:57Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "allocatedResources": {
+                            "cpu": "10m",
+                            "memory": "32Mi"
+                        },
+                        "containerID": "containerd://658f75ef80e5ca92fea0e1eb55fc7a6086eb0e78bfae271a1b52367adf03bfd8",
+                        "image": "ghcr.io/pranav7796/helpdesk-capstone/backend:d07bca6accc35f0224aaae8c4057076a9c4c9261",
+                        "imageID": "sha256:5bafdd08a50efec8110646a407b41e181a59be8721f0262c80ee51ca07a73660",
+                        "lastState": {},
+                        "name": "backend",
+                        "ready": false,
+                        "resources": {
+                            "limits": {
+                                "cpu": "100m",
+                                "memory": "128Mi"
+                            },
+                            "requests": {
+                                "cpu": "10m",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "restartCount": 0,
+                        "started": true,
+                        "state": {
+                            "running": {
+                                "startedAt": "2026-10-16T16:48:58Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 10001,
+                                "supplementalGroups": [
+                                    10001
+                                ],
+                                "uid": 10001
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-7dptq",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    }
+                ],
+                "hostIP": "192.168.58.2",
+                "hostIPs": [
+                    {
+                        "ip": "192.168.58.2"
+                    }
+                ],
+                "observedGeneration": 1,
+                "phase": "Running",
+                "podIP": "10.244.0.51",
+                "podIPs": [
+                    {
+                        "ip": "10.244.0.51"
+                    }
+                ],
+                "qosClass": "Burstable",
+                "resources": {
+                    "limits": {
+                        "cpu": "100m",
+                        "memory": "128Mi"
+                    },
+                    "requests": {
+                        "cpu": "10m",
+                        "memory": "32Mi"
+                    }
+                },
+                "startTime": "2026-10-16T16:48:57Z"
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}
+
+$ kubectl --context helpdesk-capstone -n relaydesk-lab exec deploy/healthy -- python -c import urllib.request,urllib.error;
+try: urllib.request.urlopen('http://10.244.0.51:8000/ready')
+except urllib.error.HTTPError as e: print(e.code)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.14/urllib/request.py", line 1333, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+              encode_chunked=req.has_header('Transfer-encoding'))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.14/http/client.py", line 1386, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.14/http/client.py", line 1432, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.14/http/client.py", line 1381, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.14/http/client.py", line 1141, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "/usr/local/lib/python3.14/http/client.py", line 1085, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "/usr/local/lib/python3.14/http/client.py", line 1051, in connect
+    self.sock = self._create_connection(
+                ~~~~~~~~~~~~~~~~~~~~~~~^
+        (self.host,self.port), self.timeout, self.source_address)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.14/socket.py", line 874, in create_connection
+    raise exceptions[0]
+  File "/usr/local/lib/python3.14/socket.py", line 859, in create_connection
+    sock.connect(sa)
+    ~~~~~~~~~~~~^^^^
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<string>", line 2, in <module>
+    try: urllib.request.urlopen('http://10.244.0.51:8000/ready')
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.14/urllib/request.py", line 187, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.14/urllib/request.py", line 487, in open
+    response = self._open(req, data)
+  File "/usr/local/lib/python3.14/urllib/request.py", line 504, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+                              '_open', req)
+  File "/usr/local/lib/python3.14/urllib/request.py", line 464, in _call_chain
+    result = func(*args)
+  File "/usr/local/lib/python3.14/urllib/request.py", line 1362, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.14/urllib/request.py", line 1336, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [Errno 111] Connection refused>
+command terminated with exit code 1
+
+$ kubectl --context helpdesk-capstone -n relaydesk-lab get pods -o wide
+NAME                           READY   STATUS         RESTARTS      AGE   IP            NODE                NOMINATED NODE   READINESS GATES
+broken-image-fcf577b6b-67fh7   0/1     ErrImagePull   0             40s   10.244.0.52   helpdesk-capstone   <none>           <none>
+crash-557667c58-zqp5b          0/1     Error          2 (36s ago)   41s   10.244.0.49   helpdesk-capstone   <none>           <none>
+database-74db7d787-5wkxt       0/1     Running        0             40s   10.244.0.51   helpdesk-capstone   <none>           <none>
+healthy-77c76b9848-m6ft5       1/1     Running        0             41s   10.244.0.48   helpdesk-capstone   <none>           <none>
+readiness-6bb77d88c4-782hm     0/1     Running        0             40s   10.244.0.50   helpdesk-capstone   <none>           <none>
+
+$ kubectl --context helpdesk-capstone -n relaydesk-lab get pods -l app=crash -o json
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "creationTimestamp": "2026-10-16T16:48:56Z",
+                "generateName": "crash-557667c58-",
+                "generation": 1,
+                "labels": {
+                    "app": "crash",
+                    "pod-template-hash": "557667c58"
+                },
+                "name": "crash-557667c58-zqp5b",
+                "namespace": "relaydesk-lab",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "ReplicaSet",
+                        "name": "crash-557667c58",
+                        "uid": "b5e332fc-f01f-4d09-bc94-ee8ee9f66acb"
+                    }
+                ],
+                "resourceVersion": "27898",
+                "uid": "f237ed82-2b17-4f4c-aaa1-e3dcd5259fe0"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "command": [
+                            "sh",
+                            "-c",
+                            "echo 'Intentional capstone lab crash'; sleep 1; exit 1"
+                        ],
+                        "image": "ghcr.io/pranav7796/helpdesk-capstone/backend:d07bca6accc35f0224aaae8c4057076a9c4c9261",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "backend",
+                        "resources": {
+                            "limits": {
+                                "cpu": "100m",
+                                "memory": "128Mi"
+                            },
+                            "requests": {
+                                "cpu": "10m",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-75tx4",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "helpdesk-capstone",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-75tx4",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "allocatedResources": {
+                    "cpu": "10m",
+                    "memory": "32Mi"
+                },
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-16T16:48:57Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodReadyToStartContainers"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-16T16:48:56Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-16T16:49:14Z",
+                        "message": "containers with unready status: [backend]",
+                        "observedGeneration": 1,
+                        "reason": "ContainersNotReady",
+                        "status": "False",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-16T16:49:14Z",
+                        "message": "containers with unready status: [backend]",
+                        "observedGeneration": 1,
+                        "reason": "ContainersNotReady",
+                        "status": "False",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-10-16T16:48:56Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "allocatedResources": {
+                            "cpu": "10m",
+                            "memory": "32Mi"
+                        },
+                        "containerID": "containerd://e995b4b560add9bb0a19ba6296b6cb05feddf387c60c5f9d5499b9cd8a3e7cf0",
+                        "image": "ghcr.io/pranav7796/helpdesk-capstone/backend:d07bca6accc35f0224aaae8c4057076a9c4c9261",
+                        "imageID": "sha256:5bafdd08a50efec8110646a407b41e181a59be8721f0262c80ee51ca07a73660",
+                        "lastState": {
+                            "terminated": {
+                                "containerID": "containerd://0d7d102dda19a51c1fa6ada9fe8603d47a31c69dd60b41b5e6013f7b4b2346d2",
+                                "exitCode": 1,
+                                "finishedAt": "2026-10-16T16:49:01Z",
+                                "reason": "Error",
+                                "startedAt": "2026-10-16T16:49:00Z"
+                            }
+                        },
+                        "name": "backend",
+                        "ready": false,
+                        "resources": {
+                            "limits": {
+                                "cpu": "100m",
+                                "memory": "128Mi"
+                            },
+                            "requests": {
+                                "cpu": "10m",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "restartCount": 2,
+                        "started": false,
+                        "state": {
+                            "terminated": {
+                                "containerID": "containerd://e995b4b560add9bb0a19ba6296b6cb05feddf387c60c5f9d5499b9cd8a3e7cf0",
+                                "exitCode": 1,
+                                "finishedAt": "2026-10-16T16:49:13Z",
+                                "reason": "Error",
+                                "startedAt": "2026-10-16T16:49:12Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 10001,
+                                "supplementalGroups": [
+                                    10001
+                                ],
+                                "uid": 10001
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-75tx4",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    }
+                ],
+                "hostIP": "192.168.58.2",
+                "hostIPs": [
+                    {
+                        "ip": "192.168.58.2"
+                    }
+                ],
+                "observedGeneration": 1,
+                "phase": "Running",
+                "podIP": "10.244.0.49",
+                "podIPs": [
+                    {
+                        "ip": "10.244.0.49"
+                    }
+                ],
+                "qosClass": "Burstable",
+                "resources": {
+                    "limits": {
+                        "cpu": "100m",
+                        "memory": "128Mi"
+                    },
+                    "requests": {
+                        "memory": "32Mi"
+                    }
+                },
+                "startTime": "2026-10-16T16:48:56Z"
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}
+
+$ kubectl --context helpdesk-capstone -n relaydesk-lab get events --sort-by=.lastTimestamp
+LAST SEEN   TYPE      REASON              OBJECT                              MESSAGE
+42s         Normal    Scheduled           pod/crash-557667c58-zqp5b           Successfully assigned relaydesk-lab/crash-557667c58-zqp5b to helpdesk-capstone
+42s         Normal    SuccessfulCreate    replicaset/crash-557667c58          Created pod: crash-557667c58-zqp5b
+42s         Normal    ScalingReplicaSet   deployment/crash                    Scaled up replica set crash-557667c58 from 0 to 1
+42s         Normal    Scheduled           pod/healthy-77c76b9848-m6ft5        Successfully assigned relaydesk-lab/healthy-77c76b9848-m6ft5 to helpdesk-capstone
+42s         Normal    ScalingReplicaSet   deployment/healthy                  Scaled up replica set healthy-77c76b9848 from 0 to 1
+42s         Normal    SuccessfulCreate    replicaset/healthy-77c76b9848       Created pod: healthy-77c76b9848-m6ft5
+41s         Normal    SuccessfulCreate    replicaset/broken-image-fcf577b6b   Created pod: broken-image-fcf577b6b-67fh7
+41s         Normal    ScalingReplicaSet   deployment/broken-image             Scaled up replica set broken-image-fcf577b6b from 0 to 1
+41s         Normal    ScalingReplicaSet   deployment/readiness                Scaled up replica set readiness-6bb77d88c4 from 0 to 1
+41s         Normal    Created             pod/healthy-77c76b9848-m6ft5        Container created
+41s         Normal    Started             pod/healthy-77c76b9848-m6ft5        Container started
+41s         Normal    Pulled              pod/healthy-77c76b9848-m6ft5        Container image "ghcr.io/pranav7796/helpdesk-capstone/backend:d07bca6accc35f0224aaae8c4057076a9c4c9261" already present on machine and can be accessed by the pod
+41s         Normal    Scheduled           pod/readiness-6bb77d88c4-782hm      Successfully assigned relaydesk-lab/readiness-6bb77d88c4-782hm to helpdesk-capstone
+41s         Normal    Scheduled           pod/broken-image-fcf577b6b-67fh7    Successfully assigned relaydesk-lab/broken-image-fcf577b6b-67fh7 to helpdesk-capstone
+41s         Normal    SuccessfulCreate    replicaset/readiness-6bb77d88c4     Created pod: readiness-6bb77d88c4-782hm
+41s         Normal    Scheduled           pod/database-74db7d787-5wkxt        Successfully assigned relaydesk-lab/database-74db7d787-5wkxt to helpdesk-capstone
+41s         Normal    ScalingReplicaSet   deployment/database                 Scaled up replica set database-74db7d787 from 0 to 1
+41s         Normal    SuccessfulCreate    replicaset/database-74db7d787       Created pod: database-74db7d787-5wkxt
+40s         Normal    Started             pod/database-74db7d787-5wkxt        Container started
+40s         Normal    Created             pod/database-74db7d787-5wkxt        Container created
+40s         Normal    Pulled              pod/database-74db7d787-5wkxt        Container image "ghcr.io/pranav7796/helpdesk-capstone/backend:d07bca6accc35f0224aaae8c4057076a9c4c9261" already present on machine and can be accessed by the pod
+40s         Normal    Started             pod/readiness-6bb77d88c4-782hm      Container started
+40s         Normal    Created             pod/readiness-6bb77d88c4-782hm      Container created
+40s         Normal    Pulled              pod/readiness-6bb77d88c4-782hm      Container image "ghcr.io/pranav7796/helpdesk-capstone/backend:d07bca6accc35f0224aaae8c4057076a9c4c9261" already present on machine and can be accessed by the pod
+29s         Warning   Unhealthy           pod/readiness-6bb77d88c4-782hm      Readiness probe failed: Get "http://10.244.0.50:8000/intentionally-missing": dial tcp 10.244.0.50:8000: connect: connection refused
+28s         Warning   Failed              pod/broken-image-fcf577b6b-67fh7    Error: ErrImagePull
+28s         Normal    Pulling             pod/broken-image-fcf577b6b-67fh7    Pulling image "ghcr.io/pranav7796/helpdesk-capstone/backend:capstone-intentionally-missing"
+28s         Warning   Failed              pod/broken-image-fcf577b6b-67fh7    Failed to pull image "ghcr.io/pranav7796/helpdesk-capstone/backend:capstone-intentionally-missing": failed to pull and unpack image "ghcr.io/pranav7796/helpdesk-capstone/backend:capstone-intentionally-missing": failed to resolve reference "ghcr.io/pranav7796/helpdesk-capstone/backend:capstone-intentionally-missing": failed to do request: Head "https://ghcr.io/v2/pranav7796/helpdesk-capstone/backend/manifests/capstone-intentionally-missing": dial tcp: lookup ghcr.io on 192.168.58.1:53: server misbehaving
+28s         Warning   Unhealthy           pod/healthy-77c76b9848-m6ft5        Readiness probe failed: Get "http://10.244.0.48:8000/": dial tcp 10.244.0.48:8000: connect: connection refused
+26s         Normal    Started             pod/crash-557667c58-zqp5b           Container started
+26s         Normal    Pulled              pod/crash-557667c58-zqp5b           Container image "ghcr.io/pranav7796/helpdesk-capstone/backend:d07bca6accc35f0224aaae8c4057076a9c4c9261" already present on machine and can be accessed by the pod
+26s         Normal    Created             pod/crash-557667c58-zqp5b           Container created
+24s         Warning   BackOff             pod/crash-557667c58-zqp5b           Back-off restarting failed container backend in pod crash-557667c58-zqp5b_relaydesk-lab(f237ed82-2b17-4f4c-aaa1-e3dcd5259fe0)
+15s         Normal    BackOff             pod/broken-image-fcf577b6b-67fh7    Back-off pulling image "ghcr.io/pranav7796/helpdesk-capstone/backend:capstone-intentionally-missing"
+15s         Warning   Failed              pod/broken-image-fcf577b6b-67fh7    Error: ImagePullBackOff
+1s          Warning   Unhealthy           pod/readiness-6bb77d88c4-782hm      Readiness probe failed: HTTP probe failed with statuscode: 404
+1s          Warning   Unhealthy           pod/database-74db7d787-5wkxt        Readiness probe failed: Get "http://10.244.0.51:8000/ready": dial tcp 10.244.0.51:8000: connect: connection refused
+
+$ kubectl --context helpdesk-capstone -n relaydesk-lab delete namespace relaydesk-lab --wait=true --timeout=90s
+namespace "relaydesk-lab" deleted
+Warning: deleting cluster-scoped resources, not scoped to the provided namespace
+

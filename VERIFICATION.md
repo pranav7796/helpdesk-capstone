@@ -1,51 +1,53 @@
-# Verification record
+# Verification record — October 16, 2026
 
-Observed on 2026-10-16. Evidence files are under `evidence/`; only actual command and runtime results are called VERIFIED in [PROGRESS.md](PROGRESS.md).
+Target: account `525426877661`, profile `devops-new`, Sydney `ap-southeast-2`. Deadline October 19, 2026. Historical Mumbai/account restriction evidence is retained but does not describe the current Sydney session.
 
-## Application, tests, and containers
+## Current executed checks
 
-- `backend/.venv/bin/pytest -v --junitxml=../evidence/pytest.xml` — **16 passed**, one Starlette deprecation warning; output: [`evidence/pytest.txt`](evidence/pytest.txt). The suite uses an isolated SQLite test database.
-- `npm run build` in `frontend/` — Vite production build passed; output: [`evidence/npm-build.txt`](evidence/npm-build.txt).
-- `docker compose ps` — PostgreSQL, API, frontend all healthy; both app containers run as non-root (UIDs 10001 and 101): [`evidence/docker-compose-ps.txt`](evidence/docker-compose-ps.txt).
-- `python scripts/smoke.py` against the Compose frontend proxy — create/list/read/edit/status/priority/delete all returned expected HTTP codes and persisted data: [`evidence/docker-smoke.txt`](evidence/docker-smoke.txt).
+| Command/check | Actual result | Evidence |
+|---|---|---|
+| `backend/.venv/bin/pytest -v` | 16 passed; 1 Starlette deprecation warning; isolated in-memory SQLite | [output](evidence/sydney/pytest.txt), [JUnit](evidence/sydney/pytest.xml), [screenshot](evidence/sydney/m2-tests-current.png) |
+| `npm run build` | Vite production build passed | [build](evidence/sydney/npm-build.txt) |
+| `docker compose ps` | PostgreSQL/backend/frontend healthy | [status](evidence/sydney/docker-status.txt); [build/non-root screenshot](evidence/m4-compose.png) |
+| `python scripts/smoke.py` | CRUD/status/priority round-trip passed through Compose proxy | [HTTP codes](evidence/sydney/docker-smoke.txt) |
+| Same smoke through Minikube Ingress | CRUD passed through `/api`; demo ticket retained | [HTTP codes](evidence/sydney/ingress-smoke.txt) |
+| Backend `/health`, `/ready`, `/metrics` | UP, READY, actual Prometheus text | [metrics](evidence/sydney/application-metrics.txt) |
+| Minikube Pods/Helm/HPA/PVC | 7 Running/Ready Pods; app replicas 2 each; revision 10 deployed; CPU 4%/70%; PVC Bound | [status](evidence/sydney/minikube-status.txt), [screenshot](evidence/sydney/m8-runtime-current.png) |
+| Prometheus application query | `up=1` | [actual query](evidence/sydney/prometheus-up.json), [Targets screenshot](evidence/m9-prometheus-targets.png) |
+| Grafana | Previously captured populated real HTTP request panel | [dashboard](evidence/m9-grafana-current.png) |
+| Helm lint (local and EKS values) | Both passed; optional icon recommendation only | [EKS render](evidence/sydney/helm-eks-rendered.yaml) |
+| Traefik chart 42.0.0 lint/template | Passed with the EKS values; not installed in AWS | [render](evidence/sydney/traefik-rendered.yaml) |
+| `kubectl kustomize monitoring` | Renders successfully; EKS Grafana uses private Secret reference | [render](evidence/sydney/monitoring-eks-rendered.yaml) |
+| Local chart compatibility | PGDATA/storageClass unchanged for existing local values | Local render assertion passed; no Helm mutation performed |
+| Terraform init / fmt-check / validate | Passed with locked AWS provider 5.100.0 | [init](evidence/sydney/terraform-init.txt), [validate](evidence/sydney/terraform-validate.txt), [screenshot](evidence/sydney/m7-sydney-validation.png) |
+| Reviewed Terraform plan | 28 additions; no changes/destruction | [complete plan](evidence/sydney/terraform-plan.txt), [screenshot](evidence/sydney/m7-sydney-plan.png) |
+| `python scripts/audit-plan.py` | Account/profile/region/admin-CIDR/resource-count/source-snapshot checks all true | [machine audit/hash](evidence/sydney/plan-audit.json) |
+| STS, Sydney EC2/AZ discovery, EKS listing | Correct account assumed role; zones available; EKS listing succeeds | [identity](evidence/sydney/aws-identity.json), [zones](evidence/sydney/aws-zones.json), [clusters](evidence/sydney/aws-clusters.json) |
+| EKS 1.35 availability | STANDARD_SUPPORT, supported through March 27, 2027 | [API response](evidence/sydney/aws-version.json) |
+| Credit read | PAID/ACTIVE; API reports USD120; applicability/expiry/sharing unverified | [API response](evidence/sydney/aws-credits.json) |
+| Price List reads / cost calculation | Current Sydney SKUs; baseline $0.31444/hour before extras | [rates](evidence/sydney/aws-price-summary.json), [calculation](evidence/sydney/cost-estimate.txt) |
 
-## Kubernetes and observability
+Initial sandbox attempts could not start the Terraform provider/test client or access network/Docker sockets. Successful runtime checks ran with approved execution permissions. An initial parallel CLI token refresh returned 429; serialized checks succeeded. No credentials or debug credential logs were captured.
 
-- Minikube profile `helpdesk-capstone`; namespace `relaydesk`; Helm release status `deployed`, revision 10. Backend and frontend each have two Ready replicas, PostgreSQL has a bound 2 GiB PVC, and HPA reports current CPU against its target. Current screenshots: [`m8-pods.png`](evidence/m8-pods.png), [`m8-services.png`](evidence/m8-services.png), [`m8-helm.png`](evidence/m8-helm.png).
-- Ingress at `http://192.168.58.2/` returned the app; `/api/tickets` returned API data. CRUD smoke through ingress passed after backend rollout. Screenshot: [`evidence/relaydesk-minikube.png`](evidence/relaydesk-minikube.png).
-- Prometheus and Grafana Pods ran in Minikube. Prometheus target query returned `up=1`; request counter query returned traffic for API paths. Saved responses: [`prometheus-target.json`](evidence/prometheus-target.json), [`prometheus-requests-query.json`](evidence/prometheus-requests-query.json). Grafana has a populated HTTP requests panel: [`grafana-relaydesk-dashboard.png`](evidence/grafana-relaydesk-dashboard.png). Application exposition: [`application-metrics.txt`](evidence/application-metrics.txt).
-- Helm lint/template validation ran in the CI workflow; local rendered chart: [`helm-rendered.yaml`](evidence/helm-rendered.yaml).
+## CI and immutable release evidence
 
-## Security and CI/CD
+Last checked successful public CI: [38905586773](https://github.com/pranav7796/helpdesk-capstone/actions/runs/38905586773), commit `79b27b9f86d5688876bd7823361e4df9202921a3`. The actual Minikube image release was produced by [38893336596](https://github.com/pranav7796/helpdesk-capstone/actions/runs/38893336596), commit `d07bca6accc35f0224aaae8c4057076a9c4c9261`. Both images built, passed the configured Trivy gates and were pushed to GHCR. [Full release logs](evidence/actions-run.txt), [deployed-image evidence](evidence/live-demo.txt).
 
-- Historical local Trivy reports contain no reported findings after their HIGH/CRITICAL, ignore-unfixed, and scoped exception filters: [`trivy-backend.json`](evidence/trivy-backend.json), [`trivy-frontend.json`](evidence/trivy-frontend.json). Their `Metadata.ImageID` identifies the scanned images; mutable local tags and running Compose images need not match. Primary release evidence is the CI scan of the immutable `d07bca6` images deployed to Minikube. The filters do not establish absence of all vulnerabilities. See [`docs/SECURITY.md`](docs/SECURITY.md).
-- Repository push triggered workflow run [38893336596](https://github.com/pranav7796/helpdesk-capstone/actions/runs/38893336596) for commit `d07bca6accc35f0224aaae8c4057076a9c4c9261`; **all jobs succeeded**. The run passed 16 API tests, the React production build, both image builds, both HIGH/CRITICAL scans, GHCR publication, Helm lint, and manifest rendering. Captured workflow logs and run metadata: [`actions-run.txt`](evidence/actions-run.txt), [`actions-run.json`](evidence/actions-run.json).
-- Published images, pulled by their immutable commit SHA and deployed via Helm revision 10:
-  - `ghcr.io/pranav7796/helpdesk-capstone/backend:d07bca6accc35f0224aaae8c4057076a9c4c9261` (digest `sha256:c8fbaf5265f683753e70332a148aa5d0db4035530da98ccedcbba865f27ba205`)
-  - `ghcr.io/pranav7796/helpdesk-capstone/frontend:d07bca6accc35f0224aaae8c4057076a9c4c9261` (digest `sha256:8023382eb19a37c9a5787efe15036c8e9e11010ef870712ce413b4fc2be73cb1`)
-- Both application Deployments rolled out with two Ready replicas each; the Pods used those exact image references. `python scripts/smoke.py` against the Minikube ingress completed create/list/read/edit/status/priority/delete and retained data in PostgreSQL: [`live-demo.txt`](evidence/live-demo.txt). Final runtime screenshot: [`relaydesk-minikube-sha.png`](evidence/relaydesk-minikube-sha.png).
-- Earlier run [38886640390](https://github.com/pranav7796/helpdesk-capstone/actions/runs/38886640390) failed on four HIGH findings associated with stale upstream Python build SBOM entries and a vulnerable setuptools version. The app dependency was upgraded; exact stale SBOM package URLs are scoped in `.trivyignore.yaml`. The reports from the current local images are clean.
+- Backend: `ghcr.io/pranav7796/helpdesk-capstone/backend:d07bca6accc35f0224aaae8c4057076a9c4c9261`
+- Frontend: `ghcr.io/pranav7796/helpdesk-capstone/frontend:d07bca6accc35f0224aaae8c4057076a9c4c9261`
 
-## Terraform and AWS
+Trivy HIGH/CRITICAL findings with available fixes fail the pipeline; `ignore-unfixed` and exact-PURL exceptions are explicitly disclosed. Zero reported findings is scoped to those images and that policy, not absence of every vulnerability. [Security explanation](docs/SECURITY.md), [backend screenshot](evidence/m6-trivy-backend.png), [frontend screenshot](evidence/m6-trivy-frontend.png).
 
-- `terraform init -input=false` completed successfully with the locked AWS provider; `terraform fmt -check -recursive` and `terraform validate` passed. Validation output: [`evidence/terraform-validate.txt`](evidence/terraform-validate.txt).
-- [`evidence/terraform-plan-refresh-false.txt`](evidence/terraform-plan-refresh-false.txt) is a saved no-refresh, 22-resource dry-run artifact from the earlier successful local plan. It is not a refreshed plan, not an approval artifact, and its cluster-admin CIDR is the documentation placeholder `203.0.113.9/32`. Re-running the plan in this environment later failed because Terraform could not resolve credentials from the AWS profile (`No valid credential sources found`); do not apply the saved artifact.
-- Read-only AWS CLI identity check with `--profile devops-capstone --region ap-south-1` returned account `365382429266`, root ARN. Audit-time EC2 `DescribeAvailabilityZones` returned `OptInRequired`, and EKS `ListClusters` returned `SubscriptionRequiredException`; both exited 254. See [`m7-aws-restriction.png`](evidence/m7-aws-restriction.png) and its [raw output](evidence/audit/m7-aws-restriction.txt). No AWS resources were created; no AWS writes or billing/security changes were made. No destroy was run.
-- The profile did not provide Terraform with usable credentials on replay, and the account's EC2/EKS service restrictions block deployment regardless. AWS infrastructure deployment and cleanup are **not verified**.
+## Troubleshooting recovery
 
-## Repository and evidence scope
+`python scripts/troubleshooting-lab.py` exited 0 after diagnosing and recovering all five failures in the isolated local namespace. Actual HTTP 404/503 probe responses, empty selector endpoints, repeated exit-1 crashes with BackOff events, fixed rollouts and HTTP 200 are captured in [full output](evidence/sydney/troubleshooting.txt) and [recovery screenshot](evidence/sydney/troubleshooting-recovery.png). The namespace was removed; the working release stayed healthy. Initial observation/startup failures are retained and explained in [the troubleshooting guide](docs/TROUBLESHOOTING.md). The invalid-image exercise also exposed a local Minikube registry-DNS failure; cached-image recovery succeeded and no claim is made that node-external DNS was repaired.
 
-- Public repository: https://github.com/pranav7796/helpdesk-capstone
-- The audit baseline, public commit `15b303b`, contains 14 meaningful commits; the history is captured in [`m3-git-history.png`](evidence/m3-git-history.png). An evidence-only audit commit follows this baseline.
-- UI screenshots: [`relaydesk-compose.png`](evidence/relaydesk-compose.png), [`relaydesk-mobile.png`](evidence/relaydesk-mobile.png) at 390 px, [`relaydesk-minikube.png`](evidence/relaydesk-minikube.png), [`relaydesk-minikube-sha.png`](evidence/relaydesk-minikube-sha.png), [`grafana-relaydesk-dashboard.png`](evidence/grafana-relaydesk-dashboard.png).
-- No live AWS screenshots are claimed because no cloud resources were deployed. The saved evidence is genuine local command output and local-cluster screenshots.
+## Original plan and cloud boundary
 
-## Evidence audit and corrections
+The supplied 22-resource `terraform/tfplan` matched its original source snapshot, Sydney and the actual admin CIDR, but lacked account binding/storage/metrics prerequisites. It remains preserved and ignored. The replacement `tfplan-reviewed` enforces the intended account and includes 28 resources. All current `.tf` files match its snapshot. Neither plan has been applied.
 
-The complete required-deliverable mapping is in [EVIDENCE-AUDIT.md](EVIDENCE-AUDIT.md). Missing terminal screenshots, GHCR package pages, successful Actions overview, and Prometheus Targets page were captured automatically. Native terminal screenshots show real commands in a temporary Foot window captured using its own window geometry; browser screenshots show actual pages, with source URLs, timestamps, and SHA-256 hashes in [`evidence/audit/`](evidence/audit/).
+EBS CSI, Pod Identity, Metrics Server, gp3 PVC selection and Traefik are **IMPLEMENTED / locally validated**, not verified on EKS. AWS VPC/EKS/worker/application/ELB deployment and eventual destroy are **NOT VERIFIED** and await explicit approvals. Public reads/planning do not prove write permissions under Organizations SCPs.
 
-The old `evidence/application-metrics.txt` was incorrectly captured from the frontend route and contained HTML. It has been replaced with actual backend `http://127.0.0.1:8000/metrics` output; [`m9-metrics.png`](evidence/m9-metrics.png) shows HTTP 200, Prometheus content type, and real application counters. No application route was changed.
+## Submission boundary
 
-Compose build evidence used `docker compose up --build --no-recreate --no-deps -d --wait backend frontend postgres`. The before/after container-ID assertion passed, all three services stayed healthy, and no running container was recreated. Helm and Kubernetes checks were read-only; release revision remained 10.
-
-The 71.56-second [automated visual walkthrough](evidence/m10-automated-walkthrough.webm), with [captions](evidence/m10-automated-walkthrough.vtt), shows the current app and historical CI/GHCR proof plus live monitoring. It contains no new commit/rollout and no student narration. The required live presentation or accepted recorded commit-to-rollout walkthrough remains pending. Submission-form completion is also unverified. The earlier 91/100 estimate included those 5 pending marks; the audit-adjusted estimate is 86/100, including 2 qualified saved-plan marks.
+Current estimated verified marks: **86/100**, subject to instructor judgment. AWS runtime/destroy (9), teacher-form submission (2), and accepted student presentation (3) remain pending. The existing automated browser video is a current-state walkthrough, not a recording of its original commit-to-rollout event. [Per-criterion checklist](GRADING-CHECKLIST.md), [submission guide](SUBMISSION.md), [cloud approval/runbook](docs/AWS-PLAN.md).

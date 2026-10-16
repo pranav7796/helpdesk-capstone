@@ -1,0 +1,39 @@
+Captured: 2026-10-16 16:51:03 UTC
+Evidence: m7-sydney-plan
++ printf 'REVIEWED SAVED PLAN: no apply has been run.\n'
+REVIEWED SAVED PLAN: no apply has been run.
++ python scripts/audit-plan.py
++ bash scripts/terraform-readonly.sh show -no-color tfplan-reviewed
++ rg '^  # |^Plan:' /tmp/relaydesk-plan-display.txt
+  # aws_eip.nat will be created
+  # aws_eks_addon.ebs_csi will be created
+  # aws_eks_addon.metrics_server will be created
+  # aws_eks_addon.pod_identity will be created
+  # aws_eks_cluster.this will be created
+  # aws_eks_node_group.this will be created
+  # aws_eks_pod_identity_association.ebs_csi will be created
+  # aws_iam_role.cluster will be created
+  # aws_iam_role.ebs_csi will be created
+  # aws_iam_role.nodes will be created
+  # aws_iam_role_policy_attachment.cluster will be created
+  # aws_iam_role_policy_attachment.ebs_csi will be created
+  # aws_iam_role_policy_attachment.nodes["AmazonEC2ContainerRegistryPullOnly"] will be created
+  # aws_iam_role_policy_attachment.nodes["AmazonEKSWorkerNodePolicy"] will be created
+  # aws_iam_role_policy_attachment.nodes["AmazonEKS_CNI_Policy"] will be created
+  # aws_internet_gateway.this will be created
+  # aws_nat_gateway.this will be created
+  # aws_route_table.private will be created
+  # aws_route_table.public will be created
+  # aws_route_table_association.private["ap-southeast-2a"] will be created
+  # aws_route_table_association.private["ap-southeast-2b"] will be created
+  # aws_route_table_association.public["ap-southeast-2a"] will be created
+  # aws_route_table_association.public["ap-southeast-2b"] will be created
+  # aws_subnet.private["ap-southeast-2a"] will be created
+  # aws_subnet.private["ap-southeast-2b"] will be created
+  # aws_subnet.public["ap-southeast-2a"] will be created
+  # aws_subnet.public["ap-southeast-2b"] will be created
+  # aws_vpc.this will be created
+Plan: 28 to add, 0 to change, 0 to destroy.
++ python -c 'import json;d=json.load(open("evidence/sydney/plan-audit.json"));print("SHA256:",d["sha256"]);print("All account/profile/region/CIDR/source checks:",all(d["checks"].values()))'
+SHA256: aa108fbd0b0538cf5a977a750e4de91879b1758c7b4039794835d55046e77f9c
+All account/profile/region/CIDR/source checks: True

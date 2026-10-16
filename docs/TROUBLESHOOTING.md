@@ -1,5 +1,15 @@
 # Kubernetes troubleshooting
 
+## Executed isolated local lab
+
+Run `python scripts/troubleshooting-lab.py` with access to the **local** `helpdesk-capstone` context. It refuses any pre-existing `relaydesk-lab` namespace, creates only disposable lab resources, captures real events/logs and HTTP errors, repairs them, then removes its own namespace. It does not modify the working release or AWS. The two assignment exercise manifests are in `troubleshooting/`.
+
+The verified run is in [`evidence/sydney/troubleshooting.txt`](../evidence/sydney/troubleshooting.txt): image-pull backoff, repeated exit-1 crashes with kubelet BackOff events, selector without endpoints, HTTP 404 readiness failure, and HTTP 503 database readiness failure. All replacement deployments rolled out successfully, the fixed Service returned HTTP 200, and the temporary namespace was deleted.
+
+Two observation/startup failures are retained in the evidence folder. The script initially required a transient literal `CrashLoopBackOff` waiting state, while this cluster kept reporting `Error` with restart increments and BackOff events. It now checks repeated exit-1 crashes plus actual kubelet BackOff events. It also waits for HTTP startup before asserting 404/503; the first attempt hit connection refused during CPU-throttled startup. These fixes did not weaken the application's readiness probe.
+
+The intentionally invalid-image exercise encountered real Minikube registry DNS errors (`192.168.58.1:53: server misbehaving`) before the registry could reject its missing tag. Recovery used the already cached immutable image. This proves diagnosis/recovery of ImagePullBackOff; it does not establish external registry DNS works inside the local node. Host-side GHCR pulls and image preloading remain the local workaround. Previous-container logs were unavailable for one crashed container, so restart counts, current state and BackOff events provide that failure evidence.
+
 Run commands with `kubectl -n relaydesk ...`. Start with current state, pod events, logs, and rollout state before changing resources:
 
 ```sh
