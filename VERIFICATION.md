@@ -67,3 +67,5 @@ Current estimated verified marks: **93/100**, subject to instructor judgment. AW
 - Read-only destroy preview: **28 deletes**, not executed. [Plan](evidence/sydney/terraform-destroy-plan.txt), [audit](evidence/sydney/cleanup-plan-audit.json). Kubernetes-created ELB and data EBS need cleanup before VPC/CSI deletion. [Cleanup review](docs/CLEANUP-REVIEW.md).
 
 Local Compose/Minikube were preserved. Deployment scripts changed; application source and deployed immutable d07 image tags did not. Sensitive Terraform state, kubeconfig and generated passwords remain ignored/private.
+
+Deployment commit `20c2401e206f85d1c2901cead55160c1007bf0e0` passed [CI 38945382171](https://github.com/pranav7796/helpdesk-capstone/actions/runs/38945382171): 16 tests, React/container builds, both Trivy scans, GHCR SHA publication and Helm validation. [Actual metadata](evidence/sydney/actions-deployment.json), [full logs](evidence/sydney/actions-deployment.txt). The earlier evidence-only run 38937333354 failed during GHCR publication with `unknown blob`; the new complete run passed. Deployed d07 images remain unchanged.

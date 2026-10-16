@@ -1,9 +1,9 @@
 {
-  "audited_at_utc": "2026-10-16T18:10:56.903561+00:00",
+  "audited_at_utc": "2026-10-16T18:14:21.330437+00:00",
   "scope": "Every public evidence file; private directory and self-referential inventories excluded",
   "png_count": 53,
   "new_pngs_with_capture_manifest": 48,
-  "file_count": 222,
+  "file_count": 224,
   "errors": [],
   "files": [
     {
@@ -39,7 +39,7 @@
     {
       "path": "evidence/audit/limited-secret-signature-check.json",
       "bytes": 300,
-      "sha256": "30e20d9d75237f645801e9800f82d1c042c6be9696820dcac8c52c47e6c13a78"
+      "sha256": "32ae0466e6a9534dcc51e64dc8ea66f900932390a684099192f6e7f09f2d312b"
     },
     {
       "path": "evidence/audit/m1-health-database.txt",
@@ -563,6 +563,16 @@
       "path": "evidence/sydney/DEPLOYMENT-APPROVAL.md",
       "bytes": 673,
       "sha256": "f50c9ae5057990462e4412faec99ce004e804ba23bed1bcbfe6c6353580b7ff2"
+    },
+    {
+      "path": "evidence/sydney/actions-deployment.json",
+      "bytes": 11523,
+      "sha256": "377d1dde9e29c2e4125db4f2f7321c85b1167d2f01938aa19460d06ceb7940f3"
+    },
+    {
+      "path": "evidence/sydney/actions-deployment.txt",
+      "bytes": 374497,
+      "sha256": "1fed042cc8b9b7fda02e2851d4451e708a9f7307496b5f6ee9ab60b852695381"
     },
     {
       "path": "evidence/sydney/actions-final.json",
