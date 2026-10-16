@@ -1,5 +1,3 @@
-data "aws_availability_zones" "available" { state = "available" }
-
 resource "aws_vpc" "this" {
   cidr_block           = var.vpc_cidr
   enable_dns_support   = true
@@ -11,7 +9,7 @@ resource "aws_internet_gateway" "this" {
   tags   = { Name = "${var.name}-igw", Project = "relaydesk-capstone" }
 }
 locals {
-  azs             = slice(data.aws_availability_zones.available.names, 0, 2)
+  azs             = ["ap-south-1a", "ap-south-1b"]
   public_subnets  = { for i, az in local.azs : az => cidrsubnet(var.vpc_cidr, 8, 100 + i) }
   private_subnets = { for i, az in local.azs : az => cidrsubnet(var.vpc_cidr, 8, i + 1) }
 }
