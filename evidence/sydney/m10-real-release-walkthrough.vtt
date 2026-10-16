@@ -1,0 +1,29 @@
+WEBVTT
+
+1
+00:00:06.141 --> 00:00:20.514
+BEFORE: actual EKS application has the ambiguous High priority label.
+
+2
+00:00:20.514 --> 00:00:32.288
+Actual meaningful frontend change committed and pushed: 04108043563d24dfc2ceb70e050fd56b5e9cc577
+
+3
+00:00:32.288 --> 00:03:07.850
+Watching the actual push-triggered pipeline; no deployment before all gates succeed.
+
+4
+00:03:07.850 --> 00:04:26.336
+All actual CI jobs succeeded: tests, React build, both image/security/publication gates and Helm validation.
+
+5
+00:04:26.336 --> 00:04:44.582
+Actual helm upgrade and kubectl rollout output: new immutable frontend image, two Ready replicas; database/backend preserved.
+
+6
+00:04:44.582 --> 00:05:04.392
+AFTER: actual public EKS application displays High & urgent, proving the image update reached ingress.
+
+7
+00:05:04.392 --> 00:05:04.680
+Actual post-release CRUD/status/priority smoke passed.

@@ -70,7 +70,7 @@ helm upgrade --install traefik traefik --repo https://traefik.github.io/charts \
   -n ingress-system --create-namespace -f k8s/traefik-values-eks.yaml --wait --timeout 10m
 ```
 
-Application images are the known passing, immutable `d07bca6...` release from GHCR. If a later image SHA is deployed, first verify its real green CI scan/push and record the exact new reference. Do not silently use `latest`.
+The EKS backend retains the known passing immutable `d07bca6...` release. The frontend was promoted to green-CI SHA `04108043563d24dfc2ceb70e050fd56b5e9cc577` in the actual recorded release (Helm revision 2); `values-eks.yaml` tracks that verified promotion. If a later image SHA is deployed, first verify its real green CI scan/push and record the exact new reference. Do not silently use `latest`.
 
 Traefik handles standard Kubernetes Ingress routes `/` and `/api`. The legacy EKS Service controller creates a Classic ELB for its LoadBalancer Service; no AWS Load Balancer Controller IAM deployment is needed for this demo. The LB accepts HTTP/80 only from the admin CIDR. Database, backend, monitoring and Traefik dashboard are not separately public. This is a classroom HTTP demo, not a public production service.
 

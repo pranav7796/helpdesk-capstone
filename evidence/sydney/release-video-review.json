@@ -1,0 +1,31 @@
+{
+  "reviewed_at_utc": "2026-10-16T18:24:26.612530+00:00",
+  "file": "evidence/sydney/m10-real-release-walkthrough.webm",
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "vp9",
+        "width": 1440,
+        "height": 1000
+      }
+    ],
+    "format": {
+      "duration": "304.680000"
+    }
+  },
+  "sampled_seconds": [
+    22,
+    190,
+    274,
+    298
+  ],
+  "observations": [
+    "Actual commit/diff readable",
+    "CI page initially in progress; completed result proved by actual API metadata and separate result continuation",
+    "Actual labeled Helm command output: deployed revision 2, full new SHA and 2 ready replicas",
+    "Actual updated EKS page shows High & urgent"
+  ],
+  "limitations": "Automated recording without student narration; instructor acceptance and teacher-form submission not claimed."
+}

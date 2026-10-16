@@ -1,6 +1,6 @@
 # Final submission guide — deadline October 19, 2026
 
-**Not ready for a complete 100-point submission yet.** Local and Sydney cloud deployments are verified. Estimated verified marks: **93/100**, subject to instructor grading. Teacher-form submission (2), accepted student presentation (3), and separately approved cleanup (2) remain pending.
+**Not ready for a complete 100-point submission yet.** Local and Sydney cloud deployments are verified. Estimated verified marks: **96/100**, subject to instructor grading. Teacher-form submission (2) and separately approved cleanup (2) remain pending. The recorded release demo is technically verified; instructor acceptance/student explanation remain external.
 
 Final runner-pin verification also passed: [38936702532](https://github.com/pranav7796/helpdesk-capstone/actions/runs/38936702532), commit `d5ad1ab83c035fd75852e741e3f6482bb92afec5`. [Actual final run metadata](evidence/sydney/actions-final.json). A subsequent commit only records verification evidence.
 
@@ -14,7 +14,7 @@ Final runner-pin verification also passed: [38936702532](https://github.com/pran
 
 New source CI commit `e33b8bdcc61c4fdd658e5827044fe868d9dea1ad` passed tests/builds/Trivy/GHCR and both local/EKS Helm checks. [Actual run metadata](evidence/sydney/actions-run.json), [complete log](evidence/sydney/actions-run.txt). Its published images are available for a later reviewed promotion.
 
-Current Minikube and EKS deployed backend/frontend tags: `d07bca6accc35f0224aaae8c4057076a9c4c9261`. Documentation or infrastructure commits can publish later SHA tags without implying those images were deployed; inspect actual Pod image references.
+Current Minikube images and EKS backend: `d07bca6accc35f0224aaae8c4057076a9c4c9261`. EKS frontend: `04108043563d24dfc2ceb70e050fd56b5e9cc577`, Helm revision 2. Documentation or infrastructure commits can publish later SHA tags without implying those images were deployed; inspect actual Pod image references.
 
 ## PASS/FAIL checklist and primary evidence
 
@@ -31,7 +31,7 @@ PASS means the technical requirement was demonstrated, not that the teacher has 
 | M7 Terraform/AWS | PARTIAL — destroy pending | 13/15 | [Sydney plan](evidence/sydney/m7-sydney-plan.png), [init/fmt/validate](evidence/sydney/m7-sydney-validation.png), [account check](evidence/sydney/m7-sydney-account.png), [plan audit](evidence/sydney/plan-audit.json) |
 | M8 Kubernetes/Helm | PASS on Minikube and EKS | 15/15 | [current Pods/replicas/HPA/PVC/Helm](evidence/sydney/m8-runtime-current.png), [Services/endpoints](evidence/m8-services.png), [Ingress browser](evidence/sydney/m8-ingress-browser.png) |
 | M9 Monitoring | PASS on Minikube and EKS | 10/10 | [metrics curl](evidence/m9-metrics.png), [Targets UP](evidence/sydney/m9-prometheus-targets.png), [populated Grafana](evidence/sydney/m9-grafana-current.png), [up query](evidence/sydney/prometheus-up.json) |
-| M10 Documentation/demo | PARTIAL | 2/5 | [README](README.md), [current-state video](evidence/m10-automated-walkthrough.webm); accepted student presentation/commit-to-rollout recording still pending |
+| M10 Documentation/demo | PASS — recorded technical sequence; instructor acceptance pending | 5/5 | [README](README.md), [actual release recording](evidence/sydney/m10-real-release-walkthrough.webm), [result continuation](evidence/sydney/m10-release-result-continuation.webm), [presentation notes](docs/PRESENTATION.md) |
 | Troubleshooting (README lab) | PASS | Included in presentation scope | [five failures recovered](evidence/sydney/troubleshooting-recovery.png), [complete commands/results](evidence/sydney/troubleshooting.txt) |
 
 Trivy scanned the OS and application packages in both final release images. The gate fails on HIGH/CRITICAL findings with available fixes; `ignore-unfixed` and exact-PURL false-positive exceptions are disclosed. Zero reported findings applies to those images and that scan policy, not absence of every vulnerability.
@@ -55,7 +55,7 @@ All cloud screenshots were captured automatically from real terminal/browser sur
 
 1. **Deployment and cloud evidence are complete.** Keep the environment available for the demonstration.
 2. Review the actual cloud evidence table above and the per-criterion checklist.
-3. Complete the student live presentation or an instructor-accepted recording of a meaningful commit → pipeline → immutable images → Helm rollout → working application. The existing automated video reviews current/historical state and does not replace that event or student explanation.
+3. Review and submit the new actual release recording and result continuation. They show a real new commit, successful CI, SHA-tagged image, Helm rollout and changed EKS application. Use `docs/PRESENTATION.md` to prepare your own explanation. Instructor acceptance is not assumed.
 4. Submit the public repository URL, requested screenshots and presentation through the teacher's actual form. No form submission has been performed by the agent.
 5. After demo/evidence, **separately approve cleanup**. Capture real destroy completion and verify Kubernetes-created ELB/EBS resources as well as Terraform resources are gone. Do not tear down before the demo.
 
@@ -65,4 +65,14 @@ The original screenshot audit and provenance are in [EVIDENCE-AUDIT.md](EVIDENCE
 
 The original `terraform/tfplan` is preserved but superseded by `tfplan-reviewed`; both are ignored. State and generated passwords must stay private. Mumbai SCP restrictions are owner-reported; Sydney apply and deployment succeeded. Minikube has a registry-DNS issue for uncached images; host-side image pulls/preloading are the local workaround. One test-client deprecation warning remains non-failing.
 
-Deployment commit `20c2401e206f85d1c2901cead55160c1007bf0e0` passed [CI 38945382171](https://github.com/pranav7796/helpdesk-capstone/actions/runs/38945382171): 16 tests, React/container builds, both Trivy scans, GHCR SHA publication and Helm validation. [Actual metadata](evidence/sydney/actions-deployment.json), [full logs](evidence/sydney/actions-deployment.txt). The earlier evidence-only run 38937333354 failed during GHCR publication with `unknown blob`; the new complete run passed. Deployed d07 images remain unchanged.
+Deployment commit `20c2401e206f85d1c2901cead55160c1007bf0e0` passed [CI 38945382171](https://github.com/pranav7796/helpdesk-capstone/actions/runs/38945382171): 16 tests, React/container builds, both Trivy scans, GHCR SHA publication and Helm validation. [Actual metadata](evidence/sydney/actions-deployment.json), [full logs](evidence/sydney/actions-deployment.txt). The earlier evidence-only run 38937333354 failed during GHCR publication with `unknown blob`; the new complete run passed. At that deployment checkpoint, d07 images remained unchanged; the subsequent recorded frontend promotion is detailed below.
+
+## Actual recorded release demonstration — October 16
+
+The prior current-state-only video is superseded for M10 by [the continuous 304.68-second release recording](evidence/sydney/m10-real-release-walkthrough.webm) and [separate result-verification continuation](evidence/sydney/m10-release-result-continuation.webm). The latter is explicitly separate: the original GitHub browser UI lagged behind its completed API status. No synthetic status or spliced event is presented.
+
+Actual sequence: commit `04108043563d24dfc2ceb70e050fd56b5e9cc577` clarifies the HIGH/URGENT count; push triggered [CI 38946277016](https://github.com/pranav7796/helpdesk-capstone/actions/runs/38946277016); all jobs passed; Helm upgraded only the EKS frontend to that immutable SHA; release revision 2 and two Ready frontend replicas were verified; the public page displayed “High & urgent”; CRUD passed afterward. Backend, database and Minikube images were preserved.
+
+Evidence: `evidence/sydney/release-demo-manifest.json` records timestamps/events/hash; `release-demo-ci.json` and `.txt` record actual success; `release-demo-commands.txt` contains real commands/results; `release-video-review.json` records codec/dimensions and visual sample review; `.vtt` provides event captions. This is an automated technical recording, without student narration or any claim of instructor acceptance. [Presentation notes and submission text](docs/PRESENTATION.md).
+
+**Estimated demonstrated technical score: 96/100.** The remaining four marks require actual approved cleanup (2) and linking the repository in the teacher's form (2). Neither has occurred. No cleanup or final submission is authorized by a request to increase the score.

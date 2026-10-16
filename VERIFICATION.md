@@ -52,7 +52,7 @@ EBS CSI, Pod Identity and Metrics Server are ACTIVE; Traefik is deployed. The en
 
 ## Submission boundary
 
-Current estimated verified marks: **93/100**, subject to instructor judgment. AWS destroy (2), teacher-form submission (2), and accepted student presentation (3) remain pending. The existing automated browser video is a current-state walkthrough, not a recording of its original commit-to-rollout event. [Per-criterion checklist](GRADING-CHECKLIST.md), [submission guide](SUBMISSION.md), [cloud approval/runbook](docs/AWS-PLAN.md).
+Current estimated verified marks: **96/100**, subject to instructor judgment. AWS destroy (2) and teacher-form submission (2) remain pending. The new recorded technical demonstration is verified, subject to instructor acceptance. The existing automated browser video is a current-state walkthrough, not a recording of its original commit-to-rollout event. [Per-criterion checklist](GRADING-CHECKLIST.md), [submission guide](SUBMISSION.md), [cloud approval/runbook](docs/AWS-PLAN.md).
 
 ## Approved Sydney deployment — executed October 16
 
@@ -66,6 +66,16 @@ Current estimated verified marks: **93/100**, subject to instructor judgment. AW
 - Genuine AWS Console VPC/subnet/EKS captures: `aws-vpc-console.png`, `aws-subnets-console.png`, `aws-eks-console.png` under `evidence/sydney/`; capture manifests record URL/time/hash.
 - Read-only destroy preview: **28 deletes**, not executed. [Plan](evidence/sydney/terraform-destroy-plan.txt), [audit](evidence/sydney/cleanup-plan-audit.json). Kubernetes-created ELB and data EBS need cleanup before VPC/CSI deletion. [Cleanup review](docs/CLEANUP-REVIEW.md).
 
-Local Compose/Minikube were preserved. Deployment scripts changed; application source and deployed immutable d07 image tags did not. Sensitive Terraform state, kubeconfig and generated passwords remain ignored/private.
+Local Compose/Minikube were preserved. At the initial infrastructure deployment checkpoint, deployment scripts changed while application source and d07 tags were unchanged; the later frontend promotion is recorded below. Sensitive Terraform state, kubeconfig and generated passwords remain ignored/private.
 
-Deployment commit `20c2401e206f85d1c2901cead55160c1007bf0e0` passed [CI 38945382171](https://github.com/pranav7796/helpdesk-capstone/actions/runs/38945382171): 16 tests, React/container builds, both Trivy scans, GHCR SHA publication and Helm validation. [Actual metadata](evidence/sydney/actions-deployment.json), [full logs](evidence/sydney/actions-deployment.txt). The earlier evidence-only run 38937333354 failed during GHCR publication with `unknown blob`; the new complete run passed. Deployed d07 images remain unchanged.
+Deployment commit `20c2401e206f85d1c2901cead55160c1007bf0e0` passed [CI 38945382171](https://github.com/pranav7796/helpdesk-capstone/actions/runs/38945382171): 16 tests, React/container builds, both Trivy scans, GHCR SHA publication and Helm validation. [Actual metadata](evidence/sydney/actions-deployment.json), [full logs](evidence/sydney/actions-deployment.txt). The earlier evidence-only run 38937333354 failed during GHCR publication with `unknown blob`; the new complete run passed. At that deployment checkpoint, d07 images remained unchanged; the subsequent recorded frontend promotion is detailed below.
+
+## Actual recorded release demonstration — October 16
+
+The prior current-state-only video is superseded for M10 by [the continuous 304.68-second release recording](evidence/sydney/m10-real-release-walkthrough.webm) and [separate result-verification continuation](evidence/sydney/m10-release-result-continuation.webm). The latter is explicitly separate: the original GitHub browser UI lagged behind its completed API status. No synthetic status or spliced event is presented.
+
+Actual sequence: commit `04108043563d24dfc2ceb70e050fd56b5e9cc577` clarifies the HIGH/URGENT count; push triggered [CI 38946277016](https://github.com/pranav7796/helpdesk-capstone/actions/runs/38946277016); all jobs passed; Helm upgraded only the EKS frontend to that immutable SHA; release revision 2 and two Ready frontend replicas were verified; the public page displayed “High & urgent”; CRUD passed afterward. Backend, database and Minikube images were preserved.
+
+Evidence: `evidence/sydney/release-demo-manifest.json` records timestamps/events/hash; `release-demo-ci.json` and `.txt` record actual success; `release-demo-commands.txt` contains real commands/results; `release-video-review.json` records codec/dimensions and visual sample review; `.vtt` provides event captions. This is an automated technical recording, without student narration or any claim of instructor acceptance. [Presentation notes and submission text](docs/PRESENTATION.md).
+
+**Estimated demonstrated technical score: 96/100.** The remaining four marks require actual approved cleanup (2) and linking the repository in the teacher's form (2). Neither has occurred. No cleanup or final submission is authorized by a request to increase the score.

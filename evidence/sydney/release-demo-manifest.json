@@ -1,0 +1,55 @@
+{
+  "recorded_at_utc": "2026-10-16T18:22:57.497Z",
+  "commit": "04108043563d24dfc2ceb70e050fd56b5e9cc577",
+  "ci_run": "https://github.com/pranav7796/helpdesk-capstone/actions/runs/38946277016",
+  "application_url": "http://af43a3e33d68945548232885350507ff-719760255.ap-southeast-2.elb.amazonaws.com",
+  "frontend_image": "ghcr.io/pranav7796/helpdesk-capstone/frontend:04108043563d24dfc2ceb70e050fd56b5e9cc577",
+  "backend_image_unchanged": "ghcr.io/pranav7796/helpdesk-capstone/backend:d07bca6accc35f0224aaae8c4057076a9c4c9261",
+  "events": [
+    {
+      "seconds": 6.141,
+      "at_utc": "2026-10-16T18:17:59.246Z",
+      "url": "http://af43a3e33d68945548232885350507ff-719760255.ap-southeast-2.elb.amazonaws.com/",
+      "caption": "BEFORE: actual EKS application has the ambiguous High priority label."
+    },
+    {
+      "seconds": 20.514,
+      "at_utc": "2026-10-16T18:18:13.619Z",
+      "url": "https://github.com/pranav7796/helpdesk-capstone/commit/04108043563d24dfc2ceb70e050fd56b5e9cc577",
+      "caption": "Actual meaningful frontend change committed and pushed: 04108043563d24dfc2ceb70e050fd56b5e9cc577"
+    },
+    {
+      "seconds": 32.288,
+      "at_utc": "2026-10-16T18:18:25.393Z",
+      "url": "https://github.com/pranav7796/helpdesk-capstone/actions/runs/38946277016",
+      "caption": "Watching the actual push-triggered pipeline; no deployment before all gates succeed."
+    },
+    {
+      "seconds": 187.85,
+      "at_utc": "2026-10-16T18:21:00.955Z",
+      "url": "https://github.com/pranav7796/helpdesk-capstone/actions/runs/38946277016",
+      "caption": "All actual CI jobs succeeded: tests, React build, both image/security/publication gates and Helm validation."
+    },
+    {
+      "seconds": 266.336,
+      "at_utc": "2026-10-16T18:22:19.441Z",
+      "url": "file:///tmp/relaydesk-evidence-audit/release-rollout.html",
+      "caption": "Actual helm upgrade and kubectl rollout output: new immutable frontend image, two Ready replicas; database/backend preserved."
+    },
+    {
+      "seconds": 284.582,
+      "at_utc": "2026-10-16T18:22:37.687Z",
+      "url": "http://af43a3e33d68945548232885350507ff-719760255.ap-southeast-2.elb.amazonaws.com/?release=04108043563d24dfc2ceb70e050fd56b5e9cc577",
+      "caption": "AFTER: actual public EKS application displays High & urgent, proving the image update reached ingress."
+    },
+    {
+      "seconds": 304.392,
+      "at_utc": "2026-10-16T18:22:57.497Z",
+      "url": "http://af43a3e33d68945548232885350507ff-719760255.ap-southeast-2.elb.amazonaws.com/?release=04108043563d24dfc2ceb70e050fd56b5e9cc577",
+      "caption": "Actual post-release CRUD/status/priority smoke passed."
+    }
+  ],
+  "method": "Unmodified live browser viewport recording. Actual new commit/push, successful CI, Helm rollout and before/after app. Actual command transcript displayed as a clearly labeled local HTML view. Automated demonstration; no student narration or claimed instructor acceptance.",
+  "path": "evidence/sydney/m10-real-release-walkthrough.webm",
+  "sha256": "5767d5277892cba6c3b642ef1b2c0651b2f1f264aa5eb7bc809ebae6ffb7688a"
+}

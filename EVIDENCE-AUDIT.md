@@ -2,14 +2,14 @@
 
 ## Current approved cloud deployment audit — October 16, 2026
 
-**Estimated verified score: 93/100.** This section supersedes all pre-apply conclusions below. Terraform created 28 resources; actual VPC/subnets, ACTIVE EKS, two Ready workers, application CRUD, bound encrypted PostgreSQL disk and monitoring are verified. [Complete criterion mapping](GRADING-CHECKLIST.md), [submission guide](SUBMISSION.md).
+**Estimated verified score: 96/100.** This section supersedes all pre-apply conclusions below. Terraform created 28 resources; actual VPC/subnets, ACTIVE EKS, two Ready workers, application CRUD, bound encrypted PostgreSQL disk and monitoring are verified. [Complete criterion mapping](GRADING-CHECKLIST.md), [submission guide](SUBMISSION.md).
 
-- **53 public PNGs** audited: 28 original, 14 pre-apply Sydney and 11 actual cloud captures. The new cloud screenshots were visually opened and are readable. AWS VPC/subnet/EKS Console pages show genuine resources; terminal captures show actual apply/runtime/network/HTTP/metrics results; browser captures show the real ELB app, Prometheus target UP and populated Grafana panel.
+- **55 public PNGs** audited: 28 original, 14 pre-apply Sydney and 13 actual cloud/release captures. The new cloud screenshots were visually opened and are readable. AWS VPC/subnet/EKS Console pages show genuine resources; terminal captures show actual apply/runtime/network/HTTP/metrics results; browser captures show the real ELB app, Prometheus target UP and populated Grafana panel.
 - New primary cloud files: `aws-vpc-console.png`, `aws-subnets-console.png`, `aws-eks-console.png`, `aws-apply-verified.png`, `aws-network-verified.png`, `eks-pods-helm.png`, `eks-services-ingress.png`, `eks-metrics.png`, `eks-application-browser.png`, `eks-prometheus-targets.png`, `eks-grafana-dashboard.png`, all under `evidence/sydney/`.
 - Source commands/URLs/timestamps/hashes are recorded in Sydney terminal, AWS Console and EKS browser manifests. PNG CRC/decompression, JSON parsing and manifest hashes are checked in `evidence/sydney/inventory.json`. Private state, passwords, kubeconfig and diagnostic captures are excluded from the public inventory and Git.
 - The initial Grafana loading capture was replaced after actual series appeared. The metrics transcript/output filename collision was corrected; pure metrics are `eks-application-metrics.txt`. The empty migration log is supplemented by actual PostgreSQL migration/table queries and successful init-container status.
 - One initial traffic-loop connection reset is retained and disclosed; subsequent bounded-retry verification passed. Existing Compose and Minikube were preserved.
-- **Still missing:** real destroy completion/screenshot (separate approval required), teacher-form receipt, and accepted student presentation of commit → CI → deployment update. No manual screenshot is currently necessary. No resources have been deleted.
+- **Still missing:** real destroy completion/screenshot (separate approval required), teacher-form receipt, and instructor acceptance of the supplied automated release recording. No manual screenshot is currently necessary. No resources have been deleted.
 
 Historical records below describe their capture times; old AWS restriction/missing-resource statements do not describe the now-deployed Sydney account.
 
@@ -108,3 +108,13 @@ The full evidence inventory includes PNG dimension/CRC checks, file sizes, SHA-2
 ## Submission readiness
 
 **Ready to hand in with the AWS limitation disclosed; not complete for every requirement.** No manual screenshot is needed for the working local system. AWS resource screenshots cannot be supplied manually while those resources do not exist. Submit the repository and primary evidence through the teacher's form, and complete the presentation requirement. Keep the existing local stack available for the live presentation.
+
+## Actual recorded release demonstration — October 16
+
+The prior current-state-only video is superseded for M10 by [the continuous 304.68-second release recording](evidence/sydney/m10-real-release-walkthrough.webm) and [separate result-verification continuation](evidence/sydney/m10-release-result-continuation.webm). The latter is explicitly separate: the original GitHub browser UI lagged behind its completed API status. No synthetic status or spliced event is presented.
+
+Actual sequence: commit `04108043563d24dfc2ceb70e050fd56b5e9cc577` clarifies the HIGH/URGENT count; push triggered [CI 38946277016](https://github.com/pranav7796/helpdesk-capstone/actions/runs/38946277016); all jobs passed; Helm upgraded only the EKS frontend to that immutable SHA; release revision 2 and two Ready frontend replicas were verified; the public page displayed “High & urgent”; CRUD passed afterward. Backend, database and Minikube images were preserved.
+
+Evidence: `evidence/sydney/release-demo-manifest.json` records timestamps/events/hash; `release-demo-ci.json` and `.txt` record actual success; `release-demo-commands.txt` contains real commands/results; `release-video-review.json` records codec/dimensions and visual sample review; `.vtt` provides event captions. This is an automated technical recording, without student narration or any claim of instructor acceptance. [Presentation notes and submission text](docs/PRESENTATION.md).
+
+**Estimated demonstrated technical score: 96/100.** The remaining four marks require actual approved cleanup (2) and linking the repository in the teacher's form (2). Neither has occurred. No cleanup or final submission is authorized by a request to increase the score.

@@ -1,0 +1,23 @@
+{
+  "path": "evidence/sydney/m10-release-result-continuation.webm",
+  "sha256": "37f00335b062702f335fd36e7eef326b144fe1cd9b4be4252492d9c69f22e314",
+  "screenshots": [
+    {
+      "screenshot": "evidence/sydney/m10-release-green.png",
+      "http_status": 200,
+      "url": "https://github.com/pranav7796/helpdesk-capstone/actions/runs/38946277016",
+      "captured_at_utc": "2026-10-16T18:23:59.530Z",
+      "sha256": "0550fb1aa9899d348f8e5eb60474f1a7319a3526219414e97a83450d57553dd5",
+      "method": "Actual unmodified browser result page, captured after the original continuous release recording"
+    },
+    {
+      "screenshot": "evidence/sydney/m10-release-updated-app.png",
+      "http_status": 200,
+      "url": "http://af43a3e33d68945548232885350507ff-719760255.ap-southeast-2.elb.amazonaws.com/",
+      "captured_at_utc": "2026-10-16T18:24:14.657Z",
+      "sha256": "cebfe6fe3077fca951d33ab05de1ca941225b760b1f0bb5043ee62531e9ce48c",
+      "method": "Actual unmodified browser result page, captured after the original continuous release recording"
+    }
+  ],
+  "method": "Separate genuine result-verification continuation, not spliced into the original continuous recording."
+}

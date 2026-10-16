@@ -4,9 +4,9 @@ Started 2026-10-16. Confirmed submission deadline: **October 19, 2026** (time of
 
 Source: [teacher repository](https://github.com/Nency-Ravaliya/devops-heros/tree/main/session21-python), commit `a4e39b6b3a54dab1efd386c75ab86bf1d8a23454`. Full rubric and submission instructions: [docs/TEACHER-GRADING.md](docs/TEACHER-GRADING.md).
 
-**Verified estimate: 93/100; potential 100/100 after approved cleanup, teacher-form submission and accepted student presentation.** On October 16 the owner approved the reviewed Sydney deployment including ingress/storage. Terraform successfully created 28 resources; VPC/subnets, ACTIVE EKS/node group, two Ready workers, application CRUD and monitoring were actually verified. Only the instructor awards marks. [Cloud evidence](evidence/sydney/eks-verification-summary.json), [submission guide](SUBMISSION.md).
+**Verified estimate: 96/100; potential 100/100 after approved cleanup and teacher-form submission; the real recorded release demonstration is now evidenced, subject to instructor acceptance.** On October 16 the owner approved the reviewed Sydney deployment including ingress/storage. Terraform successfully created 28 resources; VPC/subnets, ACTIVE EKS/node group, two Ready workers, application CRUD and monitoring were actually verified. Only the instructor awards marks. [Cloud evidence](evidence/sydney/eks-verification-summary.json), [submission guide](SUBMISSION.md).
 
-Run [38893336596](https://github.com/pranav7796/helpdesk-capstone/actions/runs/38893336596) succeeded and its SHA images were deployed to Minikube. This technical sequence is evidenced by logs; no recording of the actual commit-to-rollout event or completed student presentation exists. The new automated browser walkthrough is supplementary. AWS deployment is verified; destroy remains pending separate approval (2 marks).
+Run [38893336596](https://github.com/pranav7796/helpdesk-capstone/actions/runs/38893336596) succeeded and its SHA images were deployed to Minikube. This technical sequence is evidenced by logs; a new continuous recording now captures a real 0410804 commit-to-EKS rollout; its separate result continuation shows completed green CI. No student narration or instructor acceptance is claimed. AWS deployment is verified; destroy remains pending separate approval (2 marks).
 
 Status: VERIFIED means observed in a running system or command output. IMPLEMENTED means configuration exists but the graded runtime result is not yet demonstrated. BLOCKED means an external restriction prevents the requirement. FAILED means an attempted verification failed. NOT STARTED means no work exists.
 
@@ -57,12 +57,12 @@ Status: VERIFIED means observed in a running system or command output. IMPLEMENT
 | M9 | Grafana installed and accessible | 2 | VERIFIED | Running local service and dashboard screenshot |
 | M9 | Live request metrics panel | 3 | VERIFIED | `evidence/grafana-relaydesk-dashboard.png`; traffic query evidence |
 | M10 | Root README explains application | 2 | VERIFIED | `README.md` |
-| M10 | Live or recorded commit → CI → deployment update presentation | 3 | IMPLEMENTED | Historical technical sequence verified in logs. Automated current-state browser walkthrough captured; actual student presentation/live sequence recording still pending |
+| M10 | Live or recorded commit → CI → deployment update presentation | 3 | VERIFIED | `evidence/sydney/m10-real-release-walkthrough.webm`, separate result continuation, CI 38946277016, Helm revision 2 and real post-rollout app/CRUD; automated recording subject to instructor acceptance |
 
 Current Sydney-source verification: [CI 38935978045](https://github.com/pranav7796/helpdesk-capstone/actions/runs/38935978045) succeeded for `e33b8bdcc61c4fdd658e5827044fe868d9dea1ad`, including both image/security/publication gates and both Helm value variants. Real run evidence is under `evidence/sydney/`.
 
 ## Highest-value remaining work
 
 1. Submit the public repository URL and the screenshot checklist in `SUBMISSION.md` to the teacher's form.
-2. Complete the live presentation or an accepted recorded commit → pipeline → deployment walkthrough.
+2. Review and submit the actual release recording with the presentation notes; be prepared to explain the implementation yourself.
 3. After the demonstration, separately approve project cleanup (ticket data will be erased), capture destroy completion, then verify no project ELB/EBS/NAT/EIP resources remain.
