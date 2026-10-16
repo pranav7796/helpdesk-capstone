@@ -14,7 +14,10 @@ services:
       timeout: 3s
       retries: 30
   migrate:
-    build: ./backend
+    build:
+      context: ./backend
+      provenance: false
+      sbom: false
     image: relaydesk-backend:local
     command: [alembic, upgrade, head]
     environment:
@@ -23,7 +26,10 @@ services:
       postgres:
         condition: service_healthy
   backend:
-    build: ./backend
+    build:
+      context: ./backend
+      provenance: false
+      sbom: false
     image: relaydesk-backend:local
     environment:
       DATABASE_URL: postgresql+psycopg://relaydesk:${POSTGRES_PASSWORD:-relaydesk-local-only}@postgres:5432/relaydesk
@@ -37,7 +43,10 @@ services:
       timeout: 3s
       retries: 15
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
+      provenance: false
+      sbom: false
     image: relaydesk-frontend:local
     ports: ['127.0.0.1:3000:8080']
     depends_on:

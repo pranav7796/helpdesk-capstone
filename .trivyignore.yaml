@@ -1,0 +1,13 @@
+vulnerabilities:
+  - id: GHSA-6v7p-g79w-8964
+    purls: [pkg:pypi/msgpack@1.1.2]
+    statement: False positive from the upstream Python image build SBOM; the runtime image contains msgpack 1.2.3, verified by importlib.metadata.
+  - id: CVE-2025-47273
+    purls: [pkg:pypi/setuptools@70.3.0]
+    statement: False positive from the upstream Python image build SBOM; the runtime image contains setuptools 84.0.0, verified by importlib.metadata.
+  - id: CVE-2026-97687
+    purls: [pkg:pypi/urllib3@2.7.0]
+    statement: False positive from the upstream Python image build SBOM; the runtime image contains urllib3 2.8.0, verified by importlib.metadata.
+  - id: CVE-2026-97689
+    purls: [pkg:pypi/urllib3@2.7.0]
+    statement: False positive from the upstream Python image build SBOM; the runtime image contains urllib3 2.8.0, verified by importlib.metadata.

@@ -53,12 +53,16 @@ jobs:
         with:
           context: ./backend
           load: true
+          provenance: false
+          sbom: false
           tags: relaydesk-backend:${{ github.sha }}
       - name: Build frontend image
         uses: docker/build-push-action@v6
         with:
           context: ./frontend
           load: true
+          provenance: false
+          sbom: false
           tags: relaydesk-frontend:${{ github.sha }}
       - name: Scan backend image with Trivy
         uses: aquasecurity/trivy-action@v0.36.0
@@ -68,6 +72,7 @@ jobs:
           vuln-type: os,library
           severity: HIGH,CRITICAL
           ignore-unfixed: true
+          trivyignores: .trivyignore.yaml
           exit-code: '1'
       - name: Scan frontend image with Trivy
         uses: aquasecurity/trivy-action@v0.36.0
@@ -77,6 +82,7 @@ jobs:
           vuln-type: os,library
           severity: HIGH,CRITICAL
           ignore-unfixed: true
+          trivyignores: .trivyignore.yaml
           exit-code: '1'
       - name: Log in to GitHub Container Registry
         if: github.event_name == 'push'
