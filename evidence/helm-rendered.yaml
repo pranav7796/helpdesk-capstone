@@ -1,11 +1,4 @@
 ---
-# Source: relaydesk/templates/namespace.yaml
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: relaydesk
-  labels: { app.kubernetes.io/part-of: relaydesk }
----
 # Source: relaydesk/templates/postgres.yaml
 apiVersion: v1
 kind: Secret
@@ -42,6 +35,17 @@ metadata:
     app.kubernetes.io/instance: relaydesk
     app.kubernetes.io/managed-by: Helm
     helm.sh/chart: relaydesk-1.0.0
+spec:
+  type: ClusterIP
+  selector: { app: relaydesk-backend }
+  ports: [{ name: http, port: 8000, targetPort: 8000 }]
+---
+# Source: relaydesk/templates/backend.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+  namespace: relaydesk
 spec:
   type: ClusterIP
   selector: { app: relaydesk-backend }
@@ -214,10 +218,6 @@ spec:
     metadata:
       labels: { app: relaydesk-postgres }
     spec:
-      securityContext:
-        runAsNonRoot: true
-        runAsUser: 70
-        fsGroup: 70
       containers:
         - name: postgres
           image: "postgres:17-alpine"
@@ -244,22 +244,3 @@ spec:
       volumes:
         - name: data
           persistentVolumeClaim: { claimName: relaydesk-postgres-data }
----
-# Source: relaydesk/templates/ingress.yaml
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: relaydesk
-  namespace: relaydesk
-spec:
-  ingressClassName: nginx
-  rules:
-    -
-      http:
-        paths:
-          - path: /api
-            pathType: Prefix
-            backend: { service: { name: relaydesk-backend, port: { number: 8000 } } }
-          - path: /
-            pathType: Prefix
-            backend: { service: { name: relaydesk-frontend, port: { number: 80 } } }

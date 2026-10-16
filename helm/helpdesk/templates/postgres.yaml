@@ -44,10 +44,6 @@ spec:
     metadata:
       labels: { app: relaydesk-postgres }
     spec:
-      securityContext:
-        runAsNonRoot: true
-        runAsUser: 70
-        fsGroup: 70
       containers:
         - name: postgres
           image: {{ .Values.images.postgres | quote }}
