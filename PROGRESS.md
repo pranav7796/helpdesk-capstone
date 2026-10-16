@@ -14,13 +14,13 @@ Status: VERIFIED means observed in a running system or command output. IMPLEMENT
 | M1 | GET/POST/PUT/DELETE ticket API | 3 | VERIFIED | `evidence/docker-smoke.txt` |
 | M1 | PostgreSQL table managed by Alembic | 2 | VERIFIED | Compose migration service and retained ticket; smoke evidence |
 | M1 | React frontend renders and calls API | 2 | VERIFIED | Compose screenshot and proxied CRUD smoke |
-| M1 | Responsive usable UI | 1 | VERIFIED | `evidence/relaydesk-compose.png` |
+| M1 | Responsive usable UI | 1 | VERIFIED | Desktop and 390 px screenshots: `evidence/relaydesk-compose.png`, `evidence/relaydesk-mobile.png` |
 | M2 | Pytest runs | 3 | VERIFIED | `evidence/pytest.txt` (16 passed) |
 | M2 | At least 5 tests across 3 endpoints | 4 | VERIFIED | `backend/tests/test_tickets.py`, 16 passed |
 | M2 | Isolated test DB | 2 | VERIFIED | SQLite test fixture; `backend/tests/conftest.py` |
 | M2 | Pytest config | 1 | VERIFIED | `backend/pytest.ini` |
 | M3 | Public GitHub repository | 2 | VERIFIED | https://github.com/pranav7796/helpdesk-capstone |
-| M3 | At least 10 meaningful commits | 2 | VERIFIED | `git log`; 12 meaningful commits on `main` |
+| M3 | At least 10 meaningful commits | 2 | VERIFIED | `git log`; 14 meaningful commits on public `main` |
 | M3 | `.gitignore` excludes secrets/build caches | 1 | VERIFIED | Root `.gitignore`; no credentials tracked |
 | M4 | Backend Docker image builds | 2 | VERIFIED | Compose runtime; `evidence/docker-compose-ps.txt` |
 | M4 | Multi-stage frontend image | 3 | VERIFIED | `frontend/Dockerfile`; running Nginx frontend |

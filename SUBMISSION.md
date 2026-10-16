@@ -14,6 +14,7 @@
 
 - Compose screenshot: [`evidence/relaydesk-compose.png`](evidence/relaydesk-compose.png)
 - Minikube app screenshot: [`evidence/relaydesk-minikube.png`](evidence/relaydesk-minikube.png)
+- Responsive 390 px app screenshot: [`evidence/relaydesk-mobile.png`](evidence/relaydesk-mobile.png)
 - Successful SHA image rollout screenshot: [`evidence/relaydesk-minikube-sha.png`](evidence/relaydesk-minikube-sha.png)
 - Commit → passing workflow → Helm rollout → ingress CRUD evidence: [`evidence/live-demo.txt`](evidence/live-demo.txt)
 - Full GitHub Actions logs: [`evidence/actions-run.txt`](evidence/actions-run.txt)

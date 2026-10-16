@@ -36,6 +36,6 @@ Observed on 2026-10-16. Evidence files are under `evidence/`; only actual comman
 ## Repository and evidence scope
 
 - Public repository: https://github.com/pranav7796/helpdesk-capstone
-- Public `main` contains 12 meaningful commits through `d07bca6`.
-- UI screenshots: [`relaydesk-compose.png`](evidence/relaydesk-compose.png), [`relaydesk-minikube.png`](evidence/relaydesk-minikube.png), [`relaydesk-minikube-sha.png`](evidence/relaydesk-minikube-sha.png), [`grafana-relaydesk-dashboard.png`](evidence/grafana-relaydesk-dashboard.png).
+- Public `main` contains 14 meaningful commits through the final evidence update.
+- UI screenshots: [`relaydesk-compose.png`](evidence/relaydesk-compose.png), [`relaydesk-mobile.png`](evidence/relaydesk-mobile.png) at 390 px, [`relaydesk-minikube.png`](evidence/relaydesk-minikube.png), [`relaydesk-minikube-sha.png`](evidence/relaydesk-minikube-sha.png), [`grafana-relaydesk-dashboard.png`](evidence/grafana-relaydesk-dashboard.png).
 - No live AWS screenshots are claimed because no cloud resources were deployed. The saved evidence is genuine local command output and local-cluster screenshots.
