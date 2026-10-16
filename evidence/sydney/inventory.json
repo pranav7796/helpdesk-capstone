@@ -1,9 +1,9 @@
 {
-  "audited_at_utc": "2026-10-16T16:56:25.178649+00:00",
+  "audited_at_utc": "2026-10-16T17:02:49.392650+00:00",
   "scope": "Every evidence file except this self-referential inventory file",
-  "png_count": 39,
-  "new_pngs_with_capture_manifest": 34,
-  "file_count": 143,
+  "png_count": 42,
+  "new_pngs_with_capture_manifest": 37,
+  "file_count": 154,
   "errors": [],
   "files": [
     {
@@ -39,7 +39,7 @@
     {
       "path": "evidence/audit/limited-secret-signature-check.json",
       "bytes": 300,
-      "sha256": "fa1fe75f69748ea2159ce9db4422cc37a74529d0c470d54516e3227e373a523b"
+      "sha256": "d651d255083e8ac4150c586fe5dea8ac6a3494a27ea001a83aca14a7962baabc"
     },
     {
       "path": "evidence/audit/m1-health-database.txt",
@@ -555,6 +555,16 @@
       "capture_provenance": "Historical capture from earlier observed session; no new capture manifest"
     },
     {
+      "path": "evidence/sydney/actions-run.json",
+      "bytes": 7742,
+      "sha256": "27a6038b247577166e77114fea66740d7842facbe5a9e6ac921fb9c920a0d809"
+    },
+    {
+      "path": "evidence/sydney/actions-run.txt",
+      "bytes": 375191,
+      "sha256": "f8c67285d0bef6fb2d4fadaf32c16d0789a7851cb3c3724cc5f093ee155b7e78"
+    },
+    {
       "path": "evidence/sydney/application-metrics.txt",
       "bytes": 16402,
       "sha256": "18014fb50fa9b155299e1869ea665084cde11ecef46529599e9398a4c5446516"
@@ -620,9 +630,24 @@
       "sha256": "9ea1ca0167df69dad3b01526be7b83038a42c72587f64206df1f4353ffd0aa4a"
     },
     {
+      "path": "evidence/sydney/aws-running-vcpu.json",
+      "bytes": 504,
+      "sha256": "3075ac41c780f2480c6ad3a7137b95133a9e1ae3d4e66efa518ab7fcf1a31eb0"
+    },
+    {
       "path": "evidence/sydney/aws-version.json",
       "bytes": 818,
       "sha256": "fe350971f807fbeb274cc72e30e0f1365dc6f1b7d27190071b10de1c0d22c39c"
+    },
+    {
+      "path": "evidence/sydney/aws-worker-offerings.json",
+      "bytes": 769,
+      "sha256": "a38fc296a6980bbe6d06a78ab6134573fcd6f5d9f443d7f7f86c4a4984ce6710"
+    },
+    {
+      "path": "evidence/sydney/aws-worker-quota.json",
+      "bytes": 1274,
+      "sha256": "0883dd17c523e47dab15c3763ec8fc14905d872f807cec8250a095c60c6a34b0"
     },
     {
       "path": "evidence/sydney/aws-zones.json",
@@ -631,8 +656,8 @@
     },
     {
       "path": "evidence/sydney/browser-capture-manifest.json",
-      "bytes": 2019,
-      "sha256": "c5e0619ee2694c1d5d1348c3e1d9e02515773b14a912fd0897cc40adf7e2277b"
+      "bytes": 3848,
+      "sha256": "f4df333de05a112eea6f03cd18d205bcdfcddfbe9155e8235f49ed2c8e03933c"
     },
     {
       "path": "evidence/sydney/cost-estimate.txt",
@@ -693,6 +718,54 @@
       "height": 1100,
       "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
       "visual_review": "Accept: actual HTTP-200 localhost:3000 app page; source URL in capture manifest.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/sydney/m5-actions-success-page.txt",
+      "bytes": 2699,
+      "sha256": "e1250c9be90f925833601141d99e462b98d87ff8802eac9a73e305881d05de58"
+    },
+    {
+      "path": "evidence/sydney/m5-actions-success.png",
+      "bytes": 127238,
+      "sha256": "3d004b6b21dce8b7cbf0ebc2b3b2d79803abb88367fbdbd88b9840bd69777d1d",
+      "width": 1440,
+      "height": 1100,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept: actual public green GitHub Actions overview, branch/commit, and successful jobs.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/sydney/m5-ghcr-backend-page.txt",
+      "bytes": 5198,
+      "sha256": "eb339266b1d0b08baadf74e890d907c6863acdc4dee79b9d0e373537f74e8349"
+    },
+    {
+      "path": "evidence/sydney/m5-ghcr-backend.png",
+      "bytes": 132857,
+      "sha256": "9cd3010b54de4c6bac39b3a579ecbe2e15ee519a83f8f3660c48c94ddeaffada",
+      "width": 1440,
+      "height": 1100,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept: actual public backend package and full immutable SHA tags readable.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/sydney/m5-ghcr-frontend-page.txt",
+      "bytes": 5233,
+      "sha256": "397a21cd4dfa50ab2ec5777c29a6b98106911ff640c60e1048a9ca4fd89207c4"
+    },
+    {
+      "path": "evidence/sydney/m5-ghcr-frontend.png",
+      "bytes": 133423,
+      "sha256": "9f830a4ab14b6c11a781c5be7034ebf1eeb06af82b54c7bc27bd52509737a1ee",
+      "width": 1440,
+      "height": 1100,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept: actual public frontend package and full immutable SHA tags readable.",
       "capture_manifest_hash_matches": true,
       "capture_provenance": "Audit capture with command/URL and timestamp"
     },

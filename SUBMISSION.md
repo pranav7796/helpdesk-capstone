@@ -5,10 +5,12 @@
 ## Submit these links
 
 - Public repository: https://github.com/pranav7796/helpdesk-capstone
-- Latest checked green pipeline: https://github.com/pranav7796/helpdesk-capstone/actions/runs/38905586773
+- Verified Sydney-source green pipeline: https://github.com/pranav7796/helpdesk-capstone/actions/runs/38935978045
 - Pipeline that produced the actual Minikube release: https://github.com/pranav7796/helpdesk-capstone/actions/runs/38893336596
 - Public GHCR [backend](https://github.com/pranav7796/helpdesk-capstone/pkgs/container/helpdesk-capstone%2Fbackend) and [frontend](https://github.com/pranav7796/helpdesk-capstone/pkgs/container/helpdesk-capstone%2Ffrontend).
 - [Every grading criterion](GRADING-CHECKLIST.md), [scorecard](PROGRESS.md), [executed checks](VERIFICATION.md).
+
+New source CI commit `e33b8bdcc61c4fdd658e5827044fe868d9dea1ad` passed tests/builds/Trivy/GHCR and both local/EKS Helm checks. [Actual run metadata](evidence/sydney/actions-run.json), [complete log](evidence/sydney/actions-run.txt). Its published images are available for a later reviewed promotion.
 
 Current deployed backend/frontend tags: `d07bca6accc35f0224aaae8c4057076a9c4c9261`. Documentation or infrastructure commits can publish later SHA tags without implying those images were deployed; inspect actual Pod image references.
 
@@ -22,7 +24,7 @@ PASS means the technical requirement was demonstrated, not that the teacher has 
 | M2 Tests | PASS | 10/10 | [16 passing tests](evidence/sydney/m2-tests-current.png), [JUnit](evidence/sydney/pytest.xml) |
 | M3 Git/GitHub | PARTIAL | 3/5 | [10+ meaningful commits](evidence/m3-git-history.png); public repo exists, teacher-form receipt missing |
 | M4 Docker | PASS | 10/10 | [build/healthy/non-root](evidence/m4-compose.png), [localhost browser](evidence/sydney/m4-compose-browser.png), [current status](evidence/sydney/docker-status.txt) |
-| M5 CI/CD | PASS (existing green release) | 15/15 | [green Actions](evidence/m5-actions-success.png), [backend SHA tags](evidence/m5-ghcr-backend.png), [frontend SHA tags](evidence/m5-ghcr-frontend.png), [release logs](evidence/actions-run.txt) |
+| M5 CI/CD | PASS | 15/15 | [green Actions](evidence/sydney/m5-actions-success.png), [backend SHA tags](evidence/sydney/m5-ghcr-backend.png), [frontend SHA tags](evidence/sydney/m5-ghcr-frontend.png), [release logs](evidence/actions-run.txt) |
 | M6 Trivy | PASS with disclosed scan policy | 5/5 | [backend](evidence/m6-trivy-backend.png), [frontend](evidence/m6-trivy-frontend.png), [CVE explanation](docs/SECURITY.md) |
 | M7 Terraform/AWS | PARTIAL — real deployment/destroy missing | 6/15 | [Sydney plan](evidence/sydney/m7-sydney-plan.png), [init/fmt/validate](evidence/sydney/m7-sydney-validation.png), [account check](evidence/sydney/m7-sydney-account.png), [plan audit](evidence/sydney/plan-audit.json) |
 | M8 Kubernetes/Helm | PASS on Minikube; EKS pending | 15/15 | [current Pods/replicas/HPA/PVC/Helm](evidence/sydney/m8-runtime-current.png), [Services/endpoints](evidence/m8-services.png), [Ingress browser](evidence/sydney/m8-ingress-browser.png) |

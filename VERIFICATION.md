@@ -31,7 +31,7 @@ Initial sandbox attempts could not start the Terraform provider/test client or a
 
 ## CI and immutable release evidence
 
-Last checked successful public CI: [38905586773](https://github.com/pranav7796/helpdesk-capstone/actions/runs/38905586773), commit `79b27b9f86d5688876bd7823361e4df9202921a3`. The actual Minikube image release was produced by [38893336596](https://github.com/pranav7796/helpdesk-capstone/actions/runs/38893336596), commit `d07bca6accc35f0224aaae8c4057076a9c4c9261`. Both images built, passed the configured Trivy gates and were pushed to GHCR. [Full release logs](evidence/actions-run.txt), [deployed-image evidence](evidence/live-demo.txt).
+Current Sydney-source CI [38935978045](https://github.com/pranav7796/helpdesk-capstone/actions/runs/38935978045), commit `e33b8bdcc61c4fdd658e5827044fe868d9dea1ad`, completed with all jobs successful, including local/EKS Helm lint/render. [Run metadata](evidence/sydney/actions-run.json), [complete logs](evidence/sydney/actions-run.txt), [green screenshot](evidence/sydney/m5-actions-success.png). The actual Minikube image release was produced by [38893336596](https://github.com/pranav7796/helpdesk-capstone/actions/runs/38893336596), commit `d07bca6accc35f0224aaae8c4057076a9c4c9261`. Both images built, passed the configured Trivy gates and were pushed to GHCR. [Full release logs](evidence/actions-run.txt), [deployed-image evidence](evidence/live-demo.txt).
 
 - Backend: `ghcr.io/pranav7796/helpdesk-capstone/backend:d07bca6accc35f0224aaae8c4057076a9c4c9261`
 - Frontend: `ghcr.io/pranav7796/helpdesk-capstone/frontend:d07bca6accc35f0224aaae8c4057076a9c4c9261`
@@ -41,6 +41,8 @@ Trivy HIGH/CRITICAL findings with available fixes fail the pipeline; `ignore-unf
 ## Troubleshooting recovery
 
 `python scripts/troubleshooting-lab.py` exited 0 after diagnosing and recovering all five failures in the isolated local namespace. Actual HTTP 404/503 probe responses, empty selector endpoints, repeated exit-1 crashes with BackOff events, fixed rollouts and HTTP 200 are captured in [full output](evidence/sydney/troubleshooting.txt) and [recovery screenshot](evidence/sydney/troubleshooting-recovery.png). The namespace was removed; the working release stayed healthy. Initial observation/startup failures are retained and explained in [the troubleshooting guide](docs/TROUBLESHOOTING.md). The invalid-image exercise also exposed a local Minikube registry-DNS failure; cached-image recovery succeeded and no claim is made that node-external DNS was repaired.
+
+The successful CI log reported Ubuntu 24.04.5 and announced that `ubuntu-latest` starts migrating to Ubuntu 26 on October 19, the deadline. The workflow is now pinned to `ubuntu-24.04` to retain the verified runner OS; a final run verifies that pin. Existing action Node-runtime deprecation annotations are non-failing.
 
 ## Original plan and cloud boundary
 

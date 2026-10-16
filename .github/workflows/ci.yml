@@ -12,7 +12,7 @@ concurrency:
   cancel-in-progress: true
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -41,7 +41,7 @@ jobs:
           path: pytest-results.xml
   build-and-scan:
     needs: test
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       contents: read
       packages: write
@@ -107,7 +107,7 @@ jobs:
           echo 'Trivy checked operating system and application-library CVEs in both built container images. The gate fails on HIGH or CRITICAL findings with available fixes, subject to the documented exact-package exceptions; ignore-unfixed is enabled. Inspect the report before release.' >> "$GITHUB_STEP_SUMMARY"
   helm-validation:
     needs: test
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: azure/setup-helm@v4

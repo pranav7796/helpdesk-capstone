@@ -3,6 +3,7 @@ from datetime import datetime, timezone
 import json
 from pathlib import Path
 import subprocess
+import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "evidence" / "sydney"
@@ -45,7 +46,16 @@ if __name__ == "__main__":
         "project-vpcs": ["ec2", "describe-vpcs", "--filters", "Name=tag:Project,Values=relaydesk-capstone"],
         "version": ["eks", "describe-cluster-versions", "--cluster-versions", "1.35"],
         "credits": ["freetier", "get-account-plan-state"],
+        "worker-quota": ["service-quotas", "get-service-quota", "--service-code", "ec2", "--quota-code", "L-1216C47A"],
+        "worker-offerings": ["ec2", "describe-instance-type-offerings", "--location-type", "availability-zone", "--filters", "Name=instance-type,Values=t3.medium", "Name=location,Values=ap-southeast-2a,ap-southeast-2b"],
+        "running-vcpu": ["ec2", "describe-instances", "--filters", "Name=instance-state-name,Values=pending,running", "--query", "Reservations[].Instances[].{Type:InstanceType,Cores:CpuOptions.CoreCount,Threads:CpuOptions.ThreadsPerCore,Lifecycle:InstanceLifecycle}"],
     }
+    if len(sys.argv) > 1:
+        for name in sys.argv[1:]:
+            if name not in checks:
+                raise SystemExit("Unknown read-only check: " + name)
+            invoke(name, checks[name])
+        raise SystemExit(0)
     # These processes share a refreshable CLI login cache; serialize to avoid
     # concurrent token-refresh requests and OAuth throttling.
     for item in checks.items():

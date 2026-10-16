@@ -1,0 +1,34 @@
+{
+  "command": [
+    "aws",
+    "ec2",
+    "describe-instance-type-offerings",
+    "--location-type",
+    "availability-zone",
+    "--filters",
+    "Name=instance-type,Values=t3.medium",
+    "Name=location,Values=ap-southeast-2a,ap-southeast-2b",
+    "--profile",
+    "devops-new",
+    "--region",
+    "ap-southeast-2",
+    "--no-cli-pager"
+  ],
+  "captured_at_utc": "2026-10-16T17:01:48.875271+00:00",
+  "exit_code": 0,
+  "stderr": "",
+  "response": {
+    "InstanceTypeOfferings": [
+      {
+        "InstanceType": "t3.medium",
+        "LocationType": "availability-zone",
+        "Location": "ap-southeast-2a"
+      },
+      {
+        "InstanceType": "t3.medium",
+        "LocationType": "availability-zone",
+        "Location": "ap-southeast-2b"
+      }
+    ]
+  }
+}

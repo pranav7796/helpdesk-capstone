@@ -1,0 +1,20 @@
+{
+  "command": [
+    "aws",
+    "ec2",
+    "describe-instances",
+    "--filters",
+    "Name=instance-state-name,Values=pending,running",
+    "--query",
+    "Reservations[].Instances[].{Type:InstanceType,Cores:CpuOptions.CoreCount,Threads:CpuOptions.ThreadsPerCore,Lifecycle:InstanceLifecycle}",
+    "--profile",
+    "devops-new",
+    "--region",
+    "ap-southeast-2",
+    "--no-cli-pager"
+  ],
+  "captured_at_utc": "2026-10-16T17:01:52.721239+00:00",
+  "exit_code": 0,
+  "stderr": "",
+  "response": []
+}

@@ -1,0 +1,108 @@
+Skip to content
+Navigation Menu
+Platform
+Solutions
+Resources
+Open Source
+Enterprise
+Pricing
+Search
+/
+Sign in
+Sign up
+pranav7796
+helpdesk-capstone
+Repository navigation
+Code
+Issues
+Pull requests
+Actions
+Projects
+Security and quality
+Insights
+Relaydesk quality, security and release
+feat(eks): prepare guarded Sydney deployment and verify failure recovery #7
+Sign in to view logs
+Summary
+All jobs
+test
+build-and-scan
+helm-validation
+Run details
+Usage
+Workflow file
+Lockfile
+Triggered via push 
+pranav7796
+pushed
+ e33b8bd
+main
+Status
+Success
+Total duration
+2m 42s
+Artifacts
+3
+ci.yml
+on: push
+test
+26s
+build-and-scan
+2m 9s
+helm-validation
+8s
+
+Oh hello! Nice to see you.
+
+Made with ❤️ by humans.txt
+
+Annotations
+3 warnings and 3 notices
+test
+Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-node@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+Show more
+
+
+helm-validation
+Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, azure/setup-helm@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+Show more
+
+
+build-and-scan
+Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, docker/build-push-action@v6, docker/login-action@v3, docker/setup-buildx-action@v3. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+Show more
+
+
+test
+"The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+Show more
+
+
+helm-validation
+"The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+Show more
+
+
+build-and-scan
+"The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+Show more
+Artifacts
+Produced during runtime
+Name	Size	Digest	
+
+pranav7796~helpdesk-capstone~N1ZHZX.dockerbuild
+	38.8 KB	
+sha256:b0cba0aad077512b0de75b3f716546be564fb8cafb22363a8501f487691f4ed2
+	
+
+
+pranav7796~helpdesk-capstone~WW19JT.dockerbuild
+	41 KB	
+sha256:1fff72f0c0344f9c48af02fa0278679eabe3e11a62d8e60633bdf3b26556594c
+	
+
+
+pytest-results
+	627 Bytes	
+sha256:03f1d7e7b326919eb23e4072077f186a83047b8143abbea9cd96c6adc47acf1f
+	

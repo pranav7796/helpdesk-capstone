@@ -59,6 +59,8 @@ Status: VERIFIED means observed in a running system or command output. IMPLEMENT
 | M10 | Root README explains application | 2 | VERIFIED | `README.md` |
 | M10 | Live or recorded commit → CI → deployment update presentation | 3 | IMPLEMENTED | Historical technical sequence verified in logs. Automated current-state browser walkthrough captured; actual student presentation/live sequence recording still pending |
 
+Current Sydney-source verification: [CI 38935978045](https://github.com/pranav7796/helpdesk-capstone/actions/runs/38935978045) succeeded for `e33b8bdcc61c4fdd658e5827044fe868d9dea1ad`, including both image/security/publication gates and both Helm value variants. Real run evidence is under `evidence/sydney/`.
+
 ## Highest-value remaining work
 
 1. Submit the public repository URL and the screenshot checklist in `SUBMISSION.md` to the teacher's form.

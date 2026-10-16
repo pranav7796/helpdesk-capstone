@@ -38,5 +38,35 @@
     "captured_at_utc": "2026-10-16T16:54:56.687Z",
     "sha256": "5ba4f72e885e39e7b9383004ba01294e18cf9bb8b8e52223d36ccddc8f185912",
     "method": "Unmodified Playwright screenshot of the actual live browser page"
+  },
+  {
+    "screenshot": "evidence/sydney/m5-ghcr-backend.png",
+    "requested_url": "https://github.com/users/pranav7796/packages/container/package/helpdesk-capstone%2Fbackend",
+    "response_url": "https://github.com/pranav7796/helpdesk-capstone/pkgs/container/helpdesk-capstone%2Fbackend",
+    "http_status": 200,
+    "title": "Package helpdesk-capstone/backend · GitHub",
+    "captured_at_utc": "2026-10-16T17:02:04.677Z",
+    "sha256": "9cd3010b54de4c6bac39b3a579ecbe2e15ee519a83f8f3660c48c94ddeaffada",
+    "method": "Unmodified Playwright screenshot of the actual live browser page"
+  },
+  {
+    "screenshot": "evidence/sydney/m5-ghcr-frontend.png",
+    "requested_url": "https://github.com/users/pranav7796/packages/container/package/helpdesk-capstone%2Ffrontend",
+    "response_url": "https://github.com/pranav7796/helpdesk-capstone/pkgs/container/helpdesk-capstone%2Ffrontend",
+    "http_status": 200,
+    "title": "Package helpdesk-capstone/frontend · GitHub",
+    "captured_at_utc": "2026-10-16T17:02:13.701Z",
+    "sha256": "9f830a4ab14b6c11a781c5be7034ebf1eeb06af82b54c7bc27bd52509737a1ee",
+    "method": "Unmodified Playwright screenshot of the actual live browser page"
+  },
+  {
+    "screenshot": "evidence/sydney/m5-actions-success.png",
+    "requested_url": "https://github.com/pranav7796/helpdesk-capstone/actions/runs/38935978045",
+    "response_url": "https://github.com/pranav7796/helpdesk-capstone/actions/runs/38935978045",
+    "http_status": 200,
+    "title": "feat(eks): prepare guarded Sydney deployment and verify failure recovery · pranav7796/helpdesk-capstone@e33b8bd · GitHub",
+    "captured_at_utc": "2026-10-16T17:02:22.208Z",
+    "sha256": "3d004b6b21dce8b7cbf0ebc2b3b2d79803abb88367fbdbd88b9840bd69777d1d",
+    "method": "Unmodified Playwright screenshot of the actual live browser page"
   }
 ]
