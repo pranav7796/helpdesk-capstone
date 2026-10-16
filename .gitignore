@@ -1,0 +1,21 @@
+# Local secrets and state
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.tfvars
+!terraform.tfvars.example
+.terraform/
+*.tfstate*
+*.tfplan
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+node_modules/
+dist/
+*.db
+.DS_Store
+evidence/private/
