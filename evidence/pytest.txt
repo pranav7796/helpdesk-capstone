@@ -1,0 +1,34 @@
+============================= test session starts ==============================
+platform linux -- Python 3.14.7, pytest-9.1.1, pluggy-1.7.0 -- /home/pranav/Projects/helpdesk-capstone/backend/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /home/pranav/Projects/helpdesk-capstone/backend
+configfile: pytest.ini
+testpaths: tests
+plugins: anyio-4.15.1
+collecting ... collected 16 items
+
+tests/test_tickets.py::test_health_and_readiness PASSED                  [  6%]
+tests/test_tickets.py::test_create_and_read_ticket PASSED                [ 12%]
+tests/test_tickets.py::test_list_filters_by_status PASSED                [ 18%]
+tests/test_tickets.py::test_edit_changes_subject_status_and_priority PASSED [ 25%]
+tests/test_tickets.py::test_delete_removes_persisted_ticket PASSED       [ 31%]
+tests/test_tickets.py::test_missing_ticket_returns_404[get] PASSED       [ 37%]
+tests/test_tickets.py::test_missing_ticket_returns_404[put] PASSED       [ 43%]
+tests/test_tickets.py::test_missing_ticket_returns_404[delete] PASSED    [ 50%]
+tests/test_tickets.py::test_invalid_input_does_not_persist[subject-   ] PASSED [ 56%]
+tests/test_tickets.py::test_invalid_input_does_not_persist[priority-INVALID] PASSED [ 62%]
+tests/test_tickets.py::test_invalid_input_does_not_persist[status-CLOSED] PASSED [ 68%]
+tests/test_tickets.py::test_invalid_input_does_not_persist[requester-] PASSED [ 75%]
+tests/test_tickets.py::test_invalid_input_does_not_persist[subject-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] PASSED [ 81%]
+tests/test_tickets.py::test_invalid_update_preserves_ticket PASSED       [ 87%]
+tests/test_tickets.py::test_metrics_exposes_real_request_counter PASSED  [ 93%]
+tests/test_tickets.py::test_readiness_returns_503_on_database_failure PASSED [100%]
+
+=============================== warnings summary ===============================
+.venv/lib/python3.14/site-packages/fastapi/testclient.py:1
+  /home/pranav/Projects/helpdesk-capstone/backend/.venv/lib/python3.14/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /home/pranav/Projects/helpdesk-capstone/evidence/pytest.xml -
+======================== 16 passed, 1 warning in 0.30s =========================
