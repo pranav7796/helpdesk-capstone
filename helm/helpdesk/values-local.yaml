@@ -1,0 +1,17 @@
+images:
+  backend: relaydesk-backend:local
+  frontend: relaydesk-frontend:local
+  postgres: postgres:17-alpine
+imagePullPolicy: Never
+namespace: relaydesk
+database:
+  password: relaydesk-local-only
+hpa:
+  enabled: true
+ingress:
+  enabled: true
+  className: nginx
+  host: ""
+monitoring:
+  serviceMonitor:
+    enabled: false

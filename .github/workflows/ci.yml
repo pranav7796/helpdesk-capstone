@@ -1,0 +1,109 @@
+name: Relaydesk quality, security and release
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: relaydesk-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+          cache: pip
+          cache-dependency-path: backend/requirements*.txt
+      - name: Install backend and test dependencies
+        run: pip install -r requirements-dev.txt
+        working-directory: backend
+      - name: Run isolated API tests
+        run: pytest -v --junitxml=../pytest-results.xml
+        working-directory: backend
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - name: Install and build React frontend
+        run: npm ci && npm run build
+        working-directory: frontend
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pytest-results
+          path: pytest-results.xml
+  build-and-scan:
+    needs: test
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+      - name: Build backend image
+        uses: docker/build-push-action@v6
+        with:
+          context: ./backend
+          load: true
+          tags: relaydesk-backend:${{ github.sha }}
+      - name: Build frontend image
+        uses: docker/build-push-action@v6
+        with:
+          context: ./frontend
+          load: true
+          tags: relaydesk-frontend:${{ github.sha }}
+      - name: Scan backend image with Trivy
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          image-ref: relaydesk-backend:${{ github.sha }}
+          format: table
+          vuln-type: os,library
+          severity: HIGH,CRITICAL
+          ignore-unfixed: true
+          exit-code: '1'
+      - name: Scan frontend image with Trivy
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          image-ref: relaydesk-frontend:${{ github.sha }}
+          format: table
+          vuln-type: os,library
+          severity: HIGH,CRITICAL
+          ignore-unfixed: true
+          exit-code: '1'
+      - name: Log in to GitHub Container Registry
+        if: github.event_name == 'push'
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish immutable SHA-tagged images
+        if: github.event_name == 'push'
+        env:
+          IMAGE_PREFIX: ghcr.io/${{ github.repository }}
+          SHA: ${{ github.sha }}
+        run: |
+          docker tag "relaydesk-backend:$SHA" "$IMAGE_PREFIX/backend:$SHA"
+          docker tag "relaydesk-frontend:$SHA" "$IMAGE_PREFIX/frontend:$SHA"
+          docker push "$IMAGE_PREFIX/backend:$SHA"
+          docker push "$IMAGE_PREFIX/frontend:$SHA"
+      - name: Save Trivy explanation for the demo
+        if: always()
+        run: |
+          echo 'Trivy checked operating system and application-library CVEs in both built container images. The gate fails the job when an unfixed HIGH or CRITICAL finding is present; inspect the report before release.' >> "$GITHUB_STEP_SUMMARY"
+  helm-validation:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: azure/setup-helm@v4
+      - run: helm lint helm/helpdesk -f helm/helpdesk/values-local.yaml
+      - run: helm template relaydesk helm/helpdesk -n relaydesk -f helm/helpdesk/values-local.yaml > /tmp/relaydesk-rendered.yaml

@@ -1,0 +1,15 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: relaydesk-backend
+  namespace: relaydesk
+  labels: { release: kube-prometheus-stack }
+spec:
+  selector:
+    matchLabels: { app: relaydesk-backend }
+  namespaceSelector:
+    matchNames: [relaydesk]
+  endpoints:
+    - port: http
+      path: /metrics
+      interval: 15s
