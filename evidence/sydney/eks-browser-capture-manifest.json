@@ -1,0 +1,29 @@
+[
+  {
+    "screenshot": "evidence/sydney/eks-application-browser.png",
+    "requested_url": "http://af43a3e33d68945548232885350507ff-719760255.ap-southeast-2.elb.amazonaws.com",
+    "response_url": "http://af43a3e33d68945548232885350507ff-719760255.ap-southeast-2.elb.amazonaws.com/",
+    "http_status": 200,
+    "captured_at_utc": "2026-10-16T17:57:57.328Z",
+    "sha256": "66f7f5be4e2920af42a6b6793dc39230d4cb0f2f1fe3337b52fdfdbae3054ef0",
+    "method": "Unmodified actual browser page; EKS-specific localhost forwards; private Grafana login held only in memory"
+  },
+  {
+    "screenshot": "evidence/sydney/eks-prometheus-targets.png",
+    "requested_url": "http://127.0.0.1:9091/targets",
+    "response_url": "http://127.0.0.1:9091/targets",
+    "http_status": 200,
+    "captured_at_utc": "2026-10-16T17:58:15.129Z",
+    "sha256": "06c9d9ba6f3838fd9b586024a3e5dc786a4e89419a95565cdda7047770234c25",
+    "method": "Unmodified actual browser page; EKS-specific localhost forwards; private Grafana login held only in memory"
+  },
+  {
+    "screenshot": "evidence/sydney/eks-grafana-dashboard.png",
+    "requested_url": "http://127.0.0.1:3002/d/relaydesk-http/relaydesk-http-traffic?orgId=1&from=now-15m&to=now",
+    "response_url": "http://127.0.0.1:3002/d/relaydesk-http/relaydesk-http-traffic?orgId=1&from=now-15m&to=now&timezone=browser&refresh=10s",
+    "http_status": 200,
+    "captured_at_utc": "2026-10-16T18:03:23.674Z",
+    "sha256": "9634e40c6fcce1651e5a84604c82838becf6e6db6c80eb1ecaa19865d7d6bd28",
+    "method": "Unmodified actual browser page; EKS-specific localhost forwards; private Grafana login held only in memory"
+  }
+]

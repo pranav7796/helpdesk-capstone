@@ -1,0 +1,18 @@
+Captured: 2026-10-16 17:45:59 UTC
+Evidence: aws-network-verified
++ printf 'Actual AWS API responses: evidence/sydney/aws-{vpc,subnets,routes,nat}-live.json\n'
+Actual AWS API responses: evidence/sydney/aws-{vpc,subnets,routes,nat}-live.json
++ python -c 'import json;v=json.load(open("evidence/sydney/aws-vpc-live.json"))["Vpcs"][0];print("VPC",v["VpcId"],v["State"],v["CidrBlock"]);s=json.load(open("evidence/sydney/aws-subnets-live.json"))["Subnets"];[print("SUBNET",x["SubnetId"],x["AvailabilityZone"],x["CidrBlock"],"public IP mapping:",x["MapPublicIpOnLaunch"]) for x in s];n=json.load(open("evidence/sydney/aws-nat-live.json"))["NatGateways"][0];print("NAT",n["NatGatewayId"],n["State"]);r=json.load(open("evidence/sydney/aws-routes-live.json"))["RouteTables"];[print("ROUTE",t["RouteTableId"],x.get("DestinationCidrBlock"),x.get("GatewayId",x.get("NatGatewayId"))) for t in r for x in t["Routes"]]'
+VPC vpc-0f1334a144012db46 available 10.42.0.0/16
+SUBNET subnet-047411b20e305b76e ap-southeast-2a 10.42.1.0/24 public IP mapping: False
+SUBNET subnet-0ae52b6d9a2d553e1 ap-southeast-2a 10.42.100.0/24 public IP mapping: True
+SUBNET subnet-08fe728994f8400fc ap-southeast-2b 10.42.101.0/24 public IP mapping: True
+SUBNET subnet-085043332babdbe89 ap-southeast-2b 10.42.2.0/24 public IP mapping: False
+NAT nat-01f3eac1072f1cadf available
+ROUTE rtb-0a59d8a823baed282 10.42.0.0/16 local
+ROUTE rtb-0a59d8a823baed282 0.0.0.0/0 igw-0d3d24dbb8cf2cfc1
+ROUTE rtb-0fa0c776a6848ffb0 10.42.0.0/16 local
+ROUTE rtb-04823e90152591370 10.42.0.0/16 local
+ROUTE rtb-04823e90152591370 0.0.0.0/0 nat-01f3eac1072f1cadf
++ printf 'Real resources in account 525426877661, ap-southeast-2. Cleanup is NOT approved.\n'
+Real resources in account 525426877661, ap-southeast-2. Cleanup is NOT approved.

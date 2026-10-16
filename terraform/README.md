@@ -16,6 +16,6 @@ The credential-process adapter reuses the AWS CLI login; it contains no credenti
 
 The reviewed plan creates 28 Terraform resources, including VPC/networking, EKS, two private managed workers, EBS CSI with Pod Identity, and Metrics Server. Application Helm deployment also needs the gp3 StorageClass and an ingress controller. Kubernetes creates a chargeable ingress ELB and a 2-GiB EBS volume separately from this plan.
 
-**No apply has been performed.** Review [exact scope and costs](../docs/AWS-PLAN.md) and get explicit owner approval first. Follow [the deployment and cleanup runbook](../docs/EKS-RUNBOOK.md). Destroy also needs separate approval.
+**Approved apply completed October 16: 28 resources added, no changes or deletions.** See [actual apply evidence](../evidence/sydney/terraform-apply.txt) and [scope/costs](../docs/AWS-PLAN.md). Follow [the deployment and cleanup runbook](../docs/EKS-RUNBOOK.md). Destroy also needs separate approval.
 
 State is local at `terraform/terraform.tfstate`; state, plan files and real tfvars remain ignored. No shared/remote state backend is needed by this assignment; keep a private state backup for reliable cleanup.

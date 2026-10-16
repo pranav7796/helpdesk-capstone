@@ -1,0 +1,26 @@
+Captured: 2026-10-16 18:10:40 UTC
+Evidence: eks-metrics
++ curl -fsS -D /tmp/relaydesk-eks-metrics-headers.txt http://127.0.0.1:8001/metrics -o evidence/sydney/eks-application-metrics.txt
++ head -n 5 /tmp/relaydesk-eks-metrics-headers.txt
+HTTP/1.1 200 OK
+date: Fri, 16 Oct 2026 18:10:41 GMT
+server: uvicorn
+content-type: text/plain; version=1.0.0; charset=utf-8
+content-length: 12337
++ sed -n '/^# HELP relaydesk_http_requests_total/,+7p' evidence/sydney/eks-application-metrics.txt
+# HELP relaydesk_http_requests_total Completed HTTP requests
+# TYPE relaydesk_http_requests_total counter
+relaydesk_http_requests_total{method="GET",route="/ready",status="200"} 324.0
+relaydesk_http_requests_total{method="GET",route="/health",status="200"} 164.0
+relaydesk_http_requests_total{method="GET",route="/api/tickets",status="200"} 21.0
+relaydesk_http_requests_total{method="PUT",route="/api/tickets/{ticket_id}",status="200"} 1.0
+relaydesk_http_requests_total{method="DELETE",route="/api/tickets/{ticket_id}",status="204"} 1.0
+# HELP relaydesk_http_requests_created Completed HTTP requests
++ curl -fsS http://127.0.0.1:8001/health
+{"status":"UP","service":"relaydesk"}+ printf '\n'
+
++ curl -fsS http://127.0.0.1:8001/ready
+{"status":"READY"}+ printf '\n'
+
++ python -c 'import json; d=json.load(open("evidence/sydney/eks-prometheus-up.json")); print("Prometheus:", d["status"], "up=", d["data"]["result"][0]["value"][1])'
+Prometheus: success up= 1

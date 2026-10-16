@@ -1,6 +1,6 @@
 # Approved Sydney deployment, verification and cleanup
 
-Prepared and locally validated; **not executed against EKS**. Apply and cleanup each require explicit owner approval. Scope/cost review: [AWS-PLAN.md](AWS-PLAN.md). Account `525426877661`, profile `devops-new`, region `ap-southeast-2`; deadline October 19, 2026.
+**Executed successfully against EKS October 16 after explicit deployment approval.** [Deploy output](../evidence/sydney/eks-deploy.txt), [runtime verification](../evidence/sydney/eks-verification-summary.json). Helpers: `scripts/deploy-eks.sh`, `scripts/verify-eks.py`. The instructions below preserve the reviewed procedure; do not reapply or delete resources casually. Cleanup still requires separate explicit approval. Scope/cost review: [AWS-PLAN.md](AWS-PLAN.md). Account `525426877661`, profile `devops-new`, region `ap-southeast-2`; deadline October 19, 2026.
 
 ## 1. After infrastructure approval only
 

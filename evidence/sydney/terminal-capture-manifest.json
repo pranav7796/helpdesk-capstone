@@ -61,5 +61,50 @@
     "captured_at_utc": "2026-10-16T16:54:23Z",
     "sha256": "320d542d7087274aec2c87784cee3a2f65dbcd0197eca26fbf8af2f639f72084",
     "method": "Actual foot terminal, cropped using its Hyprland window geometry and grim; no compositing or generated text image"
+  },
+  {
+    "screenshot": "evidence/sydney/aws-apply-verified.png",
+    "command": "printf 'ACTUAL APPROVED TERRAFORM APPLY RESULT\\n'\nrg '^Apply complete!' evidence/sydney/terraform-apply.txt\ncat evidence/sydney/terraform-apply-exit-code.txt\naws eks describe-cluster --profile devops-new --region ap-southeast-2 --name relaydesk-capstone --query 'cluster.{Name:name,Status:status,Version:version,Arn:arn}' --output table\naws eks describe-nodegroup --profile devops-new --region ap-southeast-2 --cluster-name relaydesk-capstone --nodegroup-name relaydesk-capstone-workers --query 'nodegroup.{Name:nodegroupName,Status:status,Desired:scalingConfig.desiredSize,InstanceTypes:instanceTypes}' --output table\nKUBECONFIG=evidence/private/kubeconfig-sydney kubectl --context relaydesk-sydney get nodes",
+    "raw_output": "evidence/sydney/aws-apply-verified.txt",
+    "exit_code": 0,
+    "captured_at_utc": "2026-10-16T17:45:59Z",
+    "sha256": "7674383d692b4ed6c1d2a76445c61a4142deff65522b70fb0511c3d57d0c84dd",
+    "method": "Actual foot terminal, cropped using its Hyprland window geometry and grim; no compositing or generated text image"
+  },
+  {
+    "screenshot": "evidence/sydney/aws-network-verified.png",
+    "command": "printf 'Actual AWS API responses: evidence/sydney/aws-{vpc,subnets,routes,nat}-live.json\\n'\npython -c 'import json;v=json.load(open(\"evidence/sydney/aws-vpc-live.json\"))[\"Vpcs\"][0];print(\"VPC\",v[\"VpcId\"],v[\"State\"],v[\"CidrBlock\"]);s=json.load(open(\"evidence/sydney/aws-subnets-live.json\"))[\"Subnets\"];[print(\"SUBNET\",x[\"SubnetId\"],x[\"AvailabilityZone\"],x[\"CidrBlock\"],\"public IP mapping:\",x[\"MapPublicIpOnLaunch\"]) for x in s];n=json.load(open(\"evidence/sydney/aws-nat-live.json\"))[\"NatGateways\"][0];print(\"NAT\",n[\"NatGatewayId\"],n[\"State\"]);r=json.load(open(\"evidence/sydney/aws-routes-live.json\"))[\"RouteTables\"];[print(\"ROUTE\",t[\"RouteTableId\"],x.get(\"DestinationCidrBlock\"),x.get(\"GatewayId\",x.get(\"NatGatewayId\"))) for t in r for x in t[\"Routes\"]]'\nprintf 'Real resources in account 525426877661, ap-southeast-2. Cleanup is NOT approved.\\n'",
+    "raw_output": "evidence/sydney/aws-network-verified.txt",
+    "exit_code": 0,
+    "captured_at_utc": "2026-10-16T17:46:01Z",
+    "sha256": "1cc18c81580c9ba155e45ea82f7480c1e50e8c5dc3ffa5bdfde2637951f19a67",
+    "method": "Actual foot terminal, cropped using its Hyprland window geometry and grim; no compositing or generated text image"
+  },
+  {
+    "screenshot": "evidence/sydney/eks-pods-helm.png",
+    "command": "export KUBECONFIG=$PWD/evidence/private/kubeconfig-sydney\nkubectl --context relaydesk-sydney -n relaydesk get pods\nkubectl --context relaydesk-sydney -n relaydesk get deploy,hpa,pvc\nhelm --kube-context relaydesk-sydney list -n relaydesk\nhelm --kube-context relaydesk-sydney list -n ingress-system",
+    "raw_output": "evidence/sydney/eks-pods-helm.txt",
+    "exit_code": 0,
+    "captured_at_utc": "2026-10-16T18:02:09Z",
+    "sha256": "5167c2416dd7db514dccd71c2f94a289811263b269871bc07fcd094c2456f43b",
+    "method": "Actual foot terminal, cropped using its Hyprland window geometry and grim; no compositing or generated text image"
+  },
+  {
+    "screenshot": "evidence/sydney/eks-services-ingress.png",
+    "command": "export KUBECONFIG=$PWD/evidence/private/kubeconfig-sydney\nkubectl --context relaydesk-sydney -n relaydesk get svc\nkubectl --context relaydesk-sydney -n relaydesk get endpointslices -l kubernetes.io/service-name=relaydesk-backend\nkubectl --context relaydesk-sydney -n relaydesk get endpointslices -l kubernetes.io/service-name=relaydesk-frontend\nkubectl --context relaydesk-sydney -n relaydesk get ingress\ncat evidence/sydney/eks-http-smoke.txt",
+    "raw_output": "evidence/sydney/eks-services-ingress.txt",
+    "exit_code": 0,
+    "captured_at_utc": "2026-10-16T18:02:29Z",
+    "sha256": "bec51b453f20e5b8ba4f9677a79a70908e430f8282c8868411b39915a9e15227",
+    "method": "Actual foot terminal, cropped using its Hyprland window geometry and grim; no compositing or generated text image"
+  },
+  {
+    "screenshot": "evidence/sydney/eks-metrics.png",
+    "command": "curl -fsS -D /tmp/relaydesk-eks-metrics-headers.txt http://127.0.0.1:8001/metrics -o evidence/sydney/eks-application-metrics.txt\nhead -n 5 /tmp/relaydesk-eks-metrics-headers.txt\nsed -n '/^# HELP relaydesk_http_requests_total/,+7p' evidence/sydney/eks-application-metrics.txt\ncurl -fsS http://127.0.0.1:8001/health\nprintf '\\n'\ncurl -fsS http://127.0.0.1:8001/ready\nprintf '\\n'\npython -c 'import json; d=json.load(open(\"evidence/sydney/eks-prometheus-up.json\")); print(\"Prometheus:\", d[\"status\"], \"up=\", d[\"data\"][\"result\"][0][\"value\"][1])' ",
+    "raw_output": "evidence/sydney/eks-metrics.txt",
+    "exit_code": 0,
+    "captured_at_utc": "2026-10-16T18:10:46Z",
+    "sha256": "b6feb8695dfff392d3fca8c924bbe3508bc89ee74a9bb30d00091e8e9effca03",
+    "method": "Actual foot terminal, cropped using its Hyprland window geometry and grim; no compositing or generated text image"
   }
 ]

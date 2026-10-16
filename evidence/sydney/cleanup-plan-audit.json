@@ -1,0 +1,43 @@
+{
+  "plan": "terraform/tfplan-destroy",
+  "sha256": "7935753d354493ff84eecbe3326459ddfb90ed08b64b72b57d2fcd91bbf60818",
+  "account": "525426877661",
+  "region": "ap-southeast-2",
+  "deletions": [
+    "aws_eip.nat",
+    "aws_eks_addon.ebs_csi",
+    "aws_eks_addon.metrics_server",
+    "aws_eks_addon.pod_identity",
+    "aws_eks_cluster.this",
+    "aws_eks_node_group.this",
+    "aws_eks_pod_identity_association.ebs_csi",
+    "aws_iam_role.cluster",
+    "aws_iam_role.ebs_csi",
+    "aws_iam_role.nodes",
+    "aws_iam_role_policy_attachment.cluster",
+    "aws_iam_role_policy_attachment.ebs_csi",
+    "aws_iam_role_policy_attachment.nodes[\"AmazonEC2ContainerRegistryPullOnly\"]",
+    "aws_iam_role_policy_attachment.nodes[\"AmazonEKSWorkerNodePolicy\"]",
+    "aws_iam_role_policy_attachment.nodes[\"AmazonEKS_CNI_Policy\"]",
+    "aws_internet_gateway.this",
+    "aws_nat_gateway.this",
+    "aws_route_table.private",
+    "aws_route_table.public",
+    "aws_route_table_association.private[\"ap-southeast-2a\"]",
+    "aws_route_table_association.private[\"ap-southeast-2b\"]",
+    "aws_route_table_association.public[\"ap-southeast-2a\"]",
+    "aws_route_table_association.public[\"ap-southeast-2b\"]",
+    "aws_subnet.private[\"ap-southeast-2a\"]",
+    "aws_subnet.private[\"ap-southeast-2b\"]",
+    "aws_subnet.public[\"ap-southeast-2a\"]",
+    "aws_subnet.public[\"ap-southeast-2b\"]",
+    "aws_vpc.this"
+  ],
+  "delete_count": 28,
+  "executed": false,
+  "outside_terraform_cleanup": [
+    "Classic ELB af43a3e33d68945548232885350507ff",
+    "PostgreSQL PVC / EBS vol-05a891d9a7dce0955"
+  ],
+  "approval": "NOT GRANTED; preserve resources until separately authorized"
+}

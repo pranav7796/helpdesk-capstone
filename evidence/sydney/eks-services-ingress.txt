@@ -1,0 +1,30 @@
+Captured: 2026-10-16 18:02:09 UTC
+Evidence: eks-services-ingress
++ export KUBECONFIG=/home/pranav/Projects/helpdesk-capstone/evidence/private/kubeconfig-sydney
++ KUBECONFIG=/home/pranav/Projects/helpdesk-capstone/evidence/private/kubeconfig-sydney
++ kubectl --context relaydesk-sydney -n relaydesk get svc
+NAME                 TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+backend              ClusterIP   172.20.89.116    <none>        8000/TCP   18m
+grafana              ClusterIP   172.20.195.240   <none>        3000/TCP   15m
+prometheus           ClusterIP   172.20.151.9     <none>        9090/TCP   15m
+relaydesk-backend    ClusterIP   172.20.77.239    <none>        8000/TCP   18m
+relaydesk-frontend   ClusterIP   172.20.32.2      <none>        80/TCP     18m
+relaydesk-postgres   ClusterIP   172.20.73.31     <none>        5432/TCP   18m
++ kubectl --context relaydesk-sydney -n relaydesk get endpointslices -l kubernetes.io/service-name=relaydesk-backend
+NAME                      ADDRESSTYPE   PORTS   ENDPOINTS                AGE
+relaydesk-backend-rhbq9   IPv4          8000    10.42.1.17,10.42.2.169   18m
++ kubectl --context relaydesk-sydney -n relaydesk get endpointslices -l kubernetes.io/service-name=relaydesk-frontend
+NAME                       ADDRESSTYPE   PORTS   ENDPOINTS               AGE
+relaydesk-frontend-lhvhk   IPv4          8080    10.42.1.156,10.42.2.8   19m
++ kubectl --context relaydesk-sydney -n relaydesk get ingress
+NAME        CLASS     HOSTS   ADDRESS                                                                       PORTS   AGE
+relaydesk   traefik   *       af43a3e33d68945548232885350507ff-719760255.ap-southeast-2.elb.amazonaws.com   80      19m
++ cat evidence/sydney/eks-http-smoke.txt
+POST /api/tickets 201
+GET /api/tickets 200
+PUT /api/tickets/1 200
+GET /api/tickets/1 200
+POST /api/tickets 201
+DELETE /api/tickets/2 204
+GET /api/tickets 200
+PASS: create, list, read, edit, status, priority and delete through frontend proxy; retained ticket 1

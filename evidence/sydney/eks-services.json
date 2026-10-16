@@ -1,0 +1,279 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "kind": "Service",
+            "metadata": {
+                "annotations": {
+                    "meta.helm.sh/release-name": "relaydesk",
+                    "meta.helm.sh/release-namespace": "relaydesk"
+                },
+                "creationTimestamp": "2026-10-16T17:43:18Z",
+                "labels": {
+                    "app.kubernetes.io/managed-by": "Helm"
+                },
+                "name": "backend",
+                "namespace": "relaydesk",
+                "resourceVersion": "2235",
+                "uid": "bbe3ded6-0ad7-4618-a7c3-240560ac6185"
+            },
+            "spec": {
+                "clusterIP": "172.20.89.116",
+                "clusterIPs": [
+                    "172.20.89.116"
+                ],
+                "internalTrafficPolicy": "Cluster",
+                "ipFamilies": [
+                    "IPv4"
+                ],
+                "ipFamilyPolicy": "SingleStack",
+                "ports": [
+                    {
+                        "name": "http",
+                        "port": 8000,
+                        "protocol": "TCP",
+                        "targetPort": 8000
+                    }
+                ],
+                "selector": {
+                    "app": "relaydesk-backend"
+                },
+                "sessionAffinity": "None",
+                "type": "ClusterIP"
+            },
+            "status": {
+                "loadBalancer": {}
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Service",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Service\",\"metadata\":{\"annotations\":{},\"name\":\"grafana\",\"namespace\":\"relaydesk\"},\"spec\":{\"ports\":[{\"name\":\"web\",\"port\":3000,\"targetPort\":\"web\"}],\"selector\":{\"app\":\"grafana\"},\"type\":\"ClusterIP\"}}\n"
+                },
+                "creationTimestamp": "2026-10-16T17:46:25Z",
+                "name": "grafana",
+                "namespace": "relaydesk",
+                "resourceVersion": "3233",
+                "uid": "f178e35f-8653-40d4-a90a-607fcfed0ebf"
+            },
+            "spec": {
+                "clusterIP": "172.20.195.240",
+                "clusterIPs": [
+                    "172.20.195.240"
+                ],
+                "internalTrafficPolicy": "Cluster",
+                "ipFamilies": [
+                    "IPv4"
+                ],
+                "ipFamilyPolicy": "SingleStack",
+                "ports": [
+                    {
+                        "name": "web",
+                        "port": 3000,
+                        "protocol": "TCP",
+                        "targetPort": "web"
+                    }
+                ],
+                "selector": {
+                    "app": "grafana"
+                },
+                "sessionAffinity": "None",
+                "type": "ClusterIP"
+            },
+            "status": {
+                "loadBalancer": {}
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Service",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Service\",\"metadata\":{\"annotations\":{},\"name\":\"prometheus\",\"namespace\":\"relaydesk\"},\"spec\":{\"ports\":[{\"name\":\"web\",\"port\":9090,\"targetPort\":\"web\"}],\"selector\":{\"app\":\"prometheus\"},\"type\":\"ClusterIP\"}}\n"
+                },
+                "creationTimestamp": "2026-10-16T17:46:27Z",
+                "name": "prometheus",
+                "namespace": "relaydesk",
+                "resourceVersion": "3241",
+                "uid": "1331665d-2b3d-469f-95f4-f987d7833a4e"
+            },
+            "spec": {
+                "clusterIP": "172.20.151.9",
+                "clusterIPs": [
+                    "172.20.151.9"
+                ],
+                "internalTrafficPolicy": "Cluster",
+                "ipFamilies": [
+                    "IPv4"
+                ],
+                "ipFamilyPolicy": "SingleStack",
+                "ports": [
+                    {
+                        "name": "web",
+                        "port": 9090,
+                        "protocol": "TCP",
+                        "targetPort": "web"
+                    }
+                ],
+                "selector": {
+                    "app": "prometheus"
+                },
+                "sessionAffinity": "None",
+                "type": "ClusterIP"
+            },
+            "status": {
+                "loadBalancer": {}
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Service",
+            "metadata": {
+                "annotations": {
+                    "meta.helm.sh/release-name": "relaydesk",
+                    "meta.helm.sh/release-namespace": "relaydesk"
+                },
+                "creationTimestamp": "2026-10-16T17:43:18Z",
+                "labels": {
+                    "app": "relaydesk-backend",
+                    "app.kubernetes.io/instance": "relaydesk",
+                    "app.kubernetes.io/managed-by": "Helm",
+                    "app.kubernetes.io/name": "relaydesk",
+                    "helm.sh/chart": "relaydesk-1.0.0"
+                },
+                "name": "relaydesk-backend",
+                "namespace": "relaydesk",
+                "resourceVersion": "2228",
+                "uid": "1acb013a-e8fe-4bc8-8507-e8dafa394e5e"
+            },
+            "spec": {
+                "clusterIP": "172.20.77.239",
+                "clusterIPs": [
+                    "172.20.77.239"
+                ],
+                "internalTrafficPolicy": "Cluster",
+                "ipFamilies": [
+                    "IPv4"
+                ],
+                "ipFamilyPolicy": "SingleStack",
+                "ports": [
+                    {
+                        "name": "http",
+                        "port": 8000,
+                        "protocol": "TCP",
+                        "targetPort": 8000
+                    }
+                ],
+                "selector": {
+                    "app": "relaydesk-backend"
+                },
+                "sessionAffinity": "None",
+                "type": "ClusterIP"
+            },
+            "status": {
+                "loadBalancer": {}
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Service",
+            "metadata": {
+                "annotations": {
+                    "meta.helm.sh/release-name": "relaydesk",
+                    "meta.helm.sh/release-namespace": "relaydesk"
+                },
+                "creationTimestamp": "2026-10-16T17:43:18Z",
+                "labels": {
+                    "app": "relaydesk-frontend",
+                    "app.kubernetes.io/instance": "relaydesk",
+                    "app.kubernetes.io/managed-by": "Helm",
+                    "app.kubernetes.io/name": "relaydesk",
+                    "helm.sh/chart": "relaydesk-1.0.0"
+                },
+                "name": "relaydesk-frontend",
+                "namespace": "relaydesk",
+                "resourceVersion": "2229",
+                "uid": "29c30370-06d7-4157-a2df-37658257d2ad"
+            },
+            "spec": {
+                "clusterIP": "172.20.32.2",
+                "clusterIPs": [
+                    "172.20.32.2"
+                ],
+                "internalTrafficPolicy": "Cluster",
+                "ipFamilies": [
+                    "IPv4"
+                ],
+                "ipFamilyPolicy": "SingleStack",
+                "ports": [
+                    {
+                        "name": "http",
+                        "port": 80,
+                        "protocol": "TCP",
+                        "targetPort": 8080
+                    }
+                ],
+                "selector": {
+                    "app": "relaydesk-frontend"
+                },
+                "sessionAffinity": "None",
+                "type": "ClusterIP"
+            },
+            "status": {
+                "loadBalancer": {}
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Service",
+            "metadata": {
+                "annotations": {
+                    "meta.helm.sh/release-name": "relaydesk",
+                    "meta.helm.sh/release-namespace": "relaydesk"
+                },
+                "creationTimestamp": "2026-10-16T17:43:18Z",
+                "labels": {
+                    "app.kubernetes.io/managed-by": "Helm"
+                },
+                "name": "relaydesk-postgres",
+                "namespace": "relaydesk",
+                "resourceVersion": "2239",
+                "uid": "82fd3aef-083a-44c3-a7c1-d08e9820e372"
+            },
+            "spec": {
+                "clusterIP": "172.20.73.31",
+                "clusterIPs": [
+                    "172.20.73.31"
+                ],
+                "internalTrafficPolicy": "Cluster",
+                "ipFamilies": [
+                    "IPv4"
+                ],
+                "ipFamilyPolicy": "SingleStack",
+                "ports": [
+                    {
+                        "name": "postgres",
+                        "port": 5432,
+                        "protocol": "TCP",
+                        "targetPort": 5432
+                    }
+                ],
+                "selector": {
+                    "app": "relaydesk-postgres"
+                },
+                "sessionAffinity": "None",
+                "type": "ClusterIP"
+            },
+            "status": {
+                "loadBalancer": {}
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

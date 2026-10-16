@@ -1,6 +1,20 @@
 # Evidence audit against GRADING.md
 
-## Current Sydney audit — October 16, 2026, after account change
+## Current approved cloud deployment audit — October 16, 2026
+
+**Estimated verified score: 93/100.** This section supersedes all pre-apply conclusions below. Terraform created 28 resources; actual VPC/subnets, ACTIVE EKS, two Ready workers, application CRUD, bound encrypted PostgreSQL disk and monitoring are verified. [Complete criterion mapping](GRADING-CHECKLIST.md), [submission guide](SUBMISSION.md).
+
+- **53 public PNGs** audited: 28 original, 14 pre-apply Sydney and 11 actual cloud captures. The new cloud screenshots were visually opened and are readable. AWS VPC/subnet/EKS Console pages show genuine resources; terminal captures show actual apply/runtime/network/HTTP/metrics results; browser captures show the real ELB app, Prometheus target UP and populated Grafana panel.
+- New primary cloud files: `aws-vpc-console.png`, `aws-subnets-console.png`, `aws-eks-console.png`, `aws-apply-verified.png`, `aws-network-verified.png`, `eks-pods-helm.png`, `eks-services-ingress.png`, `eks-metrics.png`, `eks-application-browser.png`, `eks-prometheus-targets.png`, `eks-grafana-dashboard.png`, all under `evidence/sydney/`.
+- Source commands/URLs/timestamps/hashes are recorded in Sydney terminal, AWS Console and EKS browser manifests. PNG CRC/decompression, JSON parsing and manifest hashes are checked in `evidence/sydney/inventory.json`. Private state, passwords, kubeconfig and diagnostic captures are excluded from the public inventory and Git.
+- The initial Grafana loading capture was replaced after actual series appeared. The metrics transcript/output filename collision was corrected; pure metrics are `eks-application-metrics.txt`. The empty migration log is supplemented by actual PostgreSQL migration/table queries and successful init-container status.
+- One initial traffic-loop connection reset is retained and disclosed; subsequent bounded-retry verification passed. Existing Compose and Minikube were preserved.
+- **Still missing:** real destroy completion/screenshot (separate approval required), teacher-form receipt, and accepted student presentation of commit → CI → deployment update. No manual screenshot is currently necessary. No resources have been deleted.
+
+Historical records below describe their capture times; old AWS restriction/missing-resource statements do not describe the now-deployed Sydney account.
+
+
+## Historical pre-apply Sydney audit — October 16, 2026
 
 This section and [the current submission guide](SUBMISSION.md) supersede the old-account/Mumbai restriction and historical-plan-only conclusions below. Current target: `525426877661 / devops-new / ap-southeast-2`; deadline October 19. Sydney reads and account-guarded planning pass; **AWS apply is awaiting approval, not blocked by the former account's subscription error**.
 

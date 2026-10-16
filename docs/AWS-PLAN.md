@@ -1,4 +1,4 @@
-# Sydney AWS deployment review — approval required
+# Sydney AWS deployment review — approved and deployed
 
 Current target: **525426877661 / devops-new / ap-southeast-2**. Deadline: **October 19, 2026**. No Terraform apply or cloud mutation has been performed by the agent.
 
@@ -79,3 +79,7 @@ python scripts/audit-plan.py
 Before an approved apply, recheck identity, current public IP/CIDR, source snapshot and plan hash. Do not modify a plan silently after approval. Any changed resource scope or cost model requires another review. Use the credential adapter environment when applying the reviewed plan; do not run the old plan. Local state will be at `terraform/terraform.tfstate` (ignored and sensitive); do not commit the plan, state, generated passwords, or debug credential logs.
 
 Explicit approval must cover **the 28-resource reviewed Terraform plan plus the ingress ELB and 2-GiB application volume**, with the costs above. Cleanup needs separate approval after evidence/demo capture. [Deployment/verification/cleanup runbook](EKS-RUNBOOK.md).
+
+## Actual deployment result — October 16
+
+The owner approved the reviewed Sydney deployment including ingress/storage. Apply succeeded: 28 added, 0 changed, 0 destroyed. EKS and worker group ACTIVE, two workers Ready; app CRUD, PVC and monitoring verified. [Actual outputs](../VERIFICATION.md), [cost ledger](../evidence/sydney/COST-TRACKING.md), [resource and cleanup review](CLEANUP-REVIEW.md). Historical future-tense scope/cost sections above record the pre-apply review. Cleanup has not been approved or executed.

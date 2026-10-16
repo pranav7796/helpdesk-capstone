@@ -1,0 +1,67 @@
+Updated context relaydesk-sydney in /home/pranav/Projects/helpdesk-capstone/evidence/private/kubeconfig-sydney
+node/ip-10-42-1-229.ap-southeast-2.compute.internal condition met
+node/ip-10-42-2-118.ap-southeast-2.compute.internal condition met
+namespace/relaydesk created
+storageclass.storage.k8s.io/relaydesk-gp3 created
+Release "relaydesk" does not exist. Installing it now.
+NAME: relaydesk
+LAST DEPLOYED: Fri Oct 16 23:13:02 2026
+NAMESPACE: relaydesk
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+Release "traefik" does not exist. Installing it now.
+NAME: traefik
+LAST DEPLOYED: Fri Oct 16 23:15:13 2026
+NAMESPACE: ingress-system
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+traefik with docker.io/traefik:v3.7.14 has been deployed successfully on ingress-system namespace!
+secret/grafana-admin created
+configmap/grafana-dashboard created
+configmap/grafana-dashboard-provider created
+configmap/grafana-datasource created
+configmap/prometheus-config created
+service/grafana created
+service/prometheus created
+deployment.apps/grafana created
+deployment.apps/prometheus created
+Waiting for deployment "prometheus" rollout to finish: 0 of 1 updated replicas are available...
+deployment "prometheus" successfully rolled out
+Waiting for deployment "grafana" rollout to finish: 0 of 1 updated replicas are available...
+deployment "grafana" successfully rolled out
+NAME                                      READY   STATUS    RESTARTS   AGE     IP            NODE                                             NOMINATED NODE   READINESS GATES
+pod/grafana-6bf844bfcb-hbdbs              1/1     Running   0          50s     10.42.1.115   ip-10-42-1-229.ap-southeast-2.compute.internal   <none>           <none>
+pod/prometheus-cd7d5fdc5-2wcvz            1/1     Running   0          49s     10.42.1.183   ip-10-42-1-229.ap-southeast-2.compute.internal   <none>           <none>
+pod/relaydesk-backend-7556c8f9c4-g68bb    1/1     Running   0          3m59s   10.42.2.169   ip-10-42-2-118.ap-southeast-2.compute.internal   <none>           <none>
+pod/relaydesk-backend-7556c8f9c4-zkpxl    1/1     Running   0          3m59s   10.42.1.17    ip-10-42-1-229.ap-southeast-2.compute.internal   <none>           <none>
+pod/relaydesk-frontend-859bb65fdc-95pb8   1/1     Running   0          3m59s   10.42.2.8     ip-10-42-2-118.ap-southeast-2.compute.internal   <none>           <none>
+pod/relaydesk-frontend-859bb65fdc-xcdwc   1/1     Running   0          3m59s   10.42.1.156   ip-10-42-1-229.ap-southeast-2.compute.internal   <none>           <none>
+pod/relaydesk-postgres-0                  1/1     Running   0          3m58s   10.42.1.135   ip-10-42-1-229.ap-southeast-2.compute.internal   <none>           <none>
+
+NAME                                 READY   UP-TO-DATE   AVAILABLE   AGE     CONTAINERS   IMAGES                                                                                   SELECTOR
+deployment.apps/grafana              1/1     1            1           50s     grafana      grafana/grafana:latest                                                                   app=grafana
+deployment.apps/prometheus           1/1     1            1           49s     prometheus   prom/prometheus:latest                                                                   app=prometheus
+deployment.apps/relaydesk-backend    2/2     2            2           3m59s   backend      ghcr.io/pranav7796/helpdesk-capstone/backend:d07bca6accc35f0224aaae8c4057076a9c4c9261    app=relaydesk-backend
+deployment.apps/relaydesk-frontend   2/2     2            2           3m59s   frontend     ghcr.io/pranav7796/helpdesk-capstone/frontend:d07bca6accc35f0224aaae8c4057076a9c4c9261   app=relaydesk-frontend
+
+NAME                         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE    SELECTOR
+service/backend              ClusterIP   172.20.89.116    <none>        8000/TCP   4m1s   app=relaydesk-backend
+service/grafana              ClusterIP   172.20.195.240   <none>        3000/TCP   54s    app=grafana
+service/prometheus           ClusterIP   172.20.151.9     <none>        9090/TCP   52s    app=prometheus
+service/relaydesk-backend    ClusterIP   172.20.77.239    <none>        8000/TCP   4m1s   app=relaydesk-backend
+service/relaydesk-frontend   ClusterIP   172.20.32.2      <none>        80/TCP     4m1s   app=relaydesk-frontend
+service/relaydesk-postgres   ClusterIP   172.20.73.31     <none>        5432/TCP   4m1s   app=relaydesk-postgres
+
+NAME                                                    REFERENCE                      TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+horizontalpodautoscaler.autoscaling/relaydesk-backend   Deployment/relaydesk-backend   cpu: 3%/70%   2         4         2          3m59s
+
+NAME                                            STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS    VOLUMEATTRIBUTESCLASS   AGE    VOLUMEMODE
+persistentvolumeclaim/relaydesk-postgres-data   Bound    pvc-e95372b1-b7cb-4b5f-822a-780ea33d054d   2Gi        RWO            relaydesk-gp3   <unset>                 4m2s   Filesystem
+
+NAME                                  CLASS     HOSTS   ADDRESS                                                                       PORTS   AGE
+ingress.networking.k8s.io/relaydesk   traefik   *       af43a3e33d68945548232885350507ff-719760255.ap-southeast-2.elb.amazonaws.com   80      3m59s
+NAME     	NAMESPACE	REVISION	UPDATED                                	STATUS  	CHART          	APP VERSION
+relaydesk	relaydesk	1       	2026-10-16 23:13:02.143966383 +0530 IST	deployed	relaydesk-1.0.0	1.0.0      

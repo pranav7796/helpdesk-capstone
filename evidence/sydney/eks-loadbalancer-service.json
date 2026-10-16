@@ -1,0 +1,65 @@
+{
+    "apiVersion": "v1",
+    "kind": "Service",
+    "metadata": {
+        "annotations": {
+            "meta.helm.sh/release-name": "traefik",
+            "meta.helm.sh/release-namespace": "ingress-system",
+            "service.beta.kubernetes.io/aws-load-balancer-additional-resource-tags": "Project=relaydesk-capstone"
+        },
+        "creationTimestamp": "2026-10-16T17:45:32Z",
+        "finalizers": [
+            "service.kubernetes.io/load-balancer-cleanup"
+        ],
+        "labels": {
+            "app.kubernetes.io/instance": "traefik-ingress-system",
+            "app.kubernetes.io/managed-by": "Helm",
+            "app.kubernetes.io/name": "traefik",
+            "helm.sh/chart": "traefik-42.0.0"
+        },
+        "name": "traefik",
+        "namespace": "ingress-system",
+        "resourceVersion": "3023",
+        "uid": "f43a3e33-d689-4554-8232-885350507ffc"
+    },
+    "spec": {
+        "allocateLoadBalancerNodePorts": true,
+        "clusterIP": "172.20.74.195",
+        "clusterIPs": [
+            "172.20.74.195"
+        ],
+        "externalTrafficPolicy": "Cluster",
+        "internalTrafficPolicy": "Cluster",
+        "ipFamilies": [
+            "IPv4"
+        ],
+        "ipFamilyPolicy": "SingleStack",
+        "loadBalancerSourceRanges": [
+            "202.131.146.146/32"
+        ],
+        "ports": [
+            {
+                "name": "web",
+                "nodePort": 31440,
+                "port": 80,
+                "protocol": "TCP",
+                "targetPort": "web"
+            }
+        ],
+        "selector": {
+            "app.kubernetes.io/instance": "traefik-ingress-system",
+            "app.kubernetes.io/name": "traefik"
+        },
+        "sessionAffinity": "None",
+        "type": "LoadBalancer"
+    },
+    "status": {
+        "loadBalancer": {
+            "ingress": [
+                {
+                    "hostname": "af43a3e33d68945548232885350507ff-719760255.ap-southeast-2.elb.amazonaws.com"
+                }
+            ]
+        }
+    }
+}

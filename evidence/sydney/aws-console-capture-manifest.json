@@ -1,0 +1,26 @@
+[
+  {
+    "screenshot": "evidence/sydney/aws-vpc-console.png",
+    "requested_url": "https://ap-southeast-2.console.aws.amazon.com/vpcconsole/home?region=ap-southeast-2#vpcs:",
+    "title": "Your VPCs | VPC | ap-southeast-2",
+    "captured_at_utc": "2026-10-16T17:42:13.171Z",
+    "sha256": "02741afe32db89fdd5c7b9fb4205c2c0a52cabe1f0ee726d322b72282333f102",
+    "method": "Unmodified actual authenticated AWS Console page; existing temporary role session; credentials and sign-in URL kept in memory only"
+  },
+  {
+    "screenshot": "evidence/sydney/aws-eks-console.png",
+    "requested_url": "https://ap-southeast-2.console.aws.amazon.com/eks/home?region=ap-southeast-2#/clusters/relaydesk-capstone",
+    "title": "Elastic Kubernetes Service | My First Project",
+    "captured_at_utc": "2026-10-16T17:55:19.518Z",
+    "sha256": "f0a504fc0487b811fadc95ee9cfdbd66e1910f6ebf39e017500415d1be788956",
+    "method": "Unmodified actual authenticated AWS Console page; existing temporary role session; credentials and sign-in URL kept in memory only"
+  },
+  {
+    "screenshot": "evidence/sydney/aws-subnets-console.png",
+    "requested_url": "https://ap-southeast-2.console.aws.amazon.com/vpcconsole/home?region=ap-southeast-2#subnets:",
+    "title": "Subnets | VPC | My First Project",
+    "captured_at_utc": "2026-10-16T17:54:27.905Z",
+    "sha256": "6aeec9ee02968db6942d53f483e28741b5fae1c79b8a2059fc7cab26567a7ff0",
+    "method": "Unmodified actual authenticated AWS Console page; existing temporary role session; credentials and sign-in URL kept in memory only"
+  }
+]

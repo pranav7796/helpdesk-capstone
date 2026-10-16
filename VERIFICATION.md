@@ -16,7 +16,7 @@ Target: account `525426877661`, profile `devops-new`, Sydney `ap-southeast-2`. D
 | Prometheus application query | `up=1` | [actual query](evidence/sydney/prometheus-up.json), [Targets screenshot](evidence/m9-prometheus-targets.png) |
 | Grafana | Previously captured populated real HTTP request panel | [dashboard](evidence/m9-grafana-current.png) |
 | Helm lint (local and EKS values) | Both passed; optional icon recommendation only | [EKS render](evidence/sydney/helm-eks-rendered.yaml) |
-| Traefik chart 42.0.0 lint/template | Passed with the EKS values; not installed in AWS | [render](evidence/sydney/traefik-rendered.yaml) |
+| Traefik chart 42.0.0 lint/template | Passed; subsequently installed in EKS, release revision 1 deployed | [render](evidence/sydney/traefik-rendered.yaml) |
 | `kubectl kustomize monitoring` | Renders successfully; EKS Grafana uses private Secret reference | [render](evidence/sydney/monitoring-eks-rendered.yaml) |
 | Local chart compatibility | PGDATA/storageClass unchanged for existing local values | Local render assertion passed; no Helm mutation performed |
 | Terraform init / fmt-check / validate | Passed with locked AWS provider 5.100.0 | [init](evidence/sydney/terraform-init.txt), [validate](evidence/sydney/terraform-validate.txt), [screenshot](evidence/sydney/m7-sydney-validation.png) |
@@ -46,10 +46,24 @@ The successful CI log reported Ubuntu 24.04.5 and announced that `ubuntu-latest`
 
 ## Original plan and cloud boundary
 
-The supplied 22-resource `terraform/tfplan` matched its original source snapshot, Sydney and the actual admin CIDR, but lacked account binding/storage/metrics prerequisites. It remains preserved and ignored. The replacement `tfplan-reviewed` enforces the intended account and includes 28 resources. All current `.tf` files match its snapshot. Neither plan has been applied.
+The supplied 22-resource `terraform/tfplan` matched its original source snapshot, Sydney and the actual admin CIDR, but lacked account binding/storage/metrics prerequisites. It remains preserved and ignored. The replacement `tfplan-reviewed` enforces the intended account and includes 28 resources. All current `.tf` files match its snapshot. The reviewed plan was explicitly approved and applied: 28 added, 0 changed, 0 destroyed; exit 0. The original plan was not applied.
 
-EBS CSI, Pod Identity, Metrics Server, gp3 PVC selection and Traefik are **IMPLEMENTED / locally validated**, not verified on EKS. AWS VPC/EKS/worker/application/ELB deployment and eventual destroy are **NOT VERIFIED** and await explicit approvals. Public reads/planning do not prove write permissions under Organizations SCPs.
+EBS CSI, Pod Identity and Metrics Server are ACTIVE; Traefik is deployed. The encrypted 2-GiB gp3 PVC is Bound. Actual cloud runtime and Console screenshots are verified; cleanup has not been executed and needs separate approval.
 
 ## Submission boundary
 
-Current estimated verified marks: **86/100**, subject to instructor judgment. AWS runtime/destroy (9), teacher-form submission (2), and accepted student presentation (3) remain pending. The existing automated browser video is a current-state walkthrough, not a recording of its original commit-to-rollout event. [Per-criterion checklist](GRADING-CHECKLIST.md), [submission guide](SUBMISSION.md), [cloud approval/runbook](docs/AWS-PLAN.md).
+Current estimated verified marks: **93/100**, subject to instructor judgment. AWS destroy (2), teacher-form submission (2), and accepted student presentation (3) remain pending. The existing automated browser video is a current-state walkthrough, not a recording of its original commit-to-rollout event. [Per-criterion checklist](GRADING-CHECKLIST.md), [submission guide](SUBMISSION.md), [cloud approval/runbook](docs/AWS-PLAN.md).
+
+## Approved Sydney deployment — executed October 16
+
+- `terraform -chdir=terraform apply -no-color tfplan-reviewed`: exit 0, **28 added, 0 changed, 0 destroyed**. [Complete output](evidence/sydney/terraform-apply.txt), [terminal screenshot](evidence/sydney/aws-apply-verified.png), [owner approval](evidence/sydney/DEPLOYMENT-APPROVAL.md).
+- `bash scripts/deploy-eks.sh`: exit 0. Isolated kubeconfig; two Ready workers; three ACTIVE add-ons; app and Traefik Helm releases deployed, revision 1. [Deploy log](evidence/sydney/eks-deploy.txt).
+- Public ELB CRUD smoke: POST 201, GET/PUT 200, DELETE 204. [HTTP results](evidence/sydney/eks-http-smoke.txt), [app screenshot](evidence/sydney/eks-application-browser.png). Access restricted to `202.131.146.146/32`.
+- `python scripts/verify-eks.py --resume-infrastructure`: exit 0. Reused already captured infrastructure JSON; HTTP/monitoring/final runtime/log checks executed live. Seven application-namespace Pods Ready, 2/2 frontend/backend replicas, valid HPA CPU, PVC Bound. [Summary](evidence/sydney/eks-verification-summary.json), [runtime](evidence/sydney/eks-runtime.txt).
+- Initial traffic-loop GET encountered a transient connection reset; original failure retained in `eks-verification-initial-network-reset.txt`. Bounded GET retries and a slower traffic loop passed. Its underlying network cause is not established.
+- Actual PostgreSQL query: tables `tickets`/`alembic_version`, migration `0001_tickets`, retained HIGH/IN_PROGRESS ticket. [SQL output](evidence/sydney/eks-postgres-persistence.txt). Init container exited 0; migration log is empty, so SQL and Pod status supply proof.
+- `/health` UP, `/ready` READY, real `/metrics`; Prometheus `up=1`, positive HTTP rates; authenticated Grafana dashboard populated. [Metrics](evidence/sydney/eks-application-metrics.txt), [Targets](evidence/sydney/eks-prometheus-targets.png), [dashboard](evidence/sydney/eks-grafana-dashboard.png).
+- Genuine AWS Console VPC/subnet/EKS captures: `aws-vpc-console.png`, `aws-subnets-console.png`, `aws-eks-console.png` under `evidence/sydney/`; capture manifests record URL/time/hash.
+- Read-only destroy preview: **28 deletes**, not executed. [Plan](evidence/sydney/terraform-destroy-plan.txt), [audit](evidence/sydney/cleanup-plan-audit.json). Kubernetes-created ELB and data EBS need cleanup before VPC/CSI deletion. [Cleanup review](docs/CLEANUP-REVIEW.md).
+
+Local Compose/Minikube were preserved. Deployment scripts changed; application source and deployed immutable d07 image tags did not. Sensitive Terraform state, kubeconfig and generated passwords remain ignored/private.

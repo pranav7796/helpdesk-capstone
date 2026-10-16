@@ -1,0 +1,34 @@
+Captured: 2026-10-16 17:45:28 UTC
+Evidence: aws-apply-verified
++ printf 'ACTUAL APPROVED TERRAFORM APPLY RESULT\n'
+ACTUAL APPROVED TERRAFORM APPLY RESULT
++ rg '^Apply complete!' evidence/sydney/terraform-apply.txt
+Apply complete! Resources: 28 added, 0 changed, 0 destroyed.
++ cat evidence/sydney/terraform-apply-exit-code.txt
+0
++ aws eks describe-cluster --profile devops-new --region ap-southeast-2 --name relaydesk-capstone --query 'cluster.{Name:name,Status:status,Version:version,Arn:arn}' --output table
+-----------------------------------------------------------------------------------
+|                                 DescribeCluster                                 |
++---------+-----------------------------------------------------------------------+
+|  Arn    |  arn:aws:eks:ap-southeast-2:525426877661:cluster/relaydesk-capstone   |
+|  Name   |  relaydesk-capstone                                                   |
+|  Status |  ACTIVE                                                               |
+|  Version|  1.35                                                                 |
++---------+-----------------------------------------------------------------------+
++ aws eks describe-nodegroup --profile devops-new --region ap-southeast-2 --cluster-name relaydesk-capstone --nodegroup-name relaydesk-capstone-workers --query 'nodegroup.{Name:nodegroupName,Status:status,Desired:scalingConfig.desiredSize,InstanceTypes:instanceTypes}' --output table
+-----------------------------------------------------
+|                 DescribeNodegroup                 |
++---------+------------------------------+----------+
+| Desired |            Name              | Status   |
++---------+------------------------------+----------+
+|  2      |  relaydesk-capstone-workers  |  ACTIVE  |
++---------+------------------------------+----------+
+||                  InstanceTypes                  ||
+|+-------------------------------------------------+|
+||  t3.medium                                      ||
+|+-------------------------------------------------+|
++ KUBECONFIG=evidence/private/kubeconfig-sydney
++ kubectl --context relaydesk-sydney get nodes
+NAME                                             STATUS   ROLES    AGE     VERSION
+ip-10-42-1-229.ap-southeast-2.compute.internal   Ready    <none>   6m32s   v1.35.8-eks-b9510e3
+ip-10-42-2-118.ap-southeast-2.compute.internal   Ready    <none>   6m32s   v1.35.8-eks-b9510e3

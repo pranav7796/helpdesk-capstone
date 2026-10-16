@@ -30,7 +30,7 @@ record = {
     "plan": "terraform/tfplan-reviewed", "sha256": hashlib.sha256(PLAN.read_bytes()).hexdigest(),
     "variables": variables, "checks": checks,
     "resources": [{"address": r["address"], "actions": r["change"]["actions"]} for r in plan["resource_changes"]],
-    "notes": "Plan validation is read-only. No apply occurred. Account creation permissions/SCPs remain runtime checks.",
+    "notes": "Saved-plan audit only; this does not determine whether apply has occurred. Check terraform-apply.txt, its exit code, and live resources for deployment status.",
 }
 (ROOT / "evidence/sydney/plan-audit.json").write_text(json.dumps(record, indent=2) + "\n")
 print(json.dumps(record, indent=2))

@@ -1,0 +1,31 @@
+NAME                                      READY   STATUS    RESTARTS   AGE   IP            NODE                                             NOMINATED NODE   READINESS GATES
+pod/grafana-6bf844bfcb-hbdbs              1/1     Running   0          10m   10.42.1.115   ip-10-42-1-229.ap-southeast-2.compute.internal   <none>           <none>
+pod/prometheus-cd7d5fdc5-2wcvz            1/1     Running   0          10m   10.42.1.183   ip-10-42-1-229.ap-southeast-2.compute.internal   <none>           <none>
+pod/relaydesk-backend-7556c8f9c4-g68bb    1/1     Running   0          13m   10.42.2.169   ip-10-42-2-118.ap-southeast-2.compute.internal   <none>           <none>
+pod/relaydesk-backend-7556c8f9c4-zkpxl    1/1     Running   0          13m   10.42.1.17    ip-10-42-1-229.ap-southeast-2.compute.internal   <none>           <none>
+pod/relaydesk-frontend-859bb65fdc-95pb8   1/1     Running   0          13m   10.42.2.8     ip-10-42-2-118.ap-southeast-2.compute.internal   <none>           <none>
+pod/relaydesk-frontend-859bb65fdc-xcdwc   1/1     Running   0          13m   10.42.1.156   ip-10-42-1-229.ap-southeast-2.compute.internal   <none>           <none>
+pod/relaydesk-postgres-0                  1/1     Running   0          13m   10.42.1.135   ip-10-42-1-229.ap-southeast-2.compute.internal   <none>           <none>
+
+NAME                                 READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS   IMAGES                                                                                   SELECTOR
+deployment.apps/grafana              1/1     1            1           10m   grafana      grafana/grafana:latest                                                                   app=grafana
+deployment.apps/prometheus           1/1     1            1           10m   prometheus   prom/prometheus:latest                                                                   app=prometheus
+deployment.apps/relaydesk-backend    2/2     2            2           13m   backend      ghcr.io/pranav7796/helpdesk-capstone/backend:d07bca6accc35f0224aaae8c4057076a9c4c9261    app=relaydesk-backend
+deployment.apps/relaydesk-frontend   2/2     2            2           13m   frontend     ghcr.io/pranav7796/helpdesk-capstone/frontend:d07bca6accc35f0224aaae8c4057076a9c4c9261   app=relaydesk-frontend
+
+NAME                         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE   SELECTOR
+service/backend              ClusterIP   172.20.89.116    <none>        8000/TCP   13m   app=relaydesk-backend
+service/grafana              ClusterIP   172.20.195.240   <none>        3000/TCP   10m   app=grafana
+service/prometheus           ClusterIP   172.20.151.9     <none>        9090/TCP   10m   app=prometheus
+service/relaydesk-backend    ClusterIP   172.20.77.239    <none>        8000/TCP   13m   app=relaydesk-backend
+service/relaydesk-frontend   ClusterIP   172.20.32.2      <none>        80/TCP     13m   app=relaydesk-frontend
+service/relaydesk-postgres   ClusterIP   172.20.73.31     <none>        5432/TCP   13m   app=relaydesk-postgres
+
+NAME                                                    REFERENCE                      TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+horizontalpodautoscaler.autoscaling/relaydesk-backend   Deployment/relaydesk-backend   cpu: 4%/70%   2         4         2          13m
+
+NAME                                            STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS    VOLUMEATTRIBUTESCLASS   AGE   VOLUMEMODE
+persistentvolumeclaim/relaydesk-postgres-data   Bound    pvc-e95372b1-b7cb-4b5f-822a-780ea33d054d   2Gi        RWO            relaydesk-gp3   <unset>                 13m   Filesystem
+
+NAME                                  CLASS     HOSTS   ADDRESS                                                                       PORTS   AGE
+ingress.networking.k8s.io/relaydesk   traefik   *       af43a3e33d68945548232885350507ff-719760255.ap-southeast-2.elb.amazonaws.com   80      13m

@@ -1,0 +1,1 @@
+{"status":"success","data":{"resultType":"vector","result":[{"metric":{"route":"/ready"},"value":[1792173396.992,"0.21052631578947367"]},{"metric":{"route":"/health"},"value":[1792173396.992,"0.5789473684210525"]},{"metric":{"route":"/api/tickets"},"value":[1792173396.992,"0.1087719298245614"]},{"metric":{"route":"/api/tickets/{ticket_id}"},"value":[1792173396.992,"0"]}]}}

@@ -1,9 +1,9 @@
 {
-  "audited_at_utc": "2026-10-16T17:07:51.915736+00:00",
-  "scope": "Every evidence file except this self-referential inventory file",
-  "png_count": 42,
-  "new_pngs_with_capture_manifest": 37,
-  "file_count": 156,
+  "audited_at_utc": "2026-10-16T18:10:56.903561+00:00",
+  "scope": "Every public evidence file; private directory and self-referential inventories excluded",
+  "png_count": 53,
+  "new_pngs_with_capture_manifest": 48,
+  "file_count": 222,
   "errors": [],
   "files": [
     {
@@ -39,7 +39,7 @@
     {
       "path": "evidence/audit/limited-secret-signature-check.json",
       "bytes": 300,
-      "sha256": "a05c778aac7d9fcda8a34dc5e7079704193286a6805575d4c81bc801f9fd78b6"
+      "sha256": "30e20d9d75237f645801e9800f82d1c042c6be9696820dcac8c52c47e6c13a78"
     },
     {
       "path": "evidence/audit/m1-health-database.txt",
@@ -555,6 +555,16 @@
       "capture_provenance": "Historical capture from earlier observed session; no new capture manifest"
     },
     {
+      "path": "evidence/sydney/COST-TRACKING.md",
+      "bytes": 1769,
+      "sha256": "08aea604230b91717192cc1fdeb55d6b9325e80a48f6adfd66721d2017f046df"
+    },
+    {
+      "path": "evidence/sydney/DEPLOYMENT-APPROVAL.md",
+      "bytes": 673,
+      "sha256": "f50c9ae5057990462e4412faec99ce004e804ba23bed1bcbfe6c6353580b7ff2"
+    },
+    {
       "path": "evidence/sydney/actions-final.json",
       "bytes": 7742,
       "sha256": "705956cecb809740e69f2f7c643f645f5289a3773865480af9ac1376a8da7dac"
@@ -580,9 +590,30 @@
       "sha256": "18014fb50fa9b155299e1869ea665084cde11ecef46529599e9398a4c5446516"
     },
     {
+      "path": "evidence/sydney/aws-apply-verified.png",
+      "bytes": 88858,
+      "sha256": "7674383d692b4ed6c1d2a76445c61a4142deff65522b70fb0511c3d57d0c84dd",
+      "width": 1366,
+      "height": 768,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept: visually reviewed genuine cloud capture; actual commands/URLs, timestamp and hash in associated capture manifest.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/sydney/aws-apply-verified.txt",
+      "bytes": 2428,
+      "sha256": "004d3e690db9e8a711779352ffac493d6553e99e2fdfd834573910911c6713cb"
+    },
+    {
       "path": "evidence/sydney/aws-clusters.json",
       "bytes": 291,
       "sha256": "edac1109c500bfdf0686dfa8194965ae72bdbc72950f3d197fe2d6ece638f298"
+    },
+    {
+      "path": "evidence/sydney/aws-console-capture-manifest.json",
+      "bytes": 1566,
+      "sha256": "e9e8c178e36a98a556162f78ce09e943429e0bfe40a071bfd6d3bce11d03c553"
     },
     {
       "path": "evidence/sydney/aws-credits.json",
@@ -590,9 +621,76 @@
       "sha256": "cefaa3d4e8ada19d36a5771ae7120c2c25e690dd75076393bb8f41f16efefa2e"
     },
     {
+      "path": "evidence/sydney/aws-ebs-live.json",
+      "bytes": 4506,
+      "sha256": "9b753b6d5d29758c5a8186d2a78e36c48f42e766a8aa781c8d672bf4a289b4da"
+    },
+    {
+      "path": "evidence/sydney/aws-eks-console-page.txt",
+      "bytes": 14209,
+      "sha256": "cdc963b0cf5b6047d6e62d68794e031746999c2deb315788cb8c65354e2d48cd"
+    },
+    {
+      "path": "evidence/sydney/aws-eks-console.png",
+      "bytes": 208687,
+      "sha256": "f0a504fc0487b811fadc95ee9cfdbd66e1910f6ebf39e017500415d1be788956",
+      "width": 1600,
+      "height": 1100,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept: visually reviewed genuine cloud capture; actual commands/URLs, timestamp and hash in associated capture manifest.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/sydney/aws-eks-live.json",
+      "bytes": 3814,
+      "sha256": "ef8176b5f16bcabdf878f3bffe473306bf2b7d264bbab2334818f6a406eaf242"
+    },
+    {
+      "path": "evidence/sydney/aws-elb-health.json",
+      "bytes": 373,
+      "sha256": "c7071806592681ab1a6a5bb47624f947a925c1372033f03831a7993bdd378685"
+    },
+    {
+      "path": "evidence/sydney/aws-elb-live.json",
+      "bytes": 2108,
+      "sha256": "a3ac5b10adbf516f6398aa51f7f06a7ef08dee763815be4a92a6fc624ba3d9fc"
+    },
+    {
+      "path": "evidence/sydney/aws-identity-deployed.json",
+      "bytes": 222,
+      "sha256": "c3117d30ccc917b6e736f2956aefabafc58ffe4a538d7aa63cadb0198aa3e9ab"
+    },
+    {
       "path": "evidence/sydney/aws-identity.json",
       "bytes": 496,
       "sha256": "440df770b259fe080420e6b384b20c172fc1fc447601b4fd94719a663c596551"
+    },
+    {
+      "path": "evidence/sydney/aws-nat-live.json",
+      "bytes": 1166,
+      "sha256": "6c5b13772862c56df4e846564c58fe96e3312cde413e40e0cf544d74d7fe9f90"
+    },
+    {
+      "path": "evidence/sydney/aws-network-verified.png",
+      "bytes": 115881,
+      "sha256": "1cc18c81580c9ba155e45ea82f7480c1e50e8c5dc3ffa5bdfde2637951f19a67",
+      "width": 1366,
+      "height": 768,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept: visually reviewed genuine cloud capture; actual commands/URLs, timestamp and hash in associated capture manifest.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/sydney/aws-network-verified.txt",
+      "bytes": 1771,
+      "sha256": "386c82b1156fb39967401cdd02dcd9e6b6704d9f7675e7d059bb1bc365c72de8"
+    },
+    {
+      "path": "evidence/sydney/aws-nodegroup-live.json",
+      "bytes": 1422,
+      "sha256": "0e2b95e9f0f3a49378f97d315b22477522111f344b619a86f3010626b68742ff"
     },
     {
       "path": "evidence/sydney/aws-price-clb.json",
@@ -640,14 +738,61 @@
       "sha256": "9ea1ca0167df69dad3b01526be7b83038a42c72587f64206df1f4353ffd0aa4a"
     },
     {
+      "path": "evidence/sydney/aws-routes-live.json",
+      "bytes": 4453,
+      "sha256": "20cf439855efe01c2d992ce33ada2d97d51fbaa607466cf1d82436bb13c18d8f"
+    },
+    {
       "path": "evidence/sydney/aws-running-vcpu.json",
       "bytes": 504,
       "sha256": "3075ac41c780f2480c6ad3a7137b95133a9e1ae3d4e66efa518ab7fcf1a31eb0"
     },
     {
+      "path": "evidence/sydney/aws-subnets-console-page.txt",
+      "bytes": 18210,
+      "sha256": "5eb19301d8ac8b51ad5d99d9f8ea7c75de8f4e9bc1eaf522a9c24b3a44faef2a"
+    },
+    {
+      "path": "evidence/sydney/aws-subnets-console.png",
+      "bytes": 183043,
+      "sha256": "6aeec9ee02968db6942d53f483e28741b5fae1c79b8a2059fc7cab26567a7ff0",
+      "width": 1600,
+      "height": 1100,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept: visually reviewed genuine cloud capture; actual commands/URLs, timestamp and hash in associated capture manifest.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/sydney/aws-subnets-live.json",
+      "bytes": 6112,
+      "sha256": "7580b8bd62feff89d35bbab5cb0bd8f0fb655d35f836026c4dcb2441451044c4"
+    },
+    {
       "path": "evidence/sydney/aws-version.json",
       "bytes": 818,
       "sha256": "fe350971f807fbeb274cc72e30e0f1365dc6f1b7d27190071b10de1c0d22c39c"
+    },
+    {
+      "path": "evidence/sydney/aws-vpc-console-page.txt",
+      "bytes": 16920,
+      "sha256": "2cfaa4f389bbf790ea4d3236667d561bffaf840626ba9f6b792c15b46b9d8e02"
+    },
+    {
+      "path": "evidence/sydney/aws-vpc-console.png",
+      "bytes": 182840,
+      "sha256": "02741afe32db89fdd5c7b9fb4205c2c0a52cabe1f0ee726d322b72282333f102",
+      "width": 1600,
+      "height": 1100,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept: visually reviewed genuine cloud capture; actual commands/URLs, timestamp and hash in associated capture manifest.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/sydney/aws-vpc-live.json",
+      "bytes": 1047,
+      "sha256": "dd1c831a751e1e78f8212f850bba3335345c9ed2f5bb171076b8689e49ceb738"
     },
     {
       "path": "evidence/sydney/aws-worker-offerings.json",
@@ -660,6 +805,11 @@
       "sha256": "0883dd17c523e47dab15c3763ec8fc14905d872f807cec8250a095c60c6a34b0"
     },
     {
+      "path": "evidence/sydney/aws-workers-live.json",
+      "bytes": 35048,
+      "sha256": "020d93b357a87efad894152e0e0e1db6ba2467dbcb81bd127fea4ce26546ef36"
+    },
+    {
       "path": "evidence/sydney/aws-zones.json",
       "bytes": 1905,
       "sha256": "382995b42e3ad4281dc1ba56b3942510aa4508d650b99f6209992acfe2adcd06"
@@ -668,6 +818,11 @@
       "path": "evidence/sydney/browser-capture-manifest.json",
       "bytes": 3848,
       "sha256": "f4df333de05a112eea6f03cd18d205bcdfcddfbe9155e8235f49ed2c8e03933c"
+    },
+    {
+      "path": "evidence/sydney/cleanup-plan-audit.json",
+      "bytes": 1670,
+      "sha256": "247e14e3838fc3ef1b20a43664220102f1f66c1c68626598695076b62ff2e743"
     },
     {
       "path": "evidence/sydney/cost-estimate.txt",
@@ -683,6 +838,232 @@
       "path": "evidence/sydney/docker-status.txt",
       "bytes": 759,
       "sha256": "0d17432aff7af6fde9d5758084cd85e9fbf428737dc6830f7a0607d39a525ff2"
+    },
+    {
+      "path": "evidence/sydney/eks-application-browser-page.txt",
+      "bytes": 888,
+      "sha256": "80d67973ee52983380d0227ba4dbf45d64543f2f1dec114869f389cabc0027da"
+    },
+    {
+      "path": "evidence/sydney/eks-application-browser.png",
+      "bytes": 82562,
+      "sha256": "66f7f5be4e2920af42a6b6793dc39230d4cb0f2f1fe3337b52fdfdbae3054ef0",
+      "width": 1440,
+      "height": 1100,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept: visually reviewed genuine cloud capture; actual commands/URLs, timestamp and hash in associated capture manifest.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/sydney/eks-application-metrics.txt",
+      "bytes": 12337,
+      "sha256": "95fcb620a46e7b0ca23eef2e7fb92f0c233da7b109e4583c80923baca61652ee"
+    },
+    {
+      "path": "evidence/sydney/eks-backend-logs.txt",
+      "bytes": 1523,
+      "sha256": "32b89833de821cfb6767d767101eea2ee40816bbdd4caa5a98a1c866e0c4f0af"
+    },
+    {
+      "path": "evidence/sydney/eks-browser-capture-manifest.json",
+      "bytes": 1639,
+      "sha256": "c36b039bb0e7f0ddb5796d3e0af22f4b90b7de1df2e462d27b9437100b9b5eef"
+    },
+    {
+      "path": "evidence/sydney/eks-deploy-exit-code.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "evidence/sydney/eks-deploy.txt",
+      "bytes": 5594,
+      "sha256": "991194a15664ba4af913ada35bd47a05e46dfa1b14410ba849a630db34fdbd74"
+    },
+    {
+      "path": "evidence/sydney/eks-deployments.json",
+      "bytes": 32719,
+      "sha256": "dec9a9c14e7397cda148f4d77d45bd54ca1ae69ad2ae21f617b07f6c72b11437"
+    },
+    {
+      "path": "evidence/sydney/eks-endpoints.json",
+      "bytes": 16436,
+      "sha256": "27bfa10cf8cfe7a51b6c0367e2fb6ec202a556a5ee3d789e0bea9f55f55aecfb"
+    },
+    {
+      "path": "evidence/sydney/eks-grafana-dashboard-page.txt",
+      "bytes": 292,
+      "sha256": "9ec91cfcecf50ef164c3fef2b85efe51175e268e565d573045e8c91d1b0249de"
+    },
+    {
+      "path": "evidence/sydney/eks-grafana-dashboard.json",
+      "bytes": 1838,
+      "sha256": "5a959902a94bb9bfea3213c14fe1da0fb0b1211d11192ec9afbeae5c64c8f5d0"
+    },
+    {
+      "path": "evidence/sydney/eks-grafana-dashboard.png",
+      "bytes": 70202,
+      "sha256": "9634e40c6fcce1651e5a84604c82838becf6e6db6c80eb1ecaa19865d7d6bd28",
+      "width": 1440,
+      "height": 1100,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept: visually reviewed genuine cloud capture; actual commands/URLs, timestamp and hash in associated capture manifest.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/sydney/eks-health.txt",
+      "bytes": 37,
+      "sha256": "0552c3f0195433c9bc8b40a3aef9a3b0d844db8c5ab43164a054bd849bc99d3b"
+    },
+    {
+      "path": "evidence/sydney/eks-http-smoke.txt",
+      "bytes": 260,
+      "sha256": "0d978b470535b69427757b3231365e68b9bfed36c940927e17b13f8c09d94f18"
+    },
+    {
+      "path": "evidence/sydney/eks-ingress-status.txt",
+      "bytes": 855,
+      "sha256": "7c91b81f19d30f3818322afc041e6bb57c015217da6f280d8143e7c7048fb22f"
+    },
+    {
+      "path": "evidence/sydney/eks-loadbalancer-service.json",
+      "bytes": 2004,
+      "sha256": "7c5c9da2bed93cd8ee3084896d07827c3695fe7c23e887e52665e1b944c54839"
+    },
+    {
+      "path": "evidence/sydney/eks-metrics.png",
+      "bytes": 89962,
+      "sha256": "b6feb8695dfff392d3fca8c924bbe3508bc89ee74a9bb30d00091e8e9effca03",
+      "width": 1366,
+      "height": 768,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept: visually reviewed genuine cloud capture; actual commands/URLs, timestamp and hash in associated capture manifest.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/sydney/eks-metrics.txt",
+      "bytes": 1444,
+      "sha256": "0b87eebc3a6270111350a35d0cb7be17db0502017ce4946139c7f1f96895449f"
+    },
+    {
+      "path": "evidence/sydney/eks-migration-logs.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/sydney/eks-nodes.json",
+      "bytes": 29467,
+      "sha256": "a6a2173be3ae925f94333f4fdce664ac32197dbfba42b6f76a4197af575a4606"
+    },
+    {
+      "path": "evidence/sydney/eks-pods-helm.png",
+      "bytes": 112395,
+      "sha256": "5167c2416dd7db514dccd71c2f94a289811263b269871bc07fcd094c2456f43b",
+      "width": 1366,
+      "height": 768,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept: visually reviewed genuine cloud capture; actual commands/URLs, timestamp and hash in associated capture manifest.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/sydney/eks-pods-helm.txt",
+      "bytes": 2468,
+      "sha256": "173dedf12da6e7be1d061d967a1c19c7ccf9ce4f92faab17a3b0f9203613dc2f"
+    },
+    {
+      "path": "evidence/sydney/eks-pods.json",
+      "bytes": 94208,
+      "sha256": "1abc6e98680f14959a2e158df2d1062003e92f5d0e6da5853cea7d5fc35259b6"
+    },
+    {
+      "path": "evidence/sydney/eks-postgres-persistence.txt",
+      "bytes": 489,
+      "sha256": "3a43f57afa1fb5c599f6082001628fb1a701d7a371935d442bcc0dbeb9f3e3e1"
+    },
+    {
+      "path": "evidence/sydney/eks-prometheus-targets-page.txt",
+      "bytes": 335,
+      "sha256": "0fc95e0db47a70c0eb7998c5e61b4869354a7c79a61a93189220b0b0aa2576f1"
+    },
+    {
+      "path": "evidence/sydney/eks-prometheus-targets.png",
+      "bytes": 46322,
+      "sha256": "06c9d9ba6f3838fd9b586024a3e5dc786a4e89419a95565cdda7047770234c25",
+      "width": 1440,
+      "height": 1100,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept: visually reviewed genuine cloud capture; actual commands/URLs, timestamp and hash in associated capture manifest.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/sydney/eks-prometheus-traffic.json",
+      "bytes": 375,
+      "sha256": "8060bfcbb15d8a32edcbf29264502afa8d78fba2ad68b0202fc3f6612f79285a"
+    },
+    {
+      "path": "evidence/sydney/eks-prometheus-up.json",
+      "bytes": 350,
+      "sha256": "f0bc480d1d324a91ccc61316943c5b9f600571dcc05e8509f89e6719f5c8bad6"
+    },
+    {
+      "path": "evidence/sydney/eks-pv.json",
+      "bytes": 2271,
+      "sha256": "1e06e5e673b673b787a55a8d3fb8dc8701d2ca663cb73f993e119e221a6ee8e9"
+    },
+    {
+      "path": "evidence/sydney/eks-pvc.json",
+      "bytes": 1496,
+      "sha256": "483b101c98a0ef7433cf6a8deb32b678552ee8c8859a48c5ffbcfbe3adbc0a41"
+    },
+    {
+      "path": "evidence/sydney/eks-readiness.txt",
+      "bytes": 18,
+      "sha256": "11bec2db0e99977c840a5df4b17be528421aadd5f4aa79d3622c126c481397fb"
+    },
+    {
+      "path": "evidence/sydney/eks-runtime.txt",
+      "bytes": 3976,
+      "sha256": "bdf421376fe19e69fe63e9e88f6f2661f7f712f6c2ca93342753c0f129981d86"
+    },
+    {
+      "path": "evidence/sydney/eks-services-ingress.png",
+      "bytes": 108955,
+      "sha256": "bec51b453f20e5b8ba4f9677a79a70908e430f8282c8868411b39915a9e15227",
+      "width": 1366,
+      "height": 768,
+      "png_validation": "signature/chunk CRCs/IDAT decompression/IEND passed",
+      "visual_review": "Accept: visually reviewed genuine cloud capture; actual commands/URLs, timestamp and hash in associated capture manifest.",
+      "capture_manifest_hash_matches": true,
+      "capture_provenance": "Audit capture with command/URL and timestamp"
+    },
+    {
+      "path": "evidence/sydney/eks-services-ingress.txt",
+      "bytes": 2005,
+      "sha256": "11b3397a7a54f47b21e76bad54f3f8d0e147bcbbe78214364ab33e736002213b"
+    },
+    {
+      "path": "evidence/sydney/eks-services.json",
+      "bytes": 9842,
+      "sha256": "f82dc4de8a732c177ac48416adbcd2c9577d9c9e6cadeb4a159a4ae96fe554a4"
+    },
+    {
+      "path": "evidence/sydney/eks-verification-initial-network-reset.txt",
+      "bytes": 1977,
+      "sha256": "40c0331b56a6d93ce1efdcf447aa48e768bed8ca3f1e45cea2bb8e05b119aed7"
+    },
+    {
+      "path": "evidence/sydney/eks-verification-summary.json",
+      "bytes": 587,
+      "sha256": "73b7a4f108b405e3f21e22412078ad620baba911ccdc1ea26230cec7fddb3649"
+    },
+    {
+      "path": "evidence/sydney/eks-verification.txt",
+      "bytes": 691,
+      "sha256": "99ba35814f49b71cd1eaf4729d301f48447c880bf2dab24dd9c2e3337cbc0838"
     },
     {
       "path": "evidence/sydney/helm-eks-rendered.yaml",
@@ -925,7 +1306,7 @@
     {
       "path": "evidence/sydney/plan-audit.json",
       "bytes": 4224,
-      "sha256": "311e2c3a177f11b686e0f7e137c34f5233e2246bbd1ccee1d79e8e299ffe037d"
+      "sha256": "7c7a86f6aa8214c26a424f160ea7c036bf28690c5ad57ce8fdc9a3e4092b9c14"
     },
     {
       "path": "evidence/sydney/plan-audit.txt",
@@ -949,8 +1330,23 @@
     },
     {
       "path": "evidence/sydney/terminal-capture-manifest.json",
-      "bytes": 4660,
-      "sha256": "68a401823135a48e8eccf6f326218e3019a3c475bb589af017d5b9e32ea8dd0e"
+      "bytes": 9707,
+      "sha256": "5f3d81a9b9474a83d373a6de3304ea4926afa38418417a33eb150a231756dfb7"
+    },
+    {
+      "path": "evidence/sydney/terraform-apply-exit-code.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "evidence/sydney/terraform-apply.txt",
+      "bytes": 9502,
+      "sha256": "ef65ee6799c9ff32da8d6f3072283d8828e59e2830f8dc84a2be72cf9b9403a9"
+    },
+    {
+      "path": "evidence/sydney/terraform-destroy-plan.txt",
+      "bytes": 36433,
+      "sha256": "f0f7bc70b545d8ee5520c8001b4cb48c280e54db079056707182eb4bbebe3c83"
     },
     {
       "path": "evidence/sydney/terraform-init.txt",

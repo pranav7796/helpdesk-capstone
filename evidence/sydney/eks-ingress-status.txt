@@ -1,0 +1,6 @@
+NAME                           READY   STATUS    RESTARTS   AGE   IP            NODE                                             NOMINATED NODE   READINESS GATES
+pod/traefik-6fdf6fb476-4ldq9   1/1     Running   0          46s   10.42.1.114   ip-10-42-1-229.ap-southeast-2.compute.internal   <none>           <none>
+pod/traefik-6fdf6fb476-wfq2c   1/1     Running   0          46s   10.42.2.184   ip-10-42-2-118.ap-southeast-2.compute.internal   <none>           <none>
+
+NAME              TYPE           CLUSTER-IP      EXTERNAL-IP                                                                   PORT(S)        AGE   SELECTOR
+service/traefik   LoadBalancer   172.20.74.195   af43a3e33d68945548232885350507ff-719760255.ap-southeast-2.elb.amazonaws.com   80:31440/TCP   48s   app.kubernetes.io/instance=traefik-ingress-system,app.kubernetes.io/name=traefik

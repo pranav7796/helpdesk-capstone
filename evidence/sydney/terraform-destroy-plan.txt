@@ -1,0 +1,701 @@
+aws_iam_role.nodes: Refreshing state... [id=relaydesk-capstone-nodes-role]
+aws_vpc.this: Refreshing state... [id=vpc-0f1334a144012db46]
+aws_iam_role.cluster: Refreshing state... [id=relaydesk-capstone-cluster-role]
+aws_iam_role.ebs_csi: Refreshing state... [id=relaydesk-capstone-ebs-csi-role]
+aws_iam_role_policy_attachment.cluster: Refreshing state... [id=relaydesk-capstone-cluster-role-20261016172858855800000005]
+aws_iam_role_policy_attachment.ebs_csi: Refreshing state... [id=relaydesk-capstone-ebs-csi-role-20261016172856813000000004]
+aws_iam_role_policy_attachment.nodes["AmazonEKSWorkerNodePolicy"]: Refreshing state... [id=relaydesk-capstone-nodes-role-20261016172856497600000003]
+aws_iam_role_policy_attachment.nodes["AmazonEC2ContainerRegistryPullOnly"]: Refreshing state... [id=relaydesk-capstone-nodes-role-20261016172855062800000002]
+aws_iam_role_policy_attachment.nodes["AmazonEKS_CNI_Policy"]: Refreshing state... [id=relaydesk-capstone-nodes-role-20261016172854686900000001]
+aws_internet_gateway.this: Refreshing state... [id=igw-0d3d24dbb8cf2cfc1]
+aws_subnet.private["ap-southeast-2a"]: Refreshing state... [id=subnet-047411b20e305b76e]
+aws_subnet.private["ap-southeast-2b"]: Refreshing state... [id=subnet-085043332babdbe89]
+aws_subnet.public["ap-southeast-2a"]: Refreshing state... [id=subnet-0ae52b6d9a2d553e1]
+aws_subnet.public["ap-southeast-2b"]: Refreshing state... [id=subnet-08fe728994f8400fc]
+aws_route_table.public: Refreshing state... [id=rtb-0a59d8a823baed282]
+aws_eip.nat: Refreshing state... [id=eipalloc-0a682ae835ce6b924]
+aws_eks_cluster.this: Refreshing state... [id=relaydesk-capstone]
+aws_route_table_association.public["ap-southeast-2b"]: Refreshing state... [id=rtbassoc-0aa346d65d01c1792]
+aws_route_table_association.public["ap-southeast-2a"]: Refreshing state... [id=rtbassoc-0b3fdbe4c4baa16f2]
+aws_nat_gateway.this: Refreshing state... [id=nat-01f3eac1072f1cadf]
+aws_route_table.private: Refreshing state... [id=rtb-04823e90152591370]
+aws_route_table_association.private["ap-southeast-2a"]: Refreshing state... [id=rtbassoc-01e6afebf9823c4c2]
+aws_route_table_association.private["ap-southeast-2b"]: Refreshing state... [id=rtbassoc-01e00b5417f4755c0]
+aws_eks_node_group.this: Refreshing state... [id=relaydesk-capstone:relaydesk-capstone-workers]
+aws_eks_addon.metrics_server: Refreshing state... [id=relaydesk-capstone:metrics-server]
+aws_eks_addon.pod_identity: Refreshing state... [id=relaydesk-capstone:eks-pod-identity-agent]
+aws_eks_pod_identity_association.ebs_csi: Refreshing state... [id=a-yzspixd7n1aawahwv]
+aws_eks_addon.ebs_csi: Refreshing state... [id=relaydesk-capstone:aws-ebs-csi-driver]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # aws_eip.nat will be destroyed
+  - resource "aws_eip" "nat" {
+      - allocation_id            = "eipalloc-0a682ae835ce6b924" -> null
+      - arn                      = "arn:aws:ec2:ap-southeast-2:525426877661:elastic-ip/eipalloc-0a682ae835ce6b924" -> null
+      - association_id           = "eipassoc-0b783d63efd52a48b" -> null
+      - domain                   = "vpc" -> null
+      - id                       = "eipalloc-0a682ae835ce6b924" -> null
+      - network_border_group     = "ap-southeast-2" -> null
+      - network_interface        = "eni-0c36bcaeda2da26a2" -> null
+      - private_dns              = "ip-10-42-100-149.ap-southeast-2.compute.internal" -> null
+      - private_ip               = "10.42.100.149" -> null
+      - public_dns               = "ec2-15-135-190-15.ap-southeast-2.compute.amazonaws.com" -> null
+      - public_ip                = "15.135.190.15" -> null
+      - public_ipv4_pool         = "amazon" -> null
+      - tags                     = {
+          - "Name"    = "relaydesk-capstone-nat"
+          - "Project" = "relaydesk-capstone"
+        } -> null
+      - tags_all                 = {
+          - "Name"    = "relaydesk-capstone-nat"
+          - "Project" = "relaydesk-capstone"
+        } -> null
+      - vpc                      = true -> null
+        # (5 unchanged attributes hidden)
+    }
+
+  # aws_eks_addon.ebs_csi will be destroyed
+  - resource "aws_eks_addon" "ebs_csi" {
+      - addon_name               = "aws-ebs-csi-driver" -> null
+      - addon_version            = "v1.67.0-eksbuild.1" -> null
+      - arn                      = "arn:aws:eks:ap-southeast-2:525426877661:addon/relaydesk-capstone/aws-ebs-csi-driver/56d0a2e6-4e19-4763-a582-9851495cfd04" -> null
+      - cluster_name             = "relaydesk-capstone" -> null
+      - created_at               = "2026-10-16T17:39:59Z" -> null
+      - id                       = "relaydesk-capstone:aws-ebs-csi-driver" -> null
+      - modified_at              = "2026-10-16T17:40:30Z" -> null
+      - tags                     = {
+          - "Project" = "relaydesk-capstone"
+        } -> null
+      - tags_all                 = {
+          - "Project" = "relaydesk-capstone"
+        } -> null
+        # (2 unchanged attributes hidden)
+    }
+
+  # aws_eks_addon.metrics_server will be destroyed
+  - resource "aws_eks_addon" "metrics_server" {
+      - addon_name               = "metrics-server" -> null
+      - addon_version            = "v0.9.0-eksbuild.13" -> null
+      - arn                      = "arn:aws:eks:ap-southeast-2:525426877661:addon/relaydesk-capstone/metrics-server/38d0a2e6-2912-5c67-d9d6-30230c1716c4" -> null
+      - cluster_name             = "relaydesk-capstone" -> null
+      - created_at               = "2026-10-16T17:39:40Z" -> null
+      - id                       = "relaydesk-capstone:metrics-server" -> null
+      - modified_at              = "2026-10-16T17:40:16Z" -> null
+      - tags                     = {
+          - "Project" = "relaydesk-capstone"
+        } -> null
+      - tags_all                 = {
+          - "Project" = "relaydesk-capstone"
+        } -> null
+        # (2 unchanged attributes hidden)
+    }
+
+  # aws_eks_addon.pod_identity will be destroyed
+  - resource "aws_eks_addon" "pod_identity" {
+      - addon_name               = "eks-pod-identity-agent" -> null
+      - addon_version            = "v1.3.10-eksbuild.3" -> null
+      - arn                      = "arn:aws:eks:ap-southeast-2:525426877661:addon/relaydesk-capstone/eks-pod-identity-agent/c8d0a2e6-290d-b3e1-ad48-9b4f2f2cb9b8" -> null
+      - cluster_name             = "relaydesk-capstone" -> null
+      - created_at               = "2026-10-16T17:39:40Z" -> null
+      - id                       = "relaydesk-capstone:eks-pod-identity-agent" -> null
+      - modified_at              = "2026-10-16T17:39:56Z" -> null
+      - tags                     = {
+          - "Project" = "relaydesk-capstone"
+        } -> null
+      - tags_all                 = {
+          - "Project" = "relaydesk-capstone"
+        } -> null
+        # (2 unchanged attributes hidden)
+    }
+
+  # aws_eks_cluster.this will be destroyed
+  - resource "aws_eks_cluster" "this" {
+      - arn                           = "arn:aws:eks:ap-southeast-2:525426877661:cluster/relaydesk-capstone" -> null
+      - bootstrap_self_managed_addons = true -> null
+      - certificate_authority         = [
+          - {
+              - data = "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURNakNDQWhxZ0F3SUJBZ0lSQU5YU0pkaWh2TzUveGdRV0RaL3RDUFF3RFFZSktvWklodmNOQVFFTEJRQXcKSnpFUU1BNEdBMVVFQ2hNSFFWZFRJRVZMVXpFVE1CRUdBMVVFQXhNS2EzVmlaWEp1WlhSbGN6QWVGdzB5TmpFdwpNVFl4TnpJNU5UUmFGdzB6TVRFd01UVXhOekk1TlRSYU1DY3hFREFPQmdOVkJBb1RCMEZYVXlCRlMxTXhFekFSCkJnTlZCQU1UQ210MVltVnlibVYwWlhNd2dnRWlNQTBHQ1NxR1NJYjNEUUVCQVFVQUE0SUJEd0F3Z2dFS0FvSUIKQVFEQjJtWW8xb3lJcXdUMzJsdEhuanozeUw3L3ZnQzN0SDgvU2dhRlAvU001SGlZaHJoK3FBdUgwZlNYT2trRgpYL1VsVEhlc2UvZmdSSERMN1ljSGVVRnU3cjYyRnNzMzJSWGsrYUV4VUtkVnN3ZVpHU2kvanRndmQ4M09QelJKClVDQy8ra1Y3YVVwOVZXUEw0L1loMUlZQ1dYZk9TVmRPdnF3eHFPVTdMVW1QZ0QyT2V4aUhGazdDL05xYUozYmoKZk83SzBObFE2QStKT2RTbGNmRTE5WktEeFhDaitUNHVSWkx0eCtaUVI2cGs3UmU0bU9saFRnVjRhY2E1d1NZbwp3YjBtQXM0a3FTRWFENTBRY01BUnFBc01CajZwV01KcnloaEREUVRvT0NVSlRVSXFaRHp3dnNja1ZyMXVkQ0RUCkZnY05aWTUrblpYZUZqV1lyTS9iMDh5VkFnTUJBQUdqV1RCWE1BNEdBMVVkRHdFQi93UUVBd0lDcERBUEJnTlYKSFJNQkFmOEVCVEFEQVFIL01CMEdBMVVkRGdRV0JCU3VyY25GOWVSRTAybytMR3VvNC9VcXlERUlXVEFWQmdOVgpIUkVFRGpBTWdncHJkV0psY201bGRHVnpNQTBHQ1NxR1NJYjNEUUVCQ3dVQUE0SUJBUUNSL2gzOVdQZmFzYzlOClNGVEpZeU9kdnBmRWZyMDRTSzNodGJMc2FqUk9TaXQxa1lranQrV1ZPQWl2YlUzSktOTW9uaXpmNGZqblowN2gKRWhZVldudGxYS0d1Wkh0NFhjdTRTMEtwbDVhWGFUSW56U1BWdVplTTNQcktFMjZxNkM0QzFZNmdpQ3ZXQnZsWgprU3owNExjUWd0U0dSR2duOEY0clR6MWh3NE42dDUrcWRtMzEwMC9VUFZ3ZWVlc3gySjFnVStFYXhuTUNOL1R2CkU2aG1WZDB6VEpCQyt4Qm0xbkd1UXYwQmhRRUE0eG5BYml3R0o4L0ZVMUt0c09rblU0RVhFVUlVTTBtcVM2MHAKZWJxSGlVbWRvMWhGNUc3NmhqS2syQzBydGpmd3hXS0JPOTAzVis0d0h0a3k3dnphcEpkODd2clVtdUNFUTZ6awpRa0x6UDQxNAotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg=="
+            },
+        ] -> null
+      - created_at                    = "2026-10-16T17:29:40Z" -> null
+      - enabled_cluster_log_types     = [] -> null
+      - endpoint                      = "https://5C2368D6B26ECD097E70F8D209704F30.gr7.ap-southeast-2.eks.amazonaws.com" -> null
+      - id                            = "relaydesk-capstone" -> null
+      - identity                      = [
+          - {
+              - oidc = [
+                  - {
+                      - issuer = "https://oidc.eks.ap-southeast-2.amazonaws.com/id/5C2368D6B26ECD097E70F8D209704F30"
+                    },
+                ]
+            },
+        ] -> null
+      - name                          = "relaydesk-capstone" -> null
+      - platform_version              = "eks.25" -> null
+      - role_arn                      = "arn:aws:iam::525426877661:role/relaydesk-capstone-cluster-role" -> null
+      - status                        = "ACTIVE" -> null
+      - tags                          = {
+          - "Project" = "relaydesk-capstone"
+        } -> null
+      - tags_all                      = {
+          - "Project" = "relaydesk-capstone"
+        } -> null
+      - version                       = "1.35" -> null
+
+      - access_config {
+          - authentication_mode                         = "API" -> null
+          - bootstrap_cluster_creator_admin_permissions = true -> null
+        }
+
+      - kubernetes_network_config {
+          - ip_family         = "ipv4" -> null
+          - service_ipv4_cidr = "172.20.0.0/16" -> null
+            # (1 unchanged attribute hidden)
+
+          - elastic_load_balancing {
+              - enabled = false -> null
+            }
+        }
+
+      - upgrade_policy {
+          - support_type = "EXTENDED" -> null
+        }
+
+      - vpc_config {
+          - cluster_security_group_id = "sg-095a81a0bee5e0fa6" -> null
+          - endpoint_private_access   = true -> null
+          - endpoint_public_access    = true -> null
+          - public_access_cidrs       = [
+              - "202.131.146.146/32",
+            ] -> null
+          - security_group_ids        = [] -> null
+          - subnet_ids                = [
+              - "subnet-047411b20e305b76e",
+              - "subnet-085043332babdbe89",
+              - "subnet-08fe728994f8400fc",
+              - "subnet-0ae52b6d9a2d553e1",
+            ] -> null
+          - vpc_id                    = "vpc-0f1334a144012db46" -> null
+        }
+    }
+
+  # aws_eks_node_group.this will be destroyed
+  - resource "aws_eks_node_group" "this" {
+      - ami_type               = "AL2023_x86_64_STANDARD" -> null
+      - arn                    = "arn:aws:eks:ap-southeast-2:525426877661:nodegroup/relaydesk-capstone/relaydesk-capstone-workers/5ed0a2e5-714e-23de-88f9-9d3b173b3119" -> null
+      - capacity_type          = "ON_DEMAND" -> null
+      - cluster_name           = "relaydesk-capstone" -> null
+      - disk_size              = 20 -> null
+      - id                     = "relaydesk-capstone:relaydesk-capstone-workers" -> null
+      - instance_types         = [
+          - "t3.medium",
+        ] -> null
+      - labels                 = {} -> null
+      - node_group_name        = "relaydesk-capstone-workers" -> null
+      - node_role_arn          = "arn:aws:iam::525426877661:role/relaydesk-capstone-nodes-role" -> null
+      - release_version        = "1.35.8-20261012" -> null
+      - resources              = [
+          - {
+              - autoscaling_groups              = [
+                  - {
+                      - name = "eks-relaydesk-capstone-workers-5ed0a2e5-714e-23de-88f9-9d3b173b3119"
+                    },
+                ]
+                # (1 unchanged attribute hidden)
+            },
+        ] -> null
+      - status                 = "ACTIVE" -> null
+      - subnet_ids             = [
+          - "subnet-047411b20e305b76e",
+          - "subnet-085043332babdbe89",
+        ] -> null
+      - tags                   = {
+          - "Project" = "relaydesk-capstone"
+        } -> null
+      - tags_all               = {
+          - "Project" = "relaydesk-capstone"
+        } -> null
+      - version                = "1.35" -> null
+        # (1 unchanged attribute hidden)
+
+      - scaling_config {
+          - desired_size = 2 -> null
+          - max_size     = 2 -> null
+          - min_size     = 2 -> null
+        }
+
+      - update_config {
+          - max_unavailable            = 1 -> null
+          - max_unavailable_percentage = 0 -> null
+        }
+    }
+
+  # aws_eks_pod_identity_association.ebs_csi will be destroyed
+  - resource "aws_eks_pod_identity_association" "ebs_csi" {
+      - association_arn = "arn:aws:eks:ap-southeast-2:525426877661:podidentityassociation/relaydesk-capstone/a-yzspixd7n1aawahwv" -> null
+      - association_id  = "a-yzspixd7n1aawahwv" -> null
+      - cluster_name    = "relaydesk-capstone" -> null
+      - id              = "a-yzspixd7n1aawahwv" -> null
+      - namespace       = "kube-system" -> null
+      - role_arn        = "arn:aws:iam::525426877661:role/relaydesk-capstone-ebs-csi-role" -> null
+      - service_account = "ebs-csi-controller-sa" -> null
+      - tags            = {
+          - "Project" = "relaydesk-capstone"
+        } -> null
+      - tags_all        = {
+          - "Project" = "relaydesk-capstone"
+        } -> null
+    }
+
+  # aws_iam_role.cluster will be destroyed
+  - resource "aws_iam_role" "cluster" {
+      - arn                   = "arn:aws:iam::525426877661:role/relaydesk-capstone-cluster-role" -> null
+      - assume_role_policy    = jsonencode(
+            {
+              - Statement = [
+                  - {
+                      - Action    = "sts:AssumeRole"
+                      - Effect    = "Allow"
+                      - Principal = {
+                          - Service = "eks.amazonaws.com"
+                        }
+                    },
+                ]
+              - Version   = "2012-10-17"
+            }
+        ) -> null
+      - create_date           = "2026-10-16T17:28:53Z" -> null
+      - force_detach_policies = false -> null
+      - id                    = "relaydesk-capstone-cluster-role" -> null
+      - managed_policy_arns   = [
+          - "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy",
+        ] -> null
+      - max_session_duration  = 3600 -> null
+      - name                  = "relaydesk-capstone-cluster-role" -> null
+      - path                  = "/" -> null
+      - tags                  = {
+          - "Project" = "relaydesk-capstone"
+        } -> null
+      - tags_all              = {
+          - "Project" = "relaydesk-capstone"
+        } -> null
+      - unique_id             = "AROAXUVPB4TO4IJD5SHKZ" -> null
+        # (3 unchanged attributes hidden)
+    }
+
+  # aws_iam_role.ebs_csi will be destroyed
+  - resource "aws_iam_role" "ebs_csi" {
+      - arn                   = "arn:aws:iam::525426877661:role/relaydesk-capstone-ebs-csi-role" -> null
+      - assume_role_policy    = jsonencode(
+            {
+              - Statement = [
+                  - {
+                      - Action    = [
+                          - "sts:AssumeRole",
+                          - "sts:TagSession",
+                        ]
+                      - Condition = {
+                          - StringEquals = {
+                              - "aws:RequestTag/kubernetes-namespace"       = "kube-system"
+                              - "aws:RequestTag/kubernetes-service-account" = "ebs-csi-controller-sa"
+                            }
+                        }
+                      - Effect    = "Allow"
+                      - Principal = {
+                          - Service = "pods.eks.amazonaws.com"
+                        }
+                    },
+                ]
+              - Version   = "2012-10-17"
+            }
+        ) -> null
+      - create_date           = "2026-10-16T17:28:51Z" -> null
+      - force_detach_policies = false -> null
+      - id                    = "relaydesk-capstone-ebs-csi-role" -> null
+      - managed_policy_arns   = [
+          - "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy",
+        ] -> null
+      - max_session_duration  = 3600 -> null
+      - name                  = "relaydesk-capstone-ebs-csi-role" -> null
+      - path                  = "/" -> null
+      - tags                  = {
+          - "Project" = "relaydesk-capstone"
+        } -> null
+      - tags_all              = {
+          - "Project" = "relaydesk-capstone"
+        } -> null
+      - unique_id             = "AROAXUVPB4TO2NJTKLFKJ" -> null
+        # (3 unchanged attributes hidden)
+    }
+
+  # aws_iam_role.nodes will be destroyed
+  - resource "aws_iam_role" "nodes" {
+      - arn                   = "arn:aws:iam::525426877661:role/relaydesk-capstone-nodes-role" -> null
+      - assume_role_policy    = jsonencode(
+            {
+              - Statement = [
+                  - {
+                      - Action    = "sts:AssumeRole"
+                      - Effect    = "Allow"
+                      - Principal = {
+                          - Service = "ec2.amazonaws.com"
+                        }
+                    },
+                ]
+              - Version   = "2012-10-17"
+            }
+        ) -> null
+      - create_date           = "2026-10-16T17:28:52Z" -> null
+      - force_detach_policies = false -> null
+      - id                    = "relaydesk-capstone-nodes-role" -> null
+      - managed_policy_arns   = [
+          - "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryPullOnly",
+          - "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy",
+          - "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy",
+        ] -> null
+      - max_session_duration  = 3600 -> null
+      - name                  = "relaydesk-capstone-nodes-role" -> null
+      - path                  = "/" -> null
+      - tags                  = {
+          - "Project" = "relaydesk-capstone"
+        } -> null
+      - tags_all              = {
+          - "Project" = "relaydesk-capstone"
+        } -> null
+      - unique_id             = "AROAXUVPB4TO5QRV2VIZK" -> null
+        # (3 unchanged attributes hidden)
+    }
+
+  # aws_iam_role_policy_attachment.cluster will be destroyed
+  - resource "aws_iam_role_policy_attachment" "cluster" {
+      - id         = "relaydesk-capstone-cluster-role-20261016172858855800000005" -> null
+      - policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy" -> null
+      - role       = "relaydesk-capstone-cluster-role" -> null
+    }
+
+  # aws_iam_role_policy_attachment.ebs_csi will be destroyed
+  - resource "aws_iam_role_policy_attachment" "ebs_csi" {
+      - id         = "relaydesk-capstone-ebs-csi-role-20261016172856813000000004" -> null
+      - policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy" -> null
+      - role       = "relaydesk-capstone-ebs-csi-role" -> null
+    }
+
+  # aws_iam_role_policy_attachment.nodes["AmazonEC2ContainerRegistryPullOnly"] will be destroyed
+  - resource "aws_iam_role_policy_attachment" "nodes" {
+      - id         = "relaydesk-capstone-nodes-role-20261016172855062800000002" -> null
+      - policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryPullOnly" -> null
+      - role       = "relaydesk-capstone-nodes-role" -> null
+    }
+
+  # aws_iam_role_policy_attachment.nodes["AmazonEKSWorkerNodePolicy"] will be destroyed
+  - resource "aws_iam_role_policy_attachment" "nodes" {
+      - id         = "relaydesk-capstone-nodes-role-20261016172856497600000003" -> null
+      - policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy" -> null
+      - role       = "relaydesk-capstone-nodes-role" -> null
+    }
+
+  # aws_iam_role_policy_attachment.nodes["AmazonEKS_CNI_Policy"] will be destroyed
+  - resource "aws_iam_role_policy_attachment" "nodes" {
+      - id         = "relaydesk-capstone-nodes-role-20261016172854686900000001" -> null
+      - policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy" -> null
+      - role       = "relaydesk-capstone-nodes-role" -> null
+    }
+
+  # aws_internet_gateway.this will be destroyed
+  - resource "aws_internet_gateway" "this" {
+      - arn      = "arn:aws:ec2:ap-southeast-2:525426877661:internet-gateway/igw-0d3d24dbb8cf2cfc1" -> null
+      - id       = "igw-0d3d24dbb8cf2cfc1" -> null
+      - owner_id = "525426877661" -> null
+      - tags     = {
+          - "Name"    = "relaydesk-capstone-igw"
+          - "Project" = "relaydesk-capstone"
+        } -> null
+      - tags_all = {
+          - "Name"    = "relaydesk-capstone-igw"
+          - "Project" = "relaydesk-capstone"
+        } -> null
+      - vpc_id   = "vpc-0f1334a144012db46" -> null
+    }
+
+  # aws_nat_gateway.this will be destroyed
+  - resource "aws_nat_gateway" "this" {
+      - allocation_id                      = "eipalloc-0a682ae835ce6b924" -> null
+      - association_id                     = "eipassoc-0b783d63efd52a48b" -> null
+      - connectivity_type                  = "public" -> null
+      - id                                 = "nat-01f3eac1072f1cadf" -> null
+      - network_interface_id               = "eni-0c36bcaeda2da26a2" -> null
+      - private_ip                         = "10.42.100.149" -> null
+      - public_ip                          = "15.135.190.15" -> null
+      - secondary_allocation_ids           = [] -> null
+      - secondary_private_ip_address_count = 0 -> null
+      - secondary_private_ip_addresses     = [] -> null
+      - subnet_id                          = "subnet-0ae52b6d9a2d553e1" -> null
+      - tags                               = {
+          - "Name"    = "relaydesk-capstone-nat"
+          - "Project" = "relaydesk-capstone"
+        } -> null
+      - tags_all                           = {
+          - "Name"    = "relaydesk-capstone-nat"
+          - "Project" = "relaydesk-capstone"
+        } -> null
+    }
+
+  # aws_route_table.private will be destroyed
+  - resource "aws_route_table" "private" {
+      - arn              = "arn:aws:ec2:ap-southeast-2:525426877661:route-table/rtb-04823e90152591370" -> null
+      - id               = "rtb-04823e90152591370" -> null
+      - owner_id         = "525426877661" -> null
+      - propagating_vgws = [] -> null
+      - route            = [
+          - {
+              - cidr_block                 = "0.0.0.0/0"
+              - nat_gateway_id             = "nat-01f3eac1072f1cadf"
+                # (11 unchanged attributes hidden)
+            },
+        ] -> null
+      - tags             = {
+          - "Name"    = "relaydesk-capstone-private"
+          - "Project" = "relaydesk-capstone"
+        } -> null
+      - tags_all         = {
+          - "Name"    = "relaydesk-capstone-private"
+          - "Project" = "relaydesk-capstone"
+        } -> null
+      - vpc_id           = "vpc-0f1334a144012db46" -> null
+    }
+
+  # aws_route_table.public will be destroyed
+  - resource "aws_route_table" "public" {
+      - arn              = "arn:aws:ec2:ap-southeast-2:525426877661:route-table/rtb-0a59d8a823baed282" -> null
+      - id               = "rtb-0a59d8a823baed282" -> null
+      - owner_id         = "525426877661" -> null
+      - propagating_vgws = [] -> null
+      - route            = [
+          - {
+              - cidr_block                 = "0.0.0.0/0"
+              - gateway_id                 = "igw-0d3d24dbb8cf2cfc1"
+                # (11 unchanged attributes hidden)
+            },
+        ] -> null
+      - tags             = {
+          - "Name"    = "relaydesk-capstone-public"
+          - "Project" = "relaydesk-capstone"
+        } -> null
+      - tags_all         = {
+          - "Name"    = "relaydesk-capstone-public"
+          - "Project" = "relaydesk-capstone"
+        } -> null
+      - vpc_id           = "vpc-0f1334a144012db46" -> null
+    }
+
+  # aws_route_table_association.private["ap-southeast-2a"] will be destroyed
+  - resource "aws_route_table_association" "private" {
+      - id             = "rtbassoc-01e6afebf9823c4c2" -> null
+      - route_table_id = "rtb-04823e90152591370" -> null
+      - subnet_id      = "subnet-047411b20e305b76e" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_route_table_association.private["ap-southeast-2b"] will be destroyed
+  - resource "aws_route_table_association" "private" {
+      - id             = "rtbassoc-01e00b5417f4755c0" -> null
+      - route_table_id = "rtb-04823e90152591370" -> null
+      - subnet_id      = "subnet-085043332babdbe89" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_route_table_association.public["ap-southeast-2a"] will be destroyed
+  - resource "aws_route_table_association" "public" {
+      - id             = "rtbassoc-0b3fdbe4c4baa16f2" -> null
+      - route_table_id = "rtb-0a59d8a823baed282" -> null
+      - subnet_id      = "subnet-0ae52b6d9a2d553e1" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_route_table_association.public["ap-southeast-2b"] will be destroyed
+  - resource "aws_route_table_association" "public" {
+      - id             = "rtbassoc-0aa346d65d01c1792" -> null
+      - route_table_id = "rtb-0a59d8a823baed282" -> null
+      - subnet_id      = "subnet-08fe728994f8400fc" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_subnet.private["ap-southeast-2a"] will be destroyed
+  - resource "aws_subnet" "private" {
+      - arn                                            = "arn:aws:ec2:ap-southeast-2:525426877661:subnet/subnet-047411b20e305b76e" -> null
+      - assign_ipv6_address_on_creation                = false -> null
+      - availability_zone                              = "ap-southeast-2a" -> null
+      - availability_zone_id                           = "apse2-az1" -> null
+      - cidr_block                                     = "10.42.1.0/24" -> null
+      - enable_dns64                                   = false -> null
+      - enable_lni_at_device_index                     = 0 -> null
+      - enable_resource_name_dns_a_record_on_launch    = false -> null
+      - enable_resource_name_dns_aaaa_record_on_launch = false -> null
+      - id                                             = "subnet-047411b20e305b76e" -> null
+      - ipv6_native                                    = false -> null
+      - map_customer_owned_ip_on_launch                = false -> null
+      - map_public_ip_on_launch                        = false -> null
+      - owner_id                                       = "525426877661" -> null
+      - private_dns_hostname_type_on_launch            = "ip-name" -> null
+      - tags                                           = {
+          - "Name"                            = "relaydesk-capstone-private-ap-southeast-2a"
+          - "Project"                         = "relaydesk-capstone"
+          - "kubernetes.io/role/internal-elb" = "1"
+        } -> null
+      - tags_all                                       = {
+          - "Name"                            = "relaydesk-capstone-private-ap-southeast-2a"
+          - "Project"                         = "relaydesk-capstone"
+          - "kubernetes.io/role/internal-elb" = "1"
+        } -> null
+      - vpc_id                                         = "vpc-0f1334a144012db46" -> null
+        # (4 unchanged attributes hidden)
+    }
+
+  # aws_subnet.private["ap-southeast-2b"] will be destroyed
+  - resource "aws_subnet" "private" {
+      - arn                                            = "arn:aws:ec2:ap-southeast-2:525426877661:subnet/subnet-085043332babdbe89" -> null
+      - assign_ipv6_address_on_creation                = false -> null
+      - availability_zone                              = "ap-southeast-2b" -> null
+      - availability_zone_id                           = "apse2-az3" -> null
+      - cidr_block                                     = "10.42.2.0/24" -> null
+      - enable_dns64                                   = false -> null
+      - enable_lni_at_device_index                     = 0 -> null
+      - enable_resource_name_dns_a_record_on_launch    = false -> null
+      - enable_resource_name_dns_aaaa_record_on_launch = false -> null
+      - id                                             = "subnet-085043332babdbe89" -> null
+      - ipv6_native                                    = false -> null
+      - map_customer_owned_ip_on_launch                = false -> null
+      - map_public_ip_on_launch                        = false -> null
+      - owner_id                                       = "525426877661" -> null
+      - private_dns_hostname_type_on_launch            = "ip-name" -> null
+      - tags                                           = {
+          - "Name"                            = "relaydesk-capstone-private-ap-southeast-2b"
+          - "Project"                         = "relaydesk-capstone"
+          - "kubernetes.io/role/internal-elb" = "1"
+        } -> null
+      - tags_all                                       = {
+          - "Name"                            = "relaydesk-capstone-private-ap-southeast-2b"
+          - "Project"                         = "relaydesk-capstone"
+          - "kubernetes.io/role/internal-elb" = "1"
+        } -> null
+      - vpc_id                                         = "vpc-0f1334a144012db46" -> null
+        # (4 unchanged attributes hidden)
+    }
+
+  # aws_subnet.public["ap-southeast-2a"] will be destroyed
+  - resource "aws_subnet" "public" {
+      - arn                                            = "arn:aws:ec2:ap-southeast-2:525426877661:subnet/subnet-0ae52b6d9a2d553e1" -> null
+      - assign_ipv6_address_on_creation                = false -> null
+      - availability_zone                              = "ap-southeast-2a" -> null
+      - availability_zone_id                           = "apse2-az1" -> null
+      - cidr_block                                     = "10.42.100.0/24" -> null
+      - enable_dns64                                   = false -> null
+      - enable_lni_at_device_index                     = 0 -> null
+      - enable_resource_name_dns_a_record_on_launch    = false -> null
+      - enable_resource_name_dns_aaaa_record_on_launch = false -> null
+      - id                                             = "subnet-0ae52b6d9a2d553e1" -> null
+      - ipv6_native                                    = false -> null
+      - map_customer_owned_ip_on_launch                = false -> null
+      - map_public_ip_on_launch                        = true -> null
+      - owner_id                                       = "525426877661" -> null
+      - private_dns_hostname_type_on_launch            = "ip-name" -> null
+      - tags                                           = {
+          - "Name"                   = "relaydesk-capstone-public-ap-southeast-2a"
+          - "Project"                = "relaydesk-capstone"
+          - "kubernetes.io/role/elb" = "1"
+        } -> null
+      - tags_all                                       = {
+          - "Name"                   = "relaydesk-capstone-public-ap-southeast-2a"
+          - "Project"                = "relaydesk-capstone"
+          - "kubernetes.io/role/elb" = "1"
+        } -> null
+      - vpc_id                                         = "vpc-0f1334a144012db46" -> null
+        # (4 unchanged attributes hidden)
+    }
+
+  # aws_subnet.public["ap-southeast-2b"] will be destroyed
+  - resource "aws_subnet" "public" {
+      - arn                                            = "arn:aws:ec2:ap-southeast-2:525426877661:subnet/subnet-08fe728994f8400fc" -> null
+      - assign_ipv6_address_on_creation                = false -> null
+      - availability_zone                              = "ap-southeast-2b" -> null
+      - availability_zone_id                           = "apse2-az3" -> null
+      - cidr_block                                     = "10.42.101.0/24" -> null
+      - enable_dns64                                   = false -> null
+      - enable_lni_at_device_index                     = 0 -> null
+      - enable_resource_name_dns_a_record_on_launch    = false -> null
+      - enable_resource_name_dns_aaaa_record_on_launch = false -> null
+      - id                                             = "subnet-08fe728994f8400fc" -> null
+      - ipv6_native                                    = false -> null
+      - map_customer_owned_ip_on_launch                = false -> null
+      - map_public_ip_on_launch                        = true -> null
+      - owner_id                                       = "525426877661" -> null
+      - private_dns_hostname_type_on_launch            = "ip-name" -> null
+      - tags                                           = {
+          - "Name"                   = "relaydesk-capstone-public-ap-southeast-2b"
+          - "Project"                = "relaydesk-capstone"
+          - "kubernetes.io/role/elb" = "1"
+        } -> null
+      - tags_all                                       = {
+          - "Name"                   = "relaydesk-capstone-public-ap-southeast-2b"
+          - "Project"                = "relaydesk-capstone"
+          - "kubernetes.io/role/elb" = "1"
+        } -> null
+      - vpc_id                                         = "vpc-0f1334a144012db46" -> null
+        # (4 unchanged attributes hidden)
+    }
+
+  # aws_vpc.this will be destroyed
+  - resource "aws_vpc" "this" {
+      - arn                                  = "arn:aws:ec2:ap-southeast-2:525426877661:vpc/vpc-0f1334a144012db46" -> null
+      - assign_generated_ipv6_cidr_block     = false -> null
+      - cidr_block                           = "10.42.0.0/16" -> null
+      - default_network_acl_id               = "acl-0dfd4d92b103de65d" -> null
+      - default_route_table_id               = "rtb-0fa0c776a6848ffb0" -> null
+      - default_security_group_id            = "sg-05b3ccb20e44a1abe" -> null
+      - dhcp_options_id                      = "dopt-080dcad61eb4a884d" -> null
+      - enable_dns_hostnames                 = true -> null
+      - enable_dns_support                   = true -> null
+      - enable_network_address_usage_metrics = false -> null
+      - id                                   = "vpc-0f1334a144012db46" -> null
+      - instance_tenancy                     = "default" -> null
+      - ipv6_netmask_length                  = 0 -> null
+      - main_route_table_id                  = "rtb-0fa0c776a6848ffb0" -> null
+      - owner_id                             = "525426877661" -> null
+      - tags                                 = {
+          - "Name"    = "relaydesk-capstone-vpc"
+          - "Project" = "relaydesk-capstone"
+        } -> null
+      - tags_all                             = {
+          - "Name"    = "relaydesk-capstone-vpc"
+          - "Project" = "relaydesk-capstone"
+        } -> null
+        # (4 unchanged attributes hidden)
+    }
+
+Plan: 0 to add, 0 to change, 28 to destroy.
+
+Changes to Outputs:
+  - cluster_endpoint          = "https://5C2368D6B26ECD097E70F8D209704F30.gr7.ap-southeast-2.eks.amazonaws.com" -> null
+  - cluster_name              = "relaydesk-capstone" -> null
+  - kubectl_configure_command = "aws eks update-kubeconfig --region ap-southeast-2 --name relaydesk-capstone --profile devops-new" -> null
+  - private_subnet_ids        = [
+      - "subnet-047411b20e305b76e",
+      - "subnet-085043332babdbe89",
+    ] -> null
+  - public_subnet_ids         = [
+      - "subnet-0ae52b6d9a2d553e1",
+      - "subnet-08fe728994f8400fc",
+    ] -> null
+  - vpc_id                    = "vpc-0f1334a144012db46" -> null
+
+─────────────────────────────────────────────────────────────────────────────
+
+Saved the plan to: tfplan-destroy
+
+To perform exactly these actions, run the following command to apply:
+    terraform apply "tfplan-destroy"

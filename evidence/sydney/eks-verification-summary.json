@@ -1,0 +1,15 @@
+{
+  "verified_at_utc": "2026-10-16T17:56:59.076312+00:00",
+  "account": "525426877661",
+  "region": "ap-southeast-2",
+  "application_url": "http://af43a3e33d68945548232885350507ff-719760255.ap-southeast-2.elb.amazonaws.com",
+  "workers": [
+    "i-0ae1eaa988c9eac8d",
+    "i-05ebd008f8142bee8"
+  ],
+  "worker_count": 2,
+  "ready_app_namespace_pods": 7,
+  "data_volume": "vol-05a891d9a7dce0955",
+  "load_balancer": "af43a3e33d68945548232885350507ff",
+  "checks": "Ready nodes/Pods, replicas, PVC, EC2 type, encrypted gp3 disk, real health/metrics, Prometheus UP, Grafana panel verified"
+}

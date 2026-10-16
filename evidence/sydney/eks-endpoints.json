@@ -1,0 +1,424 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "addressType": "IPv4",
+            "apiVersion": "discovery.k8s.io/v1",
+            "endpoints": [
+                {
+                    "addresses": [
+                        "10.42.1.17"
+                    ],
+                    "conditions": {
+                        "ready": true,
+                        "serving": true,
+                        "terminating": false
+                    },
+                    "nodeName": "ip-10-42-1-229.ap-southeast-2.compute.internal",
+                    "targetRef": {
+                        "kind": "Pod",
+                        "name": "relaydesk-backend-7556c8f9c4-zkpxl",
+                        "namespace": "relaydesk",
+                        "uid": "63b9cd36-efe5-4298-8c83-27b815f16703"
+                    },
+                    "zone": "ap-southeast-2a"
+                },
+                {
+                    "addresses": [
+                        "10.42.2.169"
+                    ],
+                    "conditions": {
+                        "ready": true,
+                        "serving": true,
+                        "terminating": false
+                    },
+                    "nodeName": "ip-10-42-2-118.ap-southeast-2.compute.internal",
+                    "targetRef": {
+                        "kind": "Pod",
+                        "name": "relaydesk-backend-7556c8f9c4-g68bb",
+                        "namespace": "relaydesk",
+                        "uid": "a532ae68-177b-43d8-ba8e-139d88ec5186"
+                    },
+                    "zone": "ap-southeast-2b"
+                }
+            ],
+            "kind": "EndpointSlice",
+            "metadata": {
+                "annotations": {
+                    "endpoints.kubernetes.io/last-change-trigger-time": "2026-10-16T17:44:09Z"
+                },
+                "creationTimestamp": "2026-10-16T17:43:18Z",
+                "generateName": "backend-",
+                "generation": 5,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "Helm",
+                    "endpointslice.kubernetes.io/managed-by": "endpointslice-controller.k8s.io",
+                    "kubernetes.io/service-name": "backend"
+                },
+                "name": "backend-6qxwp",
+                "namespace": "relaydesk",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Service",
+                        "name": "backend",
+                        "uid": "bbe3ded6-0ad7-4618-a7c3-240560ac6185"
+                    }
+                ],
+                "resourceVersion": "2592",
+                "uid": "0080a346-2f18-4e14-8043-a2b3ab29fefc"
+            },
+            "ports": [
+                {
+                    "name": "http",
+                    "port": 8000,
+                    "protocol": "TCP"
+                }
+            ]
+        },
+        {
+            "addressType": "IPv4",
+            "apiVersion": "discovery.k8s.io/v1",
+            "endpoints": [
+                {
+                    "addresses": [
+                        "10.42.1.115"
+                    ],
+                    "conditions": {
+                        "ready": true,
+                        "serving": true,
+                        "terminating": false
+                    },
+                    "nodeName": "ip-10-42-1-229.ap-southeast-2.compute.internal",
+                    "targetRef": {
+                        "kind": "Pod",
+                        "name": "grafana-6bf844bfcb-hbdbs",
+                        "namespace": "relaydesk",
+                        "uid": "c3938869-eac2-4e92-a0c6-ab20852f727b"
+                    },
+                    "zone": "ap-southeast-2a"
+                }
+            ],
+            "kind": "EndpointSlice",
+            "metadata": {
+                "annotations": {
+                    "endpoints.kubernetes.io/last-change-trigger-time": "2026-10-16T17:47:14Z"
+                },
+                "creationTimestamp": "2026-10-16T17:46:25Z",
+                "generateName": "grafana-",
+                "generation": 3,
+                "labels": {
+                    "endpointslice.kubernetes.io/managed-by": "endpointslice-controller.k8s.io",
+                    "kubernetes.io/service-name": "grafana"
+                },
+                "name": "grafana-fjzvw",
+                "namespace": "relaydesk",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Service",
+                        "name": "grafana",
+                        "uid": "f178e35f-8653-40d4-a90a-607fcfed0ebf"
+                    }
+                ],
+                "resourceVersion": "3464",
+                "uid": "cb202d56-dea7-4147-bec0-f3852c5bae2a"
+            },
+            "ports": [
+                {
+                    "name": "web",
+                    "port": 3000,
+                    "protocol": "TCP"
+                }
+            ]
+        },
+        {
+            "addressType": "IPv4",
+            "apiVersion": "discovery.k8s.io/v1",
+            "endpoints": [
+                {
+                    "addresses": [
+                        "10.42.1.183"
+                    ],
+                    "conditions": {
+                        "ready": true,
+                        "serving": true,
+                        "terminating": false
+                    },
+                    "nodeName": "ip-10-42-1-229.ap-southeast-2.compute.internal",
+                    "targetRef": {
+                        "kind": "Pod",
+                        "name": "prometheus-cd7d5fdc5-2wcvz",
+                        "namespace": "relaydesk",
+                        "uid": "a9aaa7b1-847d-425f-bd49-566eca1ab7f6"
+                    },
+                    "zone": "ap-southeast-2a"
+                }
+            ],
+            "kind": "EndpointSlice",
+            "metadata": {
+                "annotations": {
+                    "endpoints.kubernetes.io/last-change-trigger-time": "2026-10-16T17:46:51Z"
+                },
+                "creationTimestamp": "2026-10-16T17:46:27Z",
+                "generateName": "prometheus-",
+                "generation": 3,
+                "labels": {
+                    "endpointslice.kubernetes.io/managed-by": "endpointslice-controller.k8s.io",
+                    "kubernetes.io/service-name": "prometheus"
+                },
+                "name": "prometheus-7plxz",
+                "namespace": "relaydesk",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Service",
+                        "name": "prometheus",
+                        "uid": "1331665d-2b3d-469f-95f4-f987d7833a4e"
+                    }
+                ],
+                "resourceVersion": "3369",
+                "uid": "224d680b-53e7-4255-bdaf-4814033c6e67"
+            },
+            "ports": [
+                {
+                    "name": "web",
+                    "port": 9090,
+                    "protocol": "TCP"
+                }
+            ]
+        },
+        {
+            "addressType": "IPv4",
+            "apiVersion": "discovery.k8s.io/v1",
+            "endpoints": [
+                {
+                    "addresses": [
+                        "10.42.1.17"
+                    ],
+                    "conditions": {
+                        "ready": true,
+                        "serving": true,
+                        "terminating": false
+                    },
+                    "nodeName": "ip-10-42-1-229.ap-southeast-2.compute.internal",
+                    "targetRef": {
+                        "kind": "Pod",
+                        "name": "relaydesk-backend-7556c8f9c4-zkpxl",
+                        "namespace": "relaydesk",
+                        "uid": "63b9cd36-efe5-4298-8c83-27b815f16703"
+                    },
+                    "zone": "ap-southeast-2a"
+                },
+                {
+                    "addresses": [
+                        "10.42.2.169"
+                    ],
+                    "conditions": {
+                        "ready": true,
+                        "serving": true,
+                        "terminating": false
+                    },
+                    "nodeName": "ip-10-42-2-118.ap-southeast-2.compute.internal",
+                    "targetRef": {
+                        "kind": "Pod",
+                        "name": "relaydesk-backend-7556c8f9c4-g68bb",
+                        "namespace": "relaydesk",
+                        "uid": "a532ae68-177b-43d8-ba8e-139d88ec5186"
+                    },
+                    "zone": "ap-southeast-2b"
+                }
+            ],
+            "kind": "EndpointSlice",
+            "metadata": {
+                "annotations": {
+                    "endpoints.kubernetes.io/last-change-trigger-time": "2026-10-16T17:44:09Z"
+                },
+                "creationTimestamp": "2026-10-16T17:43:18Z",
+                "generateName": "relaydesk-backend-",
+                "generation": 5,
+                "labels": {
+                    "app": "relaydesk-backend",
+                    "app.kubernetes.io/instance": "relaydesk",
+                    "app.kubernetes.io/managed-by": "Helm",
+                    "app.kubernetes.io/name": "relaydesk",
+                    "endpointslice.kubernetes.io/managed-by": "endpointslice-controller.k8s.io",
+                    "helm.sh/chart": "relaydesk-1.0.0",
+                    "kubernetes.io/service-name": "relaydesk-backend"
+                },
+                "name": "relaydesk-backend-rhbq9",
+                "namespace": "relaydesk",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Service",
+                        "name": "relaydesk-backend",
+                        "uid": "1acb013a-e8fe-4bc8-8507-e8dafa394e5e"
+                    }
+                ],
+                "resourceVersion": "2594",
+                "uid": "19627c09-3215-40c6-915a-bf96486abb0c"
+            },
+            "ports": [
+                {
+                    "name": "http",
+                    "port": 8000,
+                    "protocol": "TCP"
+                }
+            ]
+        },
+        {
+            "addressType": "IPv4",
+            "apiVersion": "discovery.k8s.io/v1",
+            "endpoints": [
+                {
+                    "addresses": [
+                        "10.42.1.156"
+                    ],
+                    "conditions": {
+                        "ready": true,
+                        "serving": true,
+                        "terminating": false
+                    },
+                    "nodeName": "ip-10-42-1-229.ap-southeast-2.compute.internal",
+                    "targetRef": {
+                        "kind": "Pod",
+                        "name": "relaydesk-frontend-859bb65fdc-xcdwc",
+                        "namespace": "relaydesk",
+                        "uid": "2073cede-874f-48ac-8cbc-12c847a6aabe"
+                    },
+                    "zone": "ap-southeast-2a"
+                },
+                {
+                    "addresses": [
+                        "10.42.2.8"
+                    ],
+                    "conditions": {
+                        "ready": true,
+                        "serving": true,
+                        "terminating": false
+                    },
+                    "nodeName": "ip-10-42-2-118.ap-southeast-2.compute.internal",
+                    "targetRef": {
+                        "kind": "Pod",
+                        "name": "relaydesk-frontend-859bb65fdc-95pb8",
+                        "namespace": "relaydesk",
+                        "uid": "56db9a64-2869-47ba-acd6-a9369d79bf61"
+                    },
+                    "zone": "ap-southeast-2b"
+                }
+            ],
+            "kind": "EndpointSlice",
+            "metadata": {
+                "annotations": {
+                    "endpoints.kubernetes.io/last-change-trigger-time": "2026-10-16T17:43:30Z"
+                },
+                "creationTimestamp": "2026-10-16T17:43:18Z",
+                "generateName": "relaydesk-frontend-",
+                "generation": 5,
+                "labels": {
+                    "app": "relaydesk-frontend",
+                    "app.kubernetes.io/instance": "relaydesk",
+                    "app.kubernetes.io/managed-by": "Helm",
+                    "app.kubernetes.io/name": "relaydesk",
+                    "endpointslice.kubernetes.io/managed-by": "endpointslice-controller.k8s.io",
+                    "helm.sh/chart": "relaydesk-1.0.0",
+                    "kubernetes.io/service-name": "relaydesk-frontend"
+                },
+                "name": "relaydesk-frontend-lhvhk",
+                "namespace": "relaydesk",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Service",
+                        "name": "relaydesk-frontend",
+                        "uid": "29c30370-06d7-4157-a2df-37658257d2ad"
+                    }
+                ],
+                "resourceVersion": "2392",
+                "uid": "ceb1c04a-1061-46e7-930a-b0f81657930c"
+            },
+            "ports": [
+                {
+                    "name": "http",
+                    "port": 8080,
+                    "protocol": "TCP"
+                }
+            ]
+        },
+        {
+            "addressType": "IPv4",
+            "apiVersion": "discovery.k8s.io/v1",
+            "endpoints": [
+                {
+                    "addresses": [
+                        "10.42.1.135"
+                    ],
+                    "conditions": {
+                        "ready": true,
+                        "serving": true,
+                        "terminating": false
+                    },
+                    "hostname": "relaydesk-postgres-0",
+                    "nodeName": "ip-10-42-1-229.ap-southeast-2.compute.internal",
+                    "targetRef": {
+                        "kind": "Pod",
+                        "name": "relaydesk-postgres-0",
+                        "namespace": "relaydesk",
+                        "uid": "5a1b3769-e106-4bd8-83d2-cfc4abb5c9f9"
+                    },
+                    "zone": "ap-southeast-2a"
+                }
+            ],
+            "kind": "EndpointSlice",
+            "metadata": {
+                "annotations": {
+                    "endpoints.kubernetes.io/last-change-trigger-time": "2026-10-16T17:43:48Z"
+                },
+                "creationTimestamp": "2026-10-16T17:43:18Z",
+                "generateName": "relaydesk-postgres-",
+                "generation": 3,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "Helm",
+                    "endpointslice.kubernetes.io/managed-by": "endpointslice-controller.k8s.io",
+                    "kubernetes.io/service-name": "relaydesk-postgres"
+                },
+                "name": "relaydesk-postgres-vtlwc",
+                "namespace": "relaydesk",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Service",
+                        "name": "relaydesk-postgres",
+                        "uid": "82fd3aef-083a-44c3-a7c1-d08e9820e372"
+                    }
+                ],
+                "resourceVersion": "2483",
+                "uid": "4ca064c2-404a-4cb6-aae8-fb4a36d2e0d3"
+            },
+            "ports": [
+                {
+                    "name": "postgres",
+                    "port": 5432,
+                    "protocol": "TCP"
+                }
+            ]
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

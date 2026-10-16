@@ -1,0 +1,31 @@
+Captured: 2026-10-16 18:01:17 UTC
+Evidence: eks-pods-helm
++ export KUBECONFIG=/home/pranav/Projects/helpdesk-capstone/evidence/private/kubeconfig-sydney
++ KUBECONFIG=/home/pranav/Projects/helpdesk-capstone/evidence/private/kubeconfig-sydney
++ kubectl --context relaydesk-sydney -n relaydesk get pods
+NAME                                  READY   STATUS    RESTARTS   AGE
+grafana-6bf844bfcb-hbdbs              1/1     Running   0          14m
+prometheus-cd7d5fdc5-2wcvz            1/1     Running   0          14m
+relaydesk-backend-7556c8f9c4-g68bb    1/1     Running   0          18m
+relaydesk-backend-7556c8f9c4-zkpxl    1/1     Running   0          18m
+relaydesk-frontend-859bb65fdc-95pb8   1/1     Running   0          18m
+relaydesk-frontend-859bb65fdc-xcdwc   1/1     Running   0          18m
+relaydesk-postgres-0                  1/1     Running   0          18m
++ kubectl --context relaydesk-sydney -n relaydesk get deploy,hpa,pvc
+NAME                                 READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/grafana              1/1     1            1           15m
+deployment.apps/prometheus           1/1     1            1           15m
+deployment.apps/relaydesk-backend    2/2     2            2           18m
+deployment.apps/relaydesk-frontend   2/2     2            2           18m
+
+NAME                                                    REFERENCE                      TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+horizontalpodautoscaler.autoscaling/relaydesk-backend   Deployment/relaydesk-backend   cpu: 3%/70%   2         4         2          18m
+
+NAME                                            STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS    VOLUMEATTRIBUTESCLASS   AGE
+persistentvolumeclaim/relaydesk-postgres-data   Bound    pvc-e95372b1-b7cb-4b5f-822a-780ea33d054d   2Gi        RWO            relaydesk-gp3   <unset>                 18m
++ helm --kube-context relaydesk-sydney list -n relaydesk
+NAME     	NAMESPACE	REVISION	UPDATED                                	STATUS  	CHART          	APP VERSION
+relaydesk	relaydesk	1       	2026-10-16 23:13:02.143966383 +0530 IST	deployed	relaydesk-1.0.0	1.0.0      
++ helm --kube-context relaydesk-sydney list -n ingress-system
+NAME   	NAMESPACE     	REVISION	UPDATED                                	STATUS  	CHART         	APP VERSION
+traefik	ingress-system	1       	2026-10-16 23:15:13.054726357 +0530 IST	deployed	traefik-42.0.0	v3.7.14    
