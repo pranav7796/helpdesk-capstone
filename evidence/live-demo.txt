@@ -1,0 +1,47 @@
+GitHub Actions: https://github.com/pranav7796/helpdesk-capstone/actions/runs/38893336596
+Commit: d07bca6accc35f0224aaae8c4057076a9c4c9261
+backend-digest=ghcr.io/pranav7796/helpdesk-capstone/backend@sha256:c8fbaf5265f683753e70332a148aa5d0db4035530da98ccedcbba865f27ba205
+frontend-digest=ghcr.io/pranav7796/helpdesk-capstone/frontend@sha256:8023382eb19a37c9a5787efe15036c8e9e11010ef870712ce413b4fc2be73cb1
+NAME: relaydesk
+LAST DEPLOYED: Fri Oct 16 16:58:46 2026
+NAMESPACE: relaydesk
+STATUS: deployed
+REVISION: 10
+TEST SUITE: None
+NAME                                      READY   STATUS    RESTARTS   AGE     IP            NODE                NOMINATED NODE   READINESS GATES
+pod/grafana-6d89446f54-7bwn2              1/1     Running   0          46m     10.244.0.30   helpdesk-capstone   <none>           <none>
+pod/prometheus-75dc6f79ff-pj2sx           1/1     Running   0          50m     10.244.0.29   helpdesk-capstone   <none>           <none>
+pod/relaydesk-backend-c68f99986-6bd55     1/1     Running   0          3m37s   10.244.0.37   helpdesk-capstone   <none>           <none>
+pod/relaydesk-backend-c68f99986-vw467     1/1     Running   0          3m54s   10.244.0.33   helpdesk-capstone   <none>           <none>
+pod/relaydesk-frontend-68fc9f58b6-c9qxs   1/1     Running   0          3m54s   10.244.0.34   helpdesk-capstone   <none>           <none>
+pod/relaydesk-frontend-68fc9f58b6-g7n86   1/1     Running   0          3m42s   10.244.0.36   helpdesk-capstone   <none>           <none>
+pod/relaydesk-postgres-0                  1/1     Running   0          3m53s   10.244.0.35   helpdesk-capstone   <none>           <none>
+
+NAME                         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE   SELECTOR
+service/backend              ClusterIP   10.101.131.39    <none>        8000/TCP   66m   app=relaydesk-backend
+service/grafana              ClusterIP   10.111.247.204   <none>        3000/TCP   50m   app=grafana
+service/prometheus           ClusterIP   10.98.188.229    <none>        9090/TCP   50m   app=prometheus
+service/relaydesk-backend    ClusterIP   10.104.238.119   <none>        8000/TCP   70m   app=relaydesk-backend
+service/relaydesk-frontend   ClusterIP   10.101.174.34    <none>        80/TCP     70m   app=relaydesk-frontend
+service/relaydesk-postgres   ClusterIP   10.101.21.164    <none>        5432/TCP   70m   app=relaydesk-postgres
+
+NAME                                                    REFERENCE                      TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+horizontalpodautoscaler.autoscaling/relaydesk-backend   Deployment/relaydesk-backend   cpu: 4%/70%   2         4         2          70m
+
+NAME                                            STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMEATTRIBUTESCLASS   AGE   VOLUMEMODE
+persistentvolumeclaim/relaydesk-postgres-data   Bound    pvc-3eb5991d-c004-47d6-b845-814bca60f183   2Gi        RWO            standard       <unset>                 70m   Filesystem
+
+NAME                                  CLASS   HOSTS   ADDRESS        PORTS   AGE
+ingress.networking.k8s.io/relaydesk   nginx   *       192.168.58.2   80      52m
+grafana grafana/grafana:latest
+prometheus prom/prometheus:latest
+relaydesk-backend ghcr.io/pranav7796/helpdesk-capstone/backend:d07bca6accc35f0224aaae8c4057076a9c4c9261
+relaydesk-frontend ghcr.io/pranav7796/helpdesk-capstone/frontend:d07bca6accc35f0224aaae8c4057076a9c4c9261
+POST /api/tickets 201
+GET /api/tickets 200
+PUT /api/tickets/7 200
+GET /api/tickets/7 200
+POST /api/tickets 201
+DELETE /api/tickets/8 204
+GET /api/tickets 200
+PASS: create, list, read, edit, status, priority and delete through frontend proxy; retained ticket 7

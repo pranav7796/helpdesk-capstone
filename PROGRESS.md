@@ -1,59 +1,64 @@
 # Helpdesk capstone progress
 
-Started: 2026-10-16 05:10 UTC / 10:40 IST. Exact deadline requested; not yet supplied. Reserve final hour once confirmed.
+Started 2026-10-16 10:40 IST. Working deadline estimate: 20:40 IST (10 hours from start); exact teacher deadline was not provided.
 
-Source: https://github.com/Nency-Ravaliya/devops-heros/tree/main/session21-python
-Teacher commit: a4e39b6b3a54dab1efd386c75ab86bf1d8a23454. Full rubric preserved in docs/TEACHER-GRADING.md.
+Source: [teacher repository](https://github.com/Nency-Ravaliya/devops-heros/tree/main/session21-python), commit `a4e39b6b3a54dab1efd386c75ab86bf1d8a23454`. Full rubric and submission instructions: [docs/TEACHER-GRADING.md](docs/TEACHER-GRADING.md).
 
-Status: VERIFIED requires observed evidence; IMPLEMENTED means files only; BLOCKED requires an external dependency; FAILED means an unsuccessful verification attempt; NOT STARTED means no work yet.
+**Verified score now: 91/100.** Only demonstrated outcomes count here; the instructor gives the final grade. Run [38893336596](https://github.com/pranav7796/helpdesk-capstone/actions/runs/38893336596) succeeded, then its two SHA-tagged GHCR images were rolled out to Minikube. Both application Deployments became Ready and ingress CRUD/persistence smoke passed. AWS account restrictions leave the VPC, EKS, and destroy marks blocked.
 
-Verified estimate: **0/100**. Potential marks are not awarded marks; only the instructor awards the final score.
+Status: VERIFIED means observed in a running system or command output. IMPLEMENTED means configuration exists but the graded runtime result is not yet demonstrated. BLOCKED means an external restriction prevents the requirement. FAILED means an attempted verification failed. NOT STARTED means no work exists.
 
 | Module | Criterion | Marks | Status | Evidence |
 |---|---|---:|---|---|
-| M1 | FastAPI backend starts and responds to `/health` | 2 | NOT STARTED | — |
-| M1 | Minimum 4 REST API endpoints implemented (GET, POST, PUT, DELETE) | 3 | NOT STARTED | — |
-| M1 | PostgreSQL database with at least one table managed by Alembic migrations | 2 | NOT STARTED | — |
-| M1 | React/HTML frontend renders and makes API calls | 2 | NOT STARTED | — |
-| M1 | Responsive and usable UI (not a blank page) | 1 | NOT STARTED | — |
-| M2 | `pytest` runs without errors | 3 | NOT STARTED | — |
-| M2 | Minimum 5 test cases covering at least 3 API endpoints | 4 | NOT STARTED | — |
-| M2 | Tests use a test database or mock, not the production database | 2 | NOT STARTED | — |
-| M2 | `pytest.ini` or `conftest.py` is present and correctly configured | 1 | NOT STARTED | — |
-| M3 | Public GitHub repository linked in the submission form | 2 | NOT STARTED | — |
-| M3 | Meaningful commit messages (not "update", "fix", "test") | 2 | NOT STARTED | — |
-| M3 | `.gitignore` excludes `.env`, `__pycache__`, `node_modules`, `.venv` | 1 | NOT STARTED | — |
-| M4 | `backend/Dockerfile` builds successfully | 2 | NOT STARTED | — |
-| M4 | `frontend/Dockerfile` uses multi-stage build (Node build + Nginx runtime) | 3 | NOT STARTED | — |
-| M4 | Docker images run as non-root users | 2 | NOT STARTED | — |
-| M4 | `docker compose up --build` starts all three services (frontend, backend, postgres) | 3 | NOT STARTED | — |
-| M5 | `.github/workflows/` contains at least one workflow file | 1 | NOT STARTED | — |
-| M5 | Pipeline triggers on push to `main` | 1 | NOT STARTED | — |
-| M5 | `pytest` runs as a pipeline job and fails the build on test failure | 3 | NOT STARTED | — |
-| M5 | Frontend is built as part of the pipeline | 2 | NOT STARTED | — |
-| M5 | Docker images are built for both frontend and backend | 3 | NOT STARTED | — |
-| M5 | Images are pushed to GitHub Container Registry (GHCR) | 3 | NOT STARTED | — |
-| M5 | Image tags use the Git commit SHA (not `latest`) | 2 | NOT STARTED | — |
-| M6 | Trivy scan runs in the CI pipeline on both backend and frontend images | 3 | NOT STARTED | — |
-| M6 | Pipeline is configured to fail on HIGH or CRITICAL CVEs | 1 | NOT STARTED | — |
-| M6 | Student can explain one CVE found (or explain a clean scan result) | 1 | NOT STARTED | — |
-| M7 | `terraform/` directory with valid HCL files | 2 | NOT STARTED | — |
-| M7 | `terraform init` completes without errors | 1 | NOT STARTED | — |
-| M7 | `terraform plan` produces a non-empty plan with no errors | 2 | NOT STARTED | — |
-| M7 | VPC with at least two public subnets is provisioned | 3 | NOT STARTED | — |
-| M7 | EKS cluster is provisioned with at least one worker node group | 4 | NOT STARTED | — |
-| M7 | `terraform destroy` tears down all resources cleanly | 2 | NOT STARTED | — |
-| M7 | `terraform.tfvars.example` present (no real credentials committed) | 1 | NOT STARTED | — |
-| M8 | `k8s/namespace.yaml` exists and applies cleanly | 1 | NOT STARTED | — |
-| M8 | Helm chart in `helm/` directory with `Chart.yaml`, `values.yaml`, and templates | 3 | NOT STARTED | — |
-| M8 | `helm upgrade --install` deploys the application without errors | 3 | NOT STARTED | — |
-| M8 | Backend and frontend Deployments are running with at least 2 replicas each | 2 | NOT STARTED | — |
-| M8 | ClusterIP Services expose backend and frontend | 2 | NOT STARTED | — |
-| M8 | Ingress resource routes `/` to frontend and `/api` to backend | 2 | NOT STARTED | — |
-| M8 | `kubectl get pods -n <namespace>` shows all pods in `Running` state | 2 | NOT STARTED | — |
-| M9 | `/metrics` endpoint on the backend returns Prometheus-formatted output | 2 | NOT STARTED | — |
-| M9 | Prometheus is installed in the cluster and scraping the application | 3 | NOT STARTED | — |
-| M9 | Grafana is installed and accessible | 2 | NOT STARTED | — |
-| M9 | At least one Grafana panel shows live application metrics (HTTP requests, latency, or error rate) | 3 | NOT STARTED | — |
-| M10 | `README.md` in the project root explaining what the application does | 2 | NOT STARTED | — |
-| M10 | Live demo: commit a change, watch the pipeline run, see the deployment update | 3 | NOT STARTED | — |
+| M1 | FastAPI `/health` responds | 2 | VERIFIED | Compose and Minikube; `evidence/docker-compose-ps.txt` |
+| M1 | GET/POST/PUT/DELETE ticket API | 3 | VERIFIED | `evidence/docker-smoke.txt` |
+| M1 | PostgreSQL table managed by Alembic | 2 | VERIFIED | Compose migration service and retained ticket; smoke evidence |
+| M1 | React frontend renders and calls API | 2 | VERIFIED | Compose screenshot and proxied CRUD smoke |
+| M1 | Responsive usable UI | 1 | VERIFIED | `evidence/relaydesk-compose.png` |
+| M2 | Pytest runs | 3 | VERIFIED | `evidence/pytest.txt` (16 passed) |
+| M2 | At least 5 tests across 3 endpoints | 4 | VERIFIED | `backend/tests/test_tickets.py`, 16 passed |
+| M2 | Isolated test DB | 2 | VERIFIED | SQLite test fixture; `backend/tests/conftest.py` |
+| M2 | Pytest config | 1 | VERIFIED | `backend/pytest.ini` |
+| M3 | Public GitHub repository | 2 | VERIFIED | https://github.com/pranav7796/helpdesk-capstone |
+| M3 | At least 10 meaningful commits | 2 | VERIFIED | `git log`; 12 meaningful commits on `main` |
+| M3 | `.gitignore` excludes secrets/build caches | 1 | VERIFIED | Root `.gitignore`; no credentials tracked |
+| M4 | Backend Docker image builds | 2 | VERIFIED | Compose runtime; `evidence/docker-compose-ps.txt` |
+| M4 | Multi-stage frontend image | 3 | VERIFIED | `frontend/Dockerfile`; running Nginx frontend |
+| M4 | Both application images use non-root users | 2 | VERIFIED | Backend UID 10001, frontend UID 101 in `evidence/docker-compose-ps.txt` |
+| M4 | Compose runs frontend/backend/PostgreSQL | 3 | VERIFIED | All three healthy; `evidence/docker-compose-ps.txt` |
+| M5 | Workflow file exists | 1 | VERIFIED | `.github/workflows/ci.yml` |
+| M5 | Push-to-main trigger | 1 | VERIFIED | Push `d07bca6` triggered run 38893336596 |
+| M5 | CI pytest job | 3 | VERIFIED | Run 38893336596 test job succeeded (16 tests) |
+| M5 | CI frontend build | 2 | VERIFIED | Run 38893336596 Vite build succeeded |
+| M5 | CI builds both container images | 3 | VERIFIED | Both build steps succeeded in run 38893336596 |
+| M5 | GHCR image publication | 3 | VERIFIED | Both image pushes succeeded in run 38893336596 |
+| M5 | Immutable commit SHA tags | 2 | VERIFIED | Full SHA tag `d07bca6accc35f0224aaae8c4057076a9c4c9261` |
+| M6 | CI Trivy scans both images | 3 | VERIFIED | Both HIGH/CRITICAL scans succeeded in run 38893336596 |
+| M6 | HIGH/CRITICAL gate | 1 | VERIFIED | `exit-code: 1`, `ignore-unfixed: true`; both scans passed |
+| M6 | Explain a finding and disposition | 1 | VERIFIED | `docs/SECURITY.md`; scoped SBOM false-positive exceptions |
+| M7 | Valid Terraform HCL | 2 | VERIFIED | `terraform validate`; `evidence/terraform-validate.txt` |
+| M7 | Terraform init | 1 | VERIFIED | Successful init with locked AWS provider |
+| M7 | Non-empty Terraform plan | 2 | VERIFIED | Saved 22-resource `-refresh=false` dry run; `evidence/terraform-plan-refresh-false.txt` |
+| M7 | VPC with two public subnets provisioned | 3 | BLOCKED | EC2 `OptInRequiredException`; no apply |
+| M7 | EKS and worker node group provisioned | 4 | BLOCKED | EKS `SubscriptionRequiredException`; no apply |
+| M7 | Terraform destroy demonstrated | 2 | BLOCKED | No AWS resources were created |
+| M7 | Example tfvars, no secrets | 1 | VERIFIED | `terraform/terraform.tfvars.example` |
+| M8 | Namespace applies | 1 | VERIFIED | Minikube namespace `relaydesk` |
+| M8 | Helm chart structure | 3 | VERIFIED | `helm/helpdesk`; rendered output in `evidence/helm-rendered.yaml` |
+| M8 | Helm install/upgrade succeeds | 3 | VERIFIED | Release `relaydesk`, status deployed, revision 9 |
+| M8 | Frontend and backend each have 2 replicas | 2 | VERIFIED | `evidence/minikube-status.txt` |
+| M8 | ClusterIP services | 2 | VERIFIED | Backend, frontend, PostgreSQL service evidence |
+| M8 | Ingress routes frontend and `/api` | 2 | VERIFIED | Minikube ingress `192.168.58.2`; frontend/API smoke passed |
+| M8 | Pods running and ready | 2 | VERIFIED | `evidence/minikube-status.txt` |
+| M9 | Prometheus `/metrics` output | 2 | VERIFIED | `evidence/application-metrics.txt` |
+| M9 | Prometheus scrapes application | 3 | VERIFIED | `evidence/prometheus-target.json` (`up == 1`) |
+| M9 | Grafana installed and accessible | 2 | VERIFIED | Running local service and dashboard screenshot |
+| M9 | Live request metrics panel | 3 | VERIFIED | `evidence/grafana-relaydesk-dashboard.png`; traffic query evidence |
+| M10 | Root README explains application | 2 | VERIFIED | `README.md` |
+| M10 | Commit → CI → deployment update demo | 3 | VERIFIED | Commit `d07bca6`; run 38893336596 passed; SHA images deployed and ingress CRUD passed; see `evidence/live-demo.txt` |
+
+## Highest-value remaining work
+
+1. Get the pushed GitHub Actions workflow green, including Trivy and GHCR SHA image publication.
+2. Deploy those published SHA-tagged images to Minikube and capture the complete commit → CI → rollout evidence.
+3. AWS provisioning is currently blocked by account service restrictions and remains approval-gated regardless.
