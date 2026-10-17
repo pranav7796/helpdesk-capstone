@@ -1,0 +1,19 @@
+{
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "vp9",
+        "width": 1600,
+        "height": 1100
+      }
+    ],
+    "format": {
+      "duration": "258.960000"
+    }
+  },
+  "complete_decode": "passed",
+  "sha256": "104382ba26094cd089c7a9670dca98f25866d579fb7ccbc7867d9f9e75854865",
+  "visual_review": "AWS/app/monitoring screenshots reviewed; runtime and historical recovery sampled at 227s and 246s; no new fault injection or student narration claimed."
+}

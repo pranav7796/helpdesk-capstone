@@ -1,0 +1,387 @@
+[
+  {
+    "source": "evidence/grafana-relaydesk-dashboard.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-grafana-relaydesk-dashboard.png",
+    "sha256": "9a374dc0774bdac680efbe2fe9f60af5216a167eb2ccbc2cb06fe75e2a8acb9f",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/m1-health-database.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-m1-health-database.png",
+    "sha256": "5877f3424cfa8e3f90467a0ce3e974d0d30877d16f422334b37355f55fd6db14",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/m1-mobile-actions.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-m1-mobile-actions.png",
+    "sha256": "b87a6e1bdfd437a522277e6b3bd58608c3962dc6dbff7fe419592d999066f87c",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/m1-mobile-tickets.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-m1-mobile-tickets.png",
+    "sha256": "3cbccd68c8e86091289808ee07f0170e8d29f4c24bfbed8d445c70ba769d3c6d",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/m1-ticket-editor.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-m1-ticket-editor.png",
+    "sha256": "b73222e45db607bea32dbf9e1242590819cd6b2814e2544ab8268a6f697794ba",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/m2-pytest.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-m2-pytest.png",
+    "sha256": "14756fca8b8ba29b4c682e00519130f5b9c43c86bd1abc7fb2e1d1f52bfb89fb",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/m3-git-history.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-m3-git-history.png",
+    "sha256": "36557f5c0bddb25094858b7836b066ec720024fa78108055b2e8efb8a5a9c1f4",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/m4-compose-browser.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-m4-compose-browser.png",
+    "sha256": "89ecff4478b5e57856bae88637c6ed18269fd3179b13e192b1a89ab042d87a63",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/m4-compose.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-m4-compose.png",
+    "sha256": "7ca7d4b1233599fcd5a83e1792b12754f691f69d3beac79cfed4a15206006794",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/m5-actions-success.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-m5-actions-success.png",
+    "sha256": "89ae95de48d9f792fa881250cf70792a490b2b0eeb6940770ad2fb9ef6f5c0fe",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/m5-ghcr-backend.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-m5-ghcr-backend.png",
+    "sha256": "c8af235881f3e7b42b3e794d51f9e7f0c096f15e33bd20c3bc91addb58358965",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/m5-ghcr-frontend.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-m5-ghcr-frontend.png",
+    "sha256": "0813563008495adf201a7c9b3a88781ec628c8b6021b385658d658c86c0ac005",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/m6-trivy-backend.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-m6-trivy-backend.png",
+    "sha256": "dc3ccd4244e46f01e061405ee251644f77bbfda1be8e8ca421c75ab85fdcd282",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/m6-trivy-frontend.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-m6-trivy-frontend.png",
+    "sha256": "813a5811835b90f5da8d38b60d9011b5bdf70a834d5986723d9d4e7d22713a2d",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/m7-aws-restriction.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-m7-aws-restriction.png",
+    "sha256": "fe252047629743299ae2142a41fb7e0519a929121cf4871f9d3d5574c1235316",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/m7-terraform-plan-saved.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-m7-terraform-plan-saved.png",
+    "sha256": "8a2f504dc9d0db57406da8a61fc5110087bf91a3500b7ab81ddef991e3c5b8e0",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/m7-terraform-validation.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-m7-terraform-validation.png",
+    "sha256": "ec7c901901bfce396649bce55b65a57a53c651647902f98d6b963ca3cb089b2f",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/m8-helm.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-m8-helm.png",
+    "sha256": "3cfc736fdfe127eeda692b708e32da681de097754cfb8e5d3f1880ac891950ff",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/m8-ingress-browser.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-m8-ingress-browser.png",
+    "sha256": "d11f12bcef54c9bcb4b528dbafe36575bfb4b884be066b573f506dbdae42589b",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/m8-pods.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-m8-pods.png",
+    "sha256": "a4acad91091eda45782e69b4d270134df78cf41612bccf74e248056659544e86",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/m8-services.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-m8-services.png",
+    "sha256": "1153e1762bdfa94d4a22427c0014d9dad362e3aa8f298802ea27cb31550218b5",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/m9-grafana-current.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-m9-grafana-current.png",
+    "sha256": "05130982c0f253e0299958c74cd731c06f5d64f9d9f7f00627fb5c7d048af729",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/m9-metrics.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-m9-metrics.png",
+    "sha256": "06d30cb456d7ee46f15acac7e47333945d74325a23bbfc8613cbce1c8e837e04",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/m9-prometheus-targets.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-m9-prometheus-targets.png",
+    "sha256": "121dfc89338a5b5e1e958c81f8d40c62bbf0f0ea1789e663a1df26cff55a2ddd",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/relaydesk-compose.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-relaydesk-compose.png",
+    "sha256": "99d51d0cde8eb5e688dcd71e48e8b2e14baba49f785cb7827826f066695fd938",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/relaydesk-minikube-sha.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-relaydesk-minikube-sha.png",
+    "sha256": "be7d3ebc7f72376395533fa2976d581887b8ac231ac08de4357626abffc31dca",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/relaydesk-minikube.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-relaydesk-minikube.png",
+    "sha256": "66f7f5be4e2920af42a6b6793dc39230d4cb0f2f1fe3337b52fdfdbae3054ef0",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/relaydesk-mobile.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-relaydesk-mobile.png",
+    "sha256": "56b974bac61392d51388829b6b7df35fc903b3a7e52f9333c38b4210573ba575",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/sydney/aws-apply-verified.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-sydney--aws-apply-verified.png",
+    "sha256": "7674383d692b4ed6c1d2a76445c61a4142deff65522b70fb0511c3d57d0c84dd",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/sydney/aws-eks-console.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-sydney--aws-eks-console.png",
+    "sha256": "f0a504fc0487b811fadc95ee9cfdbd66e1910f6ebf39e017500415d1be788956",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/sydney/aws-network-verified.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-sydney--aws-network-verified.png",
+    "sha256": "1cc18c81580c9ba155e45ea82f7480c1e50e8c5dc3ffa5bdfde2637951f19a67",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/sydney/aws-subnets-console.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-sydney--aws-subnets-console.png",
+    "sha256": "6aeec9ee02968db6942d53f483e28741b5fae1c79b8a2059fc7cab26567a7ff0",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/sydney/aws-vpc-console.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-sydney--aws-vpc-console.png",
+    "sha256": "02741afe32db89fdd5c7b9fb4205c2c0a52cabe1f0ee726d322b72282333f102",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/sydney/eks-application-browser.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-sydney--eks-application-browser.png",
+    "sha256": "66f7f5be4e2920af42a6b6793dc39230d4cb0f2f1fe3337b52fdfdbae3054ef0",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/sydney/eks-grafana-dashboard.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-sydney--eks-grafana-dashboard.png",
+    "sha256": "9634e40c6fcce1651e5a84604c82838becf6e6db6c80eb1ecaa19865d7d6bd28",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/sydney/eks-metrics.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-sydney--eks-metrics.png",
+    "sha256": "b6feb8695dfff392d3fca8c924bbe3508bc89ee74a9bb30d00091e8e9effca03",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/sydney/eks-pods-helm.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-sydney--eks-pods-helm.png",
+    "sha256": "5167c2416dd7db514dccd71c2f94a289811263b269871bc07fcd094c2456f43b",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/sydney/eks-prometheus-targets.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-sydney--eks-prometheus-targets.png",
+    "sha256": "06c9d9ba6f3838fd9b586024a3e5dc786a4e89419a95565cdda7047770234c25",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/sydney/eks-services-ingress.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-sydney--eks-services-ingress.png",
+    "sha256": "bec51b453f20e5b8ba4f9677a79a70908e430f8282c8868411b39915a9e15227",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/sydney/m10-release-green.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-sydney--m10-release-green.png",
+    "sha256": "0550fb1aa9899d348f8e5eb60474f1a7319a3526219414e97a83450d57553dd5",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/sydney/m10-release-updated-app.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-sydney--m10-release-updated-app.png",
+    "sha256": "cebfe6fe3077fca951d33ab05de1ca941225b760b1f0bb5043ee62531e9ce48c",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/sydney/m2-tests-current.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-sydney--m2-tests-current.png",
+    "sha256": "fd090923d5a41fc91779e00d0adc0c032f135d438c1293a29c87b3f8022e6259",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/sydney/m4-compose-browser.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-sydney--m4-compose-browser.png",
+    "sha256": "67bc39dc2f144c550bc7deb09a35ede2222853f62f1c4eada1625e622a1d440d",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/sydney/m5-actions-success.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-sydney--m5-actions-success.png",
+    "sha256": "3d004b6b21dce8b7cbf0ebc2b3b2d79803abb88367fbdbd88b9840bd69777d1d",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/sydney/m5-ghcr-backend.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-sydney--m5-ghcr-backend.png",
+    "sha256": "9cd3010b54de4c6bac39b3a579ecbe2e15ee519a83f8f3660c48c94ddeaffada",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/sydney/m5-ghcr-frontend.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-sydney--m5-ghcr-frontend.png",
+    "sha256": "9f830a4ab14b6c11a781c5be7034ebf1eeb06af82b54c7bc27bd52509737a1ee",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/sydney/m7-sydney-account.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-sydney--m7-sydney-account.png",
+    "sha256": "1d98811b52134cbbb366c98fd29e24cfd637c03dc61a3c16db3b780182354f3a",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/sydney/m7-sydney-plan.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-sydney--m7-sydney-plan.png",
+    "sha256": "af5cd87a793442a183ecc0331bce56b8c895ad03e4a845b54b75eec50180a2de",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/sydney/m7-sydney-pricing.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-sydney--m7-sydney-pricing.png",
+    "sha256": "2a0d49f91746182f995199c8aee9fc56a8ca2ca22ea198a2fd94f2267aee54ed",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/sydney/m7-sydney-validation.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-sydney--m7-sydney-validation.png",
+    "sha256": "c319496ddca933267b2d2f864e17e84371aa3ace8015e8f1370b6da7f34e07f4",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/sydney/m8-ingress-browser.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-sydney--m8-ingress-browser.png",
+    "sha256": "5ba4f72e885e39e7b9383004ba01294e18cf9bb8b8e52223d36ccddc8f185912",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/sydney/m8-runtime-current.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-sydney--m8-runtime-current.png",
+    "sha256": "e75ac76c1eb7a3ca4f754b25f5d1871fb11ee1229287d777dce21aad56e50fe0",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/sydney/m9-grafana-current.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-sydney--m9-grafana-current.png",
+    "sha256": "6aca6fe3ff93fa7b24eb293ba16fcc633423c5c80c12dfe11df3aad99e909854",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/sydney/m9-prometheus-targets.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-sydney--m9-prometheus-targets.png",
+    "sha256": "2bbbf2d4ef8ca35c16bf720617b2ce9d423f538665f71708a0a14bcaccedb25c",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  },
+  {
+    "source": "evidence/sydney/troubleshooting-recovery.png",
+    "screenshot": "evidence/screenshots/2026-10-16-archive-sydney--troubleshooting-recovery.png",
+    "sha256": "320d542d7087274aec2c87784cee3a2f65dbcd0197eca26fbf8af2f639f72084",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical genuine prior capture; archive copy, not a fresh screenshot"
+  }
+]

@@ -1,0 +1,32 @@
+Captured: 2026-10-17 02:49:44 UTC
+Evidence: 2026-10-17-m8-pods-deployments
++ export KUBECONFIG=/home/pranav/Projects/helpdesk-capstone/evidence/private/kubeconfig-sydney
++ KUBECONFIG=/home/pranav/Projects/helpdesk-capstone/evidence/private/kubeconfig-sydney
++ kubectl --context relaydesk-sydney -n relaydesk get pods
+NAME                                 READY   STATUS    RESTARTS   AGE
+grafana-6bf844bfcb-hbdbs             1/1     Running   0          9h
+prometheus-cd7d5fdc5-2wcvz           1/1     Running   0          9h
+relaydesk-backend-7556c8f9c4-g68bb   1/1     Running   0          9h
+relaydesk-backend-7556c8f9c4-zkpxl   1/1     Running   0          9h
+relaydesk-frontend-f45d8597-rldk6    1/1     Running   0          8h
+relaydesk-frontend-f45d8597-zh7f2    1/1     Running   0          8h
+relaydesk-postgres-0                 1/1     Running   0          9h
++ kubectl --context relaydesk-sydney -n relaydesk get deploy,hpa,pvc
+NAME                                 READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/grafana              1/1     1            1           9h
+deployment.apps/prometheus           1/1     1            1           9h
+deployment.apps/relaydesk-backend    2/2     2            2           9h
+deployment.apps/relaydesk-frontend   2/2     2            2           9h
+
+NAME                                                    REFERENCE                      TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+horizontalpodautoscaler.autoscaling/relaydesk-backend   Deployment/relaydesk-backend   cpu: 3%/70%   2         4         2          9h
+
+NAME                                            STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS    VOLUMEATTRIBUTESCLASS   AGE
+persistentvolumeclaim/relaydesk-postgres-data   Bound    pvc-e95372b1-b7cb-4b5f-822a-780ea33d054d   2Gi        RWO            relaydesk-gp3   <unset>                 9h
++ helm --kube-context relaydesk-sydney list -n relaydesk
+NAME     	NAMESPACE	REVISION	UPDATED                                	STATUS  	CHART          	APP VERSION
+relaydesk	relaydesk	2       	2026-10-16 23:51:16.855659476 +0530 IST	deployed	relaydesk-1.0.0	1.0.0      
++ kubectl --context relaydesk-sydney top nodes
+NAME                                             CPU(cores)   CPU(%)   MEMORY(bytes)   MEMORY(%)   
+ip-10-42-1-229.ap-southeast-2.compute.internal   118m         6%       1513Mi          45%         
+ip-10-42-2-118.ap-southeast-2.compute.internal   89m          4%       757Mi           22%         

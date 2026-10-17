@@ -1,15 +1,15 @@
 # Sydney AWS deployment review — approved and deployed
 
-Current target: **525426877661 / devops-new / ap-southeast-2**. Deadline: **October 19, 2026**. No Terraform apply or cloud mutation has been performed by the agent.
+Current target: **525426877661 / devops-new / ap-southeast-2**. Deadline: **October 19, 2026**. The explicitly approved apply completed October 16 (28 additions). The October 17 audit refreshed real state and found no Terraform changes. No Terraform apply or infrastructure deletion was performed during this audit. Existing monitoring configuration was corrected without adding billable infrastructure.
 
-## Account and eligibility actually checked
+## Historical pre-apply account and eligibility checks — October 16
 
 - STS authenticates as `AccountFullAccessRole` in the intended account, not the old account's root identity. [Captured identity](../evidence/sydney/aws-identity.json).
-- Sydney Availability Zones a/b/c are available; EKS ListClusters succeeds and currently returns no clusters. No VPC with project tag `relaydesk-capstone` exists. [Zones](../evidence/sydney/aws-zones.json), [clusters](../evidence/sydney/aws-clusters.json), [VPCs](../evidence/sydney/aws-project-vpcs.json).
-- EC2 standard On-Demand quota is **5 vCPUs**; current pending/running instance inventory is empty, so the two requested workers (4 vCPUs) fit at audit time. `t3.medium` is offered in both selected AZs. This does not reserve capacity, and future rolling node upgrades can need extra quota. [Quota](../evidence/sydney/aws-worker-quota.json), [current usage inventory](../evidence/sydney/aws-running-vcpu.json), [offerings](../evidence/sydney/aws-worker-offerings.json).
+- Sydney Availability Zones a/b/c are available; EKS ListClusters returned no clusters and the project VPC did not exist at that pre-apply check. These historical empty inventories are superseded by the deployed resources below. [Zones](../evidence/sydney/aws-zones.json), [clusters](../evidence/sydney/aws-clusters.json), [VPCs](../evidence/sydney/aws-project-vpcs.json).
+- EC2 standard On-Demand quota is **5 vCPUs**; the pre-apply pending/running inventory was empty, so the two requested workers (4 vCPUs) fit at audit time. `t3.medium` is offered in both selected AZs. This does not reserve capacity, and future rolling node upgrades can need extra quota. [Quota](../evidence/sydney/aws-worker-quota.json), [current usage inventory](../evidence/sydney/aws-running-vcpu.json), [offerings](../evidence/sydney/aws-worker-offerings.json).
 - EKS 1.35 is in STANDARD_SUPPORT through March 27, 2027. [API response](../evidence/sydney/aws-version.json).
 - The account-plan API reports **PAID / ACTIVE and 120 USD remaining credits**. [Credit response](../evidence/sydney/aws-credits.json). This is the new account's reported balance; it is not the earlier account's balance.
-- Mumbai is excluded from the deployment because the owner reports an Organizations SCP there. Sydney reads and planning succeed; neither proves that all create/IAM actions are allowed by SCPs. No policy, billing, or organization settings were changed.
+- Mumbai is excluded from the deployment because the owner reports an Organizations SCP there. Sydney reads/planning succeeded at that check; the subsequent authorized apply proved the project create/IAM operations were permitted. No policy, billing, or organization settings were changed.
 - One parallel token-refresh request was throttled; serializing the CLI checks resolved it. The audit helper now serializes access to the shared login cache.
 
 ## Saved plan verification
@@ -83,3 +83,9 @@ Explicit approval must cover **the 28-resource reviewed Terraform plan plus the 
 ## Actual deployment result — October 16
 
 The owner approved the reviewed Sydney deployment including ingress/storage. Apply succeeded: 28 added, 0 changed, 0 destroyed. EKS and worker group ACTIVE, two workers Ready; app CRUD, PVC and monitoring verified. [Actual outputs](../VERIFICATION.md), [cost ledger](../evidence/sydney/COST-TRACKING.md), [resource and cleanup review](CLEANUP-REVIEW.md). Historical future-tense scope/cost sections above record the pre-apply review. Cleanup has not been approved or executed.
+
+## October 17 read-only re-verification
+
+The existing control plane and managed node group are ACTIVE; two private t3.medium workers are Ready. All three add-ons are ACTIVE; both ELB instance backends are InService. Four subnets, routes/NAT, three project IAM roles/five policy attachments, scoped EBS Pod Identity and three in-use gp3 volumes were checked. The 2-GiB data volume is encrypted. HPA CPU metrics and two frontend/backend replicas are valid. [Actual API/command evidence](../evidence/final-2026-10-17/collection-results.json), [assertions](../evidence/final-2026-10-17/infrastructure-assertions.json), [fresh no-change plan](../evidence/final-2026-10-17/terraform-plan.txt).
+
+Monitoring/app were rechecked through existing services: CRUD passed, health UP, readiness READY, Prometheus up=1 and real positive request rates. Evidence is organized under `evidence/screenshots/` and `evidence/videos/`. No additional billable infrastructure was created. Cleanup remains unapproved. See [submission guide](../SUBMISSION.md) for current costs and external actions.

@@ -1,0 +1,29 @@
+
+Prometheus
+
+Query
+Alerts
+Status
+Target health
+Query
+Alerts
+Status
+Target health
+
+relaydesk-backend
+
+Show config
+
+1 / 1 up
+
+Endpoint	Labels	Last scrape	State
+
+http://relaydesk-backend.relaydesk.svc.cluster.local:8000/metrics
+	
+instance="relaydesk-backend.relaydesk.svc.cluster.local:8000"
+job="relaydesk-backend"
+	
+5.066s ago
+14ms
+	
+UP

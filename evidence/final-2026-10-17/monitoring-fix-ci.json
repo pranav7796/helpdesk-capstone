@@ -1,0 +1,362 @@
+{
+  "conclusion": "success",
+  "databaseId": 38997737911,
+  "headSha": "2fbc48485411ff7239bb92b4290062b7e58d86fb",
+  "jobs": [
+    {
+      "completedAt": "2026-10-17T03:10:39Z",
+      "conclusion": "success",
+      "databaseId": 117293893519,
+      "name": "test",
+      "startedAt": "2026-10-17T03:10:10Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-10-17T03:10:12Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-10-17T03:10:11Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-17T03:10:15Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v4",
+          "number": 2,
+          "startedAt": "2026-10-17T03:10:12Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-17T03:10:18Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-python@v5",
+          "number": 3,
+          "startedAt": "2026-10-17T03:10:15Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-17T03:10:26Z",
+          "conclusion": "success",
+          "name": "Install backend and test dependencies",
+          "number": 4,
+          "startedAt": "2026-10-17T03:10:18Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-17T03:10:29Z",
+          "conclusion": "success",
+          "name": "Run isolated API tests",
+          "number": 5,
+          "startedAt": "2026-10-17T03:10:26Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-17T03:10:31Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-node@v4",
+          "number": 6,
+          "startedAt": "2026-10-17T03:10:29Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-17T03:10:34Z",
+          "conclusion": "success",
+          "name": "Install and build React frontend",
+          "number": 7,
+          "startedAt": "2026-10-17T03:10:31Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-17T03:10:36Z",
+          "conclusion": "success",
+          "name": "Run actions/upload-artifact@v4",
+          "number": 8,
+          "startedAt": "2026-10-17T03:10:34Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-17T03:10:36Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-node@v4",
+          "number": 14,
+          "startedAt": "2026-10-17T03:10:36Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-17T03:10:36Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-python@v5",
+          "number": 15,
+          "startedAt": "2026-10-17T03:10:36Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-17T03:10:36Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v4",
+          "number": 16,
+          "startedAt": "2026-10-17T03:10:36Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-17T03:10:36Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 17,
+          "startedAt": "2026-10-17T03:10:36Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/pranav7796/helpdesk-capstone/actions/runs/38997737911/job/117293893519"
+    },
+    {
+      "completedAt": "2026-10-17T03:13:22Z",
+      "conclusion": "success",
+      "databaseId": 117294008091,
+      "name": "build-and-scan",
+      "startedAt": "2026-10-17T03:10:42Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-10-17T03:10:49Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-10-17T03:10:43Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-17T03:10:52Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v4",
+          "number": 2,
+          "startedAt": "2026-10-17T03:10:49Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-17T03:10:58Z",
+          "conclusion": "success",
+          "name": "Run docker/setup-buildx-action@v3",
+          "number": 3,
+          "startedAt": "2026-10-17T03:10:52Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-17T03:12:08Z",
+          "conclusion": "success",
+          "name": "Build backend image",
+          "number": 4,
+          "startedAt": "2026-10-17T03:10:58Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-17T03:12:16Z",
+          "conclusion": "success",
+          "name": "Build frontend image",
+          "number": 5,
+          "startedAt": "2026-10-17T03:12:08Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-17T03:12:35Z",
+          "conclusion": "success",
+          "name": "Scan backend image with Trivy",
+          "number": 6,
+          "startedAt": "2026-10-17T03:12:16Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-17T03:12:51Z",
+          "conclusion": "success",
+          "name": "Scan frontend image with Trivy",
+          "number": 7,
+          "startedAt": "2026-10-17T03:12:35Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-17T03:12:52Z",
+          "conclusion": "success",
+          "name": "Log in to GitHub Container Registry",
+          "number": 8,
+          "startedAt": "2026-10-17T03:12:51Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-17T03:13:07Z",
+          "conclusion": "success",
+          "name": "Publish immutable SHA-tagged images",
+          "number": 9,
+          "startedAt": "2026-10-17T03:12:52Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-17T03:13:07Z",
+          "conclusion": "success",
+          "name": "Save Trivy explanation for the demo",
+          "number": 10,
+          "startedAt": "2026-10-17T03:13:07Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-17T03:13:07Z",
+          "conclusion": "success",
+          "name": "Post Log in to GitHub Container Registry",
+          "number": 14,
+          "startedAt": "2026-10-17T03:13:07Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-17T03:13:12Z",
+          "conclusion": "success",
+          "name": "Post Scan frontend image with Trivy",
+          "number": 15,
+          "startedAt": "2026-10-17T03:13:07Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-17T03:13:14Z",
+          "conclusion": "success",
+          "name": "Post Scan backend image with Trivy",
+          "number": 16,
+          "startedAt": "2026-10-17T03:13:12Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-17T03:13:16Z",
+          "conclusion": "success",
+          "name": "Post Build frontend image",
+          "number": 17,
+          "startedAt": "2026-10-17T03:13:14Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-17T03:13:17Z",
+          "conclusion": "success",
+          "name": "Post Build backend image",
+          "number": 18,
+          "startedAt": "2026-10-17T03:13:16Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-17T03:13:19Z",
+          "conclusion": "success",
+          "name": "Post Run docker/setup-buildx-action@v3",
+          "number": 19,
+          "startedAt": "2026-10-17T03:13:17Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-17T03:13:20Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v4",
+          "number": 20,
+          "startedAt": "2026-10-17T03:13:19Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-17T03:13:20Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 21,
+          "startedAt": "2026-10-17T03:13:20Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/pranav7796/helpdesk-capstone/actions/runs/38997737911/job/117294008091"
+    },
+    {
+      "completedAt": "2026-10-17T03:10:50Z",
+      "conclusion": "success",
+      "databaseId": 117294008177,
+      "name": "helm-validation",
+      "startedAt": "2026-10-17T03:10:42Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-10-17T03:10:43Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-10-17T03:10:42Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-17T03:10:45Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v4",
+          "number": 2,
+          "startedAt": "2026-10-17T03:10:43Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-17T03:10:46Z",
+          "conclusion": "success",
+          "name": "Run azure/setup-helm@v4",
+          "number": 3,
+          "startedAt": "2026-10-17T03:10:45Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-17T03:10:46Z",
+          "conclusion": "success",
+          "name": "Run helm lint helm/helpdesk -f helm/helpdesk/values-local.yaml",
+          "number": 4,
+          "startedAt": "2026-10-17T03:10:46Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-17T03:10:46Z",
+          "conclusion": "success",
+          "name": "Run helm lint helm/helpdesk -f helm/helpdesk/values-eks.yaml",
+          "number": 5,
+          "startedAt": "2026-10-17T03:10:46Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-17T03:10:46Z",
+          "conclusion": "success",
+          "name": "Run helm template relaydesk helm/helpdesk -n relaydesk -f helm/helpdesk/values-local.yaml > /tmp/relaydesk-rendered.yaml",
+          "number": 6,
+          "startedAt": "2026-10-17T03:10:46Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-17T03:10:46Z",
+          "conclusion": "success",
+          "name": "Run helm template relaydesk helm/helpdesk -n relaydesk -f helm/helpdesk/values-eks.yaml > /tmp/relaydesk-eks-rendered.yaml",
+          "number": 7,
+          "startedAt": "2026-10-17T03:10:46Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-17T03:10:49Z",
+          "conclusion": "success",
+          "name": "Validate monitoring manifests",
+          "number": 8,
+          "startedAt": "2026-10-17T03:10:46Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-17T03:10:49Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v4",
+          "number": 16,
+          "startedAt": "2026-10-17T03:10:49Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-17T03:10:49Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 17,
+          "startedAt": "2026-10-17T03:10:49Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/pranav7796/helpdesk-capstone/actions/runs/38997737911/job/117294008177"
+    }
+  ],
+  "status": "completed",
+  "url": "https://github.com/pranav7796/helpdesk-capstone/actions/runs/38997737911"
+}

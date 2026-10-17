@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "data": {
+    "resultType": "vector",
+    "result": [
+      {
+        "metric": {
+          "instance": "relaydesk-backend.relaydesk.svc.cluster.local:8000",
+          "job": "relaydesk-backend",
+          "method": "GET",
+          "route": "/ready",
+          "status": "200"
+        },
+        "value": [
+          1792206145.122,
+          "3"
+        ]
+      }
+    ]
+  }
+}

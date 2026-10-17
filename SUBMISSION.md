@@ -1,78 +1,78 @@
-# Final submission guide — deadline October 19, 2026
+# Submission package — final audit October 17, 2026
 
-**Not ready for a complete 100-point submission yet.** Local and Sydney cloud deployments are verified. Estimated verified marks: **96/100**, subject to instructor grading. Teacher-form submission (2) and separately approved cleanup (2) remain pending. The recorded release demo is technically verified; instructor acceptance/student explanation remain external.
+**44 of 46 grading criteria demonstrated; estimated technical coverage 96/100.** The repository/evidence package is prepared. Form submission and actual approved cleanup remain unverified (2 points each). Only the instructor awards marks, including acceptance of the automated recorded presentation and any late policy.
 
-Final runner-pin verification also passed: [38936702532](https://github.com/pranav7796/helpdesk-capstone/actions/runs/38936702532), commit `d5ad1ab83c035fd75852e741e3f6482bb92afec5`. [Actual final run metadata](evidence/sydney/actions-final.json). A subsequent commit only records verification evidence.
+## Submit exactly this repository URL
 
-## Submit these links
+**https://github.com/pranav7796/helpdesk-capstone**
 
-- Public repository: https://github.com/pranav7796/helpdesk-capstone
-- Verified Sydney-source green pipeline: https://github.com/pranav7796/helpdesk-capstone/actions/runs/38935978045
-- Pipeline that produced the actual Minikube release: https://github.com/pranav7796/helpdesk-capstone/actions/runs/38893336596
-- Public GHCR [backend](https://github.com/pranav7796/helpdesk-capstone/pkgs/container/helpdesk-capstone%2Fbackend) and [frontend](https://github.com/pranav7796/helpdesk-capstone/pkgs/container/helpdesk-capstone%2Ffrontend).
-- [Every grading criterion](GRADING-CHECKLIST.md), [scorecard](PROGRESS.md), [executed checks](VERIFICATION.md).
+The Google Form instructions supplied by the owner require the **repository URL only**, with one submission considered. The evidence and videos are inside that repository. Do not put the AWS endpoint, Actions URL, or multiple links in the GitHub URL field. If already submitted, retain the confirmation and do not resubmit. No submission receipt is available to the agent; “Draft saved” does not prove submission.
 
-New source CI commit `e33b8bdcc61c4fdd658e5827044fe868d9dea1ad` passed tests/builds/Trivy/GHCR and both local/EKS Helm checks. [Actual run metadata](evidence/sydney/actions-run.json), [complete log](evidence/sydney/actions-run.txt). Its published images are available for a later reviewed promotion.
+**Deadline discrepancy:** the latest owner instruction says October 19, 2026. The form text previously supplied says **October 16, 2026 at 11:59 PM IST**. An extension has not been verified. Confirm the actual accepted deadline/receipt with the instructor; this technical estimate does not assume an extension or exclude possible late deductions. The teacher's current `GRADING.md` matches the complete local snapshot; its published directory has no `student-guide.md`.
 
-Current Minikube images and EKS backend: `d07bca6accc35f0224aaae8c4057076a9c4c9261`. EKS frontend: `04108043563d24dfc2ceb70e050fd56b5e9cc577`, Helm revision 2. Documentation or infrastructure commits can publish later SHA tags without implying those images were deployed; inspect actual Pod image references.
+## Evidence entry points
 
-## PASS/FAIL checklist and primary evidence
+- [Every one of the 46 grading criteria](GRADING-CHECKLIST.md), with implementation, observed results, points, status and direct screenshot filenames.
+- [Actual verification commands/results](VERIFICATION.md).
+- [Screenshots](evidence/screenshots/) — current October 17 captures and clearly named byte-identical October 16 archive copies.
+- [Videos](evidence/videos/) — actual release demonstration, separate result continuation, and current platform walkthrough.
+- [Machine-readable criterion mapping](evidence/final-2026-10-17/criterion-evidence.json), [integrity audit](evidence/final-2026-10-17/evidence-audit.json).
+- [Presentation notes](docs/PRESENTATION.md), [security explanation](docs/SECURITY.md), [troubleshooting](docs/TROUBLESHOOTING.md), [AWS resource/cost review](docs/AWS-PLAN.md).
 
-PASS means the technical requirement was demonstrated, not that the teacher has awarded points. PARTIAL identifies missing submission or runtime requirements.
+## Module checklist
 
-| Module | Result | Estimated verified points | Primary screenshots / output |
+| Module | Result | Estimated demonstrated points | Primary evidence |
 |---|---|---:|---|
-| M1 Application | PASS | 10/10 | [app](evidence/sydney/m4-compose-browser.png), [DB/Alembic/health](evidence/m1-health-database.png), [editor](evidence/m1-ticket-editor.png), [mobile](evidence/m1-mobile-actions.png), [CRUD](evidence/sydney/docker-smoke.txt) |
-| M2 Tests | PASS | 10/10 | [16 passing tests](evidence/sydney/m2-tests-current.png), [JUnit](evidence/sydney/pytest.xml) |
-| M3 Git/GitHub | PARTIAL | 3/5 | [10+ meaningful commits](evidence/m3-git-history.png); public repo exists, teacher-form receipt missing |
-| M4 Docker | PASS | 10/10 | [build/healthy/non-root](evidence/m4-compose.png), [localhost browser](evidence/sydney/m4-compose-browser.png), [current status](evidence/sydney/docker-status.txt) |
-| M5 CI/CD | PASS | 15/15 | [green Actions](evidence/sydney/m5-actions-success.png), [backend SHA tags](evidence/sydney/m5-ghcr-backend.png), [frontend SHA tags](evidence/sydney/m5-ghcr-frontend.png), [release logs](evidence/actions-run.txt) |
-| M6 Trivy | PASS with disclosed scan policy | 5/5 | [backend](evidence/m6-trivy-backend.png), [frontend](evidence/m6-trivy-frontend.png), [CVE explanation](docs/SECURITY.md) |
-| M7 Terraform/AWS | PARTIAL — destroy pending | 13/15 | [Sydney plan](evidence/sydney/m7-sydney-plan.png), [init/fmt/validate](evidence/sydney/m7-sydney-validation.png), [account check](evidence/sydney/m7-sydney-account.png), [plan audit](evidence/sydney/plan-audit.json) |
-| M8 Kubernetes/Helm | PASS on Minikube and EKS | 15/15 | [current Pods/replicas/HPA/PVC/Helm](evidence/sydney/m8-runtime-current.png), [Services/endpoints](evidence/m8-services.png), [Ingress browser](evidence/sydney/m8-ingress-browser.png) |
-| M9 Monitoring | PASS on Minikube and EKS | 10/10 | [metrics curl](evidence/m9-metrics.png), [Targets UP](evidence/sydney/m9-prometheus-targets.png), [populated Grafana](evidence/sydney/m9-grafana-current.png), [up query](evidence/sydney/prometheus-up.json) |
-| M10 Documentation/demo | PASS — recorded technical sequence; instructor acceptance pending | 5/5 | [README](README.md), [actual release recording](evidence/sydney/m10-real-release-walkthrough.webm), [result continuation](evidence/sydney/m10-release-result-continuation.webm), [presentation notes](docs/PRESENTATION.md) |
-| Troubleshooting (README lab) | PASS | Included in presentation scope | [five failures recovered](evidence/sydney/troubleshooting-recovery.png), [complete commands/results](evidence/sydney/troubleshooting.txt) |
+| M1 Application | PASS | 10/10 | [EKS app](evidence/screenshots/2026-10-17-application-eks.png), [real HTTP/CRUD](evidence/final-2026-10-17/eks-smoke.txt), [migration/rows](evidence/final-2026-10-17/eks-postgres.txt); mobile screenshot paths in full checklist |
+| M2 Tests | PASS | 10/10 | [16 passing tests](evidence/screenshots/2026-10-17-m2-pytest.png), [JUnit](evidence/final-2026-10-17/pytest.xml) |
+| M3 Git/GitHub | PARTIAL | 3/5 | Public repository, meaningful commits and ignore rules verified; form receipt missing |
+| M4 Docker | PASS | 10/10 | [actual build/healthy/non-root](evidence/screenshots/2026-10-17-m4-compose.png), [browser](evidence/screenshots/2026-10-17-application-compose.png) |
+| M5 CI/CD | PASS | 15/15 | [real green CI](evidence/screenshots/2026-10-17-ci-green.png), [GHCR backend](evidence/screenshots/2026-10-17-ghcr-backend.png), [frontend](evidence/screenshots/2026-10-17-ghcr-frontend.png), [logs](evidence/final-2026-10-17/actions-run.txt) |
+| M6 Trivy | PASS under disclosed policy | 5/5 | Actual pipeline scans and security explanation; genuine saved-run screenshots in full checklist |
+| M7 Terraform/AWS | PARTIAL | 13/15 | [fresh no-drift verification](evidence/screenshots/2026-10-17-m7-terraform.png), [VPC Console](evidence/screenshots/2026-10-17-aws-vpc-console.png), [EKS Console](evidence/screenshots/2026-10-17-aws-eks-console.png); initial 28-addition plan/apply retained; destroy pending |
+| M8 Kubernetes/Helm | PASS | 15/15 | [Pods/deployments/Helm/HPA/PVC](evidence/screenshots/2026-10-17-m8-pods-deployments.png), [Services/Ingress/HTTP](evidence/screenshots/2026-10-17-m8-services-ingress.png) |
+| M9 Monitoring | PASS | 10/10 | [metrics](evidence/screenshots/2026-10-17-m9-metrics.png), [Targets UP](evidence/screenshots/2026-10-17-prometheus-replicas-up.png), [populated Grafana](evidence/screenshots/2026-10-17-grafana-corrected-rates.png) |
+| M10 Documentation/demo | Technical sequence PASS; instructor acceptance external | 5/5 | README and verified real recorded commit → CI → rollout → changed application, linked below |
 
-Trivy scanned the OS and application packages in both final release images. The gate fails on HIGH/CRITICAL findings with available fixes; `ignore-unfixed` and exact-PURL false-positive exceptions are disclosed. Zero reported findings applies to those images and that scan policy, not absence of every vulnerability.
+## Verified videos (four files)
 
-## Actual Sydney cloud evidence
+1. [Real release demonstration](evidence/videos/m10-real-release-walkthrough.webm): **304.68 seconds**, real 0410804 commit/push, successful CI 38946277016, immutable frontend image promotion, Helm revision 2, changed EKS page, post-rollout CRUD.
+2. [Separate completed-result continuation](evidence/videos/m10-release-result-continuation.webm): actual green CI page and updated app. This is deliberately separate; the original browser UI lagged behind the successful API status. No synthetic status or spliced sequence is claimed.
+3. [October 17 platform walkthrough](evidence/videos/2026-10-17-platform-walkthrough.webm): genuine AWS Console resources, current application and editor, Prometheus/Grafana, clearly labeled captured Kubernetes/Helm/PostgreSQL output, and clearly labeled October 16 local troubleshooting recovery.
 
-Application: [http://af43a3e33d68945548232885350507ff-719760255.ap-southeast-2.elb.amazonaws.com](http://af43a3e33d68945548232885350507ff-719760255.ap-southeast-2.elb.amazonaws.com) (owner IP `202.131.146.146/32` only).
+4. [Final monitoring correction](evidence/videos/2026-10-17-monitoring-correction.webm): two independently scraped backend targets UP and correct real request-rate series. Watch this after the platform walkthrough, whose initial graph preceded the correction.
 
-| Requirement | Primary genuine evidence under `evidence/sydney/` |
-|---|---|
-| Terraform apply / 28 created | `terraform-apply.txt`, `aws-apply-verified.png` |
-| VPC / public and private subnets / routing | `aws-vpc-console.png`, `aws-subnets-console.png`, `aws-network-verified.png` |
-| ACTIVE EKS / 2 Ready workers | `aws-eks-console.png`, `aws-apply-verified.png`, `eks-nodes.json` |
-| Pods / replicas / Helm / HPA / persistent disk | `eks-pods-helm.png`, `eks-postgres-persistence.txt` |
-| Services / endpoints / Ingress / CRUD | `eks-services-ingress.png`, `eks-http-smoke.txt`, `eks-application-browser.png` |
-| Metrics / scrape / populated panel | `eks-metrics.png`, `eks-prometheus-targets.png`, `eks-grafana-dashboard.png` |
+Files are validated and checksummed in the evidence audit. Download the `.webm` files if GitHub does not preview them. These are automated recordings without student narration; use the presentation notes to explain the system yourself. Instructor acceptance is not assumed.
 
-All cloud screenshots were captured automatically from real terminal/browser surfaces; no manual screenshot is currently needed. Resources remain running for demonstration, approximately $0.32/hour before variable charges/tax. [Cost ledger](evidence/sydney/COST-TRACKING.md), [resource/state/cleanup review](docs/CLEANUP-REVIEW.md).
+## Actual deployment
 
-## Exact remaining actions
+- Account **525426877661**, profile **devops-new**, Sydney **ap-southeast-2**.
+- EKS `relaydesk-capstone`, managed group `relaydesk-capstone-workers`, **two Ready private t3.medium nodes**.
+- **Seven Ready application/monitoring Pods**; backend/frontend each 2 replicas; HPA CPU valid; PostgreSQL PVC Bound to encrypted 2-GiB gp3.
+- VPC `vpc-0f1334a144012db46`: two public/two private subnets, required routing, one available NAT; actual IAM roles and policy attachments checked.
+- Classic ELB has both worker backends **InService**. Three gp3 disks are in use (20+20+2 GiB).
+- Backend GHCR SHA `d07bca6accc35f0224aaae8c4057076a9c4c9261`; frontend SHA `04108043563d24dfc2ceb70e050fd56b5e9cc577`; Helm revision 2. Later documentation commits/images are not silently deployed.
+- [Actual application](http://af43a3e33d68945548232885350507ff-719760255.ap-southeast-2.elb.amazonaws.com). Access remains restricted to `202.131.146.146/32`; a grader on another network cannot directly access it. Screenshots, recordings and local execution instructions remain available. No exposure was widened without approval.
+- Compose runs at <http://localhost:3000>; backend at <http://localhost:8000>. Local-only EKS forwards: backend 8001, Prometheus 9091, Grafana 3002. Grafana password stays in ignored private files.
 
-1. **Deployment and cloud evidence are complete.** Keep the environment available for the demonstration.
-2. Review the actual cloud evidence table above and the per-criterion checklist.
-3. Review and submit the new actual release recording and result continuation. They show a real new commit, successful CI, SHA-tagged image, Helm rollout and changed EKS application. Use `docs/PRESENTATION.md` to prepare your own explanation. Instructor acceptance is not assumed.
-4. Submit the public repository URL, requested screenshots and presentation through the teacher's actual form. No form submission has been performed by the agent.
-5. After demo/evidence, **separately approve cleanup**. Capture real destroy completion and verify Kubernetes-created ELB/EBS resources as well as Terraform resources are gone. Do not tear down before the demo.
+Green published-source CI: https://github.com/pranav7796/helpdesk-capstone/actions/runs/38947267271 . Actual recorded release CI: https://github.com/pranav7796/helpdesk-capstone/actions/runs/38946277016 . [Metadata/logs](evidence/final-2026-10-17/actions-run.json).
 
-## Evidence integrity / limitations
+## Remaining personal actions
 
-The original screenshot audit and provenance are in [EVIDENCE-AUDIT.md](EVIDENCE-AUDIT.md) and `evidence/audit/`. New Sydney captures/logs are in `evidence/sydney/`, with source commands, timestamps and hashes. Terminal screenshots show actual Foot windows; browser screenshots show real pages. Plan and cost screenshots are explicitly planning/estimate evidence, not deployed-resource proof.
+1. Confirm the correct repository URL was accepted by the form, with your actual group, and retain its confirmation. Do not duplicate an already completed single submission. Verify the deadline discrepancy/extension directly.
+2. Review the videos and rehearse the explanation in `docs/PRESENTATION.md`; deliver it if the instructor requires a live or narrated presentation.
+3. **After evaluation/evidence, separately approve project cleanup including ticket-data deletion.** The required actual destroy screenshot does not exist yet. The preview is 28 Terraform deletions; Kubernetes-created ELB and data disk must be removed safely before VPC/CSI destruction. [Exact cleanup inventory/order](docs/CLEANUP-REVIEW.md). No resources have been deleted.
 
-The original `terraform/tfplan` is preserved but superseded by `tfplan-reviewed`; both are ignored. State and generated passwords must stay private. Mumbai SCP restrictions are owner-reported; Sydney apply and deployment succeeded. Minikube has a registry-DNS issue for uncached images; host-side image pulls/preloading are the local workaround. One test-client deprecation warning remains non-failing.
+**Running costs:** approximately **$0.313–$0.32/hour**, about **$7.55 per additional 24 hours**, plus data/transfer, burst CPU, partial-hour rounding and tax. The dated elapsed baseline estimate is about **$3** as of this audit; it is not an actual bill. Current credit balance, applicability/expiry/sharing are unverified. [Dated estimate](evidence/final-2026-10-17/running-cost-estimate.json). Evidence collection is complete once the integrity report passes; resources remain running until explicitly approved for cleanup.
 
-Deployment commit `20c2401e206f85d1c2901cead55160c1007bf0e0` passed [CI 38945382171](https://github.com/pranav7796/helpdesk-capstone/actions/runs/38945382171): 16 tests, React/container builds, both Trivy scans, GHCR SHA publication and Helm validation. [Actual metadata](evidence/sydney/actions-deployment.json), [full logs](evidence/sydney/actions-deployment.txt). The earlier evidence-only run 38937333354 failed during GHCR publication with `unknown blob`; the new complete run passed. At that deployment checkpoint, d07 images remained unchanged; the subsequent recorded frontend promotion is detailed below.
+Never submit private state, plan binaries, AWS credentials, generated passwords, kubeconfig, or `evidence/private/`. No extra attachments or alternative URLs are required by the supplied Google Form; the repository contains the complete reviewable package.
 
-## Actual recorded release demonstration — October 16
+## Monitoring correctness fix verified October 17
 
-The prior current-state-only video is superseded for M10 by [the continuous 304.68-second release recording](evidence/sydney/m10-real-release-walkthrough.webm) and [separate result-verification continuation](evidence/sydney/m10-release-result-continuation.webm). The latter is explicitly separate: the original GitHub browser UI lagged behind its completed API status. No synthetic status or spliced event is presented.
+The initial Service-level scrape mixed two replicas’ process counters. The audit observed three apparent resets in five minutes even though both Pods were stable: [before query](evidence/final-2026-10-17/prometheus-service-counter-resets-before.json), [actual per-Pod counters](evidence/final-2026-10-17/backend-replica-counters-before.txt).
 
-Actual sequence: commit `04108043563d24dfc2ceb70e050fd56b5e9cc577` clarifies the HIGH/URGENT count; push triggered [CI 38946277016](https://github.com/pranav7796/helpdesk-capstone/actions/runs/38946277016); all jobs passed; Helm upgraded only the EKS frontend to that immutable SHA; release revision 2 and two Ready frontend replicas were verified; the public page displayed “High & urgent”; CRUD passed afterward. Backend, database and Minikube images were preserved.
+Fixed Prometheus DNS discovery to use an internal headless Service and one target per backend Pod. Grafana filters the new `scrape_mode="pod"` series. The application/backend/database workloads were unchanged, and no billable cloud resources were added. Promtool validation passed and Prometheus reloaded without a Pod restart. [Actual apply](evidence/final-2026-10-17/monitoring-fix-apply.txt), [validation/reload](evidence/final-2026-10-17/monitoring-fix-validation.txt).
 
-Evidence: `evidence/sydney/release-demo-manifest.json` records timestamps/events/hash; `release-demo-ci.json` and `.txt` record actual success; `release-demo-commands.txt` contains real commands/results; `release-video-review.json` records codec/dimensions and visual sample review; `.vtt` provides event captions. This is an automated technical recording, without student narration or any claim of instructor acceptance. [Presentation notes and submission text](docs/PRESENTATION.md).
+After verification: [two UP targets](evidence/final-2026-10-17/prometheus-up-after.json), [real positive rates](evidence/final-2026-10-17/prometheus-traffic-after.json), [zero per-Pod resets observed](evidence/final-2026-10-17/prometheus-counter-resets-after.json). [Separate genuine correction video](evidence/videos/2026-10-17-monitoring-correction.webm) shows the final monitoring state. The earlier platform walkthrough includes the pre-correction graph and is retained with that limitation; use the correction clip and corrected screenshots as primary M9 evidence.
 
-**Estimated demonstrated technical score: 96/100.** The remaining four marks require actual approved cleanup (2) and linking the repository in the teacher's form (2). Neither has occurred. No cleanup or final submission is authorized by a request to increase the score.
+Final monitoring-fix CI [38997737911](https://github.com/pranav7796/helpdesk-capstone/actions/runs/38997737911) passed all jobs for commit `2fbc48485411ff7239bb92b4290062b7e58d86fb`, including tests, React/image builds, both Trivy gates, GHCR SHA publication, Helm checks and monitoring-manifest validation. [Actual metadata](evidence/final-2026-10-17/monitoring-fix-ci.json), [complete logs](evidence/final-2026-10-17/monitoring-fix-ci.txt), [green screenshot](evidence/screenshots/2026-10-17-ci-monitoring-fix-green.png). Deployed application image SHAs remain unchanged.

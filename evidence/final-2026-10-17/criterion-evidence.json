@@ -1,0 +1,640 @@
+[
+  {
+    "id": "C01",
+    "module": "M1",
+    "criterion": "FastAPI `/health` responds",
+    "points": 2,
+    "status": "VERIFIED",
+    "implementation": "backend/app; backend/alembic; frontend/src",
+    "verification": "Actual Compose and EKS CRUD/status/priority checks pass; `/health` UP, `/ready` READY; PostgreSQL Alembic revision and retained rows queried.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-application-eks.png",
+      "evidence/screenshots/2026-10-17-m8-services-ingress.png",
+      "evidence/screenshots/2026-10-17-m9-metrics.png",
+      "evidence/screenshots/2026-10-16-archive-m1-health-database.png"
+    ]
+  },
+  {
+    "id": "C02",
+    "module": "M1",
+    "criterion": "GET/POST/PUT/DELETE ticket API",
+    "points": 3,
+    "status": "VERIFIED",
+    "implementation": "backend/app; backend/alembic; frontend/src",
+    "verification": "Actual Compose and EKS CRUD/status/priority checks pass; `/health` UP, `/ready` READY; PostgreSQL Alembic revision and retained rows queried.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-application-eks.png",
+      "evidence/screenshots/2026-10-17-m8-services-ingress.png",
+      "evidence/screenshots/2026-10-17-m9-metrics.png",
+      "evidence/screenshots/2026-10-16-archive-m1-health-database.png"
+    ]
+  },
+  {
+    "id": "C03",
+    "module": "M1",
+    "criterion": "PostgreSQL table managed by Alembic",
+    "points": 2,
+    "status": "VERIFIED",
+    "implementation": "backend/app; backend/alembic; frontend/src",
+    "verification": "Actual Compose and EKS CRUD/status/priority checks pass; `/health` UP, `/ready` READY; PostgreSQL Alembic revision and retained rows queried.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-application-eks.png",
+      "evidence/screenshots/2026-10-17-m8-services-ingress.png",
+      "evidence/screenshots/2026-10-17-m9-metrics.png",
+      "evidence/screenshots/2026-10-16-archive-m1-health-database.png"
+    ]
+  },
+  {
+    "id": "C04",
+    "module": "M1",
+    "criterion": "React frontend renders and calls API",
+    "points": 2,
+    "status": "VERIFIED",
+    "implementation": "backend/app; backend/alembic; frontend/src",
+    "verification": "Actual Compose and EKS CRUD/status/priority checks pass; `/health` UP, `/ready` READY; PostgreSQL Alembic revision and retained rows queried.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-application-eks.png",
+      "evidence/screenshots/2026-10-17-m8-services-ingress.png",
+      "evidence/screenshots/2026-10-17-m9-metrics.png",
+      "evidence/screenshots/2026-10-16-archive-m1-health-database.png"
+    ]
+  },
+  {
+    "id": "C05",
+    "module": "M1",
+    "criterion": "Responsive usable UI",
+    "points": 1,
+    "status": "VERIFIED",
+    "implementation": "backend/app; backend/alembic; frontend/src",
+    "verification": "390px responsive table/actions captured genuinely; frontend CSS unchanged since that recording.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-16-archive-m1-mobile-tickets.png",
+      "evidence/screenshots/2026-10-16-archive-m1-mobile-actions.png"
+    ]
+  },
+  {
+    "id": "C06",
+    "module": "M2",
+    "criterion": "Pytest runs",
+    "points": 3,
+    "status": "VERIFIED",
+    "implementation": "backend/tests; backend/pytest.ini",
+    "verification": "Fresh pytest -v: 16 passed, 1 non-failing Starlette warning. Isolated SQLite fixture; PostgreSQL runtime exercised separately.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m2-pytest.png"
+    ]
+  },
+  {
+    "id": "C07",
+    "module": "M2",
+    "criterion": "At least 5 tests across 3 endpoints",
+    "points": 4,
+    "status": "VERIFIED",
+    "implementation": "backend/tests; backend/pytest.ini",
+    "verification": "Fresh pytest -v: 16 passed, 1 non-failing Starlette warning. Isolated SQLite fixture; PostgreSQL runtime exercised separately.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m2-pytest.png"
+    ]
+  },
+  {
+    "id": "C08",
+    "module": "M2",
+    "criterion": "Isolated test DB",
+    "points": 2,
+    "status": "VERIFIED",
+    "implementation": "backend/tests; backend/pytest.ini",
+    "verification": "Fresh pytest -v: 16 passed, 1 non-failing Starlette warning. Isolated SQLite fixture; PostgreSQL runtime exercised separately.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m2-pytest.png"
+    ]
+  },
+  {
+    "id": "C09",
+    "module": "M2",
+    "criterion": "Pytest config",
+    "points": 1,
+    "status": "VERIFIED",
+    "implementation": "backend/tests; backend/pytest.ini",
+    "verification": "Fresh pytest -v: 16 passed, 1 non-failing Starlette warning. Isolated SQLite fixture; PostgreSQL runtime exercised separately.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m2-pytest.png"
+    ]
+  },
+  {
+    "id": "C10",
+    "module": "M3",
+    "criterion": "Public GitHub repository linked in submission form",
+    "points": 2,
+    "status": "IMPLEMENTED",
+    "implementation": ".gitignore; Git history; public repository",
+    "verification": "Public URL verified, but no form confirmation/receipt supplied. Draft saved does not prove submission.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-16-archive-m3-git-history.png"
+    ]
+  },
+  {
+    "id": "C11",
+    "module": "M3",
+    "criterion": "At least 10 meaningful commits",
+    "points": 2,
+    "status": "VERIFIED",
+    "implementation": ".gitignore; Git history; public repository",
+    "verification": "Public repository and 10+ meaningful commits verified; ignore rules and tracked-private-file checks pass. Form receipt remains unverified.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-16-archive-m3-git-history.png"
+    ]
+  },
+  {
+    "id": "C12",
+    "module": "M3",
+    "criterion": "`.gitignore` excludes secrets/build caches",
+    "points": 1,
+    "status": "VERIFIED",
+    "implementation": ".gitignore; Git history; public repository",
+    "verification": "Public repository and 10+ meaningful commits verified; ignore rules and tracked-private-file checks pass. Form receipt remains unverified.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-16-archive-m3-git-history.png"
+    ]
+  },
+  {
+    "id": "C13",
+    "module": "M4",
+    "criterion": "Backend Docker image builds",
+    "points": 2,
+    "status": "VERIFIED",
+    "implementation": "backend/Dockerfile; frontend/Dockerfile; docker-compose.yml",
+    "verification": "Actual docker compose up --build -d --wait passed; all three services healthy, backend UID 10001 and frontend UID 101; proxied CRUD passed.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m4-compose.png",
+      "evidence/screenshots/2026-10-17-application-compose.png"
+    ]
+  },
+  {
+    "id": "C14",
+    "module": "M4",
+    "criterion": "Multi-stage frontend image",
+    "points": 3,
+    "status": "VERIFIED",
+    "implementation": "backend/Dockerfile; frontend/Dockerfile; docker-compose.yml",
+    "verification": "Actual docker compose up --build -d --wait passed; all three services healthy, backend UID 10001 and frontend UID 101; proxied CRUD passed.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m4-compose.png",
+      "evidence/screenshots/2026-10-17-application-compose.png"
+    ]
+  },
+  {
+    "id": "C15",
+    "module": "M4",
+    "criterion": "Both application images use non-root users",
+    "points": 2,
+    "status": "VERIFIED",
+    "implementation": "backend/Dockerfile; frontend/Dockerfile; docker-compose.yml",
+    "verification": "Actual docker compose up --build -d --wait passed; all three services healthy, backend UID 10001 and frontend UID 101; proxied CRUD passed.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m4-compose.png",
+      "evidence/screenshots/2026-10-17-application-compose.png"
+    ]
+  },
+  {
+    "id": "C16",
+    "module": "M4",
+    "criterion": "Compose runs frontend/backend/PostgreSQL",
+    "points": 3,
+    "status": "VERIFIED",
+    "implementation": "backend/Dockerfile; frontend/Dockerfile; docker-compose.yml",
+    "verification": "Actual docker compose up --build -d --wait passed; all three services healthy, backend UID 10001 and frontend UID 101; proxied CRUD passed.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m4-compose.png",
+      "evidence/screenshots/2026-10-17-application-compose.png"
+    ]
+  },
+  {
+    "id": "C17",
+    "module": "M5",
+    "criterion": "Workflow file exists",
+    "points": 1,
+    "status": "VERIFIED",
+    "implementation": ".github/workflows/ci.yml",
+    "verification": "Actual green CI 38997737911 for monitoring fix 2fbc484: 16 tests, React/container builds, both Trivy scans, GHCR SHA publication, Helm and monitoring render all pass.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-ci-monitoring-fix-green.png",
+      "evidence/screenshots/2026-10-17-ghcr-backend.png",
+      "evidence/screenshots/2026-10-17-ghcr-frontend.png"
+    ]
+  },
+  {
+    "id": "C18",
+    "module": "M5",
+    "criterion": "Push-to-main trigger",
+    "points": 1,
+    "status": "VERIFIED",
+    "implementation": ".github/workflows/ci.yml",
+    "verification": "Actual green CI 38997737911 for monitoring fix 2fbc484: 16 tests, React/container builds, both Trivy scans, GHCR SHA publication, Helm and monitoring render all pass.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-ci-monitoring-fix-green.png",
+      "evidence/screenshots/2026-10-17-ghcr-backend.png",
+      "evidence/screenshots/2026-10-17-ghcr-frontend.png"
+    ]
+  },
+  {
+    "id": "C19",
+    "module": "M5",
+    "criterion": "CI pytest job",
+    "points": 3,
+    "status": "VERIFIED",
+    "implementation": ".github/workflows/ci.yml",
+    "verification": "Actual green CI 38997737911 for monitoring fix 2fbc484: 16 tests, React/container builds, both Trivy scans, GHCR SHA publication, Helm and monitoring render all pass.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-ci-monitoring-fix-green.png",
+      "evidence/screenshots/2026-10-17-ghcr-backend.png",
+      "evidence/screenshots/2026-10-17-ghcr-frontend.png"
+    ]
+  },
+  {
+    "id": "C20",
+    "module": "M5",
+    "criterion": "CI frontend build",
+    "points": 2,
+    "status": "VERIFIED",
+    "implementation": ".github/workflows/ci.yml",
+    "verification": "Actual green CI 38997737911 for monitoring fix 2fbc484: 16 tests, React/container builds, both Trivy scans, GHCR SHA publication, Helm and monitoring render all pass.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-ci-monitoring-fix-green.png",
+      "evidence/screenshots/2026-10-17-ghcr-backend.png",
+      "evidence/screenshots/2026-10-17-ghcr-frontend.png"
+    ]
+  },
+  {
+    "id": "C21",
+    "module": "M5",
+    "criterion": "CI builds both container images",
+    "points": 3,
+    "status": "VERIFIED",
+    "implementation": ".github/workflows/ci.yml",
+    "verification": "Actual green CI 38997737911 for monitoring fix 2fbc484: 16 tests, React/container builds, both Trivy scans, GHCR SHA publication, Helm and monitoring render all pass.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-ci-monitoring-fix-green.png",
+      "evidence/screenshots/2026-10-17-ghcr-backend.png",
+      "evidence/screenshots/2026-10-17-ghcr-frontend.png"
+    ]
+  },
+  {
+    "id": "C22",
+    "module": "M5",
+    "criterion": "GHCR image publication",
+    "points": 3,
+    "status": "VERIFIED",
+    "implementation": ".github/workflows/ci.yml",
+    "verification": "Actual green CI 38997737911 for monitoring fix 2fbc484: 16 tests, React/container builds, both Trivy scans, GHCR SHA publication, Helm and monitoring render all pass.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-ci-monitoring-fix-green.png",
+      "evidence/screenshots/2026-10-17-ghcr-backend.png",
+      "evidence/screenshots/2026-10-17-ghcr-frontend.png"
+    ]
+  },
+  {
+    "id": "C23",
+    "module": "M5",
+    "criterion": "Immutable commit SHA tags",
+    "points": 2,
+    "status": "VERIFIED",
+    "implementation": ".github/workflows/ci.yml",
+    "verification": "Actual green CI 38997737911 for monitoring fix 2fbc484: 16 tests, React/container builds, both Trivy scans, GHCR SHA publication, Helm and monitoring render all pass.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-ci-monitoring-fix-green.png",
+      "evidence/screenshots/2026-10-17-ghcr-backend.png",
+      "evidence/screenshots/2026-10-17-ghcr-frontend.png"
+    ]
+  },
+  {
+    "id": "C24",
+    "module": "M6",
+    "criterion": "CI Trivy scans both images",
+    "points": 3,
+    "status": "VERIFIED",
+    "implementation": ".github/workflows/ci.yml; .trivyignore.yaml; docs/SECURITY.md",
+    "verification": "Both configured scans passed in real green CI; HIGH/CRITICAL fixable findings fail. ignore-unfixed and exact-PURL exceptions disclosed in SECURITY.md.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-16-archive-m6-trivy-backend.png",
+      "evidence/screenshots/2026-10-16-archive-m6-trivy-frontend.png",
+      "evidence/screenshots/2026-10-17-ci-green.png"
+    ]
+  },
+  {
+    "id": "C25",
+    "module": "M6",
+    "criterion": "HIGH/CRITICAL gate",
+    "points": 1,
+    "status": "VERIFIED",
+    "implementation": ".github/workflows/ci.yml; .trivyignore.yaml; docs/SECURITY.md",
+    "verification": "Both configured scans passed in real green CI; HIGH/CRITICAL fixable findings fail. ignore-unfixed and exact-PURL exceptions disclosed in SECURITY.md.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-16-archive-m6-trivy-backend.png",
+      "evidence/screenshots/2026-10-16-archive-m6-trivy-frontend.png",
+      "evidence/screenshots/2026-10-17-ci-green.png"
+    ]
+  },
+  {
+    "id": "C26",
+    "module": "M6",
+    "criterion": "Explain a finding and disposition",
+    "points": 1,
+    "status": "VERIFIED",
+    "implementation": ".github/workflows/ci.yml; .trivyignore.yaml; docs/SECURITY.md",
+    "verification": "Both configured scans passed in real green CI; HIGH/CRITICAL fixable findings fail. ignore-unfixed and exact-PURL exceptions disclosed in SECURITY.md.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-16-archive-m6-trivy-backend.png",
+      "evidence/screenshots/2026-10-16-archive-m6-trivy-frontend.png",
+      "evidence/screenshots/2026-10-17-ci-green.png"
+    ]
+  },
+  {
+    "id": "C27",
+    "module": "M7",
+    "criterion": "Valid Terraform HCL",
+    "points": 2,
+    "status": "VERIFIED",
+    "implementation": "terraform/*.tf; terraform.tfvars.example; scripts/audit-plan.py",
+    "verification": "Actual approved apply created 28 resources October 16. Fresh init/fmt/validate pass; refreshed plan has no changes. ACTIVE VPC/EKS/workers verified by AWS APIs.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m7-terraform.png",
+      "evidence/screenshots/2026-10-17-m7-aws-status.png",
+      "evidence/screenshots/2026-10-17-aws-vpc-console.png",
+      "evidence/screenshots/2026-10-17-aws-eks-console.png",
+      "evidence/screenshots/2026-10-16-archive-sydney--m7-sydney-plan.png",
+      "evidence/screenshots/2026-10-16-archive-sydney--aws-apply-verified.png"
+    ]
+  },
+  {
+    "id": "C28",
+    "module": "M7",
+    "criterion": "Terraform init",
+    "points": 1,
+    "status": "VERIFIED",
+    "implementation": "terraform/*.tf; terraform.tfvars.example; scripts/audit-plan.py",
+    "verification": "Actual approved apply created 28 resources October 16. Fresh init/fmt/validate pass; refreshed plan has no changes. ACTIVE VPC/EKS/workers verified by AWS APIs.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m7-terraform.png",
+      "evidence/screenshots/2026-10-17-m7-aws-status.png",
+      "evidence/screenshots/2026-10-17-aws-vpc-console.png",
+      "evidence/screenshots/2026-10-17-aws-eks-console.png",
+      "evidence/screenshots/2026-10-16-archive-sydney--m7-sydney-plan.png",
+      "evidence/screenshots/2026-10-16-archive-sydney--aws-apply-verified.png"
+    ]
+  },
+  {
+    "id": "C29",
+    "module": "M7",
+    "criterion": "Non-empty Terraform plan",
+    "points": 2,
+    "status": "VERIFIED",
+    "implementation": "terraform/*.tf; terraform.tfvars.example; scripts/audit-plan.py",
+    "verification": "Actual approved apply created 28 resources October 16. Fresh init/fmt/validate pass; refreshed plan has no changes. ACTIVE VPC/EKS/workers verified by AWS APIs.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m7-terraform.png",
+      "evidence/screenshots/2026-10-17-m7-aws-status.png",
+      "evidence/screenshots/2026-10-17-aws-vpc-console.png",
+      "evidence/screenshots/2026-10-17-aws-eks-console.png",
+      "evidence/screenshots/2026-10-16-archive-sydney--m7-sydney-plan.png",
+      "evidence/screenshots/2026-10-16-archive-sydney--aws-apply-verified.png"
+    ]
+  },
+  {
+    "id": "C30",
+    "module": "M7",
+    "criterion": "VPC with two public subnets provisioned",
+    "points": 3,
+    "status": "VERIFIED",
+    "implementation": "terraform/*.tf; terraform.tfvars.example; scripts/audit-plan.py",
+    "verification": "Actual approved apply created 28 resources October 16. Fresh init/fmt/validate pass; refreshed plan has no changes. ACTIVE VPC/EKS/workers verified by AWS APIs.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m7-terraform.png",
+      "evidence/screenshots/2026-10-17-m7-aws-status.png",
+      "evidence/screenshots/2026-10-17-aws-vpc-console.png",
+      "evidence/screenshots/2026-10-17-aws-eks-console.png",
+      "evidence/screenshots/2026-10-16-archive-sydney--m7-sydney-plan.png",
+      "evidence/screenshots/2026-10-16-archive-sydney--aws-apply-verified.png"
+    ]
+  },
+  {
+    "id": "C31",
+    "module": "M7",
+    "criterion": "EKS and worker node group provisioned",
+    "points": 4,
+    "status": "VERIFIED",
+    "implementation": "terraform/*.tf; terraform.tfvars.example; scripts/audit-plan.py",
+    "verification": "Actual approved apply created 28 resources October 16. Fresh init/fmt/validate pass; refreshed plan has no changes. ACTIVE VPC/EKS/workers verified by AWS APIs.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m7-terraform.png",
+      "evidence/screenshots/2026-10-17-m7-aws-status.png",
+      "evidence/screenshots/2026-10-17-aws-vpc-console.png",
+      "evidence/screenshots/2026-10-17-aws-eks-console.png",
+      "evidence/screenshots/2026-10-16-archive-sydney--m7-sydney-plan.png",
+      "evidence/screenshots/2026-10-16-archive-sydney--aws-apply-verified.png"
+    ]
+  },
+  {
+    "id": "C32",
+    "module": "M7",
+    "criterion": "Terraform destroy demonstrated",
+    "points": 2,
+    "status": "IMPLEMENTED",
+    "implementation": "terraform/*.tf; terraform.tfvars.example; scripts/audit-plan.py",
+    "verification": "Read-only 28-delete preview and cleanup procedure exist. No deletion approved or executed; actual destroy screenshot missing.",
+    "screenshots": []
+  },
+  {
+    "id": "C33",
+    "module": "M7",
+    "criterion": "Example tfvars, no secrets",
+    "points": 1,
+    "status": "VERIFIED",
+    "implementation": "terraform/*.tf; terraform.tfvars.example; scripts/audit-plan.py",
+    "verification": "Actual approved apply created 28 resources October 16. Fresh init/fmt/validate pass; refreshed plan has no changes. ACTIVE VPC/EKS/workers verified by AWS APIs.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m7-terraform.png",
+      "evidence/screenshots/2026-10-17-m7-aws-status.png",
+      "evidence/screenshots/2026-10-17-aws-vpc-console.png",
+      "evidence/screenshots/2026-10-17-aws-eks-console.png",
+      "evidence/screenshots/2026-10-16-archive-sydney--m7-sydney-plan.png",
+      "evidence/screenshots/2026-10-16-archive-sydney--aws-apply-verified.png"
+    ]
+  },
+  {
+    "id": "C34",
+    "module": "M8",
+    "criterion": "Namespace applies",
+    "points": 1,
+    "status": "VERIFIED",
+    "implementation": "k8s/; helm/helpdesk/",
+    "verification": "Live EKS: 7 Ready application/monitoring Pods, two replicas each app, Helm revision 2, ClusterIP endpoints, working Ingress, valid HPA, Bound encrypted gp3 PVC.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m8-pods-deployments.png",
+      "evidence/screenshots/2026-10-17-m8-services-ingress.png",
+      "evidence/screenshots/2026-10-17-application-eks.png"
+    ]
+  },
+  {
+    "id": "C35",
+    "module": "M8",
+    "criterion": "Helm chart structure",
+    "points": 3,
+    "status": "VERIFIED",
+    "implementation": "k8s/; helm/helpdesk/",
+    "verification": "Live EKS: 7 Ready application/monitoring Pods, two replicas each app, Helm revision 2, ClusterIP endpoints, working Ingress, valid HPA, Bound encrypted gp3 PVC.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m8-pods-deployments.png",
+      "evidence/screenshots/2026-10-17-m8-services-ingress.png",
+      "evidence/screenshots/2026-10-17-application-eks.png"
+    ]
+  },
+  {
+    "id": "C36",
+    "module": "M8",
+    "criterion": "Helm install/upgrade succeeds",
+    "points": 3,
+    "status": "VERIFIED",
+    "implementation": "k8s/; helm/helpdesk/",
+    "verification": "Live EKS: 7 Ready application/monitoring Pods, two replicas each app, Helm revision 2, ClusterIP endpoints, working Ingress, valid HPA, Bound encrypted gp3 PVC.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m8-pods-deployments.png",
+      "evidence/screenshots/2026-10-17-m8-services-ingress.png",
+      "evidence/screenshots/2026-10-17-application-eks.png"
+    ]
+  },
+  {
+    "id": "C37",
+    "module": "M8",
+    "criterion": "Frontend and backend each have 2 replicas",
+    "points": 2,
+    "status": "VERIFIED",
+    "implementation": "k8s/; helm/helpdesk/",
+    "verification": "Live EKS: 7 Ready application/monitoring Pods, two replicas each app, Helm revision 2, ClusterIP endpoints, working Ingress, valid HPA, Bound encrypted gp3 PVC.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m8-pods-deployments.png",
+      "evidence/screenshots/2026-10-17-m8-services-ingress.png",
+      "evidence/screenshots/2026-10-17-application-eks.png"
+    ]
+  },
+  {
+    "id": "C38",
+    "module": "M8",
+    "criterion": "ClusterIP services",
+    "points": 2,
+    "status": "VERIFIED",
+    "implementation": "k8s/; helm/helpdesk/",
+    "verification": "Live EKS: 7 Ready application/monitoring Pods, two replicas each app, Helm revision 2, ClusterIP endpoints, working Ingress, valid HPA, Bound encrypted gp3 PVC.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m8-pods-deployments.png",
+      "evidence/screenshots/2026-10-17-m8-services-ingress.png",
+      "evidence/screenshots/2026-10-17-application-eks.png"
+    ]
+  },
+  {
+    "id": "C39",
+    "module": "M8",
+    "criterion": "Ingress routes frontend and `/api`",
+    "points": 2,
+    "status": "VERIFIED",
+    "implementation": "k8s/; helm/helpdesk/",
+    "verification": "Live EKS: 7 Ready application/monitoring Pods, two replicas each app, Helm revision 2, ClusterIP endpoints, working Ingress, valid HPA, Bound encrypted gp3 PVC.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m8-pods-deployments.png",
+      "evidence/screenshots/2026-10-17-m8-services-ingress.png",
+      "evidence/screenshots/2026-10-17-application-eks.png"
+    ]
+  },
+  {
+    "id": "C40",
+    "module": "M8",
+    "criterion": "Pods running and ready",
+    "points": 2,
+    "status": "VERIFIED",
+    "implementation": "k8s/; helm/helpdesk/",
+    "verification": "Live EKS: 7 Ready application/monitoring Pods, two replicas each app, Helm revision 2, ClusterIP endpoints, working Ingress, valid HPA, Bound encrypted gp3 PVC.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m8-pods-deployments.png",
+      "evidence/screenshots/2026-10-17-m8-services-ingress.png",
+      "evidence/screenshots/2026-10-17-application-eks.png"
+    ]
+  },
+  {
+    "id": "C41",
+    "module": "M9",
+    "criterion": "Prometheus `/metrics` output",
+    "points": 2,
+    "status": "VERIFIED",
+    "implementation": "backend/app/main.py; monitoring/",
+    "verification": "Actual metrics; two independent Pod targets UP; correct positive rates and zero observed per-Pod counter resets; authenticated Grafana panel populated. The pre-correction mixed-Service capture is historical diagnostic evidence.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m9-metrics.png",
+      "evidence/screenshots/2026-10-17-prometheus-replicas-up.png",
+      "evidence/screenshots/2026-10-17-grafana-corrected-rates.png"
+    ]
+  },
+  {
+    "id": "C42",
+    "module": "M9",
+    "criterion": "Prometheus scrapes application",
+    "points": 3,
+    "status": "VERIFIED",
+    "implementation": "backend/app/main.py; monitoring/",
+    "verification": "Actual metrics; two independent Pod targets UP; correct positive rates and zero observed per-Pod counter resets; authenticated Grafana panel populated. The pre-correction mixed-Service capture is historical diagnostic evidence.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m9-metrics.png",
+      "evidence/screenshots/2026-10-17-prometheus-replicas-up.png",
+      "evidence/screenshots/2026-10-17-grafana-corrected-rates.png"
+    ]
+  },
+  {
+    "id": "C43",
+    "module": "M9",
+    "criterion": "Grafana installed and accessible",
+    "points": 2,
+    "status": "VERIFIED",
+    "implementation": "backend/app/main.py; monitoring/",
+    "verification": "Actual metrics; two independent Pod targets UP; correct positive rates and zero observed per-Pod counter resets; authenticated Grafana panel populated. The pre-correction mixed-Service capture is historical diagnostic evidence.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m9-metrics.png",
+      "evidence/screenshots/2026-10-17-prometheus-replicas-up.png",
+      "evidence/screenshots/2026-10-17-grafana-corrected-rates.png"
+    ]
+  },
+  {
+    "id": "C44",
+    "module": "M9",
+    "criterion": "Live request metrics panel",
+    "points": 3,
+    "status": "VERIFIED",
+    "implementation": "backend/app/main.py; monitoring/",
+    "verification": "Actual metrics; two independent Pod targets UP; correct positive rates and zero observed per-Pod counter resets; authenticated Grafana panel populated. The pre-correction mixed-Service capture is historical diagnostic evidence.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m9-metrics.png",
+      "evidence/screenshots/2026-10-17-prometheus-replicas-up.png",
+      "evidence/screenshots/2026-10-17-grafana-corrected-rates.png"
+    ]
+  },
+  {
+    "id": "C45",
+    "module": "M10",
+    "criterion": "Root README explains application",
+    "points": 2,
+    "status": "VERIFIED",
+    "implementation": "README.md; docs/PRESENTATION.md",
+    "verification": "README reviewed and corrected for the actual deployment, evidence paths and current submission instructions.",
+    "screenshots": []
+  },
+  {
+    "id": "C46",
+    "module": "M10",
+    "criterion": "Live or recorded commit \u2192 CI \u2192 deployment update presentation",
+    "points": 3,
+    "status": "VERIFIED",
+    "implementation": "frontend/src/main.jsx; CI 38946277016; actual recorded Helm release",
+    "verification": "README explains original application. Verified real 0410804 commit, green CI 38946277016, Helm revision 2 image rollout, changed EKS page and passing CRUD recorded; instructor acceptance remains external. Video: videos/m10-real-release-walkthrough.webm plus result continuation.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-16-archive-sydney--m10-release-green.png",
+      "evidence/screenshots/2026-10-16-archive-sydney--m10-release-updated-app.png"
+    ]
+  }
+]

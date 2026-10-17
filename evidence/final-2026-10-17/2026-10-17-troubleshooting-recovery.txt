@@ -1,0 +1,31 @@
+Captured: 2026-10-17 02:51:47 UTC
+Evidence: 2026-10-17-troubleshooting-recovery
++ printf 'ACTUAL SAVED OCTOBER 16 LOCAL LAB RESULTS (not a new fault injection):\n'
+ACTUAL SAVED OCTOBER 16 LOCAL LAB RESULTS (not a new fault injection):
++ rg 'VERIFIED:|PASS:|namespace "relaydesk-lab" deleted|deployment .*successfully rolled' evidence/sydney/troubleshooting.txt
+deployment "healthy" successfully rolled out
+VERIFIED: Repeated exit-1 crashes observed (crash loop)
+VERIFIED: ImagePullBackOff observed
+VERIFIED: Running but unready probe-failure pod observed
+VERIFIED: incorrect selector produces no endpoints
+VERIFIED: readiness returns HTTP 404
+VERIFIED: database returns HTTP 503
+deployment "crash" successfully rolled out
+deployment "readiness" successfully rolled out
+deployment "broken-image" successfully rolled out
+deployment "database" successfully rolled out
+PASS: all five intentional failures diagnosed and recovered
+namespace "relaydesk-lab" deleted
++ printf 'Current working EKS application remains healthy:\n'
+Current working EKS application remains healthy:
++ export KUBECONFIG=/home/pranav/Projects/helpdesk-capstone/evidence/private/kubeconfig-sydney
++ KUBECONFIG=/home/pranav/Projects/helpdesk-capstone/evidence/private/kubeconfig-sydney
++ kubectl --context relaydesk-sydney -n relaydesk get pods
+NAME                                 READY   STATUS    RESTARTS   AGE
+grafana-6bf844bfcb-hbdbs             1/1     Running   0          9h
+prometheus-cd7d5fdc5-2wcvz           1/1     Running   0          9h
+relaydesk-backend-7556c8f9c4-g68bb   1/1     Running   0          9h
+relaydesk-backend-7556c8f9c4-zkpxl   1/1     Running   0          9h
+relaydesk-frontend-f45d8597-rldk6    1/1     Running   0          8h
+relaydesk-frontend-f45d8597-zh7f2    1/1     Running   0          8h
+relaydesk-postgres-0                 1/1     Running   0          9h

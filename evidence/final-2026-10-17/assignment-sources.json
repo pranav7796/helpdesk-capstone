@@ -1,0 +1,20 @@
+{
+  "checked_at_utc": "2026-10-17T02:59:36.599417+00:00",
+  "sources": [
+    {
+      "file": "README.md",
+      "source_url": "https://github.com/Nency-Ravaliya/devops-heros/blob/main/session21-python/README.md",
+      "git_blob_sha": "f250d348fb54362b3d354f80b754bd108ce7ab5b",
+      "sha256": "45fb114977acf7a3eadb70cd81d7318436fbda2f5d5af4a0ba89c35f49f9ab69",
+      "rubric_snapshot_matches": null
+    },
+    {
+      "file": "GRADING.md",
+      "source_url": "https://github.com/Nency-Ravaliya/devops-heros/blob/main/session21-python/GRADING.md",
+      "git_blob_sha": "98802d8981b082833864c9f48df1545d062a36e3",
+      "sha256": "3385339a2676d80c6ab24a0331ebaaae9453bd6db75160abfb15da831dd379c7",
+      "rubric_snapshot_matches": true
+    }
+  ],
+  "student_guide": "No student-guide.md in the published session21-python directory; owner-supplied form text used for submission rules."
+}

@@ -1,0 +1,10 @@
+{
+  "two_public_two_private": true,
+  "ebs_data_encrypted_gp3": true,
+  "five_policy_attachments": true,
+  "ebs_trust_scoped_service_account": true,
+  "elb_http_source_restricted": true,
+  "hpa_has_real_metrics": true,
+  "two_ready_replicas_each": true,
+  "all_app_endpoints_ready": true
+}

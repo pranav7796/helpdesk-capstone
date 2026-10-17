@@ -1,0 +1,5 @@
+relaydesk-backend-7556c8f9c4-g68bb
+relaydesk_http_requests_total{method="GET",route="/ready",status="200"} 6709.0
+
+relaydesk-backend-7556c8f9c4-zkpxl
+relaydesk_http_requests_total{method="GET",route="/ready",status="200"} 6702.0

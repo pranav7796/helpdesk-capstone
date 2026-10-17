@@ -1,0 +1,12 @@
+{
+  "history_total_commits": 22,
+  "ignored_paths": {
+    ".env": true,
+    ".venv/x": true,
+    "backend/__pycache__/x": true,
+    "frontend/node_modules/x": true,
+    "evidence/private/x": true,
+    "terraform/terraform.tfstate": true
+  },
+  "tracked_private_paths": []
+}

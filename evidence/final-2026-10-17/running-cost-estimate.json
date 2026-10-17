@@ -1,0 +1,13 @@
+{
+  "estimated_at_utc": "2026-10-17T03:18:25.817530+00:00",
+  "started_approximately_utc": "2026-10-16T17:28:00+00:00",
+  "elapsed_hours": 9.84,
+  "conservative_full_stack_usd_per_hour": 0.31444,
+  "actual_gp3_baseline_usd_per_hour_estimate": 0.313123,
+  "elapsed_baseline_budget_estimate_usd": 3.09,
+  "next_24h_baseline_usd": 7.55,
+  "not_an_actual_bill": true,
+  "exclusions": "variable data/transfer, burst CPU, partial-hour rounding and taxes; credit coverage/expiry/current balance unverified",
+  "resources_still_running": true,
+  "cleanup_approved": false
+}

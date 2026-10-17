@@ -1,0 +1,16 @@
+Captured: 2026-10-17 02:49:28 UTC
+Evidence: 2026-10-17-m7-terraform
++ bash scripts/terraform-readonly.sh fmt -check -recursive
++ bash scripts/terraform-readonly.sh validate -no-color
+Success! The configuration is valid.
+
++ printf 'Fresh authenticated read-only plan from this audit:\n'
+Fresh authenticated read-only plan from this audit:
++ tail -n 5 evidence/final-2026-10-17/terraform-plan.txt
+
+No changes. Your infrastructure matches the configuration.
+
+Terraform has compared your real infrastructure against your configuration
+and found no differences, so no changes are needed.
++ printf 'No apply or destroy performed during this audit.\n'
+No apply or destroy performed during this audit.

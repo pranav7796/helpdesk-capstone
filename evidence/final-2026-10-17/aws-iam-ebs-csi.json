@@ -1,0 +1,41 @@
+{
+    "Role": {
+        "Path": "/",
+        "RoleName": "relaydesk-capstone-ebs-csi-role",
+        "RoleId": "AROAXUVPB4TO2NJTKLFKJ",
+        "Arn": "arn:aws:iam::525426877661:role/relaydesk-capstone-ebs-csi-role",
+        "CreateDate": "2026-10-16T17:28:51+00:00",
+        "AssumeRolePolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Principal": {
+                        "Service": "pods.eks.amazonaws.com"
+                    },
+                    "Action": [
+                        "sts:AssumeRole",
+                        "sts:TagSession"
+                    ],
+                    "Condition": {
+                        "StringEquals": {
+                            "aws:RequestTag/kubernetes-service-account": "ebs-csi-controller-sa",
+                            "aws:RequestTag/kubernetes-namespace": "kube-system"
+                        }
+                    }
+                }
+            ]
+        },
+        "MaxSessionDuration": 3600,
+        "Tags": [
+            {
+                "Key": "Project",
+                "Value": "relaydesk-capstone"
+            }
+        ],
+        "RoleLastUsed": {
+            "LastUsedDate": "2026-10-16T23:40:21+00:00",
+            "Region": "ap-southeast-2"
+        }
+    }
+}

@@ -1,0 +1,11 @@
+ version_num  
+--------------
+ 0001_tickets
+(1 row)
+
+ id |               subject               |   status    | priority 
+----+-------------------------------------+-------------+----------
+  3 | Verify support workspace deployment | IN_PROGRESS | HIGH
+  1 | Verify support workspace deployment | IN_PROGRESS | HIGH
+(2 rows)
+

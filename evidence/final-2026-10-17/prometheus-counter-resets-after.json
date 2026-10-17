@@ -1,0 +1,36 @@
+{
+  "status": "success",
+  "data": {
+    "resultType": "vector",
+    "result": [
+      {
+        "metric": {
+          "instance": "10.42.2.169:8000",
+          "job": "relaydesk-backend",
+          "method": "GET",
+          "route": "/ready",
+          "scrape_mode": "pod",
+          "status": "200"
+        },
+        "value": [
+          1792206508.634,
+          "0"
+        ]
+      },
+      {
+        "metric": {
+          "instance": "10.42.1.17:8000",
+          "job": "relaydesk-backend",
+          "method": "GET",
+          "route": "/ready",
+          "scrape_mode": "pod",
+          "status": "200"
+        },
+        "value": [
+          1792206508.634,
+          "0"
+        ]
+      }
+    ]
+  }
+}

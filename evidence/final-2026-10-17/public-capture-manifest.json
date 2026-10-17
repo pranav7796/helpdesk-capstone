@@ -1,0 +1,35 @@
+[
+  {
+    "screenshot": "evidence/screenshots/2026-10-17-ci-green.png",
+    "url": "https://github.com/pranav7796/helpdesk-capstone/actions/runs/38947267271",
+    "http_status": 200,
+    "captured_at_utc": "2026-10-17T02:52:57.429Z",
+    "sha256": "05d1bbcabd3e96cf0a02c8686e78eeed38ae9f19f9b23d44aec1030171e57b14",
+    "method": "Actual anonymous public GitHub/GHCR browser page"
+  },
+  {
+    "screenshot": "evidence/screenshots/2026-10-17-ghcr-backend.png",
+    "url": "https://github.com/pranav7796/helpdesk-capstone/pkgs/container/helpdesk-capstone%2Fbackend",
+    "http_status": 200,
+    "captured_at_utc": "2026-10-17T02:53:05.378Z",
+    "sha256": "1ceade9c54f4c7846cff32f019f6695210aa9bc71fb2ef29e487f7b10c07e5b4",
+    "method": "Actual anonymous public GitHub/GHCR browser page"
+  },
+  {
+    "screenshot": "evidence/screenshots/2026-10-17-ghcr-frontend.png",
+    "url": "https://github.com/pranav7796/helpdesk-capstone/pkgs/container/helpdesk-capstone%2Ffrontend",
+    "http_status": 200,
+    "captured_at_utc": "2026-10-17T02:53:14.417Z",
+    "sha256": "03bd44b55b45b8ff4e4d6bcea329b07d62746e4ca4ad0c9979245aeb9ae70618",
+    "method": "Actual anonymous public GitHub/GHCR browser page"
+  },
+  {
+    "screenshot": "evidence/screenshots/2026-10-17-ci-monitoring-fix-green.png",
+    "url": "https://github.com/pranav7796/helpdesk-capstone/actions/runs/38997737911",
+    "http_status": null,
+    "captured_at_utc": "2026-10-17T03:17:38.514Z",
+    "sha256": "54550c39c21b8adbf7c374668589cb7f8a9fc629b01fb2fc959e3c64e5d03568",
+    "method": "Actual public green monitoring-fix CI page; status visually verified",
+    "http_status_note": "Visible success state was validated; navigation HTTP status was not recorded by this capture."
+  }
+]

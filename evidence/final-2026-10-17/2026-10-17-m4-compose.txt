@@ -1,0 +1,23 @@
+Captured: 2026-10-17 02:49:05 UTC
+Evidence: 2026-10-17-m4-compose
++ docker compose up --build -d --wait
++ tail -n 10 evidence/final-2026-10-17/compose-build.txt
+ Container relaydesk-frontend-1 Starting 
+ Container relaydesk-frontend-1 Started 
+ Container relaydesk-migrate-1 Waiting 
+ Container relaydesk-backend-1 Waiting 
+ Container relaydesk-frontend-1 Waiting 
+ Container relaydesk-postgres-1 Waiting 
+ Container relaydesk-migrate-1 Exited 
+ Container relaydesk-backend-1 Healthy 
+ Container relaydesk-postgres-1 Healthy 
+ Container relaydesk-frontend-1 Healthy 
++ docker compose ps
+NAME                   IMAGE                      COMMAND                  SERVICE    CREATED          STATUS                   PORTS
+relaydesk-backend-1    relaydesk-backend:local    "uvicorn app.main:ap…"   backend    16 hours ago     Up 16 hours (healthy)    127.0.0.1:8000->8000/tcp
+relaydesk-frontend-1   relaydesk-frontend:local   "/docker-entrypoint.…"   frontend   12 seconds ago   Up 5 seconds (healthy)   127.0.0.1:3000->8080/tcp
+relaydesk-postgres-1   postgres:17-alpine         "docker-entrypoint.s…"   postgres   21 hours ago     Up 21 hours (healthy)    5432/tcp
++ docker image inspect relaydesk-backend:local --format 'backend-user={{.Config.User}}'
+backend-user=10001:10001
++ docker image inspect relaydesk-frontend:local --format 'frontend-user={{.Config.User}}'
+frontend-user=101:101

@@ -1,0 +1,668 @@
+{
+  "checked_at_utc": "2026-10-17T02:47:45.245961+00:00",
+  "account": "525426877661",
+  "region": "ap-southeast-2",
+  "checks": [
+    {
+      "command": [
+        "aws",
+        "sts",
+        "get-caller-identity",
+        "--profile",
+        "devops-new",
+        "--region",
+        "ap-southeast-2",
+        "--no-cli-pager",
+        "--output",
+        "json"
+      ],
+      "file": "evidence/final-2026-10-17/aws-identity.json",
+      "exit_code": 0,
+      "checked_at_utc": "2026-10-17T02:45:57.664586+00:00"
+    },
+    {
+      "command": [
+        "aws",
+        "eks",
+        "describe-cluster",
+        "--name",
+        "relaydesk-capstone",
+        "--profile",
+        "devops-new",
+        "--region",
+        "ap-southeast-2",
+        "--no-cli-pager",
+        "--output",
+        "json"
+      ],
+      "file": "evidence/final-2026-10-17/aws-eks.json",
+      "exit_code": 0,
+      "checked_at_utc": "2026-10-17T02:46:00.581310+00:00"
+    },
+    {
+      "command": [
+        "aws",
+        "eks",
+        "describe-nodegroup",
+        "--cluster-name",
+        "relaydesk-capstone",
+        "--nodegroup-name",
+        "relaydesk-capstone-workers",
+        "--profile",
+        "devops-new",
+        "--region",
+        "ap-southeast-2",
+        "--no-cli-pager",
+        "--output",
+        "json"
+      ],
+      "file": "evidence/final-2026-10-17/aws-nodegroup.json",
+      "exit_code": 0,
+      "checked_at_utc": "2026-10-17T02:46:03.200261+00:00"
+    },
+    {
+      "command": [
+        "aws",
+        "eks",
+        "describe-addon",
+        "--cluster-name",
+        "relaydesk-capstone",
+        "--addon-name",
+        "eks-pod-identity-agent",
+        "--profile",
+        "devops-new",
+        "--region",
+        "ap-southeast-2",
+        "--no-cli-pager",
+        "--output",
+        "json"
+      ],
+      "file": "evidence/final-2026-10-17/aws-addon-eks-pod-identity-agent.json",
+      "exit_code": 0,
+      "checked_at_utc": "2026-10-17T02:46:05.962559+00:00"
+    },
+    {
+      "command": [
+        "aws",
+        "eks",
+        "describe-addon",
+        "--cluster-name",
+        "relaydesk-capstone",
+        "--addon-name",
+        "aws-ebs-csi-driver",
+        "--profile",
+        "devops-new",
+        "--region",
+        "ap-southeast-2",
+        "--no-cli-pager",
+        "--output",
+        "json"
+      ],
+      "file": "evidence/final-2026-10-17/aws-addon-aws-ebs-csi-driver.json",
+      "exit_code": 0,
+      "checked_at_utc": "2026-10-17T02:46:08.553866+00:00"
+    },
+    {
+      "command": [
+        "aws",
+        "eks",
+        "describe-addon",
+        "--cluster-name",
+        "relaydesk-capstone",
+        "--addon-name",
+        "metrics-server",
+        "--profile",
+        "devops-new",
+        "--region",
+        "ap-southeast-2",
+        "--no-cli-pager",
+        "--output",
+        "json"
+      ],
+      "file": "evidence/final-2026-10-17/aws-addon-metrics-server.json",
+      "exit_code": 0,
+      "checked_at_utc": "2026-10-17T02:46:11.230511+00:00"
+    },
+    {
+      "command": [
+        "aws",
+        "ec2",
+        "describe-vpcs",
+        "--vpc-ids",
+        "vpc-0f1334a144012db46",
+        "--profile",
+        "devops-new",
+        "--region",
+        "ap-southeast-2",
+        "--no-cli-pager",
+        "--output",
+        "json"
+      ],
+      "file": "evidence/final-2026-10-17/aws-vpc.json",
+      "exit_code": 0,
+      "checked_at_utc": "2026-10-17T02:46:14.290284+00:00"
+    },
+    {
+      "command": [
+        "aws",
+        "ec2",
+        "describe-subnets",
+        "--filters",
+        "Name=vpc-id,Values=vpc-0f1334a144012db46",
+        "--profile",
+        "devops-new",
+        "--region",
+        "ap-southeast-2",
+        "--no-cli-pager",
+        "--output",
+        "json"
+      ],
+      "file": "evidence/final-2026-10-17/aws-subnets.json",
+      "exit_code": 0,
+      "checked_at_utc": "2026-10-17T02:46:17.314637+00:00"
+    },
+    {
+      "command": [
+        "aws",
+        "ec2",
+        "describe-route-tables",
+        "--filters",
+        "Name=vpc-id,Values=vpc-0f1334a144012db46",
+        "--profile",
+        "devops-new",
+        "--region",
+        "ap-southeast-2",
+        "--no-cli-pager",
+        "--output",
+        "json"
+      ],
+      "file": "evidence/final-2026-10-17/aws-routes.json",
+      "exit_code": 0,
+      "checked_at_utc": "2026-10-17T02:46:20.294286+00:00"
+    },
+    {
+      "command": [
+        "aws",
+        "ec2",
+        "describe-nat-gateways",
+        "--filter",
+        "Name=vpc-id,Values=vpc-0f1334a144012db46",
+        "--profile",
+        "devops-new",
+        "--region",
+        "ap-southeast-2",
+        "--no-cli-pager",
+        "--output",
+        "json"
+      ],
+      "file": "evidence/final-2026-10-17/aws-nat.json",
+      "exit_code": 0,
+      "checked_at_utc": "2026-10-17T02:46:23.391797+00:00"
+    },
+    {
+      "command": [
+        "aws",
+        "ec2",
+        "describe-security-groups",
+        "--filters",
+        "Name=vpc-id,Values=vpc-0f1334a144012db46",
+        "--profile",
+        "devops-new",
+        "--region",
+        "ap-southeast-2",
+        "--no-cli-pager",
+        "--output",
+        "json"
+      ],
+      "file": "evidence/final-2026-10-17/aws-security-groups.json",
+      "exit_code": 0,
+      "checked_at_utc": "2026-10-17T02:46:27.063160+00:00"
+    },
+    {
+      "command": [
+        "aws",
+        "ec2",
+        "describe-instances",
+        "--instance-ids",
+        "i-0ae1eaa988c9eac8d",
+        "i-05ebd008f8142bee8",
+        "--profile",
+        "devops-new",
+        "--region",
+        "ap-southeast-2",
+        "--no-cli-pager",
+        "--output",
+        "json"
+      ],
+      "file": "evidence/final-2026-10-17/aws-workers.json",
+      "exit_code": 0,
+      "checked_at_utc": "2026-10-17T02:46:31.129119+00:00"
+    },
+    {
+      "command": [
+        "aws",
+        "ec2",
+        "describe-volumes",
+        "--volume-ids",
+        "vol-059e7140240f20306",
+        "vol-0c2635d6fa9ef9ce2",
+        "vol-05a891d9a7dce0955",
+        "--profile",
+        "devops-new",
+        "--region",
+        "ap-southeast-2",
+        "--no-cli-pager",
+        "--output",
+        "json"
+      ],
+      "file": "evidence/final-2026-10-17/aws-volumes.json",
+      "exit_code": 0,
+      "checked_at_utc": "2026-10-17T02:46:34.167773+00:00"
+    },
+    {
+      "command": [
+        "aws",
+        "elb",
+        "describe-load-balancers",
+        "--load-balancer-names",
+        "af43a3e33d68945548232885350507ff",
+        "--profile",
+        "devops-new",
+        "--region",
+        "ap-southeast-2",
+        "--no-cli-pager",
+        "--output",
+        "json"
+      ],
+      "file": "evidence/final-2026-10-17/aws-elb.json",
+      "exit_code": 0,
+      "checked_at_utc": "2026-10-17T02:46:36.701357+00:00"
+    },
+    {
+      "command": [
+        "aws",
+        "elb",
+        "describe-instance-health",
+        "--load-balancer-name",
+        "af43a3e33d68945548232885350507ff",
+        "--profile",
+        "devops-new",
+        "--region",
+        "ap-southeast-2",
+        "--no-cli-pager",
+        "--output",
+        "json"
+      ],
+      "file": "evidence/final-2026-10-17/aws-elb-health.json",
+      "exit_code": 0,
+      "checked_at_utc": "2026-10-17T02:46:39.183794+00:00"
+    },
+    {
+      "command": [
+        "aws",
+        "iam",
+        "get-role",
+        "--role-name",
+        "relaydesk-capstone-cluster-role",
+        "--profile",
+        "devops-new",
+        "--region",
+        "ap-southeast-2",
+        "--no-cli-pager",
+        "--output",
+        "json"
+      ],
+      "file": "evidence/final-2026-10-17/aws-iam-cluster.json",
+      "exit_code": 0,
+      "checked_at_utc": "2026-10-17T02:46:41.248008+00:00"
+    },
+    {
+      "command": [
+        "aws",
+        "iam",
+        "list-attached-role-policies",
+        "--role-name",
+        "relaydesk-capstone-cluster-role",
+        "--profile",
+        "devops-new",
+        "--region",
+        "ap-southeast-2",
+        "--no-cli-pager",
+        "--output",
+        "json"
+      ],
+      "file": "evidence/final-2026-10-17/aws-iam-cluster-policies.json",
+      "exit_code": 0,
+      "checked_at_utc": "2026-10-17T02:46:43.354560+00:00"
+    },
+    {
+      "command": [
+        "aws",
+        "iam",
+        "get-role",
+        "--role-name",
+        "relaydesk-capstone-nodes-role",
+        "--profile",
+        "devops-new",
+        "--region",
+        "ap-southeast-2",
+        "--no-cli-pager",
+        "--output",
+        "json"
+      ],
+      "file": "evidence/final-2026-10-17/aws-iam-nodes.json",
+      "exit_code": 0,
+      "checked_at_utc": "2026-10-17T02:46:45.515161+00:00"
+    },
+    {
+      "command": [
+        "aws",
+        "iam",
+        "list-attached-role-policies",
+        "--role-name",
+        "relaydesk-capstone-nodes-role",
+        "--profile",
+        "devops-new",
+        "--region",
+        "ap-southeast-2",
+        "--no-cli-pager",
+        "--output",
+        "json"
+      ],
+      "file": "evidence/final-2026-10-17/aws-iam-nodes-policies.json",
+      "exit_code": 0,
+      "checked_at_utc": "2026-10-17T02:46:47.779117+00:00"
+    },
+    {
+      "command": [
+        "aws",
+        "iam",
+        "get-role",
+        "--role-name",
+        "relaydesk-capstone-ebs-csi-role",
+        "--profile",
+        "devops-new",
+        "--region",
+        "ap-southeast-2",
+        "--no-cli-pager",
+        "--output",
+        "json"
+      ],
+      "file": "evidence/final-2026-10-17/aws-iam-ebs-csi.json",
+      "exit_code": 0,
+      "checked_at_utc": "2026-10-17T02:46:50.068262+00:00"
+    },
+    {
+      "command": [
+        "aws",
+        "iam",
+        "list-attached-role-policies",
+        "--role-name",
+        "relaydesk-capstone-ebs-csi-role",
+        "--profile",
+        "devops-new",
+        "--region",
+        "ap-southeast-2",
+        "--no-cli-pager",
+        "--output",
+        "json"
+      ],
+      "file": "evidence/final-2026-10-17/aws-iam-ebs-csi-policies.json",
+      "exit_code": 0,
+      "checked_at_utc": "2026-10-17T02:46:52.182574+00:00"
+    },
+    {
+      "command": [
+        "aws",
+        "eks",
+        "describe-pod-identity-association",
+        "--cluster-name",
+        "relaydesk-capstone",
+        "--association-id",
+        "a-yzspixd7n1aawahwv",
+        "--profile",
+        "devops-new",
+        "--region",
+        "ap-southeast-2",
+        "--no-cli-pager",
+        "--output",
+        "json"
+      ],
+      "file": "evidence/final-2026-10-17/aws-pod-identity.json",
+      "exit_code": 0,
+      "checked_at_utc": "2026-10-17T02:46:54.743759+00:00"
+    },
+    {
+      "command": [
+        "kubectl",
+        "--context",
+        "relaydesk-sydney",
+        "get",
+        "nodes",
+        "-o",
+        "json"
+      ],
+      "file": "evidence/final-2026-10-17/eks-nodes.json",
+      "exit_code": 0,
+      "checked_at_utc": "2026-10-17T02:46:58.510934+00:00"
+    },
+    {
+      "command": [
+        "kubectl",
+        "--context",
+        "relaydesk-sydney",
+        "-n",
+        "relaydesk",
+        "get",
+        "pods",
+        "-o",
+        "json"
+      ],
+      "file": "evidence/final-2026-10-17/eks-pods.json",
+      "exit_code": 0,
+      "checked_at_utc": "2026-10-17T02:47:01.983489+00:00"
+    },
+    {
+      "command": [
+        "kubectl",
+        "--context",
+        "relaydesk-sydney",
+        "-n",
+        "relaydesk",
+        "get",
+        "deployments",
+        "-o",
+        "json"
+      ],
+      "file": "evidence/final-2026-10-17/eks-deployments.json",
+      "exit_code": 0,
+      "checked_at_utc": "2026-10-17T02:47:04.896523+00:00"
+    },
+    {
+      "command": [
+        "kubectl",
+        "--context",
+        "relaydesk-sydney",
+        "-n",
+        "relaydesk",
+        "get",
+        "services",
+        "-o",
+        "json"
+      ],
+      "file": "evidence/final-2026-10-17/eks-services.json",
+      "exit_code": 0,
+      "checked_at_utc": "2026-10-17T02:47:07.863078+00:00"
+    },
+    {
+      "command": [
+        "kubectl",
+        "--context",
+        "relaydesk-sydney",
+        "-n",
+        "relaydesk",
+        "get",
+        "endpointslices",
+        "-o",
+        "json"
+      ],
+      "file": "evidence/final-2026-10-17/eks-endpointslices.json",
+      "exit_code": 0,
+      "checked_at_utc": "2026-10-17T02:47:10.888826+00:00"
+    },
+    {
+      "command": [
+        "kubectl",
+        "--context",
+        "relaydesk-sydney",
+        "-n",
+        "relaydesk",
+        "get",
+        "hpa",
+        "-o",
+        "json"
+      ],
+      "file": "evidence/final-2026-10-17/eks-hpa.json",
+      "exit_code": 0,
+      "checked_at_utc": "2026-10-17T02:47:13.520140+00:00"
+    },
+    {
+      "command": [
+        "kubectl",
+        "--context",
+        "relaydesk-sydney",
+        "-n",
+        "relaydesk",
+        "get",
+        "pvc",
+        "-o",
+        "json"
+      ],
+      "file": "evidence/final-2026-10-17/eks-pvc.json",
+      "exit_code": 0,
+      "checked_at_utc": "2026-10-17T02:47:16.478407+00:00"
+    },
+    {
+      "command": [
+        "kubectl",
+        "--context",
+        "relaydesk-sydney",
+        "-n",
+        "relaydesk",
+        "get",
+        "ingress",
+        "-o",
+        "json"
+      ],
+      "file": "evidence/final-2026-10-17/eks-ingress.json",
+      "exit_code": 0,
+      "checked_at_utc": "2026-10-17T02:47:19.077857+00:00"
+    },
+    {
+      "command": [
+        "kubectl",
+        "--context",
+        "relaydesk-sydney",
+        "-n",
+        "relaydesk",
+        "get",
+        "events",
+        "-o",
+        "json"
+      ],
+      "file": "evidence/final-2026-10-17/eks-events.json",
+      "exit_code": 0,
+      "checked_at_utc": "2026-10-17T02:47:21.774140+00:00"
+    },
+    {
+      "command": [
+        "kubectl",
+        "--context",
+        "relaydesk-sydney",
+        "get",
+        "pv",
+        "-o",
+        "json"
+      ],
+      "file": "evidence/final-2026-10-17/eks-pv.json",
+      "exit_code": 0,
+      "checked_at_utc": "2026-10-17T02:47:24.421946+00:00"
+    },
+    {
+      "command": [
+        "helm",
+        "--kube-context",
+        "relaydesk-sydney",
+        "list",
+        "-n",
+        "relaydesk"
+      ],
+      "file": "evidence/final-2026-10-17/eks-helm.txt",
+      "exit_code": 0,
+      "checked_at_utc": "2026-10-17T02:47:27.739431+00:00"
+    },
+    {
+      "command": [
+        "kubectl",
+        "--context",
+        "relaydesk-sydney",
+        "-n",
+        "relaydesk",
+        "get",
+        "pods,deploy,svc,hpa,pvc,ingress",
+        "-o",
+        "wide"
+      ],
+      "file": "evidence/final-2026-10-17/eks-runtime.txt",
+      "exit_code": 0,
+      "checked_at_utc": "2026-10-17T02:47:32.873947+00:00"
+    },
+    {
+      "command": [
+        "kubectl",
+        "--context",
+        "relaydesk-sydney",
+        "top",
+        "nodes"
+      ],
+      "file": "evidence/final-2026-10-17/eks-node-metrics.txt",
+      "exit_code": 0,
+      "checked_at_utc": "2026-10-17T02:47:37.743291+00:00"
+    },
+    {
+      "command": [
+        "kubectl",
+        "--context",
+        "relaydesk-sydney",
+        "-n",
+        "relaydesk",
+        "logs",
+        "deploy/relaydesk-backend",
+        "--tail=30"
+      ],
+      "file": "evidence/final-2026-10-17/eks-backend-logs.txt",
+      "exit_code": 0,
+      "checked_at_utc": "2026-10-17T02:47:41.032548+00:00"
+    },
+    {
+      "command": [
+        "kubectl",
+        "--context",
+        "relaydesk-sydney",
+        "-n",
+        "relaydesk",
+        "exec",
+        "relaydesk-postgres-0",
+        "--",
+        "sh",
+        "-c",
+        "psql -U \"$POSTGRES_USER\" -d \"$POSTGRES_DB\" -c \"SELECT version_num FROM alembic_version;\" -c \"SELECT id,subject,status,priority FROM tickets ORDER BY id DESC LIMIT 3;\""
+      ],
+      "file": "evidence/final-2026-10-17/eks-postgres.txt",
+      "exit_code": 0,
+      "checked_at_utc": "2026-10-17T02:47:45.245908+00:00"
+    }
+  ],
+  "errors": [],
+  "read_only": true
+}

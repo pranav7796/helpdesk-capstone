@@ -1,0 +1,70 @@
+{
+  "path": "evidence/videos/2026-10-17-platform-walkthrough.webm",
+  "captured_at_utc": "2026-10-17T03:00:48.788Z",
+  "sha256": "104382ba26094cd089c7a9670dca98f25866d579fb7ccbc7867d9f9e75854865",
+  "duration_seconds": 253.744,
+  "timeline": [
+    {
+      "seconds": 22.594,
+      "url": "https://ap-southeast-2.console.aws.amazon.com/vpcconsole/home?region=ap-southeast-2#vpcs:",
+      "caption": "2026-10-17-aws-vpc-console"
+    },
+    {
+      "seconds": 53.287,
+      "url": "https://ap-southeast-2.console.aws.amazon.com/eks/home?region=ap-southeast-2#/clusters/relaydesk-capstone",
+      "caption": "2026-10-17-aws-eks-console"
+    },
+    {
+      "seconds": 82.289,
+      "url": "https://ap-southeast-2.console.aws.amazon.com/ec2/home?region=ap-southeast-2#Instances:instanceState=running",
+      "caption": "2026-10-17-aws-ec2-console"
+    },
+    {
+      "seconds": 107.846,
+      "url": "https://ap-southeast-2.console.aws.amazon.com/ec2/home?region=ap-southeast-2#Volumes:",
+      "caption": "2026-10-17-aws-ebs-console"
+    },
+    {
+      "seconds": 133.369,
+      "url": "https://ap-southeast-2.console.aws.amazon.com/ec2/home?region=ap-southeast-2#LoadBalancers:",
+      "caption": "2026-10-17-aws-elb-console"
+    },
+    {
+      "seconds": 147.452,
+      "url": "http://af43a3e33d68945548232885350507ff-719760255.ap-southeast-2.elb.amazonaws.com",
+      "caption": "2026-10-17-application-eks"
+    },
+    {
+      "seconds": 156.518,
+      "url": "http://af43a3e33d68945548232885350507ff-719760255.ap-southeast-2.elb.amazonaws.com",
+      "caption": "Actual ticket editor; no ticket saved in browser recording"
+    },
+    {
+      "seconds": 163.022,
+      "url": "http://127.0.0.1:3000",
+      "caption": "2026-10-17-application-compose"
+    },
+    {
+      "seconds": 181.463,
+      "url": "http://127.0.0.1:9091/targets",
+      "caption": "2026-10-17-prometheus-targets"
+    },
+    {
+      "seconds": 215.95,
+      "url": "http://127.0.0.1:3002/d/relaydesk-http/relaydesk-http-traffic?orgId=1&from=now-30m&to=now",
+      "caption": "2026-10-17-grafana-dashboard"
+    },
+    {
+      "seconds": 221.075,
+      "url": "file:///tmp/relaydesk-evidence-audit/final-runtime.html",
+      "caption": "Clearly labeled actual read-only Kubernetes/Helm/PostgreSQL outputs from this audit"
+    },
+    {
+      "seconds": 237.153,
+      "url": "file:///tmp/relaydesk-evidence-audit/final-runtime.html",
+      "caption": "Clearly labeled historical five-failure recovery evidence, not a new fault injection"
+    }
+  ],
+  "method": "Continuous genuine browser recording; AWS Console, actual application/metrics, clearly labeled captured runtime and historical lab outputs. No new commit or deployment is claimed; use separate real-release video for that sequence. No student narration.",
+  "limitation": "Recorded before the monitoring counter-mixing fix; see separate monitoring-correction video for the final correct per-replica state."
+}

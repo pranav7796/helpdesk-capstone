@@ -47,9 +47,9 @@ Pytest overrides the database URL with an isolated in-memory SQLite database. Th
 The chart is in `helm/helpdesk`; cluster defaults are in `values.yaml`. For the preloaded local Minikube images use:
 
 ```sh
-helm upgrade --install relaydesk helm/helpdesk -n relaydesk --create-namespace \
+helm upgrade --install relaydesk helm/helpdesk --kube-context helpdesk-capstone -n relaydesk --create-namespace \
   -f helm/helpdesk/values-local.yaml --wait --timeout 180s
-kubectl -n relaydesk get pods,svc,hpa,pvc
+kubectl --context helpdesk-capstone -n relaydesk get pods,svc,hpa,pvc
 ```
 
 Set `ingress.enabled=true` and install an ingress controller for routed access. `monitoring/local-stack.yaml` deploys Prometheus/Grafana for a local cluster after creating the dashboard ConfigMap as described in `docs/OBSERVABILITY.md`.
@@ -73,4 +73,10 @@ The first security scan found a `setuptools` path-traversal CVE and stale versio
 
 The current AWS target is account `525426877661`, profile `devops-new`, Sydney `ap-southeast-2`. The owner-approved 28-resource plan was applied successfully on October 16. EKS has two Ready workers; application CRUD, persistent PostgreSQL, Ingress, Prometheus and Grafana are verified. Cleanup awaits separate approval after the demonstration. The old Mumbai/account restriction evidence is historical. See [scope and current costs](docs/AWS-PLAN.md), [deployment runbook](docs/EKS-RUNBOOK.md), and [grading checklist](GRADING-CHECKLIST.md). Deadline: October 19, 2026.
 
-Recorded release demonstration: [real commit → green CI → EKS Helm rollout → changed application](evidence/sydney/m10-real-release-walkthrough.webm), [completed result continuation](evidence/sydney/m10-release-result-continuation.webm), and [presentation notes](docs/PRESENTATION.md). Current EKS frontend SHA is `04108043563d24dfc2ceb70e050fd56b5e9cc577` (Helm revision 2); backend and local deployments retain their documented d07 release.
+Recorded release demonstration: [real commit → green CI → EKS Helm rollout → changed application](evidence/videos/m10-real-release-walkthrough.webm), [completed result continuation](evidence/videos/m10-release-result-continuation.webm), and [presentation notes](docs/PRESENTATION.md). Current EKS frontend SHA is `04108043563d24dfc2ceb70e050fd56b5e9cc577` (Helm revision 2); the EKS backend and Minikube retain their documented d07 release. Compose was rebuilt from current source during the October 17 audit.
+
+Final evidence is organized in [screenshots](evidence/screenshots/) and [videos](evidence/videos/), with all 46 criteria linked in [the grading checklist](GRADING-CHECKLIST.md). Monitoring now scrapes each backend replica separately to keep request-rate counters correct; see [observability notes](docs/OBSERVABILITY.md). Form submission uses the repository URL only. The latest owner target is October 19, but the supplied form said October 16 at 11:59 PM IST; extension/submission confirmation remain unverified.
+
+Final monitoring-fix CI [38997737911](https://github.com/pranav7796/helpdesk-capstone/actions/runs/38997737911) passed all jobs for commit `2fbc48485411ff7239bb92b4290062b7e58d86fb`, including tests, React/image builds, both Trivy gates, GHCR SHA publication, Helm checks and monitoring-manifest validation. [Actual metadata](evidence/final-2026-10-17/monitoring-fix-ci.json), [complete logs](evidence/final-2026-10-17/monitoring-fix-ci.txt), [green screenshot](evidence/screenshots/2026-10-17-ci-monitoring-fix-green.png). Deployed application image SHAs remain unchanged.
+
+Optional evidence integrity check: `python scripts/audit-evidence.py` (Python 3 and `ffprobe` from FFmpeg required). It checks the 46-row mapping, public capture hashes/PNG structure, and video metadata; it excludes private files.

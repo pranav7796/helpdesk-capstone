@@ -1,0 +1,74 @@
+[
+  {
+    "screenshot": "evidence/screenshots/2026-10-17-m2-pytest.png",
+    "command": "cd backend\n.venv/bin/pytest -v --junitxml=../evidence/final-2026-10-17/pytest.xml",
+    "raw_output": "evidence/final-2026-10-17/2026-10-17-m2-pytest.txt",
+    "exit_code": 0,
+    "captured_at_utc": "2026-10-17T02:49:05Z",
+    "sha256": "e66b313853687175bcaeeca0fcb7a0f3474d87bac27ffb75e679ace9b329e6de",
+    "method": "Actual foot terminal, cropped using its Hyprland window geometry and grim; no compositing or generated text image"
+  },
+  {
+    "screenshot": "evidence/screenshots/2026-10-17-m4-compose.png",
+    "command": "docker compose up --build -d --wait > evidence/final-2026-10-17/compose-build.txt 2>&1\ntail -n 10 evidence/final-2026-10-17/compose-build.txt\ndocker compose ps\ndocker image inspect relaydesk-backend:local --format 'backend-user={{.Config.User}}'\ndocker image inspect relaydesk-frontend:local --format 'frontend-user={{.Config.User}}'",
+    "raw_output": "evidence/final-2026-10-17/2026-10-17-m4-compose.txt",
+    "exit_code": 0,
+    "captured_at_utc": "2026-10-17T02:49:27Z",
+    "sha256": "84fd7291dbb617c7f198c6cce2e176fc51323f812cd907f816232198f3c52f4c",
+    "method": "Actual foot terminal, cropped using its Hyprland window geometry and grim; no compositing or generated text image"
+  },
+  {
+    "screenshot": "evidence/screenshots/2026-10-17-m7-terraform.png",
+    "command": "bash scripts/terraform-readonly.sh fmt -check -recursive\nbash scripts/terraform-readonly.sh validate -no-color\nprintf 'Fresh authenticated read-only plan from this audit:\\n'\ntail -n 5 evidence/final-2026-10-17/terraform-plan.txt\nprintf 'No apply or destroy performed during this audit.\\n'",
+    "raw_output": "evidence/final-2026-10-17/2026-10-17-m7-terraform.txt",
+    "exit_code": 0,
+    "captured_at_utc": "2026-10-17T02:49:34Z",
+    "sha256": "0c19de1451d2f8d2f87f150bb20728fd2df8fdc6a80ee14b54552661bfcf93f0",
+    "method": "Actual foot terminal, cropped using its Hyprland window geometry and grim; no compositing or generated text image"
+  },
+  {
+    "screenshot": "evidence/screenshots/2026-10-17-m7-aws-status.png",
+    "command": "aws sts get-caller-identity --profile devops-new --region ap-southeast-2 --no-cli-pager\naws eks describe-cluster --profile devops-new --region ap-southeast-2 --name relaydesk-capstone --query 'cluster.{Name:name,Status:status,Version:version}' --no-cli-pager\naws eks describe-nodegroup --profile devops-new --region ap-southeast-2 --cluster-name relaydesk-capstone --nodegroup-name relaydesk-capstone-workers --query 'nodegroup.{Name:nodegroupName,Status:status,Type:instanceTypes,Size:scalingConfig}' --no-cli-pager",
+    "raw_output": "evidence/final-2026-10-17/2026-10-17-m7-aws-status.txt",
+    "exit_code": 0,
+    "captured_at_utc": "2026-10-17T02:49:43Z",
+    "sha256": "5c4c316a3518699c2c1862cca52e45c8c8ad11bbdfab357dae7b81fcdd979319",
+    "method": "Actual foot terminal, cropped using its Hyprland window geometry and grim; no compositing or generated text image"
+  },
+  {
+    "screenshot": "evidence/screenshots/2026-10-17-m8-pods-deployments.png",
+    "command": "export KUBECONFIG=$PWD/evidence/private/kubeconfig-sydney\nkubectl --context relaydesk-sydney -n relaydesk get pods\nkubectl --context relaydesk-sydney -n relaydesk get deploy,hpa,pvc\nhelm --kube-context relaydesk-sydney list -n relaydesk\nkubectl --context relaydesk-sydney top nodes",
+    "raw_output": "evidence/final-2026-10-17/2026-10-17-m8-pods-deployments.txt",
+    "exit_code": 0,
+    "captured_at_utc": "2026-10-17T02:49:59Z",
+    "sha256": "330fa557f3e3b93983d25c7fd0d0e4c979011b2ed79eb4a5b294ac0ce6e20070",
+    "method": "Actual foot terminal, cropped using its Hyprland window geometry and grim; no compositing or generated text image"
+  },
+  {
+    "screenshot": "evidence/screenshots/2026-10-17-m8-services-ingress.png",
+    "command": "export KUBECONFIG=$PWD/evidence/private/kubeconfig-sydney\nkubectl --context relaydesk-sydney -n relaydesk get svc\nkubectl --context relaydesk-sydney -n relaydesk get endpointslices -l kubernetes.io/service-name=relaydesk-backend\nkubectl --context relaydesk-sydney -n relaydesk get ingress\ncat evidence/final-2026-10-17/eks-smoke.txt",
+    "raw_output": "evidence/final-2026-10-17/2026-10-17-m8-services-ingress.txt",
+    "exit_code": 0,
+    "captured_at_utc": "2026-10-17T02:51:41Z",
+    "sha256": "d2d8c1a5727664fc20722faba73d5c821f7984c6a1bdbe53a1457ef3a848d1c8",
+    "method": "Actual foot terminal, cropped using its Hyprland window geometry and grim; no compositing or generated text image"
+  },
+  {
+    "screenshot": "evidence/screenshots/2026-10-17-m9-metrics.png",
+    "command": "curl -fsS -D /tmp/relaydesk-final-headers.txt http://127.0.0.1:8001/metrics -o evidence/final-2026-10-17/application-metrics.txt\nhead -n 5 /tmp/relaydesk-final-headers.txt\nsed -n '/^# HELP relaydesk_http_requests_total/,+7p' evidence/final-2026-10-17/application-metrics.txt\ncurl -fsS http://127.0.0.1:8001/health\nprintf '\\n'\ncurl -fsS http://127.0.0.1:8001/ready\nprintf '\\n'\npython -c 'import json;d=json.load(open(\"evidence/final-2026-10-17/prometheus-up.json\"));print(\"Prometheus up:\",d[\"data\"][\"result\"][0][\"value\"][1])'",
+    "raw_output": "evidence/final-2026-10-17/2026-10-17-m9-metrics.txt",
+    "exit_code": 0,
+    "captured_at_utc": "2026-10-17T02:51:47Z",
+    "sha256": "57e84f0744115fd2505932c914acec35d493b4c49d8596a7ec541af09b4432dd",
+    "method": "Actual foot terminal, cropped using its Hyprland window geometry and grim; no compositing or generated text image"
+  },
+  {
+    "screenshot": "evidence/screenshots/2026-10-17-troubleshooting-recovery.png",
+    "command": "printf 'ACTUAL SAVED OCTOBER 16 LOCAL LAB RESULTS (not a new fault injection):\\n'\nrg 'VERIFIED:|PASS:|namespace \"relaydesk-lab\" deleted|deployment .*successfully rolled' evidence/sydney/troubleshooting.txt\nprintf 'Current working EKS application remains healthy:\\n'\nexport KUBECONFIG=$PWD/evidence/private/kubeconfig-sydney\nkubectl --context relaydesk-sydney -n relaydesk get pods",
+    "raw_output": "evidence/final-2026-10-17/2026-10-17-troubleshooting-recovery.txt",
+    "exit_code": 0,
+    "captured_at_utc": "2026-10-17T02:51:53Z",
+    "sha256": "b68f568043e316ee48500497305baf0b53354f916df74749fe8b6ea091587f64",
+    "method": "Actual foot terminal, cropped using its Hyprland window geometry and grim; no compositing or generated text image"
+  }
+]

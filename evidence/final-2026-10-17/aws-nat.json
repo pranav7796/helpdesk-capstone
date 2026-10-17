@@ -1,0 +1,35 @@
+{
+    "NatGateways": [
+        {
+            "CreateTime": "2026-10-16T17:29:33+00:00",
+            "NatGatewayAddresses": [
+                {
+                    "AllocationId": "eipalloc-0a682ae835ce6b924",
+                    "NetworkInterfaceId": "eni-0c36bcaeda2da26a2",
+                    "PrivateIp": "10.42.100.149",
+                    "PublicIp": "15.135.190.15",
+                    "AssociationId": "eipassoc-0b783d63efd52a48b",
+                    "IsPrimary": true,
+                    "Status": "succeeded"
+                }
+            ],
+            "NatGatewayId": "nat-01f3eac1072f1cadf",
+            "State": "available",
+            "SubnetId": "subnet-0ae52b6d9a2d553e1",
+            "VpcId": "vpc-0f1334a144012db46",
+            "Tags": [
+                {
+                    "Key": "Project",
+                    "Value": "relaydesk-capstone"
+                },
+                {
+                    "Key": "Name",
+                    "Value": "relaydesk-capstone-nat"
+                }
+            ],
+            "ConnectivityType": "public",
+            "AvailabilityMode": "zonal",
+            "AttachedAppliances": []
+        }
+    ]
+}

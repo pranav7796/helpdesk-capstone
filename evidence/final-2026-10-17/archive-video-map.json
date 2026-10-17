@@ -1,0 +1,16 @@
+[
+  {
+    "source": "evidence/sydney/m10-real-release-walkthrough.webm",
+    "path": "evidence/videos/m10-real-release-walkthrough.webm",
+    "sha256": "5767d5277892cba6c3b642ef1b2c0651b2f1f264aa5eb7bc809ebae6ffb7688a",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical original recording; no re-encoding or editing"
+  },
+  {
+    "source": "evidence/sydney/m10-release-result-continuation.webm",
+    "path": "evidence/videos/m10-release-result-continuation.webm",
+    "sha256": "37f00335b062702f335fd36e7eef326b144fe1cd9b4be4252492d9c69f22e314",
+    "capture_date": "2026-10-16",
+    "note": "Byte-identical original recording; no re-encoding or editing"
+  }
+]

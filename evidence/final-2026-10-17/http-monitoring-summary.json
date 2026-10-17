@@ -1,0 +1,10 @@
+{
+  "checked_at_utc": "2026-10-17T02:51:19.499666+00:00",
+  "application_url": "http://af43a3e33d68945548232885350507ff-719760255.ap-southeast-2.elb.amazonaws.com",
+  "health": "UP",
+  "readiness": "READY",
+  "prometheus_up": 1,
+  "grafana": "healthy; panel configured; screenshot verifies populated series",
+  "compose_smoke": "PASS",
+  "eks_smoke": "PASS"
+}

@@ -1,0 +1,33 @@
+aws_vpc.this: Refreshing state... [id=vpc-0f1334a144012db46]
+aws_iam_role.ebs_csi: Refreshing state... [id=relaydesk-capstone-ebs-csi-role]
+aws_iam_role.nodes: Refreshing state... [id=relaydesk-capstone-nodes-role]
+aws_iam_role.cluster: Refreshing state... [id=relaydesk-capstone-cluster-role]
+aws_iam_role_policy_attachment.nodes["AmazonEKS_CNI_Policy"]: Refreshing state... [id=relaydesk-capstone-nodes-role-20261016172854686900000001]
+aws_iam_role_policy_attachment.ebs_csi: Refreshing state... [id=relaydesk-capstone-ebs-csi-role-20261016172856813000000004]
+aws_iam_role_policy_attachment.nodes["AmazonEC2ContainerRegistryPullOnly"]: Refreshing state... [id=relaydesk-capstone-nodes-role-20261016172855062800000002]
+aws_iam_role_policy_attachment.nodes["AmazonEKSWorkerNodePolicy"]: Refreshing state... [id=relaydesk-capstone-nodes-role-20261016172856497600000003]
+aws_iam_role_policy_attachment.cluster: Refreshing state... [id=relaydesk-capstone-cluster-role-20261016172858855800000005]
+aws_internet_gateway.this: Refreshing state... [id=igw-0d3d24dbb8cf2cfc1]
+aws_subnet.public["ap-southeast-2b"]: Refreshing state... [id=subnet-08fe728994f8400fc]
+aws_subnet.private["ap-southeast-2a"]: Refreshing state... [id=subnet-047411b20e305b76e]
+aws_subnet.public["ap-southeast-2a"]: Refreshing state... [id=subnet-0ae52b6d9a2d553e1]
+aws_subnet.private["ap-southeast-2b"]: Refreshing state... [id=subnet-085043332babdbe89]
+aws_eip.nat: Refreshing state... [id=eipalloc-0a682ae835ce6b924]
+aws_route_table.public: Refreshing state... [id=rtb-0a59d8a823baed282]
+aws_eks_cluster.this: Refreshing state... [id=relaydesk-capstone]
+aws_route_table_association.public["ap-southeast-2a"]: Refreshing state... [id=rtbassoc-0b3fdbe4c4baa16f2]
+aws_route_table_association.public["ap-southeast-2b"]: Refreshing state... [id=rtbassoc-0aa346d65d01c1792]
+aws_nat_gateway.this: Refreshing state... [id=nat-01f3eac1072f1cadf]
+aws_route_table.private: Refreshing state... [id=rtb-04823e90152591370]
+aws_route_table_association.private["ap-southeast-2a"]: Refreshing state... [id=rtbassoc-01e6afebf9823c4c2]
+aws_route_table_association.private["ap-southeast-2b"]: Refreshing state... [id=rtbassoc-01e00b5417f4755c0]
+aws_eks_node_group.this: Refreshing state... [id=relaydesk-capstone:relaydesk-capstone-workers]
+aws_eks_addon.pod_identity: Refreshing state... [id=relaydesk-capstone:eks-pod-identity-agent]
+aws_eks_addon.metrics_server: Refreshing state... [id=relaydesk-capstone:metrics-server]
+aws_eks_pod_identity_association.ebs_csi: Refreshing state... [id=a-yzspixd7n1aawahwv]
+aws_eks_addon.ebs_csi: Refreshing state... [id=relaydesk-capstone:aws-ebs-csi-driver]
+
+No changes. Your infrastructure matches the configuration.
+
+Terraform has compared your real infrastructure against your configuration
+and found no differences, so no changes are needed.

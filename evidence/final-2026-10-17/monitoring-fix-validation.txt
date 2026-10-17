@@ -1,0 +1,110 @@
+$ kubectl exec deploy/prometheus -- cat /etc/prometheus/prometheus.yml
+global:
+  scrape_interval: 15s
+scrape_configs:
+  - job_name: relaydesk-backend
+    metrics_path: /metrics
+    # Discover each replica so unrelated process counters never share an instance.
+    dns_sd_configs:
+      - names: [relaydesk-backend-metrics.relaydesk.svc.cluster.local]
+        type: A
+        port: 8000
+        refresh_interval: 15s
+    relabel_configs:
+      - target_label: scrape_mode
+        replacement: pod
+
+$ kubectl exec deploy/prometheus -- promtool check config /etc/prometheus/prometheus.yml
+Checking /etc/prometheus/prometheus.yml
+ SUCCESS: /etc/prometheus/prometheus.yml is valid prometheus config file syntax
+
+
+$ kubectl exec deploy/prometheus -- sh -c kill -HUP 1
+
+$ kubectl get endpointslices -l kubernetes.io/service-name=relaydesk-backend-metrics -o json
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "addressType": "IPv4",
+            "apiVersion": "discovery.k8s.io/v1",
+            "endpoints": [
+                {
+                    "addresses": [
+                        "10.42.1.17"
+                    ],
+                    "conditions": {
+                        "ready": true,
+                        "serving": true,
+                        "terminating": false
+                    },
+                    "nodeName": "ip-10-42-1-229.ap-southeast-2.compute.internal",
+                    "targetRef": {
+                        "kind": "Pod",
+                        "name": "relaydesk-backend-7556c8f9c4-zkpxl",
+                        "namespace": "relaydesk",
+                        "uid": "63b9cd36-efe5-4298-8c83-27b815f16703"
+                    },
+                    "zone": "ap-southeast-2a"
+                },
+                {
+                    "addresses": [
+                        "10.42.2.169"
+                    ],
+                    "conditions": {
+                        "ready": true,
+                        "serving": true,
+                        "terminating": false
+                    },
+                    "nodeName": "ip-10-42-2-118.ap-southeast-2.compute.internal",
+                    "targetRef": {
+                        "kind": "Pod",
+                        "name": "relaydesk-backend-7556c8f9c4-g68bb",
+                        "namespace": "relaydesk",
+                        "uid": "a532ae68-177b-43d8-ba8e-139d88ec5186"
+                    },
+                    "zone": "ap-southeast-2b"
+                }
+            ],
+            "kind": "EndpointSlice",
+            "metadata": {
+                "annotations": {
+                    "endpoints.kubernetes.io/last-change-trigger-time": "2026-10-17T03:04:53Z"
+                },
+                "creationTimestamp": "2026-10-17T03:04:53Z",
+                "generateName": "relaydesk-backend-metrics-",
+                "generation": 1,
+                "labels": {
+                    "endpointslice.kubernetes.io/managed-by": "endpointslice-controller.k8s.io",
+                    "kubernetes.io/service-name": "relaydesk-backend-metrics",
+                    "service.kubernetes.io/headless": ""
+                },
+                "name": "relaydesk-backend-metrics-4pr5t",
+                "namespace": "relaydesk",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Service",
+                        "name": "relaydesk-backend-metrics",
+                        "uid": "47019ecf-f51f-4600-9c8e-4f197801e9ce"
+                    }
+                ],
+                "resourceVersion": "123189",
+                "uid": "52d50fcc-cd96-4b04-8131-bd87380ca68d"
+            },
+            "ports": [
+                {
+                    "name": "http",
+                    "port": 8000,
+                    "protocol": "TCP"
+                }
+            ]
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

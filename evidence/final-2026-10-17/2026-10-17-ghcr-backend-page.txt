@@ -1,0 +1,143 @@
+Skip to content
+Navigation Menu
+Platform
+Solutions
+Resources
+Open Source
+Enterprise
+Pricing
+Search
+/
+Sign in
+Sign up
+pranav7796
+helpdesk-capstone
+Repository navigation
+Code
+Issues
+Pull requests
+Actions
+Projects
+Security and quality
+Insights
+ helpdesk-capstone/backend 3679f589b2e588ff7b21311f0b06becbd3b153d1 Public Latest
+ Install from the command line
+Learn more about packages
+$ docker pull ghcr.io/pranav7796/helpdesk-capstone/backend:3679f589b2e588ff7b21311f0b06becbd3b153d1
+Recent tagged image versions
+3679f589b2e588ff7b21311f0b06becbd3b153d1
+Published about 8 hours ago · Digest …
+0
+Version downloads
+04108043563d24dfc2ceb70e050fd56b5e9cc577
+Published about 9 hours ago · Digest …
+0
+Version downloads
+9211a459305afa21e09a3830f378df4bff570fbe
+Published about 9 hours ago · Digest …
+0
+Version downloads
+20c2401e206f85d1c2901cead55160c1007bf0e0
+Published about 9 hours ago · Digest …
+0
+Version downloads
+d5ad1ab83c035fd75852e741e3f6482bb92afec5
+Published about 10 hours ago · Digest …
+0
+Version downloads
+View all tagged versions
+README.md
+Relaydesk — Helpdesk Ticket Management
+
+Relaydesk is an independently built helpdesk application for creating, searching, prioritizing, editing, and resolving support tickets. React and Vite provide the responsive agent inbox; FastAPI exposes the API; SQLAlchemy and PostgreSQL store tickets; Alembic manages schema changes.
+
+Run locally
+
+Requirements: Docker Engine and Docker Compose.
+
+docker compose up --build -d --wait
+
+Open http://localhost:3000. The REST API is at http://localhost:8000; interactive docs are at /docs. Compose starts PostgreSQL, applies Alembic migrations, then starts the API and Nginx frontend. Nginx proxies /api requests to FastAPI. Local-only settings are in .env.example; never commit .env.
+
+Stop the containers with docker compose down. The named database volume stays on disk so tickets survive container restarts. Remove it only when you explicitly want to erase local data: docker compose down -v.
+
+API and health
+Method	Path	Purpose
+GET	/api/tickets	List tickets; API status filter, with frontend search
+POST	/api/tickets	Create a ticket
+GET	/api/tickets/{id}	Read one ticket
+PUT	/api/tickets/{id}	Edit fields, status, or priority
+DELETE	/api/tickets/{id}	Delete a ticket
+GET	/health	Process health
+GET	/ready	Database readiness
+GET	/metrics	Prometheus HTTP counters and latency
+Tests and frontend build
+cd backend
+python -m venv .venv
+. .venv/bin/activate
+pip install -r requirements-dev.txt
+pytest -v
+cd ../frontend
+npm ci
+npm run build
+
+Pytest overrides the database URL with an isolated in-memory SQLite database. The application database is never used by tests.
+
+Kubernetes and monitoring
+
+The chart is in helm/helpdesk; cluster defaults are in values.yaml. For the preloaded local Minikube images use:
+
+helm upgrade --install relaydesk helm/helpdesk -n relaydesk --create-namespace \
+  -f helm/helpdesk/values-local.yaml --wait --timeout 180s
+kubectl -n relaydesk get pods,svc,hpa,pvc
+
+Set ingress.enabled=true and install an ingress controller for routed access. monitoring/local-stack.yaml deploys Prometheus/Grafana for a local cluster after creating the dashboard ConfigMap as described in docs/OBSERVABILITY.md.
+
+CI, security, and infrastructure
+
+The GitHub Actions workflow tests the API, builds the frontend and both images, runs HIGH/CRITICAL Trivy gates, validates Helm, then pushes images to GHCR tagged with the source commit SHA. Terraform under terraform/ describes a VPC and EKS cluster. Applying it creates chargeable AWS resources and requires a separately reviewed plan and explicit approval; this repository does not run terraform apply in CI.
+
+The first security scan found a setuptools path-traversal CVE and stale versions from an upstream Python build SBOM. The backend now pins fixed versions, and .trivyignore.yaml scopes the SBOM false-positive exclusions to the exact reported package URLs. See security scan notes and the saved scan reports in evidence/.
+
+Capstone evidence
+Progress scorecard — each rubric row and current verified marks.
+Verification record — commands and observed outcomes.
+Submission checklist — required links and evidence.
+Evidence audit — required screenshots, provenance, and remaining submission gaps.
+Troubleshooting guide and recovery exercise templates in troubleshooting/.
+AWS plan, eligibility, and cost estimate.
+Screenshots and captured outputs are in evidence/.
+Teacher rubric and source snapshot reference: docs/TEACHER-GRADING.md.
+
+The current AWS target is account 525426877661, profile devops-new, Sydney ap-southeast-2. The owner-approved 28-resource plan was applied successfully on October 16. EKS has two Ready workers; application CRUD, persistent PostgreSQL, Ingress, Prometheus and Grafana are verified. Cleanup awaits separate approval after the demonstration. The old Mumbai/account restriction evidence is historical. See scope and current costs, deployment runbook, and grading checklist. Deadline: October 19, 2026.
+
+Recorded release demonstration: real commit → green CI → EKS Helm rollout → changed application, completed result continuation, and presentation notes. Current EKS frontend SHA is 04108043563d24dfc2ceb70e050fd56b5e9cc577 (Helm revision 2); backend and local deployments retain their documented d07 release.
+
+Details
+pranav7796
+ helpdesk-capstone
+ 0 stars
+Last published
+8 hours ago
+Issues
+0
+Total downloads
+3
+Contributors
+1
+pranav7796
+
+Open an issue
+
+Footer
+© 2026 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
+Community
+Docs
+Contact
+Manage cookies
+Do not share my personal information

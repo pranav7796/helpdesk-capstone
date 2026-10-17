@@ -1,0 +1,16 @@
+{
+    "association": {
+        "clusterName": "relaydesk-capstone",
+        "namespace": "kube-system",
+        "serviceAccount": "ebs-csi-controller-sa",
+        "roleArn": "arn:aws:iam::525426877661:role/relaydesk-capstone-ebs-csi-role",
+        "associationArn": "arn:aws:eks:ap-southeast-2:525426877661:podidentityassociation/relaydesk-capstone/a-yzspixd7n1aawahwv",
+        "associationId": "a-yzspixd7n1aawahwv",
+        "tags": {
+            "Project": "relaydesk-capstone"
+        },
+        "createdAt": "2026-10-16T23:09:59.195000+05:30",
+        "modifiedAt": "2026-10-16T23:09:59.195000+05:30",
+        "disableSessionTags": false
+    }
+}

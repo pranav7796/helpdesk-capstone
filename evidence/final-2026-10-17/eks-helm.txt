@@ -1,0 +1,2 @@
+NAME     	NAMESPACE	REVISION	UPDATED                                	STATUS  	CHART          	APP VERSION
+relaydesk	relaydesk	2       	2026-10-16 23:51:16.855659476 +0530 IST	deployed	relaydesk-1.0.0	1.0.0      

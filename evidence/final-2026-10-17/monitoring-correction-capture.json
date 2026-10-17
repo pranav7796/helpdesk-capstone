@@ -1,0 +1,21 @@
+{
+  "path": "evidence/videos/2026-10-17-monitoring-correction.webm",
+  "sha256": "ca26f6de4bd30d84d4a48eaf8150e50f98df2e48394350a54c1c95fc71d35112",
+  "screenshots": [
+    {
+      "screenshot": "evidence/screenshots/2026-10-17-prometheus-replicas-up.png",
+      "url": "http://127.0.0.1:9091/targets",
+      "captured_at_utc": "2026-10-17T03:08:12.737Z",
+      "sha256": "c8d45894cf0d498fe08e708511f74681c0309cafdf0a7a059fdff349c35cd30c",
+      "method": "Actual corrected Prometheus UI, two independently discovered healthy backend replicas"
+    },
+    {
+      "screenshot": "evidence/screenshots/2026-10-17-grafana-corrected-rates.png",
+      "url": "http://127.0.0.1:3002/d/relaydesk-http/relaydesk-http-traffic?orgId=1&from=now-5m&to=now&timezone=browser&refresh=10s",
+      "captured_at_utc": "2026-10-17T03:08:49.723Z",
+      "sha256": "0616572b10e8d2dfa19a27bdc8f4c8b16c45e04e0110b3580b458494f72e0a11",
+      "method": "Actual Grafana panel filtered to independently scraped pod counters after the monitoring fix"
+    }
+  ],
+  "method": "Genuine separate after-fix recording, preserving the earlier platform recording as historical pre-correction evidence; no student narration or splicing."
+}

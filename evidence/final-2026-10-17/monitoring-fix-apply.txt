@@ -1,0 +1,9 @@
+configmap/grafana-dashboard configured
+configmap/grafana-dashboard-provider unchanged
+configmap/grafana-datasource unchanged
+configmap/prometheus-config configured
+service/grafana unchanged
+service/prometheus unchanged
+service/relaydesk-backend-metrics created
+deployment.apps/grafana unchanged
+deployment.apps/prometheus unchanged

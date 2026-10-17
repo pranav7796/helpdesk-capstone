@@ -1,0 +1,74 @@
+[
+  {
+    "screenshot": "evidence/screenshots/2026-10-17-aws-vpc-console.png",
+    "requested_url": "https://ap-southeast-2.console.aws.amazon.com/vpcconsole/home?region=ap-southeast-2#vpcs:",
+    "http_status": 200,
+    "captured_at_utc": "2026-10-17T02:56:57.687Z",
+    "sha256": "dbbad9abaae8f0b2a7c093caf36f254d326187140a8672766026e91a16e85c9d",
+    "method": "Actual unmodified browser viewport; AWS temporary session held in memory only"
+  },
+  {
+    "screenshot": "evidence/screenshots/2026-10-17-aws-eks-console.png",
+    "requested_url": "https://ap-southeast-2.console.aws.amazon.com/eks/home?region=ap-southeast-2#/clusters/relaydesk-capstone",
+    "http_status": 200,
+    "captured_at_utc": "2026-10-17T02:57:28.380Z",
+    "sha256": "841815dd8c677d52bcdc92ea7da7b249e6c891f4662bb73ec696ebf69fbaea4e",
+    "method": "Actual unmodified browser viewport; AWS temporary session held in memory only"
+  },
+  {
+    "screenshot": "evidence/screenshots/2026-10-17-aws-ec2-console.png",
+    "requested_url": "https://ap-southeast-2.console.aws.amazon.com/ec2/home?region=ap-southeast-2#Instances:instanceState=running",
+    "http_status": 200,
+    "captured_at_utc": "2026-10-17T02:57:57.384Z",
+    "sha256": "85ee1d4504913db6e3d534bb4154f35f79b238d3a87bc28044ce451b263dd2ba",
+    "method": "Actual unmodified browser viewport; AWS temporary session held in memory only"
+  },
+  {
+    "screenshot": "evidence/screenshots/2026-10-17-aws-ebs-console.png",
+    "requested_url": "https://ap-southeast-2.console.aws.amazon.com/ec2/home?region=ap-southeast-2#Volumes:",
+    "http_status": null,
+    "captured_at_utc": "2026-10-17T02:58:22.941Z",
+    "sha256": "df478c270e21cddf9b7cb0bf5ca71605d024e9697d8521d1ec36284e4dc92b0a",
+    "method": "Actual unmodified browser viewport; AWS temporary session held in memory only"
+  },
+  {
+    "screenshot": "evidence/screenshots/2026-10-17-aws-elb-console.png",
+    "requested_url": "https://ap-southeast-2.console.aws.amazon.com/ec2/home?region=ap-southeast-2#LoadBalancers:",
+    "http_status": null,
+    "captured_at_utc": "2026-10-17T02:58:48.464Z",
+    "sha256": "8b24804f9b7631b50bfec02f248f96eec449e196bb7b3ff217bd9daa1b2c55e7",
+    "method": "Actual unmodified browser viewport; AWS temporary session held in memory only"
+  },
+  {
+    "screenshot": "evidence/screenshots/2026-10-17-application-eks.png",
+    "requested_url": "http://af43a3e33d68945548232885350507ff-719760255.ap-southeast-2.elb.amazonaws.com",
+    "http_status": 200,
+    "captured_at_utc": "2026-10-17T02:59:02.547Z",
+    "sha256": "586c4043d6126a4d7cc016cfcf4f59cf20fbf0d2b2949918bb9b02bcb40108a5",
+    "method": "Actual unmodified browser viewport; AWS temporary session held in memory only"
+  },
+  {
+    "screenshot": "evidence/screenshots/2026-10-17-application-compose.png",
+    "requested_url": "http://127.0.0.1:3000",
+    "http_status": 200,
+    "captured_at_utc": "2026-10-17T02:59:18.117Z",
+    "sha256": "33fcca21ea89b488d661fa5f1b9eb1cbed074c1b2f32032870780cd836d912ac",
+    "method": "Actual unmodified browser viewport; AWS temporary session held in memory only"
+  },
+  {
+    "screenshot": "evidence/screenshots/2026-10-17-prometheus-targets.png",
+    "requested_url": "http://127.0.0.1:9091/targets",
+    "http_status": 200,
+    "captured_at_utc": "2026-10-17T02:59:36.558Z",
+    "sha256": "6eee17331bfb06045be24e713cf20504f1da056e4471e31fd61038899fd7077f",
+    "method": "Actual unmodified browser viewport; AWS temporary session held in memory only"
+  },
+  {
+    "screenshot": "evidence/screenshots/2026-10-17-grafana-dashboard.png",
+    "requested_url": "http://127.0.0.1:3002/d/relaydesk-http/relaydesk-http-traffic?orgId=1&from=now-30m&to=now",
+    "http_status": 200,
+    "captured_at_utc": "2026-10-17T03:00:11.046Z",
+    "sha256": "5ed9b9c77fcc51dc58ff7f2a89a5dc237e30d6dd6e98a29ec3836d9f6cc3ab0f",
+    "method": "Actual unmodified browser viewport; AWS temporary session held in memory only"
+  }
+]

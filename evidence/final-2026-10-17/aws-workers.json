@@ -1,0 +1,694 @@
+{
+    "Reservations": [
+        {
+            "ReservationId": "r-0d39058991f9548d0",
+            "OwnerId": "525426877661",
+            "RequesterId": "458534499037",
+            "Groups": [],
+            "Instances": [
+                {
+                    "Architecture": "x86_64",
+                    "BlockDeviceMappings": [
+                        {
+                            "DeviceName": "/dev/xvda",
+                            "Ebs": {
+                                "AttachTime": "2026-10-16T17:39:08+00:00",
+                                "DeleteOnTermination": true,
+                                "Status": "attached",
+                                "VolumeId": "vol-0c2635d6fa9ef9ce2",
+                                "EbsCardIndex": 0
+                            }
+                        }
+                    ],
+                    "ClientToken": "fleet-a994ef14-942e-4627-8612-0908da597756-0",
+                    "EbsOptimized": false,
+                    "EnaSupport": true,
+                    "Hypervisor": "xen",
+                    "IamInstanceProfile": {
+                        "Arn": "arn:aws:iam::525426877661:instance-profile/eks-5ed0a2e5-714e-23de-88f9-9d3b173b3119",
+                        "Id": "AIPAXUVPB4TOYNP7XCOK7"
+                    },
+                    "NetworkInterfaces": [
+                        {
+                            "Attachment": {
+                                "AttachTime": "2026-10-16T17:39:07+00:00",
+                                "AttachmentId": "eni-attach-0d1fde5a91ff36da9",
+                                "DeleteOnTermination": true,
+                                "DeviceIndex": 0,
+                                "Status": "attached",
+                                "NetworkCardIndex": 0
+                            },
+                            "Description": "",
+                            "Groups": [
+                                {
+                                    "GroupId": "sg-095a81a0bee5e0fa6",
+                                    "GroupName": "eks-cluster-sg-relaydesk-capstone-1842225770"
+                                }
+                            ],
+                            "Ipv6Addresses": [],
+                            "MacAddress": "06:ff:fa:42:26:5f",
+                            "NetworkInterfaceId": "eni-09a81c44d701c2a35",
+                            "OwnerId": "525426877661",
+                            "PrivateDnsName": "ip-10-42-2-118.ap-southeast-2.compute.internal",
+                            "PrivateIpAddress": "10.42.2.118",
+                            "PrivateIpAddresses": [
+                                {
+                                    "Primary": true,
+                                    "PrivateDnsName": "ip-10-42-2-118.ap-southeast-2.compute.internal",
+                                    "PrivateIpAddress": "10.42.2.118"
+                                },
+                                {
+                                    "Primary": false,
+                                    "PrivateDnsName": "ip-10-42-2-238.ap-southeast-2.compute.internal",
+                                    "PrivateIpAddress": "10.42.2.238"
+                                },
+                                {
+                                    "Primary": false,
+                                    "PrivateDnsName": "ip-10-42-2-111.ap-southeast-2.compute.internal",
+                                    "PrivateIpAddress": "10.42.2.111"
+                                },
+                                {
+                                    "Primary": false,
+                                    "PrivateDnsName": "ip-10-42-2-173.ap-southeast-2.compute.internal",
+                                    "PrivateIpAddress": "10.42.2.173"
+                                },
+                                {
+                                    "Primary": false,
+                                    "PrivateDnsName": "ip-10-42-2-246.ap-southeast-2.compute.internal",
+                                    "PrivateIpAddress": "10.42.2.246"
+                                },
+                                {
+                                    "Primary": false,
+                                    "PrivateDnsName": "ip-10-42-2-212.ap-southeast-2.compute.internal",
+                                    "PrivateIpAddress": "10.42.2.212"
+                                }
+                            ],
+                            "SourceDestCheck": true,
+                            "Status": "in-use",
+                            "SubnetId": "subnet-085043332babdbe89",
+                            "VpcId": "vpc-0f1334a144012db46",
+                            "InterfaceType": "interface",
+                            "Operator": {
+                                "Managed": false
+                            }
+                        },
+                        {
+                            "Attachment": {
+                                "AttachTime": "2026-10-16T17:43:21+00:00",
+                                "AttachmentId": "eni-attach-007b269eb12d94c39",
+                                "DeleteOnTermination": true,
+                                "DeviceIndex": 2,
+                                "Status": "attached",
+                                "NetworkCardIndex": 0
+                            },
+                            "Description": "aws-K8S-i-05ebd008f8142bee8",
+                            "Groups": [
+                                {
+                                    "GroupId": "sg-095a81a0bee5e0fa6",
+                                    "GroupName": "eks-cluster-sg-relaydesk-capstone-1842225770"
+                                }
+                            ],
+                            "Ipv6Addresses": [],
+                            "MacAddress": "06:ff:de:ce:f6:e9",
+                            "NetworkInterfaceId": "eni-0cdd63a8dc59bfdd9",
+                            "OwnerId": "525426877661",
+                            "PrivateDnsName": "ip-10-42-2-74.ap-southeast-2.compute.internal",
+                            "PrivateIpAddress": "10.42.2.74",
+                            "PrivateIpAddresses": [
+                                {
+                                    "Primary": true,
+                                    "PrivateDnsName": "ip-10-42-2-74.ap-southeast-2.compute.internal",
+                                    "PrivateIpAddress": "10.42.2.74"
+                                },
+                                {
+                                    "Primary": false,
+                                    "PrivateDnsName": "ip-10-42-2-184.ap-southeast-2.compute.internal",
+                                    "PrivateIpAddress": "10.42.2.184"
+                                },
+                                {
+                                    "Primary": false,
+                                    "PrivateDnsName": "ip-10-42-2-88.ap-southeast-2.compute.internal",
+                                    "PrivateIpAddress": "10.42.2.88"
+                                },
+                                {
+                                    "Primary": false,
+                                    "PrivateDnsName": "ip-10-42-2-31.ap-southeast-2.compute.internal",
+                                    "PrivateIpAddress": "10.42.2.31"
+                                },
+                                {
+                                    "Primary": false,
+                                    "PrivateDnsName": "ip-10-42-2-51.ap-southeast-2.compute.internal",
+                                    "PrivateIpAddress": "10.42.2.51"
+                                },
+                                {
+                                    "Primary": false,
+                                    "PrivateDnsName": "ip-10-42-2-65.ap-southeast-2.compute.internal",
+                                    "PrivateIpAddress": "10.42.2.65"
+                                }
+                            ],
+                            "SourceDestCheck": true,
+                            "Status": "in-use",
+                            "SubnetId": "subnet-085043332babdbe89",
+                            "VpcId": "vpc-0f1334a144012db46",
+                            "InterfaceType": "interface",
+                            "Operator": {
+                                "Managed": false
+                            }
+                        },
+                        {
+                            "Attachment": {
+                                "AttachTime": "2026-10-16T17:39:38+00:00",
+                                "AttachmentId": "eni-attach-000372be7333cfba8",
+                                "DeleteOnTermination": true,
+                                "DeviceIndex": 1,
+                                "Status": "attached",
+                                "NetworkCardIndex": 0
+                            },
+                            "Description": "aws-K8S-i-05ebd008f8142bee8",
+                            "Groups": [
+                                {
+                                    "GroupId": "sg-095a81a0bee5e0fa6",
+                                    "GroupName": "eks-cluster-sg-relaydesk-capstone-1842225770"
+                                }
+                            ],
+                            "Ipv6Addresses": [],
+                            "MacAddress": "06:ff:e2:2f:93:05",
+                            "NetworkInterfaceId": "eni-0dbc2d83a1b00ede9",
+                            "OwnerId": "525426877661",
+                            "PrivateDnsName": "ip-10-42-2-235.ap-southeast-2.compute.internal",
+                            "PrivateIpAddress": "10.42.2.235",
+                            "PrivateIpAddresses": [
+                                {
+                                    "Primary": true,
+                                    "PrivateDnsName": "ip-10-42-2-235.ap-southeast-2.compute.internal",
+                                    "PrivateIpAddress": "10.42.2.235"
+                                },
+                                {
+                                    "Primary": false,
+                                    "PrivateDnsName": "ip-10-42-2-8.ap-southeast-2.compute.internal",
+                                    "PrivateIpAddress": "10.42.2.8"
+                                },
+                                {
+                                    "Primary": false,
+                                    "PrivateDnsName": "ip-10-42-2-169.ap-southeast-2.compute.internal",
+                                    "PrivateIpAddress": "10.42.2.169"
+                                },
+                                {
+                                    "Primary": false,
+                                    "PrivateDnsName": "ip-10-42-2-222.ap-southeast-2.compute.internal",
+                                    "PrivateIpAddress": "10.42.2.222"
+                                },
+                                {
+                                    "Primary": false,
+                                    "PrivateDnsName": "ip-10-42-2-206.ap-southeast-2.compute.internal",
+                                    "PrivateIpAddress": "10.42.2.206"
+                                },
+                                {
+                                    "Primary": false,
+                                    "PrivateDnsName": "ip-10-42-2-230.ap-southeast-2.compute.internal",
+                                    "PrivateIpAddress": "10.42.2.230"
+                                }
+                            ],
+                            "SourceDestCheck": true,
+                            "Status": "in-use",
+                            "SubnetId": "subnet-085043332babdbe89",
+                            "VpcId": "vpc-0f1334a144012db46",
+                            "InterfaceType": "interface",
+                            "Operator": {
+                                "Managed": false
+                            }
+                        }
+                    ],
+                    "RootDeviceName": "/dev/xvda",
+                    "RootDeviceType": "ebs",
+                    "SecurityGroups": [
+                        {
+                            "GroupId": "sg-095a81a0bee5e0fa6",
+                            "GroupName": "eks-cluster-sg-relaydesk-capstone-1842225770"
+                        }
+                    ],
+                    "SourceDestCheck": true,
+                    "Tags": [
+                        {
+                            "Key": "aws:ec2launchtemplate:version",
+                            "Value": "1"
+                        },
+                        {
+                            "Key": "eks:cluster-name",
+                            "Value": "relaydesk-capstone"
+                        },
+                        {
+                            "Key": "aws:ec2launchtemplate:id",
+                            "Value": "lt-0b9263cac2849acf6"
+                        },
+                        {
+                            "Key": "eks:nodegroup-name",
+                            "Value": "relaydesk-capstone-workers"
+                        },
+                        {
+                            "Key": "aws:eks:cluster-name",
+                            "Value": "relaydesk-capstone"
+                        },
+                        {
+                            "Key": "k8s.io/cluster-autoscaler/enabled",
+                            "Value": "true"
+                        },
+                        {
+                            "Key": "k8s.io/cluster-autoscaler/relaydesk-capstone",
+                            "Value": "owned"
+                        },
+                        {
+                            "Key": "aws:autoscaling:groupName",
+                            "Value": "eks-relaydesk-capstone-workers-5ed0a2e5-714e-23de-88f9-9d3b173b3119"
+                        },
+                        {
+                            "Key": "kubernetes.io/cluster/relaydesk-capstone",
+                            "Value": "owned"
+                        },
+                        {
+                            "Key": "aws:ec2:fleet-id",
+                            "Value": "fleet-a994ef14-942e-4627-8612-0908da597756"
+                        }
+                    ],
+                    "VirtualizationType": "hvm",
+                    "CpuOptions": {
+                        "CoreCount": 1,
+                        "ThreadsPerCore": 2
+                    },
+                    "CapacityReservationSpecification": {
+                        "CapacityReservationPreference": "open"
+                    },
+                    "HibernationOptions": {
+                        "Configured": false
+                    },
+                    "MetadataOptions": {
+                        "State": "applied",
+                        "HttpTokens": "required",
+                        "HttpPutResponseHopLimit": 1,
+                        "HttpEndpoint": "enabled",
+                        "HttpProtocolIpv6": "disabled",
+                        "InstanceMetadataTags": "disabled"
+                    },
+                    "EnclaveOptions": {
+                        "Enabled": false
+                    },
+                    "BootMode": "uefi-preferred",
+                    "PlatformDetails": "Linux/UNIX",
+                    "UsageOperation": "RunInstances",
+                    "UsageOperationUpdateTime": "2026-10-16T17:39:07+00:00",
+                    "PrivateDnsNameOptions": {
+                        "HostnameType": "ip-name",
+                        "EnableResourceNameDnsARecord": false,
+                        "EnableResourceNameDnsAAAARecord": false
+                    },
+                    "MaintenanceOptions": {
+                        "AutoRecovery": "default",
+                        "RebootMigration": "default"
+                    },
+                    "CurrentInstanceBootMode": "uefi",
+                    "NetworkPerformanceOptions": {
+                        "BandwidthWeighting": "default"
+                    },
+                    "Operator": {
+                        "Managed": false
+                    },
+                    "InstanceId": "i-05ebd008f8142bee8",
+                    "ImageId": "ami-0d6d708bae09b0040",
+                    "State": {
+                        "Code": 16,
+                        "Name": "running"
+                    },
+                    "PrivateDnsName": "ip-10-42-2-118.ap-southeast-2.compute.internal",
+                    "PublicDnsName": "",
+                    "StateTransitionReason": "",
+                    "AmiLaunchIndex": 0,
+                    "ProductCodes": [],
+                    "InstanceType": "t3.medium",
+                    "LaunchTime": "2026-10-16T17:39:07+00:00",
+                    "Placement": {
+                        "AvailabilityZoneId": "apse2-az3",
+                        "GroupName": "",
+                        "Tenancy": "default",
+                        "AvailabilityZone": "ap-southeast-2b"
+                    },
+                    "Monitoring": {
+                        "State": "disabled"
+                    },
+                    "SubnetId": "subnet-085043332babdbe89",
+                    "VpcId": "vpc-0f1334a144012db46",
+                    "PrivateIpAddress": "10.42.2.118"
+                }
+            ]
+        },
+        {
+            "ReservationId": "r-016e37917f3c7e2ec",
+            "OwnerId": "525426877661",
+            "RequesterId": "458534499037",
+            "Groups": [],
+            "Instances": [
+                {
+                    "Architecture": "x86_64",
+                    "BlockDeviceMappings": [
+                        {
+                            "DeviceName": "/dev/xvda",
+                            "Ebs": {
+                                "AttachTime": "2026-10-16T17:39:08+00:00",
+                                "DeleteOnTermination": true,
+                                "Status": "attached",
+                                "VolumeId": "vol-059e7140240f20306",
+                                "EbsCardIndex": 0
+                            }
+                        },
+                        {
+                            "DeviceName": "/dev/xvdaa",
+                            "Ebs": {
+                                "AttachTime": "2026-10-16T17:43:24.978000+00:00",
+                                "DeleteOnTermination": false,
+                                "Status": "attached",
+                                "VolumeId": "vol-05a891d9a7dce0955",
+                                "EbsCardIndex": 0
+                            }
+                        }
+                    ],
+                    "ClientToken": "fleet-9f0fd207-511d-e9bc-0c32-8408cc12582c-0",
+                    "EbsOptimized": false,
+                    "EnaSupport": true,
+                    "Hypervisor": "xen",
+                    "IamInstanceProfile": {
+                        "Arn": "arn:aws:iam::525426877661:instance-profile/eks-5ed0a2e5-714e-23de-88f9-9d3b173b3119",
+                        "Id": "AIPAXUVPB4TOYNP7XCOK7"
+                    },
+                    "NetworkInterfaces": [
+                        {
+                            "Attachment": {
+                                "AttachTime": "2026-10-16T17:39:07+00:00",
+                                "AttachmentId": "eni-attach-0be0b08e12cd7bb8e",
+                                "DeleteOnTermination": true,
+                                "DeviceIndex": 0,
+                                "Status": "attached",
+                                "NetworkCardIndex": 0
+                            },
+                            "Description": "",
+                            "Groups": [
+                                {
+                                    "GroupId": "sg-095a81a0bee5e0fa6",
+                                    "GroupName": "eks-cluster-sg-relaydesk-capstone-1842225770"
+                                }
+                            ],
+                            "Ipv6Addresses": [],
+                            "MacAddress": "02:ff:ed:e6:29:2f",
+                            "NetworkInterfaceId": "eni-0c7b426a8ef0d03a8",
+                            "OwnerId": "525426877661",
+                            "PrivateDnsName": "ip-10-42-1-229.ap-southeast-2.compute.internal",
+                            "PrivateIpAddress": "10.42.1.229",
+                            "PrivateIpAddresses": [
+                                {
+                                    "Primary": true,
+                                    "PrivateDnsName": "ip-10-42-1-229.ap-southeast-2.compute.internal",
+                                    "PrivateIpAddress": "10.42.1.229"
+                                },
+                                {
+                                    "Primary": false,
+                                    "PrivateDnsName": "ip-10-42-1-223.ap-southeast-2.compute.internal",
+                                    "PrivateIpAddress": "10.42.1.223"
+                                },
+                                {
+                                    "Primary": false,
+                                    "PrivateDnsName": "ip-10-42-1-156.ap-southeast-2.compute.internal",
+                                    "PrivateIpAddress": "10.42.1.156"
+                                },
+                                {
+                                    "Primary": false,
+                                    "PrivateDnsName": "ip-10-42-1-124.ap-southeast-2.compute.internal",
+                                    "PrivateIpAddress": "10.42.1.124"
+                                },
+                                {
+                                    "Primary": false,
+                                    "PrivateDnsName": "ip-10-42-1-18.ap-southeast-2.compute.internal",
+                                    "PrivateIpAddress": "10.42.1.18"
+                                },
+                                {
+                                    "Primary": false,
+                                    "PrivateDnsName": "ip-10-42-1-17.ap-southeast-2.compute.internal",
+                                    "PrivateIpAddress": "10.42.1.17"
+                                }
+                            ],
+                            "SourceDestCheck": true,
+                            "Status": "in-use",
+                            "SubnetId": "subnet-047411b20e305b76e",
+                            "VpcId": "vpc-0f1334a144012db46",
+                            "InterfaceType": "interface",
+                            "Operator": {
+                                "Managed": false
+                            }
+                        },
+                        {
+                            "Attachment": {
+                                "AttachTime": "2026-10-16T17:43:37+00:00",
+                                "AttachmentId": "eni-attach-0fba4bcd2b92a8939",
+                                "DeleteOnTermination": true,
+                                "DeviceIndex": 2,
+                                "Status": "attached",
+                                "NetworkCardIndex": 0
+                            },
+                            "Description": "aws-K8S-i-0ae1eaa988c9eac8d",
+                            "Groups": [
+                                {
+                                    "GroupId": "sg-095a81a0bee5e0fa6",
+                                    "GroupName": "eks-cluster-sg-relaydesk-capstone-1842225770"
+                                }
+                            ],
+                            "Ipv6Addresses": [],
+                            "MacAddress": "02:ff:f4:1e:82:91",
+                            "NetworkInterfaceId": "eni-0aeadc3f50cd0e308",
+                            "OwnerId": "525426877661",
+                            "PrivateDnsName": "ip-10-42-1-24.ap-southeast-2.compute.internal",
+                            "PrivateIpAddress": "10.42.1.24",
+                            "PrivateIpAddresses": [
+                                {
+                                    "Primary": true,
+                                    "PrivateDnsName": "ip-10-42-1-24.ap-southeast-2.compute.internal",
+                                    "PrivateIpAddress": "10.42.1.24"
+                                },
+                                {
+                                    "Primary": false,
+                                    "PrivateDnsName": "ip-10-42-1-14.ap-southeast-2.compute.internal",
+                                    "PrivateIpAddress": "10.42.1.14"
+                                },
+                                {
+                                    "Primary": false,
+                                    "PrivateDnsName": "ip-10-42-1-140.ap-southeast-2.compute.internal",
+                                    "PrivateIpAddress": "10.42.1.140"
+                                },
+                                {
+                                    "Primary": false,
+                                    "PrivateDnsName": "ip-10-42-1-237.ap-southeast-2.compute.internal",
+                                    "PrivateIpAddress": "10.42.1.237"
+                                },
+                                {
+                                    "Primary": false,
+                                    "PrivateDnsName": "ip-10-42-1-157.ap-southeast-2.compute.internal",
+                                    "PrivateIpAddress": "10.42.1.157"
+                                },
+                                {
+                                    "Primary": false,
+                                    "PrivateDnsName": "ip-10-42-1-226.ap-southeast-2.compute.internal",
+                                    "PrivateIpAddress": "10.42.1.226"
+                                }
+                            ],
+                            "SourceDestCheck": true,
+                            "Status": "in-use",
+                            "SubnetId": "subnet-047411b20e305b76e",
+                            "VpcId": "vpc-0f1334a144012db46",
+                            "InterfaceType": "interface",
+                            "Operator": {
+                                "Managed": false
+                            }
+                        },
+                        {
+                            "Attachment": {
+                                "AttachTime": "2026-10-16T17:39:54+00:00",
+                                "AttachmentId": "eni-attach-0b468e17880b82091",
+                                "DeleteOnTermination": true,
+                                "DeviceIndex": 1,
+                                "Status": "attached",
+                                "NetworkCardIndex": 0
+                            },
+                            "Description": "aws-K8S-i-0ae1eaa988c9eac8d",
+                            "Groups": [
+                                {
+                                    "GroupId": "sg-095a81a0bee5e0fa6",
+                                    "GroupName": "eks-cluster-sg-relaydesk-capstone-1842225770"
+                                }
+                            ],
+                            "Ipv6Addresses": [],
+                            "MacAddress": "02:ff:cb:0a:8e:d5",
+                            "NetworkInterfaceId": "eni-0fa81d8efb564f01a",
+                            "OwnerId": "525426877661",
+                            "PrivateDnsName": "ip-10-42-1-25.ap-southeast-2.compute.internal",
+                            "PrivateIpAddress": "10.42.1.25",
+                            "PrivateIpAddresses": [
+                                {
+                                    "Primary": true,
+                                    "PrivateDnsName": "ip-10-42-1-25.ap-southeast-2.compute.internal",
+                                    "PrivateIpAddress": "10.42.1.25"
+                                },
+                                {
+                                    "Primary": false,
+                                    "PrivateDnsName": "ip-10-42-1-114.ap-southeast-2.compute.internal",
+                                    "PrivateIpAddress": "10.42.1.114"
+                                },
+                                {
+                                    "Primary": false,
+                                    "PrivateDnsName": "ip-10-42-1-115.ap-southeast-2.compute.internal",
+                                    "PrivateIpAddress": "10.42.1.115"
+                                },
+                                {
+                                    "Primary": false,
+                                    "PrivateDnsName": "ip-10-42-1-183.ap-southeast-2.compute.internal",
+                                    "PrivateIpAddress": "10.42.1.183"
+                                },
+                                {
+                                    "Primary": false,
+                                    "PrivateDnsName": "ip-10-42-1-135.ap-southeast-2.compute.internal",
+                                    "PrivateIpAddress": "10.42.1.135"
+                                },
+                                {
+                                    "Primary": false,
+                                    "PrivateDnsName": "ip-10-42-1-133.ap-southeast-2.compute.internal",
+                                    "PrivateIpAddress": "10.42.1.133"
+                                }
+                            ],
+                            "SourceDestCheck": true,
+                            "Status": "in-use",
+                            "SubnetId": "subnet-047411b20e305b76e",
+                            "VpcId": "vpc-0f1334a144012db46",
+                            "InterfaceType": "interface",
+                            "Operator": {
+                                "Managed": false
+                            }
+                        }
+                    ],
+                    "RootDeviceName": "/dev/xvda",
+                    "RootDeviceType": "ebs",
+                    "SecurityGroups": [
+                        {
+                            "GroupId": "sg-095a81a0bee5e0fa6",
+                            "GroupName": "eks-cluster-sg-relaydesk-capstone-1842225770"
+                        }
+                    ],
+                    "SourceDestCheck": true,
+                    "Tags": [
+                        {
+                            "Key": "aws:eks:cluster-name",
+                            "Value": "relaydesk-capstone"
+                        },
+                        {
+                            "Key": "aws:autoscaling:groupName",
+                            "Value": "eks-relaydesk-capstone-workers-5ed0a2e5-714e-23de-88f9-9d3b173b3119"
+                        },
+                        {
+                            "Key": "eks:cluster-name",
+                            "Value": "relaydesk-capstone"
+                        },
+                        {
+                            "Key": "kubernetes.io/cluster/relaydesk-capstone",
+                            "Value": "owned"
+                        },
+                        {
+                            "Key": "aws:ec2:fleet-id",
+                            "Value": "fleet-9f0fd207-511d-e9bc-0c32-8408cc12582c"
+                        },
+                        {
+                            "Key": "aws:ec2launchtemplate:id",
+                            "Value": "lt-0b9263cac2849acf6"
+                        },
+                        {
+                            "Key": "k8s.io/cluster-autoscaler/enabled",
+                            "Value": "true"
+                        },
+                        {
+                            "Key": "k8s.io/cluster-autoscaler/relaydesk-capstone",
+                            "Value": "owned"
+                        },
+                        {
+                            "Key": "aws:ec2launchtemplate:version",
+                            "Value": "1"
+                        },
+                        {
+                            "Key": "eks:nodegroup-name",
+                            "Value": "relaydesk-capstone-workers"
+                        }
+                    ],
+                    "VirtualizationType": "hvm",
+                    "CpuOptions": {
+                        "CoreCount": 1,
+                        "ThreadsPerCore": 2
+                    },
+                    "CapacityReservationSpecification": {
+                        "CapacityReservationPreference": "open"
+                    },
+                    "HibernationOptions": {
+                        "Configured": false
+                    },
+                    "MetadataOptions": {
+                        "State": "applied",
+                        "HttpTokens": "required",
+                        "HttpPutResponseHopLimit": 1,
+                        "HttpEndpoint": "enabled",
+                        "HttpProtocolIpv6": "disabled",
+                        "InstanceMetadataTags": "disabled"
+                    },
+                    "EnclaveOptions": {
+                        "Enabled": false
+                    },
+                    "BootMode": "uefi-preferred",
+                    "PlatformDetails": "Linux/UNIX",
+                    "UsageOperation": "RunInstances",
+                    "UsageOperationUpdateTime": "2026-10-16T17:39:07+00:00",
+                    "PrivateDnsNameOptions": {
+                        "HostnameType": "ip-name",
+                        "EnableResourceNameDnsARecord": false,
+                        "EnableResourceNameDnsAAAARecord": false
+                    },
+                    "MaintenanceOptions": {
+                        "AutoRecovery": "default",
+                        "RebootMigration": "default"
+                    },
+                    "CurrentInstanceBootMode": "uefi",
+                    "NetworkPerformanceOptions": {
+                        "BandwidthWeighting": "default"
+                    },
+                    "Operator": {
+                        "Managed": false
+                    },
+                    "InstanceId": "i-0ae1eaa988c9eac8d",
+                    "ImageId": "ami-0d6d708bae09b0040",
+                    "State": {
+                        "Code": 16,
+                        "Name": "running"
+                    },
+                    "PrivateDnsName": "ip-10-42-1-229.ap-southeast-2.compute.internal",
+                    "PublicDnsName": "",
+                    "StateTransitionReason": "",
+                    "AmiLaunchIndex": 0,
+                    "ProductCodes": [],
+                    "InstanceType": "t3.medium",
+                    "LaunchTime": "2026-10-16T17:39:07+00:00",
+                    "Placement": {
+                        "AvailabilityZoneId": "apse2-az1",
+                        "GroupName": "",
+                        "Tenancy": "default",
+                        "AvailabilityZone": "ap-southeast-2a"
+                    },
+                    "Monitoring": {
+                        "State": "disabled"
+                    },
+                    "SubnetId": "subnet-047411b20e305b76e",
+                    "VpcId": "vpc-0f1334a144012db46",
+                    "PrivateIpAddress": "10.42.1.229"
+                }
+            ]
+        }
+    ]
+}

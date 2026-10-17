@@ -1,4 +1,23 @@
-# Evidence audit against GRADING.md
+# Evidence audit against the grading rubric
+
+## Final package — October 17, 2026
+
+**44/46 criteria demonstrated; estimated technical coverage 96/100**, subject to instructor judgment, presentation acceptance and deadline policy. The current public teacher rubric matches `docs/TEACHER-GRADING.md`. [Full criterion mapping](GRADING-CHECKLIST.md), [submission instructions](SUBMISSION.md), [actual checks](VERIFICATION.md).
+
+- **78 screenshots in `evidence/screenshots/`: 23 fresh captures and 55 explicitly dated archive copies.** All fresh captures were visually opened. Archive copies are byte-identical to previously reviewed originals; hashes and the original visual qualifications are preserved. Historic restriction/plan/partial mobile captures are not promoted to unsupported deployment claims.
+- **4 verified WebM files in `evidence/videos/`:** real commit-to-EKS release recording, separate result continuation, current platform walkthrough, and separate monitoring-correction recording. Hashes, probes, dimensions/durations and source timelines are recorded. New videos decode successfully; the copied originals match previously validated files. No student narration/instructor acceptance is claimed.
+- A real monitoring error was found and corrected: scraping a load-balanced Service mixed replica counters and caused false resets. Final primary M9 evidence is `2026-10-17-prometheus-replicas-up.png` and `2026-10-17-grafana-corrected-rates.png`, showing separate healthy targets and correct rates. Before-fix graphs/video remain genuine diagnostic history and are labeled as such.
+- Fresh runtime checks: 16 tests pass, Compose rebuilt/healthy/non-root, EKS CRUD/SQL/health pass, two private workers and all app/monitoring Pods Ready, correct endpoints/HPA/PVC, IAM/network/ELB/EBS checked, Terraform init/fmt/validate pass and real refresh plan reports no changes. Promtool accepts the corrected configuration; observed per-Pod counter resets are zero.
+- Commands/URLs/timestamps and metadata are under `evidence/final-2026-10-17/`. Run `python scripts/audit-evidence.py` to verify all 46 mappings, canonical screenshot CRCs/decompression/hashes/reviews, video hashes/probes and every public JSON artifact. [Integrity report](evidence/final-2026-10-17/evidence-audit.json). Private credentials/state/kubeconfig are excluded. Signature scans are limited checks, not a blanket secret-security certification.
+- **Still unverified:** C10 form submission/receipt (2 points), C32 actual approved destroy (2 points). The required real destroy-completion screenshot is absent because cleanup has not been approved. No manual screenshot is needed for the already captured technical system; retain the personal form confirmation.
+- Current package uses the owner’s latest October 19 target, but the earlier form text stated October 16 at 11:59 PM IST. No extension or receipt is verified. Submit the repository URL only, and do not resubmit an already completed single submission.
+
+Evidence collection is complete. AWS resources remain running for evaluation at approximately $0.313–$0.32/hour before variable charges/tax; cleanup requires explicit separate approval. No new billable infrastructure was created. The monitoring fix added one internal headless Kubernetes Service and reloaded configuration without deleting/restarting application or database Pods.
+
+## Historical October 16 audit records
+
+The records below describe their capture times and are superseded by the final package section above for current status.
+
 
 ## Current approved cloud deployment audit — October 16, 2026
 

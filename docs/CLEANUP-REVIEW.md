@@ -17,11 +17,11 @@ Account `525426877661`, profile `devops-new`, region `ap-southeast-2`. Local sta
 ## Required order after separate owner approval
 
 1. Confirm demonstration/evidence complete and whether a private database backup is required. Recheck identity/account and actual resource inventory.
-2. Remove only project monitoring/application and Traefik releases. Explicitly delete the project data PVC after approval of data erasure, while EBS CSI remains available. Wait for the recorded data EBS disk and Classic ELB/security group to disappear. Do not destroy CSI/VPC first.
+2. Monitoring is owned by Kustomize, not a Helm release: after approval remove only its resources with `kubectl --context relaydesk-sydney delete -k monitoring --ignore-not-found`. Then uninstall the `relaydesk` and `traefik` Helm releases in their own namespaces. The chart declares its data PVC directly, so uninstall may delete it; approve data erasure and take any required private backup first. Explicitly check/delete any remaining project PVC with `--ignore-not-found` while EBS CSI remains available. Wait for the recorded data EBS disk and Classic ELB/security group to disappear. Do not destroy CSI/VPC first.
 3. Refresh/review the Terraform destroy plan after Kubernetes cleanup; use the credential adapter and correct account. The current read-only preview has **28 deletions**, no creates/changes; it was not executed. Preview: `evidence/sydney/terraform-destroy-plan.txt`, audit `cleanup-plan-audit.json`. Saved hash is a record of that preview, not authorization to bypass a later review.
 4. Execute only the approved destroy, save genuine output/screenshot, then independently verify the project EKS, workers, NAT, EIP, VPC, ELB and all recorded volumes are gone. Capture actual destroy completion for the remaining two M7 marks.
 
-Do not touch unrelated default VPC `vpc-042b78e34824a4dfb`, billing, account security, or other projects. Current running budget approximately $0.32/hour before variable charges/tax; see the cost ledger.
+Do not touch unrelated default VPC `vpc-042b78e34824a4dfb`, billing, account security, or other projects. The monitoring-only headless Service `relaydesk-backend-metrics` is covered by the Kustomize cleanup and has no separate AWS bill. Current running budget approximately $0.32/hour before variable charges/tax; see the cost ledger.
 
 ## Exact Terraform addresses in the current read-only preview
 

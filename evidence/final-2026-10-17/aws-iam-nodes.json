@@ -1,0 +1,32 @@
+{
+    "Role": {
+        "Path": "/",
+        "RoleName": "relaydesk-capstone-nodes-role",
+        "RoleId": "AROAXUVPB4TO5QRV2VIZK",
+        "Arn": "arn:aws:iam::525426877661:role/relaydesk-capstone-nodes-role",
+        "CreateDate": "2026-10-16T17:28:52+00:00",
+        "AssumeRolePolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Principal": {
+                        "Service": "ec2.amazonaws.com"
+                    },
+                    "Action": "sts:AssumeRole"
+                }
+            ]
+        },
+        "MaxSessionDuration": 3600,
+        "Tags": [
+            {
+                "Key": "Project",
+                "Value": "relaydesk-capstone"
+            }
+        ],
+        "RoleLastUsed": {
+            "LastUsedDate": "2026-10-17T02:38:34+00:00",
+            "Region": "ap-southeast-2"
+        }
+    }
+}

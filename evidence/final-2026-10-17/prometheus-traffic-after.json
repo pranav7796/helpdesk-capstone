@@ -1,0 +1,44 @@
+{
+  "status": "success",
+  "data": {
+    "resultType": "vector",
+    "result": [
+      {
+        "metric": {
+          "route": "/ready"
+        },
+        "value": [
+          1792206507.401,
+          "0.34688833333333335"
+        ]
+      },
+      {
+        "metric": {
+          "route": "/health"
+        },
+        "value": [
+          1792206507.401,
+          "0.17344416666666668"
+        ]
+      },
+      {
+        "metric": {
+          "route": "/api/tickets"
+        },
+        "value": [
+          1792206507.401,
+          "0.38543148148148154"
+        ]
+      },
+      {
+        "metric": {
+          "route": "/api/tickets/{ticket_id}"
+        },
+        "value": [
+          1792206507.401,
+          "0"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+Captured: 2026-10-17 02:51:42 UTC
+Evidence: 2026-10-17-m9-metrics
++ curl -fsS -D /tmp/relaydesk-final-headers.txt http://127.0.0.1:8001/metrics -o evidence/final-2026-10-17/application-metrics.txt
++ head -n 5 /tmp/relaydesk-final-headers.txt
+HTTP/1.1 200 OK
+date: Sat, 17 Oct 2026 02:51:42 GMT
+server: uvicorn
+content-type: text/plain; version=1.0.0; charset=utf-8
+content-length: 16441
++ sed -n '/^# HELP relaydesk_http_requests_total/,+7p' evidence/final-2026-10-17/application-metrics.txt
+# HELP relaydesk_http_requests_total Completed HTTP requests
+# TYPE relaydesk_http_requests_total counter
+relaydesk_http_requests_total{method="GET",route="/ready",status="200"} 6578.0
+relaydesk_http_requests_total{method="GET",route="/health",status="200"} 3292.0
+relaydesk_http_requests_total{method="GET",route="/api/tickets",status="200"} 39.0
+relaydesk_http_requests_total{method="PUT",route="/api/tickets/{ticket_id}",status="200"} 2.0
+relaydesk_http_requests_total{method="DELETE",route="/api/tickets/{ticket_id}",status="204"} 3.0
+relaydesk_http_requests_total{method="GET",route="/api/tickets/{ticket_id}",status="200"} 1.0
++ curl -fsS http://127.0.0.1:8001/health
+{"status":"UP","service":"relaydesk"}+ printf '\n'
+
++ curl -fsS http://127.0.0.1:8001/ready
+{"status":"READY"}+ printf '\n'
+
++ python -c 'import json;d=json.load(open("evidence/final-2026-10-17/prometheus-up.json"));print("Prometheus up:",d["data"]["result"][0]["value"][1])'
+Prometheus up: 1

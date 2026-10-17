@@ -1,0 +1,20 @@
+{
+    "addon": {
+        "addonName": "eks-pod-identity-agent",
+        "clusterName": "relaydesk-capstone",
+        "status": "ACTIVE",
+        "addonVersion": "v1.3.10-eksbuild.3",
+        "health": {
+            "issues": []
+        },
+        "addonArn": "arn:aws:eks:ap-southeast-2:525426877661:addon/relaydesk-capstone/eks-pod-identity-agent/c8d0a2e6-290d-b3e1-ad48-9b4f2f2cb9b8",
+        "createdAt": "2026-10-16T23:09:40.848000+05:30",
+        "modifiedAt": "2026-10-16T23:09:56.576000+05:30",
+        "tags": {
+            "Project": "relaydesk-capstone"
+        },
+        "namespaceConfig": {
+            "namespace": "kube-system"
+        }
+    }
+}

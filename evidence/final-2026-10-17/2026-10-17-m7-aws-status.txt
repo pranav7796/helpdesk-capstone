@@ -1,0 +1,27 @@
+Captured: 2026-10-17 02:49:34 UTC
+Evidence: 2026-10-17-m7-aws-status
++ aws sts get-caller-identity --profile devops-new --region ap-southeast-2 --no-cli-pager
+{
+    "UserId": "AROAXUVPB4TOZ4LHL5ND6:f44834e8-d051-7030-1671-7bacd3da612d",
+    "Account": "525426877661",
+    "Arn": "arn:aws:sts::525426877661:assumed-role/AccountFullAccessRole/f44834e8-d051-7030-1671-7bacd3da612d"
+}
++ aws eks describe-cluster --profile devops-new --region ap-southeast-2 --name relaydesk-capstone --query 'cluster.{Name:name,Status:status,Version:version}' --no-cli-pager
+{
+    "Name": "relaydesk-capstone",
+    "Status": "ACTIVE",
+    "Version": "1.35"
+}
++ aws eks describe-nodegroup --profile devops-new --region ap-southeast-2 --cluster-name relaydesk-capstone --nodegroup-name relaydesk-capstone-workers --query 'nodegroup.{Name:nodegroupName,Status:status,Type:instanceTypes,Size:scalingConfig}' --no-cli-pager
+{
+    "Name": "relaydesk-capstone-workers",
+    "Status": "ACTIVE",
+    "Type": [
+        "t3.medium"
+    ],
+    "Size": {
+        "minSize": 2,
+        "maxSize": 2,
+        "desiredSize": 2
+    }
+}
