@@ -115,3 +115,5 @@ jobs:
       - run: helm lint helm/helpdesk -f helm/helpdesk/values-eks.yaml
       - run: helm template relaydesk helm/helpdesk -n relaydesk -f helm/helpdesk/values-local.yaml > /tmp/relaydesk-rendered.yaml
       - run: helm template relaydesk helm/helpdesk -n relaydesk -f helm/helpdesk/values-eks.yaml > /tmp/relaydesk-eks-rendered.yaml
+      - name: Validate monitoring manifests
+        run: kubectl kustomize monitoring > /tmp/relaydesk-monitoring.yaml

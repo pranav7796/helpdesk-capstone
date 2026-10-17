@@ -10,8 +10,25 @@ data:
     scrape_configs:
       - job_name: relaydesk-backend
         metrics_path: /metrics
-        static_configs:
-          - targets: [relaydesk-backend.relaydesk.svc.cluster.local:8000]
+        # Discover each replica so unrelated process counters never share an instance.
+        dns_sd_configs:
+          - names: [relaydesk-backend-metrics.relaydesk.svc.cluster.local]
+            type: A
+            port: 8000
+            refresh_interval: 15s
+        relabel_configs:
+          - target_label: scrape_mode
+            replacement: pod
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: relaydesk-backend-metrics
+  namespace: relaydesk
+spec:
+  clusterIP: None
+  selector: { app: relaydesk-backend }
+  ports: [{ name: http, port: 8000, targetPort: 8000 }]
 ---
 apiVersion: apps/v1
 kind: Deployment
