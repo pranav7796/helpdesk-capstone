@@ -1,0 +1,7 @@
+{
+  "addons": [
+    "aws-ebs-csi-driver",
+    "eks-pod-identity-agent",
+    "metrics-server"
+  ]
+}

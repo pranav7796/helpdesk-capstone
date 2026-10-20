@@ -1,3 +1,17 @@
+# Evidence audit — current check October 20, 2026
+
+**44 PASS, 0 FAIL, 2 BLOCKED across 46 criteria.** Demonstrated evidence covers 96/100 rubric points under the disclosed Trivy policy; this is not an awarded grade. C10 (form receipt) and C32 (actual destroy) remain blocked. Instructor acceptance of scan exceptions, the automated recording, and the deadline/extension are unverified.
+
+[Current complete report](docs/FINAL-REPORT.md), [fresh integrity results](evidence/final-2026-10-20/evidence-integrity.json), [fresh criterion mapping](evidence/final-2026-10-20/criterion-evidence.json).
+
+All 78 existing PNGs pass hashes/CRC/decompression; all four WebMs pass hashes and ffprobe. All 46 criterion screenshot references resolve and 131 prior public evidence JSON files parse. Application/Prometheus/Grafana primary screenshots were opened again for visual review. No new UI screenshot/video could be captured because Computer Use exposed no browser/app surfaces. Original dates/provenance are retained; integrity is not itself a guarantee of authenticity.
+
+Current AWS, Kubernetes, ingress CRUD/SQL, metrics/Prometheus/Grafana APIs, local tests/build/Compose, latest published CI and Terraform no-drift checks passed. New sanitized command/output evidence is in `evidence/final-2026-10-20/`. Actual destroy screenshot and accepted form receipt remain missing. No cloud resources were deleted. This audit commit includes the report and new sanitized artifacts.
+
+The dated material below is historical. Its “current/final” claims refer to that section's original date and are superseded by this section and `docs/FINAL-REPORT.md`.
+
+---
+
 # Evidence audit against the grading rubric
 
 ## Final package — October 17, 2026

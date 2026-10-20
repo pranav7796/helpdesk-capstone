@@ -1,0 +1,635 @@
+{
+  "captured_at_utc": "2026-10-20T17:52:33.304319+00:00",
+  "screenshots_validated": 78,
+  "videos_validated": 4,
+  "public_json_parsed": 131,
+  "criteria_references_checked": 46,
+  "errors": [],
+  "screenshots": [
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-grafana-relaydesk-dashboard.png",
+      "sha256": "9a374dc0774bdac680efbe2fe9f60af5216a167eb2ccbc2cb06fe75e2a8acb9f",
+      "width": 1440,
+      "height": 1100,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-m1-health-database.png",
+      "sha256": "5877f3424cfa8e3f90467a0ce3e974d0d30877d16f422334b37355f55fd6db14",
+      "width": 1366,
+      "height": 768,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-m1-mobile-actions.png",
+      "sha256": "b87a6e1bdfd437a522277e6b3bd58608c3962dc6dbff7fe419592d999066f87c",
+      "width": 390,
+      "height": 844,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-m1-mobile-tickets.png",
+      "sha256": "3cbccd68c8e86091289808ee07f0170e8d29f4c24bfbed8d445c70ba769d3c6d",
+      "width": 390,
+      "height": 844,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-m1-ticket-editor.png",
+      "sha256": "b73222e45db607bea32dbf9e1242590819cd6b2814e2544ab8268a6f697794ba",
+      "width": 1440,
+      "height": 1100,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-m2-pytest.png",
+      "sha256": "14756fca8b8ba29b4c682e00519130f5b9c43c86bd1abc7fb2e1d1f52bfb89fb",
+      "width": 1366,
+      "height": 768,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-m3-git-history.png",
+      "sha256": "36557f5c0bddb25094858b7836b066ec720024fa78108055b2e8efb8a5a9c1f4",
+      "width": 1366,
+      "height": 768,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-m4-compose-browser.png",
+      "sha256": "89ecff4478b5e57856bae88637c6ed18269fd3179b13e192b1a89ab042d87a63",
+      "width": 1440,
+      "height": 1352,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-m4-compose.png",
+      "sha256": "7ca7d4b1233599fcd5a83e1792b12754f691f69d3beac79cfed4a15206006794",
+      "width": 1366,
+      "height": 768,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-m5-actions-success.png",
+      "sha256": "89ae95de48d9f792fa881250cf70792a490b2b0eeb6940770ad2fb9ef6f5c0fe",
+      "width": 1440,
+      "height": 1100,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-m5-ghcr-backend.png",
+      "sha256": "c8af235881f3e7b42b3e794d51f9e7f0c096f15e33bd20c3bc91addb58358965",
+      "width": 1440,
+      "height": 1100,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-m5-ghcr-frontend.png",
+      "sha256": "0813563008495adf201a7c9b3a88781ec628c8b6021b385658d658c86c0ac005",
+      "width": 1440,
+      "height": 1100,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-m6-trivy-backend.png",
+      "sha256": "dc3ccd4244e46f01e061405ee251644f77bbfda1be8e8ca421c75ab85fdcd282",
+      "width": 1366,
+      "height": 768,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-m6-trivy-frontend.png",
+      "sha256": "813a5811835b90f5da8d38b60d9011b5bdf70a834d5986723d9d4e7d22713a2d",
+      "width": 1366,
+      "height": 768,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-m7-aws-restriction.png",
+      "sha256": "fe252047629743299ae2142a41fb7e0519a929121cf4871f9d3d5574c1235316",
+      "width": 1366,
+      "height": 768,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-m7-terraform-plan-saved.png",
+      "sha256": "8a2f504dc9d0db57406da8a61fc5110087bf91a3500b7ab81ddef991e3c5b8e0",
+      "width": 1366,
+      "height": 768,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-m7-terraform-validation.png",
+      "sha256": "ec7c901901bfce396649bce55b65a57a53c651647902f98d6b963ca3cb089b2f",
+      "width": 1366,
+      "height": 768,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-m8-helm.png",
+      "sha256": "3cfc736fdfe127eeda692b708e32da681de097754cfb8e5d3f1880ac891950ff",
+      "width": 1366,
+      "height": 768,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-m8-ingress-browser.png",
+      "sha256": "d11f12bcef54c9bcb4b528dbafe36575bfb4b884be066b573f506dbdae42589b",
+      "width": 1440,
+      "height": 1100,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-m8-pods.png",
+      "sha256": "a4acad91091eda45782e69b4d270134df78cf41612bccf74e248056659544e86",
+      "width": 1366,
+      "height": 768,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-m8-services.png",
+      "sha256": "1153e1762bdfa94d4a22427c0014d9dad362e3aa8f298802ea27cb31550218b5",
+      "width": 1366,
+      "height": 768,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-m9-grafana-current.png",
+      "sha256": "05130982c0f253e0299958c74cd731c06f5d64f9d9f7f00627fb5c7d048af729",
+      "width": 1440,
+      "height": 1100,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-m9-metrics.png",
+      "sha256": "06d30cb456d7ee46f15acac7e47333945d74325a23bbfc8613cbce1c8e837e04",
+      "width": 1366,
+      "height": 768,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-m9-prometheus-targets.png",
+      "sha256": "121dfc89338a5b5e1e958c81f8d40c62bbf0f0ea1789e663a1df26cff55a2ddd",
+      "width": 1440,
+      "height": 1100,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-relaydesk-compose.png",
+      "sha256": "99d51d0cde8eb5e688dcd71e48e8b2e14baba49f785cb7827826f066695fd938",
+      "width": 1440,
+      "height": 1100,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-relaydesk-minikube-sha.png",
+      "sha256": "be7d3ebc7f72376395533fa2976d581887b8ac231ac08de4357626abffc31dca",
+      "width": 1440,
+      "height": 1100,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-relaydesk-minikube.png",
+      "sha256": "66f7f5be4e2920af42a6b6793dc39230d4cb0f2f1fe3337b52fdfdbae3054ef0",
+      "width": 1440,
+      "height": 1100,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-relaydesk-mobile.png",
+      "sha256": "56b974bac61392d51388829b6b7df35fc903b3a7e52f9333c38b4210573ba575",
+      "width": 390,
+      "height": 844,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-sydney--aws-apply-verified.png",
+      "sha256": "7674383d692b4ed6c1d2a76445c61a4142deff65522b70fb0511c3d57d0c84dd",
+      "width": 1366,
+      "height": 768,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-sydney--aws-eks-console.png",
+      "sha256": "f0a504fc0487b811fadc95ee9cfdbd66e1910f6ebf39e017500415d1be788956",
+      "width": 1600,
+      "height": 1100,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-sydney--aws-network-verified.png",
+      "sha256": "1cc18c81580c9ba155e45ea82f7480c1e50e8c5dc3ffa5bdfde2637951f19a67",
+      "width": 1366,
+      "height": 768,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-sydney--aws-subnets-console.png",
+      "sha256": "6aeec9ee02968db6942d53f483e28741b5fae1c79b8a2059fc7cab26567a7ff0",
+      "width": 1600,
+      "height": 1100,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-sydney--aws-vpc-console.png",
+      "sha256": "02741afe32db89fdd5c7b9fb4205c2c0a52cabe1f0ee726d322b72282333f102",
+      "width": 1600,
+      "height": 1100,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-sydney--eks-application-browser.png",
+      "sha256": "66f7f5be4e2920af42a6b6793dc39230d4cb0f2f1fe3337b52fdfdbae3054ef0",
+      "width": 1440,
+      "height": 1100,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-sydney--eks-grafana-dashboard.png",
+      "sha256": "9634e40c6fcce1651e5a84604c82838becf6e6db6c80eb1ecaa19865d7d6bd28",
+      "width": 1440,
+      "height": 1100,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-sydney--eks-metrics.png",
+      "sha256": "b6feb8695dfff392d3fca8c924bbe3508bc89ee74a9bb30d00091e8e9effca03",
+      "width": 1366,
+      "height": 768,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-sydney--eks-pods-helm.png",
+      "sha256": "5167c2416dd7db514dccd71c2f94a289811263b269871bc07fcd094c2456f43b",
+      "width": 1366,
+      "height": 768,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-sydney--eks-prometheus-targets.png",
+      "sha256": "06c9d9ba6f3838fd9b586024a3e5dc786a4e89419a95565cdda7047770234c25",
+      "width": 1440,
+      "height": 1100,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-sydney--eks-services-ingress.png",
+      "sha256": "bec51b453f20e5b8ba4f9677a79a70908e430f8282c8868411b39915a9e15227",
+      "width": 1366,
+      "height": 768,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-sydney--m10-release-green.png",
+      "sha256": "0550fb1aa9899d348f8e5eb60474f1a7319a3526219414e97a83450d57553dd5",
+      "width": 1440,
+      "height": 1000,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-sydney--m10-release-updated-app.png",
+      "sha256": "cebfe6fe3077fca951d33ab05de1ca941225b760b1f0bb5043ee62531e9ce48c",
+      "width": 1440,
+      "height": 1000,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-sydney--m2-tests-current.png",
+      "sha256": "fd090923d5a41fc91779e00d0adc0c032f135d438c1293a29c87b3f8022e6259",
+      "width": 1366,
+      "height": 768,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-sydney--m4-compose-browser.png",
+      "sha256": "67bc39dc2f144c550bc7deb09a35ede2222853f62f1c4eada1625e622a1d440d",
+      "width": 1440,
+      "height": 1100,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-sydney--m5-actions-success.png",
+      "sha256": "3d004b6b21dce8b7cbf0ebc2b3b2d79803abb88367fbdbd88b9840bd69777d1d",
+      "width": 1440,
+      "height": 1100,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-sydney--m5-ghcr-backend.png",
+      "sha256": "9cd3010b54de4c6bac39b3a579ecbe2e15ee519a83f8f3660c48c94ddeaffada",
+      "width": 1440,
+      "height": 1100,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-sydney--m5-ghcr-frontend.png",
+      "sha256": "9f830a4ab14b6c11a781c5be7034ebf1eeb06af82b54c7bc27bd52509737a1ee",
+      "width": 1440,
+      "height": 1100,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-sydney--m7-sydney-account.png",
+      "sha256": "1d98811b52134cbbb366c98fd29e24cfd637c03dc61a3c16db3b780182354f3a",
+      "width": 1366,
+      "height": 768,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-sydney--m7-sydney-plan.png",
+      "sha256": "af5cd87a793442a183ecc0331bce56b8c895ad03e4a845b54b75eec50180a2de",
+      "width": 1366,
+      "height": 768,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-sydney--m7-sydney-pricing.png",
+      "sha256": "2a0d49f91746182f995199c8aee9fc56a8ca2ca22ea198a2fd94f2267aee54ed",
+      "width": 1366,
+      "height": 768,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-sydney--m7-sydney-validation.png",
+      "sha256": "c319496ddca933267b2d2f864e17e84371aa3ace8015e8f1370b6da7f34e07f4",
+      "width": 1366,
+      "height": 768,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-sydney--m8-ingress-browser.png",
+      "sha256": "5ba4f72e885e39e7b9383004ba01294e18cf9bb8b8e52223d36ccddc8f185912",
+      "width": 1440,
+      "height": 1100,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-sydney--m8-runtime-current.png",
+      "sha256": "e75ac76c1eb7a3ca4f754b25f5d1871fb11ee1229287d777dce21aad56e50fe0",
+      "width": 1366,
+      "height": 768,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-sydney--m9-grafana-current.png",
+      "sha256": "6aca6fe3ff93fa7b24eb293ba16fcc633423c5c80c12dfe11df3aad99e909854",
+      "width": 1440,
+      "height": 1100,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-sydney--m9-prometheus-targets.png",
+      "sha256": "2bbbf2d4ef8ca35c16bf720617b2ce9d423f538665f71708a0a14bcaccedb25c",
+      "width": 1440,
+      "height": 1100,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-16-archive-sydney--troubleshooting-recovery.png",
+      "sha256": "320d542d7087274aec2c87784cee3a2f65dbcd0197eca26fbf8af2f639f72084",
+      "width": 1366,
+      "height": 768,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-17-m2-pytest.png",
+      "sha256": "e66b313853687175bcaeeca0fcb7a0f3474d87bac27ffb75e679ace9b329e6de",
+      "width": 1366,
+      "height": 768,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-17-m4-compose.png",
+      "sha256": "84fd7291dbb617c7f198c6cce2e176fc51323f812cd907f816232198f3c52f4c",
+      "width": 1366,
+      "height": 768,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-17-m7-terraform.png",
+      "sha256": "0c19de1451d2f8d2f87f150bb20728fd2df8fdc6a80ee14b54552661bfcf93f0",
+      "width": 1366,
+      "height": 768,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-17-m7-aws-status.png",
+      "sha256": "5c4c316a3518699c2c1862cca52e45c8c8ad11bbdfab357dae7b81fcdd979319",
+      "width": 1366,
+      "height": 768,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-17-m8-pods-deployments.png",
+      "sha256": "330fa557f3e3b93983d25c7fd0d0e4c979011b2ed79eb4a5b294ac0ce6e20070",
+      "width": 1366,
+      "height": 768,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-17-m8-services-ingress.png",
+      "sha256": "d2d8c1a5727664fc20722faba73d5c821f7984c6a1bdbe53a1457ef3a848d1c8",
+      "width": 1366,
+      "height": 768,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-17-m9-metrics.png",
+      "sha256": "57e84f0744115fd2505932c914acec35d493b4c49d8596a7ec541af09b4432dd",
+      "width": 1366,
+      "height": 768,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-17-troubleshooting-recovery.png",
+      "sha256": "b68f568043e316ee48500497305baf0b53354f916df74749fe8b6ea091587f64",
+      "width": 1366,
+      "height": 768,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-17-ci-green.png",
+      "sha256": "05d1bbcabd3e96cf0a02c8686e78eeed38ae9f19f9b23d44aec1030171e57b14",
+      "width": 1440,
+      "height": 1100,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-17-ghcr-backend.png",
+      "sha256": "1ceade9c54f4c7846cff32f019f6695210aa9bc71fb2ef29e487f7b10c07e5b4",
+      "width": 1440,
+      "height": 1100,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-17-ghcr-frontend.png",
+      "sha256": "03bd44b55b45b8ff4e4d6bcea329b07d62746e4ca4ad0c9979245aeb9ae70618",
+      "width": 1440,
+      "height": 1100,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-17-ci-monitoring-fix-green.png",
+      "sha256": "54550c39c21b8adbf7c374668589cb7f8a9fc629b01fb2fc959e3c64e5d03568",
+      "width": 1440,
+      "height": 1100,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-17-aws-vpc-console.png",
+      "sha256": "dbbad9abaae8f0b2a7c093caf36f254d326187140a8672766026e91a16e85c9d",
+      "width": 1600,
+      "height": 1100,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-17-aws-eks-console.png",
+      "sha256": "841815dd8c677d52bcdc92ea7da7b249e6c891f4662bb73ec696ebf69fbaea4e",
+      "width": 1600,
+      "height": 1100,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-17-aws-ec2-console.png",
+      "sha256": "85ee1d4504913db6e3d534bb4154f35f79b238d3a87bc28044ce451b263dd2ba",
+      "width": 1600,
+      "height": 1100,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-17-aws-ebs-console.png",
+      "sha256": "df478c270e21cddf9b7cb0bf5ca71605d024e9697d8521d1ec36284e4dc92b0a",
+      "width": 1600,
+      "height": 1100,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-17-aws-elb-console.png",
+      "sha256": "8b24804f9b7631b50bfec02f248f96eec449e196bb7b3ff217bd9daa1b2c55e7",
+      "width": 1600,
+      "height": 1100,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-17-application-eks.png",
+      "sha256": "586c4043d6126a4d7cc016cfcf4f59cf20fbf0d2b2949918bb9b02bcb40108a5",
+      "width": 1600,
+      "height": 1100,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-17-application-compose.png",
+      "sha256": "33fcca21ea89b488d661fa5f1b9eb1cbed074c1b2f32032870780cd836d912ac",
+      "width": 1600,
+      "height": 1100,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-17-prometheus-targets.png",
+      "sha256": "6eee17331bfb06045be24e713cf20504f1da056e4471e31fd61038899fd7077f",
+      "width": 1600,
+      "height": 1100,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-17-grafana-dashboard.png",
+      "sha256": "5ed9b9c77fcc51dc58ff7f2a89a5dc237e30d6dd6e98a29ec3836d9f6cc3ab0f",
+      "width": 1600,
+      "height": 1100,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-17-prometheus-replicas-up.png",
+      "sha256": "c8d45894cf0d498fe08e708511f74681c0309cafdf0a7a059fdff349c35cd30c",
+      "width": 1440,
+      "height": 1100,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    },
+    {
+      "path": "evidence/screenshots/2026-10-17-grafana-corrected-rates.png",
+      "sha256": "0616572b10e8d2dfa19a27bdc8f4c8b16c45e04e0110b3580b458494f72e0a11",
+      "width": 1440,
+      "height": 1100,
+      "review_basis": "Existing recorded visual review; hash unchanged"
+    }
+  ],
+  "videos": [
+    {
+      "path": "evidence/videos/m10-real-release-walkthrough.webm",
+      "sha256": "5767d5277892cba6c3b642ef1b2c0651b2f1f264aa5eb7bc809ebae6ffb7688a",
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "vp9",
+            "width": 1440,
+            "height": 1000
+          }
+        ],
+        "format": {
+          "duration": "304.680000"
+        }
+      },
+      "review_basis": "Existing timeline/review; hash unchanged"
+    },
+    {
+      "path": "evidence/videos/m10-release-result-continuation.webm",
+      "sha256": "37f00335b062702f335fd36e7eef326b144fe1cd9b4be4252492d9c69f22e314",
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "vp9",
+            "width": 1440,
+            "height": 1000
+          }
+        ],
+        "format": {
+          "duration": "35.040000"
+        }
+      },
+      "review_basis": "Existing timeline/review; hash unchanged"
+    },
+    {
+      "path": "evidence/videos/2026-10-17-platform-walkthrough.webm",
+      "sha256": "104382ba26094cd089c7a9670dca98f25866d579fb7ccbc7867d9f9e75854865",
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "vp9",
+            "width": 1600,
+            "height": 1100
+          }
+        ],
+        "format": {
+          "duration": "258.960000"
+        }
+      },
+      "review_basis": "Existing timeline/review; hash unchanged"
+    },
+    {
+      "path": "evidence/videos/2026-10-17-monitoring-correction.webm",
+      "sha256": "ca26f6de4bd30d84d4a48eaf8150e50f98df2e48394350a54c1c95fc71d35112",
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "vp9",
+            "width": 1440,
+            "height": 1100
+          }
+        ],
+        "format": {
+          "duration": "59.200000"
+        }
+      },
+      "review_basis": "Existing timeline/review; hash unchanged"
+    }
+  ],
+  "scope": "Hashes/PNG CRCs/decompression/video metadata checked freshly. Visual review and authenticity rely on preserved capture provenance; no fresh UI screenshot or recording was captured."
+}

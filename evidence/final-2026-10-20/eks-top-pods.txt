@@ -1,0 +1,8 @@
+NAME                                 CPU(cores)   MEMORY(bytes)   
+grafana-6bf844bfcb-hbdbs             11m          199Mi           
+prometheus-cd7d5fdc5-2wcvz           3m           55Mi            
+relaydesk-backend-7556c8f9c4-g68bb   3m           70Mi            
+relaydesk-backend-7556c8f9c4-zkpxl   4m           71Mi            
+relaydesk-frontend-f45d8597-rldk6    1m           3Mi             
+relaydesk-frontend-f45d8597-zh7f2    1m           3Mi             
+relaydesk-postgres-0                 7m           38Mi            

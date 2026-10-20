@@ -1,0 +1,16 @@
+{
+  "InstanceStates": [
+    {
+      "InstanceId": "i-05ebd008f8142bee8",
+      "State": "InService",
+      "ReasonCode": "N/A",
+      "Description": "N/A"
+    },
+    {
+      "InstanceId": "i-0ae1eaa988c9eac8d",
+      "State": "InService",
+      "ReasonCode": "N/A",
+      "Description": "N/A"
+    }
+  ]
+}

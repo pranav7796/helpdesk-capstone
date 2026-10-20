@@ -1,0 +1,158 @@
+{
+  "SecurityGroups": [
+    {
+      "GroupId": "sg-091ed10475fe57ebf",
+      "IpPermissionsEgress": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ],
+      "Tags": [
+        {
+          "Key": "Project",
+          "Value": "relaydesk-capstone"
+        },
+        {
+          "Key": "kubernetes.io/cluster/relaydesk-capstone",
+          "Value": "owned"
+        }
+      ],
+      "VpcId": "vpc-0f1334a144012db46",
+      "SecurityGroupArn": "arn:aws:ec2:ap-southeast-2:525426877661:security-group/sg-091ed10475fe57ebf",
+      "OwnerId": "525426877661",
+      "GroupName": "k8s-elb-af43a3e33d68945548232885350507ff",
+      "Description": "Security group for Kubernetes ELB af43a3e33d68945548232885350507ff (ingress-system/traefik)",
+      "IpPermissions": [
+        {
+          "IpProtocol": "tcp",
+          "FromPort": 80,
+          "ToPort": 80,
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "202.131.146.146/32"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        },
+        {
+          "IpProtocol": "icmp",
+          "FromPort": 3,
+          "ToPort": 4,
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "202.131.146.146/32"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ]
+    },
+    {
+      "GroupId": "sg-05b3ccb20e44a1abe",
+      "IpPermissionsEgress": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ],
+      "VpcId": "vpc-0f1334a144012db46",
+      "SecurityGroupArn": "arn:aws:ec2:ap-southeast-2:525426877661:security-group/sg-05b3ccb20e44a1abe",
+      "OwnerId": "525426877661",
+      "GroupName": "default",
+      "Description": "default VPC security group",
+      "IpPermissions": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [
+            {
+              "UserId": "525426877661",
+              "GroupId": "sg-05b3ccb20e44a1abe"
+            }
+          ],
+          "IpRanges": [],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ]
+    },
+    {
+      "GroupId": "sg-095a81a0bee5e0fa6",
+      "IpPermissionsEgress": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [
+            {
+              "Description": "Allows EFA traffic, which is not matched by CIDR rules.",
+              "UserId": "525426877661",
+              "GroupId": "sg-095a81a0bee5e0fa6"
+            }
+          ],
+          "IpRanges": [
+            {
+              "CidrIp": "0.0.0.0/0"
+            }
+          ],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ],
+      "Tags": [
+        {
+          "Key": "kubernetes.io/cluster/relaydesk-capstone",
+          "Value": "owned"
+        },
+        {
+          "Key": "Name",
+          "Value": "eks-cluster-sg-relaydesk-capstone-1842225770"
+        },
+        {
+          "Key": "aws:eks:cluster-name",
+          "Value": "relaydesk-capstone"
+        }
+      ],
+      "VpcId": "vpc-0f1334a144012db46",
+      "SecurityGroupArn": "arn:aws:ec2:ap-southeast-2:525426877661:security-group/sg-095a81a0bee5e0fa6",
+      "OwnerId": "525426877661",
+      "GroupName": "eks-cluster-sg-relaydesk-capstone-1842225770",
+      "Description": "EKS created security group applied to ENI that is attached to EKS Control Plane master nodes, as well as any managed workloads.",
+      "IpPermissions": [
+        {
+          "IpProtocol": "-1",
+          "UserIdGroupPairs": [
+            {
+              "Description": "Allows EFA traffic, which is not matched by CIDR rules.",
+              "UserId": "525426877661",
+              "GroupId": "sg-095a81a0bee5e0fa6"
+            },
+            {
+              "UserId": "525426877661",
+              "GroupId": "sg-091ed10475fe57ebf"
+            }
+          ],
+          "IpRanges": [],
+          "Ipv6Ranges": [],
+          "PrefixListIds": []
+        }
+      ]
+    }
+  ]
+}

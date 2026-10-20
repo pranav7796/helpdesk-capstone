@@ -1,0 +1,45 @@
+{
+  "nodegroup": {
+    "nodegroupName": "relaydesk-capstone-workers",
+    "nodegroupArn": "arn:aws:eks:ap-southeast-2:525426877661:nodegroup/relaydesk-capstone/relaydesk-capstone-workers/5ed0a2e5-714e-23de-88f9-9d3b173b3119",
+    "clusterName": "relaydesk-capstone",
+    "version": "1.35",
+    "releaseVersion": "1.35.8-20261012",
+    "createdAt": "2026-10-16T23:08:09.588000+05:30",
+    "modifiedAt": "2026-10-20T23:19:12.254000+05:30",
+    "status": "ACTIVE",
+    "capacityType": "ON_DEMAND",
+    "scalingConfig": {
+      "minSize": 2,
+      "maxSize": 2,
+      "desiredSize": 2
+    },
+    "instanceTypes": [
+      "t3.medium"
+    ],
+    "subnets": [
+      "subnet-047411b20e305b76e",
+      "subnet-085043332babdbe89"
+    ],
+    "amiType": "AL2023_x86_64_STANDARD",
+    "nodeRole": "arn:aws:iam::525426877661:role/relaydesk-capstone-nodes-role",
+    "labels": {},
+    "resources": {
+      "autoScalingGroups": [
+        {
+          "name": "eks-relaydesk-capstone-workers-5ed0a2e5-714e-23de-88f9-9d3b173b3119"
+        }
+      ]
+    },
+    "diskSize": 20,
+    "health": {
+      "issues": []
+    },
+    "updateConfig": {
+      "maxUnavailable": 1
+    },
+    "tags": {
+      "Project": "relaydesk-capstone"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "associations": [
+    {
+      "clusterName": "relaydesk-capstone",
+      "namespace": "kube-system",
+      "serviceAccount": "ebs-csi-controller-sa",
+      "associationArn": "arn:aws:eks:ap-southeast-2:525426877661:podidentityassociation/relaydesk-capstone/a-yzspixd7n1aawahwv",
+      "associationId": "a-yzspixd7n1aawahwv"
+    }
+  ]
+}

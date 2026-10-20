@@ -1,0 +1,261 @@
+[
+  {
+    "name": "terraform-init-recorded",
+    "command": [
+      "bash",
+      "scripts/terraform-readonly.sh",
+      "init",
+      "-input=false",
+      "-lockfile=readonly",
+      "-no-color"
+    ],
+    "cwd": "/home/pranav/Projects/helpdesk-capstone",
+    "started_at_utc": "2026-10-20T17:53:45.305585+00:00",
+    "finished_at_utc": "2026-10-20T17:53:47.172218+00:00",
+    "exit_code": 0,
+    "stdout": "terraform-init-recorded.txt",
+    "stderr": ""
+  },
+  {
+    "name": "terraform-fmt-recorded",
+    "command": [
+      "bash",
+      "scripts/terraform-readonly.sh",
+      "fmt",
+      "-check",
+      "-recursive"
+    ],
+    "cwd": "/home/pranav/Projects/helpdesk-capstone",
+    "started_at_utc": "2026-10-20T17:53:47.172257+00:00",
+    "finished_at_utc": "2026-10-20T17:53:47.213715+00:00",
+    "exit_code": 0,
+    "stdout": "terraform-fmt-recorded.txt",
+    "stderr": ""
+  },
+  {
+    "name": "terraform-validate-recorded",
+    "command": [
+      "bash",
+      "scripts/terraform-readonly.sh",
+      "validate",
+      "-no-color"
+    ],
+    "cwd": "/home/pranav/Projects/helpdesk-capstone",
+    "started_at_utc": "2026-10-20T17:53:47.213753+00:00",
+    "finished_at_utc": "2026-10-20T17:53:49.989414+00:00",
+    "exit_code": 0,
+    "stdout": "terraform-validate-recorded.txt",
+    "stderr": ""
+  },
+  {
+    "name": "git-status-before-docs",
+    "command": [
+      "git",
+      "status",
+      "--short"
+    ],
+    "cwd": "/home/pranav/Projects/helpdesk-capstone",
+    "started_at_utc": "2026-10-20T17:53:49.989478+00:00",
+    "finished_at_utc": "2026-10-20T17:53:50.000111+00:00",
+    "exit_code": 0,
+    "stdout": "git-status-before-docs.txt",
+    "stderr": ""
+  },
+  {
+    "name": "backend-replica-relaydesk-backend-7556c8f9c4-g68bb",
+    "command": [
+      "kubectl",
+      "--context",
+      "relaydesk-sydney",
+      "--request-timeout=12s",
+      "-n",
+      "relaydesk",
+      "exec",
+      "relaydesk-backend-7556c8f9c4-g68bb",
+      "--",
+      "python",
+      "-c",
+      "import os,json,urllib.request; print(json.dumps({'uid':os.getuid(),'health':json.load(urllib.request.urlopen('http://127.0.0.1:8000/health')),'ready':json.load(urllib.request.urlopen('http://127.0.0.1:8000/ready'))}))"
+    ],
+    "cwd": "/home/pranav/Projects/helpdesk-capstone",
+    "started_at_utc": "2026-10-20T17:53:50.006819+00:00",
+    "finished_at_utc": "2026-10-20T17:53:55.264678+00:00",
+    "exit_code": 0,
+    "stdout": "backend-replica-relaydesk-backend-7556c8f9c4-g68bb.json",
+    "stderr": "Defaulted container \"backend\" out of: backend, database-migrations (init)\n"
+  },
+  {
+    "name": "backend-replica-relaydesk-backend-7556c8f9c4-zkpxl",
+    "command": [
+      "kubectl",
+      "--context",
+      "relaydesk-sydney",
+      "--request-timeout=12s",
+      "-n",
+      "relaydesk",
+      "exec",
+      "relaydesk-backend-7556c8f9c4-zkpxl",
+      "--",
+      "python",
+      "-c",
+      "import os,json,urllib.request; print(json.dumps({'uid':os.getuid(),'health':json.load(urllib.request.urlopen('http://127.0.0.1:8000/health')),'ready':json.load(urllib.request.urlopen('http://127.0.0.1:8000/ready'))}))"
+    ],
+    "cwd": "/home/pranav/Projects/helpdesk-capstone",
+    "started_at_utc": "2026-10-20T17:53:55.264726+00:00",
+    "finished_at_utc": "2026-10-20T17:53:59.807425+00:00",
+    "exit_code": 0,
+    "stdout": "backend-replica-relaydesk-backend-7556c8f9c4-zkpxl.json",
+    "stderr": "Defaulted container \"backend\" out of: backend, database-migrations (init)\n"
+  },
+  {
+    "name": "frontend-replica-relaydesk-frontend-f45d8597-rldk6",
+    "command": [
+      "kubectl",
+      "--context",
+      "relaydesk-sydney",
+      "--request-timeout=12s",
+      "-n",
+      "relaydesk",
+      "exec",
+      "relaydesk-frontend-f45d8597-rldk6",
+      "--",
+      "id"
+    ],
+    "cwd": "/home/pranav/Projects/helpdesk-capstone",
+    "started_at_utc": "2026-10-20T17:53:59.807536+00:00",
+    "finished_at_utc": "2026-10-20T17:54:03.320970+00:00",
+    "exit_code": 0,
+    "stdout": "frontend-replica-relaydesk-frontend-f45d8597-rldk6.txt",
+    "stderr": ""
+  },
+  {
+    "name": "frontend-replica-relaydesk-frontend-f45d8597-zh7f2",
+    "command": [
+      "kubectl",
+      "--context",
+      "relaydesk-sydney",
+      "--request-timeout=12s",
+      "-n",
+      "relaydesk",
+      "exec",
+      "relaydesk-frontend-f45d8597-zh7f2",
+      "--",
+      "id"
+    ],
+    "cwd": "/home/pranav/Projects/helpdesk-capstone",
+    "started_at_utc": "2026-10-20T17:54:03.321029+00:00",
+    "finished_at_utc": "2026-10-20T17:54:06.735404+00:00",
+    "exit_code": 0,
+    "stdout": "frontend-replica-relaydesk-frontend-f45d8597-zh7f2.txt",
+    "stderr": ""
+  },
+  {
+    "name": "aws-nat-retry",
+    "command": [
+      "aws",
+      "ec2",
+      "describe-nat-gateways",
+      "--filter",
+      "Name=vpc-id,Values=vpc-0f1334a144012db46",
+      "--profile",
+      "devops-new",
+      "--region",
+      "ap-southeast-2",
+      "--output",
+      "json",
+      "--no-cli-pager"
+    ],
+    "cwd": "/home/pranav/Projects/helpdesk-capstone",
+    "started_at_utc": "2026-10-20T17:54:06.735505+00:00",
+    "finished_at_utc": "2026-10-20T17:54:08.996943+00:00",
+    "exit_code": 0,
+    "stdout": "aws-nat-retry.json",
+    "stderr": ""
+  },
+  {
+    "name": "eks-top-nodes-recorded",
+    "command": [
+      "kubectl",
+      "--context",
+      "relaydesk-sydney",
+      "--request-timeout=12s",
+      "top",
+      "nodes"
+    ],
+    "cwd": "/home/pranav/Projects/helpdesk-capstone",
+    "started_at_utc": "2026-10-20T17:54:08.996991+00:00",
+    "finished_at_utc": "2026-10-20T17:54:12.640043+00:00",
+    "exit_code": 0,
+    "stdout": "eks-top-nodes-recorded.txt",
+    "stderr": ""
+  },
+  {
+    "name": "iam-relaydesk-capstone-cluster-role",
+    "command": [
+      "aws",
+      "iam",
+      "list-attached-role-policies",
+      "--role-name",
+      "relaydesk-capstone-cluster-role",
+      "--profile",
+      "devops-new",
+      "--region",
+      "ap-southeast-2",
+      "--output",
+      "json",
+      "--no-cli-pager"
+    ],
+    "cwd": "/home/pranav/Projects/helpdesk-capstone",
+    "started_at_utc": "2026-10-20T17:54:12.640096+00:00",
+    "finished_at_utc": "2026-10-20T17:54:14.194177+00:00",
+    "exit_code": 0,
+    "stdout": "iam-relaydesk-capstone-cluster-role.json",
+    "stderr": ""
+  },
+  {
+    "name": "iam-relaydesk-capstone-nodes-role",
+    "command": [
+      "aws",
+      "iam",
+      "list-attached-role-policies",
+      "--role-name",
+      "relaydesk-capstone-nodes-role",
+      "--profile",
+      "devops-new",
+      "--region",
+      "ap-southeast-2",
+      "--output",
+      "json",
+      "--no-cli-pager"
+    ],
+    "cwd": "/home/pranav/Projects/helpdesk-capstone",
+    "started_at_utc": "2026-10-20T17:54:14.194216+00:00",
+    "finished_at_utc": "2026-10-20T17:54:15.696832+00:00",
+    "exit_code": 0,
+    "stdout": "iam-relaydesk-capstone-nodes-role.json",
+    "stderr": ""
+  },
+  {
+    "name": "iam-relaydesk-capstone-ebs-csi-role",
+    "command": [
+      "aws",
+      "iam",
+      "list-attached-role-policies",
+      "--role-name",
+      "relaydesk-capstone-ebs-csi-role",
+      "--profile",
+      "devops-new",
+      "--region",
+      "ap-southeast-2",
+      "--output",
+      "json",
+      "--no-cli-pager"
+    ],
+    "cwd": "/home/pranav/Projects/helpdesk-capstone",
+    "started_at_utc": "2026-10-20T17:54:15.696866+00:00",
+    "finished_at_utc": "2026-10-20T17:54:17.275316+00:00",
+    "exit_code": 0,
+    "stdout": "iam-relaydesk-capstone-ebs-csi-role.json",
+    "stderr": ""
+  }
+]

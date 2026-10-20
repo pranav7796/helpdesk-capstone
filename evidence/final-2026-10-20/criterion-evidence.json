@@ -1,0 +1,902 @@
+[
+  {
+    "id": "C01",
+    "module": "M1",
+    "criterion": "FastAPI `/health` responds",
+    "points": 2,
+    "status": "PASS",
+    "implementation": "backend/app; backend/alembic; frontend/src",
+    "verification": "Backend /health=200 UP; /ready=200 READY; both replicas checked.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-application-eks.png",
+      "evidence/screenshots/2026-10-17-m8-services-ingress.png",
+      "evidence/screenshots/2026-10-17-m9-metrics.png",
+      "evidence/screenshots/2026-10-16-archive-m1-health-database.png"
+    ],
+    "evidence_basis": "Fresh",
+    "proof": [
+      "evidence/final-2026-10-20/backend-health.json",
+      "evidence/final-2026-10-20/backend-ready.json",
+      "evidence/final-2026-10-20/supplement-results.json"
+    ]
+  },
+  {
+    "id": "C02",
+    "module": "M1",
+    "criterion": "GET/POST/PUT/DELETE ticket API",
+    "points": 3,
+    "status": "PASS",
+    "implementation": "backend/app; backend/alembic; frontend/src",
+    "verification": "Ingress POST 201, GET/PUT 200, DELETE 204, deleted GET 404; validation 422; only synthetic row removed.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-application-eks.png",
+      "evidence/screenshots/2026-10-17-m8-services-ingress.png",
+      "evidence/screenshots/2026-10-17-m9-metrics.png",
+      "evidence/screenshots/2026-10-16-archive-m1-health-database.png"
+    ],
+    "evidence_basis": "Fresh",
+    "proof": [
+      "evidence/final-2026-10-20/http-check-results.json",
+      "evidence/final-2026-10-20/crud-summary.json"
+    ]
+  },
+  {
+    "id": "C03",
+    "module": "M1",
+    "criterion": "PostgreSQL table managed by Alembic",
+    "points": 2,
+    "status": "PASS",
+    "implementation": "backend/app; backend/alembic; frontend/src",
+    "verification": "Alembic 0001_tickets; nine-column tickets table; audit row read directly in PostgreSQL after PUT.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-application-eks.png",
+      "evidence/screenshots/2026-10-17-m8-services-ingress.png",
+      "evidence/screenshots/2026-10-17-m9-metrics.png",
+      "evidence/screenshots/2026-10-16-archive-m1-health-database.png"
+    ],
+    "evidence_basis": "Fresh",
+    "proof": [
+      "evidence/final-2026-10-20/postgres-schema.txt",
+      "evidence/final-2026-10-20/postgres-audit-row.txt"
+    ]
+  },
+  {
+    "id": "C04",
+    "module": "M1",
+    "criterion": "React frontend renders and calls API",
+    "points": 2,
+    "status": "PASS",
+    "implementation": "backend/app; backend/alembic; frontend/src",
+    "verification": "Frontend and JS/CSS return 200; ingress API works. Oct 17 browser screenshot inspected again; frontend source unchanged since deployed 0410804.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-application-eks.png",
+      "evidence/screenshots/2026-10-17-m8-services-ingress.png",
+      "evidence/screenshots/2026-10-17-m9-metrics.png",
+      "evidence/screenshots/2026-10-16-archive-m1-health-database.png"
+    ],
+    "evidence_basis": "Fresh HTTP + dated visual",
+    "proof": [
+      "evidence/final-2026-10-20/http-check-results.json",
+      "evidence/final-2026-10-20/source-inventory.json"
+    ]
+  },
+  {
+    "id": "C05",
+    "module": "M1",
+    "criterion": "Responsive usable UI",
+    "points": 1,
+    "status": "PASS",
+    "implementation": "backend/app; backend/alembic; frontend/src",
+    "verification": "Oct 16 390px mobile screenshots, hashes unchanged; responsive CSS inspected. No fresh browser interaction claimed.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-16-archive-m1-mobile-tickets.png",
+      "evidence/screenshots/2026-10-16-archive-m1-mobile-actions.png"
+    ],
+    "evidence_basis": "Dated visual + source",
+    "proof": [
+      "evidence/final-2026-10-20/evidence-integrity.json",
+      "evidence/final-2026-10-20/source-inventory.json"
+    ]
+  },
+  {
+    "id": "C06",
+    "module": "M2",
+    "criterion": "Pytest runs",
+    "points": 3,
+    "status": "PASS",
+    "implementation": "backend/tests; backend/pytest.ini",
+    "verification": "16 tests pass, one Starlette deprecation warning; tests cover health/readiness, CRUD, validation, metrics and use isolated in-memory SQLite.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m2-pytest.png"
+    ],
+    "evidence_basis": "Fresh",
+    "proof": [
+      "evidence/final-2026-10-20/pytest.txt",
+      "evidence/final-2026-10-20/pytest.xml",
+      "evidence/final-2026-10-20/source-inventory.json"
+    ]
+  },
+  {
+    "id": "C07",
+    "module": "M2",
+    "criterion": "At least 5 tests across 3 endpoints",
+    "points": 4,
+    "status": "PASS",
+    "implementation": "backend/tests; backend/pytest.ini",
+    "verification": "16 tests pass, one Starlette deprecation warning; tests cover health/readiness, CRUD, validation, metrics and use isolated in-memory SQLite.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m2-pytest.png"
+    ],
+    "evidence_basis": "Fresh",
+    "proof": [
+      "evidence/final-2026-10-20/pytest.txt",
+      "evidence/final-2026-10-20/pytest.xml",
+      "evidence/final-2026-10-20/source-inventory.json"
+    ]
+  },
+  {
+    "id": "C08",
+    "module": "M2",
+    "criterion": "Isolated test DB",
+    "points": 2,
+    "status": "PASS",
+    "implementation": "backend/tests; backend/pytest.ini",
+    "verification": "16 tests pass, one Starlette deprecation warning; tests cover health/readiness, CRUD, validation, metrics and use isolated in-memory SQLite.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m2-pytest.png"
+    ],
+    "evidence_basis": "Fresh",
+    "proof": [
+      "evidence/final-2026-10-20/pytest.txt",
+      "evidence/final-2026-10-20/pytest.xml",
+      "evidence/final-2026-10-20/source-inventory.json"
+    ]
+  },
+  {
+    "id": "C09",
+    "module": "M2",
+    "criterion": "Pytest config",
+    "points": 1,
+    "status": "PASS",
+    "implementation": "backend/tests; backend/pytest.ini",
+    "verification": "16 tests pass, one Starlette deprecation warning; tests cover health/readiness, CRUD, validation, metrics and use isolated in-memory SQLite.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m2-pytest.png"
+    ],
+    "evidence_basis": "Fresh",
+    "proof": [
+      "evidence/final-2026-10-20/pytest.txt",
+      "evidence/final-2026-10-20/pytest.xml",
+      "evidence/final-2026-10-20/source-inventory.json"
+    ]
+  },
+  {
+    "id": "C10",
+    "module": "M3",
+    "criterion": "Public GitHub repository linked in submission form",
+    "points": 2,
+    "status": "BLOCKED",
+    "implementation": ".gitignore; Git history; public repository",
+    "verification": "Repository is PUBLIC, but no accepted form receipt is available. Do not infer submission from a saved draft.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-16-archive-m3-git-history.png"
+    ],
+    "evidence_basis": "External / unverified",
+    "proof": [
+      "evidence/final-2026-10-20/github-repository.json"
+    ]
+  },
+  {
+    "id": "C11",
+    "module": "M3",
+    "criterion": "At least 10 meaningful commits",
+    "points": 2,
+    "status": "PASS",
+    "implementation": ".gitignore; Git history; public repository",
+    "verification": "24 commits in repository history; meaningful messages reviewed; public GitHub repository confirmed.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-16-archive-m3-git-history.png"
+    ],
+    "evidence_basis": "Fresh",
+    "proof": [
+      "evidence/final-2026-10-20/git-history.txt",
+      "evidence/final-2026-10-20/git-hygiene.json",
+      "evidence/final-2026-10-20/github-repository.json"
+    ]
+  },
+  {
+    "id": "C12",
+    "module": "M3",
+    "criterion": "`.gitignore` excludes secrets/build caches",
+    "points": 1,
+    "status": "PASS",
+    "implementation": ".gitignore; Git history; public repository",
+    "verification": "Eight ignore checks pass; no AWS-key/private-key signatures in 24-commit scan; no known private passwords in tracked files. Limited signature check, not a security guarantee.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-16-archive-m3-git-history.png"
+    ],
+    "evidence_basis": "Fresh",
+    "proof": [
+      "evidence/final-2026-10-20/git-hygiene.json"
+    ]
+  },
+  {
+    "id": "C13",
+    "module": "M4",
+    "criterion": "Backend Docker image builds",
+    "points": 2,
+    "status": "PASS",
+    "implementation": "backend/Dockerfile; frontend/Dockerfile; docker-compose.yml",
+    "verification": "Compose builds both images successfully; frontend uses Node build then unprivileged Nginx; latest hosted CI also builds both images.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m4-compose.png",
+      "evidence/screenshots/2026-10-17-application-compose.png"
+    ],
+    "evidence_basis": "Fresh build + source",
+    "proof": [
+      "evidence/final-2026-10-20/compose-build.txt",
+      "evidence/final-2026-10-20/latest-ci.json"
+    ]
+  },
+  {
+    "id": "C14",
+    "module": "M4",
+    "criterion": "Multi-stage frontend image",
+    "points": 3,
+    "status": "PASS",
+    "implementation": "backend/Dockerfile; frontend/Dockerfile; docker-compose.yml",
+    "verification": "Compose builds both images successfully; frontend uses Node build then unprivileged Nginx; latest hosted CI also builds both images.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m4-compose.png",
+      "evidence/screenshots/2026-10-17-application-compose.png"
+    ],
+    "evidence_basis": "Fresh build + source",
+    "proof": [
+      "evidence/final-2026-10-20/compose-build.txt",
+      "evidence/final-2026-10-20/latest-ci.json"
+    ]
+  },
+  {
+    "id": "C15",
+    "module": "M4",
+    "criterion": "Both application images use non-root users",
+    "points": 2,
+    "status": "PASS",
+    "implementation": "backend/Dockerfile; frontend/Dockerfile; docker-compose.yml",
+    "verification": "Local frontend UID 101; backend UID 10001; same UIDs checked on both EKS app replicas.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m4-compose.png",
+      "evidence/screenshots/2026-10-17-application-compose.png"
+    ],
+    "evidence_basis": "Fresh",
+    "proof": [
+      "evidence/final-2026-10-20/compose-uid-frontend.txt",
+      "evidence/final-2026-10-20/compose-uid-backend.txt",
+      "evidence/final-2026-10-20/supplement-results.json"
+    ]
+  },
+  {
+    "id": "C16",
+    "module": "M4",
+    "criterion": "Compose runs frontend/backend/PostgreSQL",
+    "points": 3,
+    "status": "PASS",
+    "implementation": "backend/Dockerfile; frontend/Dockerfile; docker-compose.yml",
+    "verification": "Compose build/up --wait exit 0; frontend/backend/PostgreSQL healthy, migration exited successfully; disposable CRUD preserves existing rows.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m4-compose.png",
+      "evidence/screenshots/2026-10-17-application-compose.png"
+    ],
+    "evidence_basis": "Fresh",
+    "proof": [
+      "evidence/final-2026-10-20/compose-build.txt",
+      "evidence/final-2026-10-20/compose-status-final.json",
+      "evidence/final-2026-10-20/compose-crud.json"
+    ]
+  },
+  {
+    "id": "C17",
+    "module": "M5",
+    "criterion": "Workflow file exists",
+    "points": 1,
+    "status": "PASS",
+    "implementation": ".github/workflows/ci.yml",
+    "verification": "Workflow push-to-main/test prerequisites/SHA tags inspected. Latest source run 38998365240 (a52cd91) has test, build-and-scan, helm-validation all successful; logs include both image pushes.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-ci-monitoring-fix-green.png",
+      "evidence/screenshots/2026-10-17-ghcr-backend.png",
+      "evidence/screenshots/2026-10-17-ghcr-frontend.png"
+    ],
+    "evidence_basis": "Source + fresh hosted API",
+    "proof": [
+      "evidence/final-2026-10-20/latest-ci.json",
+      "evidence/final-2026-10-20/latest-ci.log",
+      "evidence/final-2026-10-20/source-inventory.json"
+    ]
+  },
+  {
+    "id": "C18",
+    "module": "M5",
+    "criterion": "Push-to-main trigger",
+    "points": 1,
+    "status": "PASS",
+    "implementation": ".github/workflows/ci.yml",
+    "verification": "Workflow push-to-main/test prerequisites/SHA tags inspected. Latest source run 38998365240 (a52cd91) has test, build-and-scan, helm-validation all successful; logs include both image pushes.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-ci-monitoring-fix-green.png",
+      "evidence/screenshots/2026-10-17-ghcr-backend.png",
+      "evidence/screenshots/2026-10-17-ghcr-frontend.png"
+    ],
+    "evidence_basis": "Source + fresh hosted API",
+    "proof": [
+      "evidence/final-2026-10-20/latest-ci.json",
+      "evidence/final-2026-10-20/latest-ci.log",
+      "evidence/final-2026-10-20/source-inventory.json"
+    ]
+  },
+  {
+    "id": "C19",
+    "module": "M5",
+    "criterion": "CI pytest job",
+    "points": 3,
+    "status": "PASS",
+    "implementation": ".github/workflows/ci.yml",
+    "verification": "Workflow push-to-main/test prerequisites/SHA tags inspected. Latest source run 38998365240 (a52cd91) has test, build-and-scan, helm-validation all successful; logs include both image pushes.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-ci-monitoring-fix-green.png",
+      "evidence/screenshots/2026-10-17-ghcr-backend.png",
+      "evidence/screenshots/2026-10-17-ghcr-frontend.png"
+    ],
+    "evidence_basis": "Source + fresh hosted API",
+    "proof": [
+      "evidence/final-2026-10-20/latest-ci.json",
+      "evidence/final-2026-10-20/latest-ci.log",
+      "evidence/final-2026-10-20/source-inventory.json"
+    ]
+  },
+  {
+    "id": "C20",
+    "module": "M5",
+    "criterion": "CI frontend build",
+    "points": 2,
+    "status": "PASS",
+    "implementation": ".github/workflows/ci.yml",
+    "verification": "Workflow push-to-main/test prerequisites/SHA tags inspected. Latest source run 38998365240 (a52cd91) has test, build-and-scan, helm-validation all successful; logs include both image pushes.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-ci-monitoring-fix-green.png",
+      "evidence/screenshots/2026-10-17-ghcr-backend.png",
+      "evidence/screenshots/2026-10-17-ghcr-frontend.png"
+    ],
+    "evidence_basis": "Source + fresh hosted API",
+    "proof": [
+      "evidence/final-2026-10-20/latest-ci.json",
+      "evidence/final-2026-10-20/latest-ci.log",
+      "evidence/final-2026-10-20/source-inventory.json"
+    ]
+  },
+  {
+    "id": "C21",
+    "module": "M5",
+    "criterion": "CI builds both container images",
+    "points": 3,
+    "status": "PASS",
+    "implementation": ".github/workflows/ci.yml",
+    "verification": "Workflow push-to-main/test prerequisites/SHA tags inspected. Latest source run 38998365240 (a52cd91) has test, build-and-scan, helm-validation all successful; logs include both image pushes.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-ci-monitoring-fix-green.png",
+      "evidence/screenshots/2026-10-17-ghcr-backend.png",
+      "evidence/screenshots/2026-10-17-ghcr-frontend.png"
+    ],
+    "evidence_basis": "Source + fresh hosted API",
+    "proof": [
+      "evidence/final-2026-10-20/latest-ci.json",
+      "evidence/final-2026-10-20/latest-ci.log",
+      "evidence/final-2026-10-20/source-inventory.json"
+    ]
+  },
+  {
+    "id": "C22",
+    "module": "M5",
+    "criterion": "GHCR image publication",
+    "points": 3,
+    "status": "PASS",
+    "implementation": ".github/workflows/ci.yml",
+    "verification": "Workflow push-to-main/test prerequisites/SHA tags inspected. Latest source run 38998365240 (a52cd91) has test, build-and-scan, helm-validation all successful; logs include both image pushes.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-ci-monitoring-fix-green.png",
+      "evidence/screenshots/2026-10-17-ghcr-backend.png",
+      "evidence/screenshots/2026-10-17-ghcr-frontend.png"
+    ],
+    "evidence_basis": "Source + fresh hosted API",
+    "proof": [
+      "evidence/final-2026-10-20/latest-ci.json",
+      "evidence/final-2026-10-20/latest-ci.log",
+      "evidence/final-2026-10-20/source-inventory.json"
+    ]
+  },
+  {
+    "id": "C23",
+    "module": "M5",
+    "criterion": "Immutable commit SHA tags",
+    "points": 2,
+    "status": "PASS",
+    "implementation": ".github/workflows/ci.yml",
+    "verification": "Workflow push-to-main/test prerequisites/SHA tags inspected. Latest source run 38998365240 (a52cd91) has test, build-and-scan, helm-validation all successful; logs include both image pushes.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-ci-monitoring-fix-green.png",
+      "evidence/screenshots/2026-10-17-ghcr-backend.png",
+      "evidence/screenshots/2026-10-17-ghcr-frontend.png"
+    ],
+    "evidence_basis": "Source + fresh hosted API",
+    "proof": [
+      "evidence/final-2026-10-20/latest-ci.json",
+      "evidence/final-2026-10-20/latest-ci.log",
+      "evidence/final-2026-10-20/source-inventory.json"
+    ]
+  },
+  {
+    "id": "C24",
+    "module": "M6",
+    "criterion": "CI Trivy scans both images",
+    "points": 3,
+    "status": "PASS",
+    "implementation": ".github/workflows/ci.yml; .trivyignore.yaml; docs/SECURITY.md",
+    "verification": "Both backend and frontend Trivy steps succeeded in latest hosted run. This is a recheck of the Oct 17 scan, not a new Oct 20 vulnerability scan.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-16-archive-m6-trivy-backend.png",
+      "evidence/screenshots/2026-10-16-archive-m6-trivy-frontend.png",
+      "evidence/screenshots/2026-10-17-ci-green.png"
+    ],
+    "evidence_basis": "Source + fresh hosted API",
+    "proof": [
+      "evidence/final-2026-10-20/latest-ci.json",
+      "evidence/final-2026-10-20/latest-ci.log"
+    ]
+  },
+  {
+    "id": "C25",
+    "module": "M6",
+    "criterion": "HIGH/CRITICAL gate",
+    "points": 1,
+    "status": "PASS",
+    "implementation": ".github/workflows/ci.yml; .trivyignore.yaml; docs/SECURITY.md",
+    "verification": "HIGH/CRITICAL gate has exit-code 1, ignore-unfixed=true, and exact-PURL exceptions. PASS applies to the documented fixable/non-exempt policy, not every possible HIGH/CRITICAL finding. Strict no-exception acceptance requires instructor review.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-16-archive-m6-trivy-backend.png",
+      "evidence/screenshots/2026-10-16-archive-m6-trivy-frontend.png",
+      "evidence/screenshots/2026-10-17-ci-green.png"
+    ],
+    "evidence_basis": "Qualified policy",
+    "proof": [
+      "evidence/final-2026-10-20/latest-ci.json",
+      "evidence/final-2026-10-20/source-inventory.json",
+      ".github/workflows/ci.yml",
+      ".trivyignore.yaml",
+      "docs/SECURITY.md"
+    ]
+  },
+  {
+    "id": "C26",
+    "module": "M6",
+    "criterion": "Explain a finding and disposition",
+    "points": 1,
+    "status": "PASS",
+    "implementation": ".github/workflows/ci.yml; .trivyignore.yaml; docs/SECURITY.md",
+    "verification": "SECURITY.md explains CVE-2025-47273, fixed runtime packages and scoped SBOM exceptions. Student explanation/acceptance remains personal.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-16-archive-m6-trivy-backend.png",
+      "evidence/screenshots/2026-10-16-archive-m6-trivy-frontend.png",
+      "evidence/screenshots/2026-10-17-ci-green.png"
+    ],
+    "evidence_basis": "Written explanation",
+    "proof": [
+      "evidence/final-2026-10-20/source-inventory.json",
+      "docs/SECURITY.md"
+    ]
+  },
+  {
+    "id": "C27",
+    "module": "M7",
+    "criterion": "Valid Terraform HCL",
+    "points": 2,
+    "status": "PASS",
+    "implementation": "terraform/*.tf; terraform.tfvars.example; scripts/audit-plan.py",
+    "verification": "Locked-provider init, fmt -check -recursive and validate pass; refreshed plan exit 0/no changes.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m7-terraform.png",
+      "evidence/screenshots/2026-10-17-m7-aws-status.png",
+      "evidence/screenshots/2026-10-17-aws-vpc-console.png",
+      "evidence/screenshots/2026-10-17-aws-eks-console.png",
+      "evidence/screenshots/2026-10-16-archive-sydney--m7-sydney-plan.png",
+      "evidence/screenshots/2026-10-16-archive-sydney--aws-apply-verified.png"
+    ],
+    "evidence_basis": "Fresh",
+    "proof": [
+      "evidence/final-2026-10-20/terraform-init-recorded.txt",
+      "evidence/final-2026-10-20/terraform-validate-recorded.txt",
+      "evidence/final-2026-10-20/terraform-plan.txt",
+      "evidence/final-2026-10-20/supplement-results.json"
+    ]
+  },
+  {
+    "id": "C28",
+    "module": "M7",
+    "criterion": "Terraform init",
+    "points": 1,
+    "status": "PASS",
+    "implementation": "terraform/*.tf; terraform.tfvars.example; scripts/audit-plan.py",
+    "verification": "Locked-provider init, fmt -check -recursive and validate pass; refreshed plan exit 0/no changes.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m7-terraform.png",
+      "evidence/screenshots/2026-10-17-m7-aws-status.png",
+      "evidence/screenshots/2026-10-17-aws-vpc-console.png",
+      "evidence/screenshots/2026-10-17-aws-eks-console.png",
+      "evidence/screenshots/2026-10-16-archive-sydney--m7-sydney-plan.png",
+      "evidence/screenshots/2026-10-16-archive-sydney--aws-apply-verified.png"
+    ],
+    "evidence_basis": "Fresh",
+    "proof": [
+      "evidence/final-2026-10-20/terraform-init-recorded.txt",
+      "evidence/final-2026-10-20/terraform-validate-recorded.txt",
+      "evidence/final-2026-10-20/terraform-plan.txt",
+      "evidence/final-2026-10-20/supplement-results.json"
+    ]
+  },
+  {
+    "id": "C29",
+    "module": "M7",
+    "criterion": "Non-empty Terraform plan",
+    "points": 2,
+    "status": "PASS",
+    "implementation": "terraform/*.tf; terraform.tfvars.example; scripts/audit-plan.py",
+    "verification": "Original Sydney plan has 28 additions; approved Oct 16 apply recorded. Fresh drift plan has no changes; it is not substituted for original non-empty plan.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m7-terraform.png",
+      "evidence/screenshots/2026-10-17-m7-aws-status.png",
+      "evidence/screenshots/2026-10-17-aws-vpc-console.png",
+      "evidence/screenshots/2026-10-17-aws-eks-console.png",
+      "evidence/screenshots/2026-10-16-archive-sydney--m7-sydney-plan.png",
+      "evidence/screenshots/2026-10-16-archive-sydney--aws-apply-verified.png"
+    ],
+    "evidence_basis": "Historical create plan + fresh drift",
+    "proof": [
+      "evidence/final-2026-10-20/terraform-plan.txt",
+      "evidence/sydney/terraform-plan.txt",
+      "evidence/sydney/terraform-apply.txt",
+      "evidence/sydney/DEPLOYMENT-APPROVAL.md"
+    ]
+  },
+  {
+    "id": "C30",
+    "module": "M7",
+    "criterion": "VPC with two public subnets provisioned",
+    "points": 3,
+    "status": "PASS",
+    "implementation": "terraform/*.tf; terraform.tfvars.example; scripts/audit-plan.py",
+    "verification": "VPC available; two public subnets in distinct AZs route via IGW; two private subnets route via available NAT.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m7-terraform.png",
+      "evidence/screenshots/2026-10-17-m7-aws-status.png",
+      "evidence/screenshots/2026-10-17-aws-vpc-console.png",
+      "evidence/screenshots/2026-10-17-aws-eks-console.png",
+      "evidence/screenshots/2026-10-16-archive-sydney--m7-sydney-plan.png",
+      "evidence/screenshots/2026-10-16-archive-sydney--aws-apply-verified.png"
+    ],
+    "evidence_basis": "Fresh AWS",
+    "proof": [
+      "evidence/final-2026-10-20/aws-vpc.json",
+      "evidence/final-2026-10-20/aws-subnets.json",
+      "evidence/final-2026-10-20/aws-routes.json",
+      "evidence/final-2026-10-20/aws-nat-retry.json"
+    ]
+  },
+  {
+    "id": "C31",
+    "module": "M7",
+    "criterion": "EKS and worker node group provisioned",
+    "points": 4,
+    "status": "PASS",
+    "implementation": "terraform/*.tf; terraform.tfvars.example; scripts/audit-plan.py",
+    "verification": "EKS ACTIVE 1.35; managed group ACTIVE; two private t3.medium workers Ready; all three managed add-ons ACTIVE.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m7-terraform.png",
+      "evidence/screenshots/2026-10-17-m7-aws-status.png",
+      "evidence/screenshots/2026-10-17-aws-vpc-console.png",
+      "evidence/screenshots/2026-10-17-aws-eks-console.png",
+      "evidence/screenshots/2026-10-16-archive-sydney--m7-sydney-plan.png",
+      "evidence/screenshots/2026-10-16-archive-sydney--aws-apply-verified.png"
+    ],
+    "evidence_basis": "Fresh AWS + Kubernetes",
+    "proof": [
+      "evidence/final-2026-10-20/aws-eks.json",
+      "evidence/final-2026-10-20/aws-nodegroup.json",
+      "evidence/final-2026-10-20/eks-nodes.json",
+      "evidence/final-2026-10-20/aws-addons.json"
+    ]
+  },
+  {
+    "id": "C32",
+    "module": "M7",
+    "criterion": "Terraform destroy demonstrated",
+    "points": 2,
+    "status": "BLOCKED",
+    "implementation": "terraform/*.tf; terraform.tfvars.example; scripts/audit-plan.py",
+    "verification": "Actual destroy and completion screenshot absent. User explicitly prohibits destroying existing AWS resources. No cleanup was executed.",
+    "screenshots": [],
+    "evidence_basis": "Prohibited / pending",
+    "proof": [
+      "evidence/final-2026-10-20/collection-results.json"
+    ]
+  },
+  {
+    "id": "C33",
+    "module": "M7",
+    "criterion": "Example tfvars, no secrets",
+    "points": 1,
+    "status": "PASS",
+    "implementation": "terraform/*.tf; terraform.tfvars.example; scripts/audit-plan.py",
+    "verification": "Example tfvars and allowed-account guard present; state/tfvars/private evidence ignored; tracked-file/history signature checks report no matches.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m7-terraform.png",
+      "evidence/screenshots/2026-10-17-m7-aws-status.png",
+      "evidence/screenshots/2026-10-17-aws-vpc-console.png",
+      "evidence/screenshots/2026-10-17-aws-eks-console.png",
+      "evidence/screenshots/2026-10-16-archive-sydney--m7-sydney-plan.png",
+      "evidence/screenshots/2026-10-16-archive-sydney--aws-apply-verified.png"
+    ],
+    "evidence_basis": "Fresh source/hygiene",
+    "proof": [
+      "evidence/final-2026-10-20/source-inventory.json",
+      "evidence/final-2026-10-20/git-hygiene.json"
+    ]
+  },
+  {
+    "id": "C34",
+    "module": "M8",
+    "criterion": "Namespace applies",
+    "points": 1,
+    "status": "PASS",
+    "implementation": "k8s/; helm/helpdesk/",
+    "verification": "Existing relaydesk namespace verified; apply --dry-run=server succeeds without changing namespace.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m8-pods-deployments.png",
+      "evidence/screenshots/2026-10-17-m8-services-ingress.png",
+      "evidence/screenshots/2026-10-17-application-eks.png"
+    ],
+    "evidence_basis": "Fresh server dry run",
+    "proof": [
+      "evidence/final-2026-10-20/eks-namespace-dryrun.txt"
+    ]
+  },
+  {
+    "id": "C35",
+    "module": "M8",
+    "criterion": "Helm chart structure",
+    "points": 3,
+    "status": "PASS",
+    "implementation": "k8s/; helm/helpdesk/",
+    "verification": "Complete chart inspected; local and EKS Helm lint pass; only optional icon recommendation.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m8-pods-deployments.png",
+      "evidence/screenshots/2026-10-17-m8-services-ingress.png",
+      "evidence/screenshots/2026-10-17-application-eks.png"
+    ],
+    "evidence_basis": "Fresh",
+    "proof": [
+      "evidence/final-2026-10-20/helm-local-lint.txt",
+      "evidence/final-2026-10-20/helm-eks-lint.txt"
+    ]
+  },
+  {
+    "id": "C36",
+    "module": "M8",
+    "criterion": "Helm install/upgrade succeeds",
+    "points": 3,
+    "status": "PASS",
+    "implementation": "k8s/; helm/helpdesk/",
+    "verification": "Helm relaydesk revision 2 deployed; history shows successful upgrade. Prior actual deploy/release logs retained; no unnecessary new upgrade run.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m8-pods-deployments.png",
+      "evidence/screenshots/2026-10-17-m8-services-ingress.png",
+      "evidence/screenshots/2026-10-17-application-eks.png"
+    ],
+    "evidence_basis": "Fresh release state + historical execution",
+    "proof": [
+      "evidence/final-2026-10-20/helm-list.json",
+      "evidence/final-2026-10-20/helm-history.json",
+      "evidence/sydney/eks-deploy.txt",
+      "evidence/sydney/release-demo-commands.txt"
+    ]
+  },
+  {
+    "id": "C37",
+    "module": "M8",
+    "criterion": "Frontend and backend each have 2 replicas",
+    "points": 2,
+    "status": "PASS",
+    "implementation": "k8s/; helm/helpdesk/",
+    "verification": "App Deployments each ready/available=2; frontend and backend Services are ClusterIP with ready EndpointSlices.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m8-pods-deployments.png",
+      "evidence/screenshots/2026-10-17-m8-services-ingress.png",
+      "evidence/screenshots/2026-10-17-application-eks.png"
+    ],
+    "evidence_basis": "Fresh",
+    "proof": [
+      "evidence/final-2026-10-20/eks-runtime.json",
+      "evidence/final-2026-10-20/eks-endpoints.json"
+    ]
+  },
+  {
+    "id": "C38",
+    "module": "M8",
+    "criterion": "ClusterIP services",
+    "points": 2,
+    "status": "PASS",
+    "implementation": "k8s/; helm/helpdesk/",
+    "verification": "App Deployments each ready/available=2; frontend and backend Services are ClusterIP with ready EndpointSlices.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m8-pods-deployments.png",
+      "evidence/screenshots/2026-10-17-m8-services-ingress.png",
+      "evidence/screenshots/2026-10-17-application-eks.png"
+    ],
+    "evidence_basis": "Fresh",
+    "proof": [
+      "evidence/final-2026-10-20/eks-runtime.json",
+      "evidence/final-2026-10-20/eks-endpoints.json"
+    ]
+  },
+  {
+    "id": "C39",
+    "module": "M8",
+    "criterion": "Ingress routes frontend and `/api`",
+    "points": 2,
+    "status": "PASS",
+    "implementation": "k8s/; helm/helpdesk/",
+    "verification": "Ingress / -> frontend:80 and /api -> backend:8000; live frontend/assets and CRUD verified via same ELB.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m8-pods-deployments.png",
+      "evidence/screenshots/2026-10-17-m8-services-ingress.png",
+      "evidence/screenshots/2026-10-17-application-eks.png"
+    ],
+    "evidence_basis": "Fresh",
+    "proof": [
+      "evidence/final-2026-10-20/eks-runtime.json",
+      "evidence/final-2026-10-20/http-check-results.json"
+    ]
+  },
+  {
+    "id": "C40",
+    "module": "M8",
+    "criterion": "Pods running and ready",
+    "points": 2,
+    "status": "PASS",
+    "implementation": "k8s/; helm/helpdesk/",
+    "verification": "All 23 Pods Running/Ready, zero container restarts; seven in relaydesk and two Traefik. No Warning events in returned snapshot.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m8-pods-deployments.png",
+      "evidence/screenshots/2026-10-17-m8-services-ingress.png",
+      "evidence/screenshots/2026-10-17-application-eks.png"
+    ],
+    "evidence_basis": "Fresh",
+    "proof": [
+      "evidence/final-2026-10-20/eks-pods.json",
+      "evidence/final-2026-10-20/eks-events.json",
+      "evidence/final-2026-10-20/eks-ingress.json"
+    ]
+  },
+  {
+    "id": "C41",
+    "module": "M9",
+    "criterion": "Prometheus `/metrics` output",
+    "points": 2,
+    "status": "PASS",
+    "implementation": "backend/app/main.py; monitoring/",
+    "verification": "Backend /metrics=200 with Prometheus content type and real HTTP counters; checked directly, not through frontend fallback.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m9-metrics.png",
+      "evidence/screenshots/2026-10-17-prometheus-replicas-up.png",
+      "evidence/screenshots/2026-10-17-grafana-corrected-rates.png"
+    ],
+    "evidence_basis": "Fresh",
+    "proof": [
+      "evidence/final-2026-10-20/backend-metrics.txt",
+      "evidence/final-2026-10-20/http-check-results.json"
+    ]
+  },
+  {
+    "id": "C42",
+    "module": "M9",
+    "criterion": "Prometheus scrapes application",
+    "points": 3,
+    "status": "PASS",
+    "implementation": "backend/app/main.py; monitoring/",
+    "verification": "Two independent Pod-IP scrape targets healthy/up=1, scrape_mode=pod; promtool config valid; zero observed resets over 5m.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m9-metrics.png",
+      "evidence/screenshots/2026-10-17-prometheus-replicas-up.png",
+      "evidence/screenshots/2026-10-17-grafana-corrected-rates.png"
+    ],
+    "evidence_basis": "Fresh",
+    "proof": [
+      "evidence/final-2026-10-20/prometheus-targets.json",
+      "evidence/final-2026-10-20/prometheus-up.json",
+      "evidence/final-2026-10-20/prometheus-resets.json",
+      "evidence/final-2026-10-20/promtool.txt"
+    ]
+  },
+  {
+    "id": "C43",
+    "module": "M9",
+    "criterion": "Grafana installed and accessible",
+    "points": 2,
+    "status": "PASS",
+    "implementation": "backend/app/main.py; monitoring/",
+    "verification": "Grafana health database=ok; authenticated dashboard GET and datasource health OK; localhost-only forward.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m9-metrics.png",
+      "evidence/screenshots/2026-10-17-prometheus-replicas-up.png",
+      "evidence/screenshots/2026-10-17-grafana-corrected-rates.png"
+    ],
+    "evidence_basis": "Fresh",
+    "proof": [
+      "evidence/final-2026-10-20/grafana-health.json",
+      "evidence/final-2026-10-20/grafana-dashboard.json",
+      "evidence/final-2026-10-20/grafana-datasource-health.json"
+    ]
+  },
+  {
+    "id": "C44",
+    "module": "M9",
+    "criterion": "Live request metrics panel",
+    "points": 3,
+    "status": "PASS",
+    "implementation": "backend/app/main.py; monitoring/",
+    "verification": "Authenticated Grafana /api/ds/query executes saved panel expression and returns positive data frames; Oct 17 populated panel screenshot inspected again. No fresh rendered-panel screenshot claimed.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-17-m9-metrics.png",
+      "evidence/screenshots/2026-10-17-prometheus-replicas-up.png",
+      "evidence/screenshots/2026-10-17-grafana-corrected-rates.png"
+    ],
+    "evidence_basis": "Fresh data + dated visual",
+    "proof": [
+      "evidence/final-2026-10-20/grafana-panel-query.json",
+      "evidence/final-2026-10-20/prometheus-rates.json",
+      "evidence/final-2026-10-20/evidence-integrity.json"
+    ]
+  },
+  {
+    "id": "C45",
+    "module": "M10",
+    "criterion": "Root README explains application",
+    "points": 2,
+    "status": "PASS",
+    "implementation": "README.md; docs/PRESENTATION.md",
+    "verification": "README covers original application, execution, API, tests, containers, AWS/Kubernetes, security and current audit limitations.",
+    "screenshots": [],
+    "evidence_basis": "Reviewed/updated",
+    "proof": [
+      "evidence/final-2026-10-20/source-inventory.json"
+    ]
+  },
+  {
+    "id": "C46",
+    "module": "M10",
+    "criterion": "Live or recorded commit \u2192 CI \u2192 deployment update presentation",
+    "points": 3,
+    "status": "PASS",
+    "implementation": "frontend/src/main.jsx; CI 38946277016; actual recorded Helm release",
+    "verification": "Genuine recorded 0410804 commit -> green CI -> Helm revision 2 -> changed app retained; four video hashes and ffprobe metadata pass. No new rollout or student narration claimed.",
+    "screenshots": [
+      "evidence/screenshots/2026-10-16-archive-sydney--m10-release-green.png",
+      "evidence/screenshots/2026-10-16-archive-sydney--m10-release-updated-app.png"
+    ],
+    "evidence_basis": "Historical recorded release",
+    "proof": [
+      "evidence/final-2026-10-20/evidence-integrity.json",
+      "evidence/videos/m10-real-release-walkthrough.webm",
+      "evidence/videos/m10-release-result-continuation.webm",
+      "evidence/sydney/release-demo-manifest.json"
+    ]
+  }
+]

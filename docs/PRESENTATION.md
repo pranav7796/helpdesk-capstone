@@ -1,4 +1,4 @@
-# Presentation notes and final seven marks
+# Presentation notes and remaining owner actions
 
 Only the instructor awards marks. Do not claim submission, cleanup or student understanding from configuration files alone.
 

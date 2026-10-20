@@ -1,0 +1,1302 @@
+{
+  "apiVersion": "v1",
+  "items": [
+    {
+      "apiVersion": "apps/v1",
+      "kind": "Deployment",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1"
+        },
+        "creationTimestamp": "2026-10-16T17:46:28Z",
+        "generation": 1,
+        "labels": {
+          "app": "grafana"
+        },
+        "name": "grafana",
+        "namespace": "relaydesk",
+        "resourceVersion": "3467",
+        "uid": "dc93298f-a2f5-441e-8e56-930cf8d28eb4"
+      },
+      "spec": {
+        "progressDeadlineSeconds": 600,
+        "replicas": 1,
+        "revisionHistoryLimit": 10,
+        "selector": {
+          "matchLabels": {
+            "app": "grafana"
+          }
+        },
+        "strategy": {
+          "rollingUpdate": {
+            "maxSurge": "25%",
+            "maxUnavailable": "25%"
+          },
+          "type": "RollingUpdate"
+        },
+        "template": {
+          "metadata": {
+            "labels": {
+              "app": "grafana"
+            }
+          },
+          "spec": {
+            "containers": [
+              {
+                "env": [
+                  {
+                    "name": "GF_SECURITY_ADMIN_PASSWORD",
+                    "valueFrom": {
+                      "secretKeyRef": {
+                        "key": "password",
+                        "name": "grafana-admin"
+                      }
+                    }
+                  },
+                  {
+                    "name": "GF_AUTH_ANONYMOUS_ENABLED",
+                    "value": "false"
+                  },
+                  {
+                    "name": "GF_SECURITY_ADMIN_USER",
+                    "value": "admin"
+                  },
+                  {
+                    "name": "GF_AUTH_ANONYMOUS_ORG_ROLE",
+                    "value": "Viewer"
+                  }
+                ],
+                "image": "grafana/grafana:latest",
+                "imagePullPolicy": "IfNotPresent",
+                "livenessProbe": {
+                  "failureThreshold": 3,
+                  "httpGet": {
+                    "path": "/api/health",
+                    "port": "web",
+                    "scheme": "HTTP"
+                  },
+                  "initialDelaySeconds": 15,
+                  "periodSeconds": 10,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1
+                },
+                "name": "grafana",
+                "ports": [
+                  {
+                    "containerPort": 3000,
+                    "name": "web",
+                    "protocol": "TCP"
+                  }
+                ],
+                "readinessProbe": {
+                  "failureThreshold": 3,
+                  "httpGet": {
+                    "path": "/api/health",
+                    "port": "web",
+                    "scheme": "HTTP"
+                  },
+                  "initialDelaySeconds": 10,
+                  "periodSeconds": 10,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1
+                },
+                "resources": {
+                  "limits": {
+                    "cpu": "700m",
+                    "memory": "768Mi"
+                  },
+                  "requests": {
+                    "cpu": "100m",
+                    "memory": "256Mi"
+                  }
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "volumeMounts": [
+                  {
+                    "mountPath": "/etc/grafana/provisioning/datasources",
+                    "name": "datasource"
+                  },
+                  {
+                    "mountPath": "/etc/grafana/provisioning/dashboards",
+                    "name": "provider"
+                  },
+                  {
+                    "mountPath": "/var/lib/grafana/dashboards",
+                    "name": "dashboard"
+                  }
+                ]
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {},
+            "terminationGracePeriodSeconds": 30,
+            "volumes": [
+              {
+                "configMap": {
+                  "defaultMode": 420,
+                  "name": "grafana-datasource"
+                },
+                "name": "datasource"
+              },
+              {
+                "configMap": {
+                  "defaultMode": 420,
+                  "name": "grafana-dashboard-provider"
+                },
+                "name": "provider"
+              },
+              {
+                "configMap": {
+                  "defaultMode": 420,
+                  "name": "grafana-dashboard"
+                },
+                "name": "dashboard"
+              }
+            ]
+          }
+        }
+      },
+      "status": {
+        "availableReplicas": 1,
+        "conditions": [
+          {
+            "lastTransitionTime": "2026-10-16T17:47:15Z",
+            "lastUpdateTime": "2026-10-16T17:47:15Z",
+            "message": "Deployment has minimum availability.",
+            "reason": "MinimumReplicasAvailable",
+            "status": "True",
+            "type": "Available"
+          },
+          {
+            "lastTransitionTime": "2026-10-16T17:46:28Z",
+            "lastUpdateTime": "2026-10-16T17:47:15Z",
+            "message": "ReplicaSet \"grafana-6bf844bfcb\" has successfully progressed.",
+            "reason": "NewReplicaSetAvailable",
+            "status": "True",
+            "type": "Progressing"
+          }
+        ],
+        "observedGeneration": 1,
+        "readyReplicas": 1,
+        "replicas": 1,
+        "terminatingReplicas": 0,
+        "updatedReplicas": 1
+      }
+    },
+    {
+      "apiVersion": "apps/v1",
+      "kind": "Deployment",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1"
+        },
+        "creationTimestamp": "2026-10-16T17:46:29Z",
+        "generation": 1,
+        "labels": {
+          "app": "prometheus"
+        },
+        "name": "prometheus",
+        "namespace": "relaydesk",
+        "resourceVersion": "3370",
+        "uid": "361cf924-5a2b-482a-a07b-eb65b18d10f9"
+      },
+      "spec": {
+        "progressDeadlineSeconds": 600,
+        "replicas": 1,
+        "revisionHistoryLimit": 10,
+        "selector": {
+          "matchLabels": {
+            "app": "prometheus"
+          }
+        },
+        "strategy": {
+          "rollingUpdate": {
+            "maxSurge": "25%",
+            "maxUnavailable": "25%"
+          },
+          "type": "RollingUpdate"
+        },
+        "template": {
+          "metadata": {
+            "labels": {
+              "app": "prometheus"
+            }
+          },
+          "spec": {
+            "containers": [
+              {
+                "args": [
+                  "--config.file=/etc/prometheus/prometheus.yml",
+                  "--storage.tsdb.path=/prometheus"
+                ],
+                "image": "prom/prometheus:latest",
+                "imagePullPolicy": "IfNotPresent",
+                "livenessProbe": {
+                  "failureThreshold": 3,
+                  "httpGet": {
+                    "path": "/-/healthy",
+                    "port": "web",
+                    "scheme": "HTTP"
+                  },
+                  "initialDelaySeconds": 10,
+                  "periodSeconds": 10,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1
+                },
+                "name": "prometheus",
+                "ports": [
+                  {
+                    "containerPort": 9090,
+                    "name": "web",
+                    "protocol": "TCP"
+                  }
+                ],
+                "readinessProbe": {
+                  "failureThreshold": 3,
+                  "httpGet": {
+                    "path": "/-/ready",
+                    "port": "web",
+                    "scheme": "HTTP"
+                  },
+                  "initialDelaySeconds": 5,
+                  "periodSeconds": 10,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1
+                },
+                "resources": {
+                  "limits": {
+                    "cpu": "700m",
+                    "memory": "768Mi"
+                  },
+                  "requests": {
+                    "cpu": "100m",
+                    "memory": "256Mi"
+                  }
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "volumeMounts": [
+                  {
+                    "mountPath": "/etc/prometheus",
+                    "name": "config"
+                  }
+                ]
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {},
+            "terminationGracePeriodSeconds": 30,
+            "volumes": [
+              {
+                "configMap": {
+                  "defaultMode": 420,
+                  "name": "prometheus-config"
+                },
+                "name": "config"
+              }
+            ]
+          }
+        }
+      },
+      "status": {
+        "availableReplicas": 1,
+        "conditions": [
+          {
+            "lastTransitionTime": "2026-10-16T17:46:51Z",
+            "lastUpdateTime": "2026-10-16T17:46:51Z",
+            "message": "Deployment has minimum availability.",
+            "reason": "MinimumReplicasAvailable",
+            "status": "True",
+            "type": "Available"
+          },
+          {
+            "lastTransitionTime": "2026-10-16T17:46:29Z",
+            "lastUpdateTime": "2026-10-16T17:46:51Z",
+            "message": "ReplicaSet \"prometheus-cd7d5fdc5\" has successfully progressed.",
+            "reason": "NewReplicaSetAvailable",
+            "status": "True",
+            "type": "Progressing"
+          }
+        ],
+        "observedGeneration": 1,
+        "readyReplicas": 1,
+        "replicas": 1,
+        "terminatingReplicas": 0,
+        "updatedReplicas": 1
+      }
+    },
+    {
+      "apiVersion": "apps/v1",
+      "kind": "Deployment",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "meta.helm.sh/release-name": "relaydesk",
+          "meta.helm.sh/release-namespace": "relaydesk"
+        },
+        "creationTimestamp": "2026-10-16T17:43:19Z",
+        "generation": 1,
+        "labels": {
+          "app": "relaydesk-backend",
+          "app.kubernetes.io/instance": "relaydesk",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "relaydesk",
+          "helm.sh/chart": "relaydesk-1.0.0"
+        },
+        "name": "relaydesk-backend",
+        "namespace": "relaydesk",
+        "resourceVersion": "2597",
+        "uid": "ba196c48-0dd1-4c92-9ce0-680c8051fb57"
+      },
+      "spec": {
+        "progressDeadlineSeconds": 600,
+        "replicas": 2,
+        "revisionHistoryLimit": 10,
+        "selector": {
+          "matchLabels": {
+            "app": "relaydesk-backend"
+          }
+        },
+        "strategy": {
+          "rollingUpdate": {
+            "maxSurge": "25%",
+            "maxUnavailable": "25%"
+          },
+          "type": "RollingUpdate"
+        },
+        "template": {
+          "metadata": {
+            "labels": {
+              "app": "relaydesk-backend",
+              "app.kubernetes.io/instance": "relaydesk",
+              "app.kubernetes.io/managed-by": "Helm",
+              "app.kubernetes.io/name": "relaydesk",
+              "helm.sh/chart": "relaydesk-1.0.0"
+            }
+          },
+          "spec": {
+            "containers": [
+              {
+                "env": [
+                  {
+                    "name": "DATABASE_URL",
+                    "valueFrom": {
+                      "secretKeyRef": {
+                        "key": "DATABASE_URL",
+                        "name": "relaydesk-database"
+                      }
+                    }
+                  }
+                ],
+                "image": "ghcr.io/pranav7796/helpdesk-capstone/backend:d07bca6accc35f0224aaae8c4057076a9c4c9261",
+                "imagePullPolicy": "IfNotPresent",
+                "livenessProbe": {
+                  "failureThreshold": 3,
+                  "httpGet": {
+                    "path": "/health",
+                    "port": "http",
+                    "scheme": "HTTP"
+                  },
+                  "initialDelaySeconds": 10,
+                  "periodSeconds": 10,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1
+                },
+                "name": "backend",
+                "ports": [
+                  {
+                    "containerPort": 8000,
+                    "name": "http",
+                    "protocol": "TCP"
+                  }
+                ],
+                "readinessProbe": {
+                  "failureThreshold": 3,
+                  "httpGet": {
+                    "path": "/ready",
+                    "port": "http",
+                    "scheme": "HTTP"
+                  },
+                  "initialDelaySeconds": 5,
+                  "periodSeconds": 5,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1
+                },
+                "resources": {
+                  "limits": {
+                    "cpu": "700m",
+                    "memory": "384Mi"
+                  },
+                  "requests": {
+                    "cpu": "100m",
+                    "memory": "128Mi"
+                  }
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "initContainers": [
+              {
+                "command": [
+                  "alembic",
+                  "upgrade",
+                  "head"
+                ],
+                "env": [
+                  {
+                    "name": "DATABASE_URL",
+                    "valueFrom": {
+                      "secretKeyRef": {
+                        "key": "DATABASE_URL",
+                        "name": "relaydesk-database"
+                      }
+                    }
+                  }
+                ],
+                "image": "ghcr.io/pranav7796/helpdesk-capstone/backend:d07bca6accc35f0224aaae8c4057076a9c4c9261",
+                "imagePullPolicy": "IfNotPresent",
+                "name": "database-migrations",
+                "resources": {
+                  "limits": {
+                    "cpu": "300m",
+                    "memory": "192Mi"
+                  },
+                  "requests": {
+                    "cpu": "50m",
+                    "memory": "64Mi"
+                  }
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {
+              "runAsGroup": 10001,
+              "runAsNonRoot": true,
+              "runAsUser": 10001
+            },
+            "terminationGracePeriodSeconds": 30
+          }
+        }
+      },
+      "status": {
+        "availableReplicas": 2,
+        "conditions": [
+          {
+            "lastTransitionTime": "2026-10-16T17:44:09Z",
+            "lastUpdateTime": "2026-10-16T17:44:09Z",
+            "message": "Deployment has minimum availability.",
+            "reason": "MinimumReplicasAvailable",
+            "status": "True",
+            "type": "Available"
+          },
+          {
+            "lastTransitionTime": "2026-10-16T17:43:19Z",
+            "lastUpdateTime": "2026-10-16T17:44:09Z",
+            "message": "ReplicaSet \"relaydesk-backend-7556c8f9c4\" has successfully progressed.",
+            "reason": "NewReplicaSetAvailable",
+            "status": "True",
+            "type": "Progressing"
+          }
+        ],
+        "observedGeneration": 1,
+        "readyReplicas": 2,
+        "replicas": 2,
+        "terminatingReplicas": 0,
+        "updatedReplicas": 2
+      }
+    },
+    {
+      "apiVersion": "apps/v1",
+      "kind": "Deployment",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/revision": "2",
+          "meta.helm.sh/release-name": "relaydesk",
+          "meta.helm.sh/release-namespace": "relaydesk"
+        },
+        "creationTimestamp": "2026-10-16T17:43:19Z",
+        "generation": 2,
+        "labels": {
+          "app": "relaydesk-frontend",
+          "app.kubernetes.io/instance": "relaydesk",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "relaydesk",
+          "helm.sh/chart": "relaydesk-1.0.0"
+        },
+        "name": "relaydesk-frontend",
+        "namespace": "relaydesk",
+        "resourceVersion": "10994",
+        "uid": "253fc952-3775-430c-842b-9bb7780ac8e8"
+      },
+      "spec": {
+        "progressDeadlineSeconds": 600,
+        "replicas": 2,
+        "revisionHistoryLimit": 10,
+        "selector": {
+          "matchLabels": {
+            "app": "relaydesk-frontend"
+          }
+        },
+        "strategy": {
+          "rollingUpdate": {
+            "maxSurge": "25%",
+            "maxUnavailable": "25%"
+          },
+          "type": "RollingUpdate"
+        },
+        "template": {
+          "metadata": {
+            "labels": {
+              "app": "relaydesk-frontend",
+              "app.kubernetes.io/instance": "relaydesk",
+              "app.kubernetes.io/managed-by": "Helm",
+              "app.kubernetes.io/name": "relaydesk",
+              "helm.sh/chart": "relaydesk-1.0.0"
+            }
+          },
+          "spec": {
+            "containers": [
+              {
+                "image": "ghcr.io/pranav7796/helpdesk-capstone/frontend:04108043563d24dfc2ceb70e050fd56b5e9cc577",
+                "imagePullPolicy": "IfNotPresent",
+                "livenessProbe": {
+                  "failureThreshold": 3,
+                  "httpGet": {
+                    "path": "/healthz",
+                    "port": "http",
+                    "scheme": "HTTP"
+                  },
+                  "initialDelaySeconds": 5,
+                  "periodSeconds": 10,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1
+                },
+                "name": "frontend",
+                "ports": [
+                  {
+                    "containerPort": 8080,
+                    "name": "http",
+                    "protocol": "TCP"
+                  }
+                ],
+                "readinessProbe": {
+                  "failureThreshold": 3,
+                  "httpGet": {
+                    "path": "/healthz",
+                    "port": "http",
+                    "scheme": "HTTP"
+                  },
+                  "initialDelaySeconds": 2,
+                  "periodSeconds": 10,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1
+                },
+                "resources": {
+                  "limits": {
+                    "cpu": "300m",
+                    "memory": "128Mi"
+                  },
+                  "requests": {
+                    "cpu": "50m",
+                    "memory": "32Mi"
+                  }
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {
+              "runAsGroup": 101,
+              "runAsNonRoot": true,
+              "runAsUser": 101
+            },
+            "terminationGracePeriodSeconds": 30
+          }
+        }
+      },
+      "status": {
+        "availableReplicas": 2,
+        "conditions": [
+          {
+            "lastTransitionTime": "2026-10-16T17:43:30Z",
+            "lastUpdateTime": "2026-10-16T17:43:30Z",
+            "message": "Deployment has minimum availability.",
+            "reason": "MinimumReplicasAvailable",
+            "status": "True",
+            "type": "Available"
+          },
+          {
+            "lastTransitionTime": "2026-10-16T17:43:19Z",
+            "lastUpdateTime": "2026-10-16T18:22:01Z",
+            "message": "ReplicaSet \"relaydesk-frontend-f45d8597\" has successfully progressed.",
+            "reason": "NewReplicaSetAvailable",
+            "status": "True",
+            "type": "Progressing"
+          }
+        ],
+        "observedGeneration": 2,
+        "readyReplicas": 2,
+        "replicas": 2,
+        "terminatingReplicas": 0,
+        "updatedReplicas": 2
+      }
+    },
+    {
+      "apiVersion": "apps/v1",
+      "kind": "StatefulSet",
+      "metadata": {
+        "annotations": {
+          "meta.helm.sh/release-name": "relaydesk",
+          "meta.helm.sh/release-namespace": "relaydesk"
+        },
+        "creationTimestamp": "2026-10-16T17:43:20Z",
+        "generation": 1,
+        "labels": {
+          "app.kubernetes.io/managed-by": "Helm"
+        },
+        "name": "relaydesk-postgres",
+        "namespace": "relaydesk",
+        "resourceVersion": "2484",
+        "uid": "5e091ad5-b7ce-46b3-8c55-472ba9646b5e"
+      },
+      "spec": {
+        "persistentVolumeClaimRetentionPolicy": {
+          "whenDeleted": "Retain",
+          "whenScaled": "Retain"
+        },
+        "podManagementPolicy": "OrderedReady",
+        "replicas": 1,
+        "revisionHistoryLimit": 10,
+        "selector": {
+          "matchLabels": {
+            "app": "relaydesk-postgres"
+          }
+        },
+        "serviceName": "relaydesk-postgres",
+        "template": {
+          "metadata": {
+            "labels": {
+              "app": "relaydesk-postgres"
+            }
+          },
+          "spec": {
+            "containers": [
+              {
+                "env": [
+                  {
+                    "name": "PGDATA",
+                    "value": "/var/lib/postgresql/data/pgdata"
+                  }
+                ],
+                "envFrom": [
+                  {
+                    "secretRef": {
+                      "name": "relaydesk-database"
+                    }
+                  }
+                ],
+                "image": "postgres:17-alpine",
+                "imagePullPolicy": "IfNotPresent",
+                "livenessProbe": {
+                  "exec": {
+                    "command": [
+                      "sh",
+                      "-c",
+                      "pg_isready -U $POSTGRES_USER -d $POSTGRES_DB"
+                    ]
+                  },
+                  "failureThreshold": 3,
+                  "initialDelaySeconds": 15,
+                  "periodSeconds": 10,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1
+                },
+                "name": "postgres",
+                "ports": [
+                  {
+                    "containerPort": 5432,
+                    "name": "postgres",
+                    "protocol": "TCP"
+                  }
+                ],
+                "readinessProbe": {
+                  "exec": {
+                    "command": [
+                      "sh",
+                      "-c",
+                      "pg_isready -U $POSTGRES_USER -d $POSTGRES_DB"
+                    ]
+                  },
+                  "failureThreshold": 3,
+                  "initialDelaySeconds": 5,
+                  "periodSeconds": 5,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1
+                },
+                "resources": {
+                  "limits": {
+                    "cpu": "500m",
+                    "memory": "512Mi"
+                  },
+                  "requests": {
+                    "cpu": "100m",
+                    "memory": "128Mi"
+                  }
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "volumeMounts": [
+                  {
+                    "mountPath": "/var/lib/postgresql/data",
+                    "name": "data"
+                  }
+                ]
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {},
+            "terminationGracePeriodSeconds": 30,
+            "volumes": [
+              {
+                "name": "data",
+                "persistentVolumeClaim": {
+                  "claimName": "relaydesk-postgres-data"
+                }
+              }
+            ]
+          }
+        },
+        "updateStrategy": {
+          "rollingUpdate": {
+            "partition": 0
+          },
+          "type": "RollingUpdate"
+        }
+      },
+      "status": {
+        "availableReplicas": 1,
+        "collisionCount": 0,
+        "currentReplicas": 1,
+        "currentRevision": "relaydesk-postgres-68985c8ff6",
+        "observedGeneration": 1,
+        "readyReplicas": 1,
+        "replicas": 1,
+        "updateRevision": "relaydesk-postgres-68985c8ff6",
+        "updatedReplicas": 1
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Service",
+      "metadata": {
+        "annotations": {
+          "meta.helm.sh/release-name": "relaydesk",
+          "meta.helm.sh/release-namespace": "relaydesk"
+        },
+        "creationTimestamp": "2026-10-16T17:43:18Z",
+        "labels": {
+          "app.kubernetes.io/managed-by": "Helm"
+        },
+        "name": "backend",
+        "namespace": "relaydesk",
+        "resourceVersion": "2235",
+        "uid": "bbe3ded6-0ad7-4618-a7c3-240560ac6185"
+      },
+      "spec": {
+        "clusterIP": "172.20.89.116",
+        "clusterIPs": [
+          "172.20.89.116"
+        ],
+        "internalTrafficPolicy": "Cluster",
+        "ipFamilies": [
+          "IPv4"
+        ],
+        "ipFamilyPolicy": "SingleStack",
+        "ports": [
+          {
+            "name": "http",
+            "port": 8000,
+            "protocol": "TCP",
+            "targetPort": 8000
+          }
+        ],
+        "selector": {
+          "app": "relaydesk-backend"
+        },
+        "sessionAffinity": "None",
+        "type": "ClusterIP"
+      },
+      "status": {
+        "loadBalancer": {}
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Service",
+      "metadata": {
+        "annotations": {},
+        "creationTimestamp": "2026-10-16T17:46:25Z",
+        "name": "grafana",
+        "namespace": "relaydesk",
+        "resourceVersion": "3233",
+        "uid": "f178e35f-8653-40d4-a90a-607fcfed0ebf"
+      },
+      "spec": {
+        "clusterIP": "172.20.195.240",
+        "clusterIPs": [
+          "172.20.195.240"
+        ],
+        "internalTrafficPolicy": "Cluster",
+        "ipFamilies": [
+          "IPv4"
+        ],
+        "ipFamilyPolicy": "SingleStack",
+        "ports": [
+          {
+            "name": "web",
+            "port": 3000,
+            "protocol": "TCP",
+            "targetPort": "web"
+          }
+        ],
+        "selector": {
+          "app": "grafana"
+        },
+        "sessionAffinity": "None",
+        "type": "ClusterIP"
+      },
+      "status": {
+        "loadBalancer": {}
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Service",
+      "metadata": {
+        "annotations": {},
+        "creationTimestamp": "2026-10-16T17:46:27Z",
+        "name": "prometheus",
+        "namespace": "relaydesk",
+        "resourceVersion": "3241",
+        "uid": "1331665d-2b3d-469f-95f4-f987d7833a4e"
+      },
+      "spec": {
+        "clusterIP": "172.20.151.9",
+        "clusterIPs": [
+          "172.20.151.9"
+        ],
+        "internalTrafficPolicy": "Cluster",
+        "ipFamilies": [
+          "IPv4"
+        ],
+        "ipFamilyPolicy": "SingleStack",
+        "ports": [
+          {
+            "name": "web",
+            "port": 9090,
+            "protocol": "TCP",
+            "targetPort": "web"
+          }
+        ],
+        "selector": {
+          "app": "prometheus"
+        },
+        "sessionAffinity": "None",
+        "type": "ClusterIP"
+      },
+      "status": {
+        "loadBalancer": {}
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Service",
+      "metadata": {
+        "annotations": {
+          "meta.helm.sh/release-name": "relaydesk",
+          "meta.helm.sh/release-namespace": "relaydesk"
+        },
+        "creationTimestamp": "2026-10-16T17:43:18Z",
+        "labels": {
+          "app": "relaydesk-backend",
+          "app.kubernetes.io/instance": "relaydesk",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "relaydesk",
+          "helm.sh/chart": "relaydesk-1.0.0"
+        },
+        "name": "relaydesk-backend",
+        "namespace": "relaydesk",
+        "resourceVersion": "2228",
+        "uid": "1acb013a-e8fe-4bc8-8507-e8dafa394e5e"
+      },
+      "spec": {
+        "clusterIP": "172.20.77.239",
+        "clusterIPs": [
+          "172.20.77.239"
+        ],
+        "internalTrafficPolicy": "Cluster",
+        "ipFamilies": [
+          "IPv4"
+        ],
+        "ipFamilyPolicy": "SingleStack",
+        "ports": [
+          {
+            "name": "http",
+            "port": 8000,
+            "protocol": "TCP",
+            "targetPort": 8000
+          }
+        ],
+        "selector": {
+          "app": "relaydesk-backend"
+        },
+        "sessionAffinity": "None",
+        "type": "ClusterIP"
+      },
+      "status": {
+        "loadBalancer": {}
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Service",
+      "metadata": {
+        "annotations": {},
+        "creationTimestamp": "2026-10-17T03:04:53Z",
+        "name": "relaydesk-backend-metrics",
+        "namespace": "relaydesk",
+        "resourceVersion": "123188",
+        "uid": "47019ecf-f51f-4600-9c8e-4f197801e9ce"
+      },
+      "spec": {
+        "clusterIP": "None",
+        "clusterIPs": [
+          "None"
+        ],
+        "internalTrafficPolicy": "Cluster",
+        "ipFamilies": [
+          "IPv4"
+        ],
+        "ipFamilyPolicy": "SingleStack",
+        "ports": [
+          {
+            "name": "http",
+            "port": 8000,
+            "protocol": "TCP",
+            "targetPort": 8000
+          }
+        ],
+        "selector": {
+          "app": "relaydesk-backend"
+        },
+        "sessionAffinity": "None",
+        "type": "ClusterIP"
+      },
+      "status": {
+        "loadBalancer": {}
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Service",
+      "metadata": {
+        "annotations": {
+          "meta.helm.sh/release-name": "relaydesk",
+          "meta.helm.sh/release-namespace": "relaydesk"
+        },
+        "creationTimestamp": "2026-10-16T17:43:18Z",
+        "labels": {
+          "app": "relaydesk-frontend",
+          "app.kubernetes.io/instance": "relaydesk",
+          "app.kubernetes.io/managed-by": "Helm",
+          "app.kubernetes.io/name": "relaydesk",
+          "helm.sh/chart": "relaydesk-1.0.0"
+        },
+        "name": "relaydesk-frontend",
+        "namespace": "relaydesk",
+        "resourceVersion": "2229",
+        "uid": "29c30370-06d7-4157-a2df-37658257d2ad"
+      },
+      "spec": {
+        "clusterIP": "172.20.32.2",
+        "clusterIPs": [
+          "172.20.32.2"
+        ],
+        "internalTrafficPolicy": "Cluster",
+        "ipFamilies": [
+          "IPv4"
+        ],
+        "ipFamilyPolicy": "SingleStack",
+        "ports": [
+          {
+            "name": "http",
+            "port": 80,
+            "protocol": "TCP",
+            "targetPort": 8080
+          }
+        ],
+        "selector": {
+          "app": "relaydesk-frontend"
+        },
+        "sessionAffinity": "None",
+        "type": "ClusterIP"
+      },
+      "status": {
+        "loadBalancer": {}
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Service",
+      "metadata": {
+        "annotations": {
+          "meta.helm.sh/release-name": "relaydesk",
+          "meta.helm.sh/release-namespace": "relaydesk"
+        },
+        "creationTimestamp": "2026-10-16T17:43:18Z",
+        "labels": {
+          "app.kubernetes.io/managed-by": "Helm"
+        },
+        "name": "relaydesk-postgres",
+        "namespace": "relaydesk",
+        "resourceVersion": "2239",
+        "uid": "82fd3aef-083a-44c3-a7c1-d08e9820e372"
+      },
+      "spec": {
+        "clusterIP": "172.20.73.31",
+        "clusterIPs": [
+          "172.20.73.31"
+        ],
+        "internalTrafficPolicy": "Cluster",
+        "ipFamilies": [
+          "IPv4"
+        ],
+        "ipFamilyPolicy": "SingleStack",
+        "ports": [
+          {
+            "name": "postgres",
+            "port": 5432,
+            "protocol": "TCP",
+            "targetPort": 5432
+          }
+        ],
+        "selector": {
+          "app": "relaydesk-postgres"
+        },
+        "sessionAffinity": "None",
+        "type": "ClusterIP"
+      },
+      "status": {
+        "loadBalancer": {}
+      }
+    },
+    {
+      "apiVersion": "autoscaling/v2",
+      "kind": "HorizontalPodAutoscaler",
+      "metadata": {
+        "annotations": {
+          "meta.helm.sh/release-name": "relaydesk",
+          "meta.helm.sh/release-namespace": "relaydesk"
+        },
+        "creationTimestamp": "2026-10-16T17:43:20Z",
+        "labels": {
+          "app.kubernetes.io/managed-by": "Helm"
+        },
+        "name": "relaydesk-backend",
+        "namespace": "relaydesk",
+        "resourceVersion": "1243607",
+        "uid": "09086cb3-cbd2-450f-a579-61c155720e50"
+      },
+      "spec": {
+        "maxReplicas": 4,
+        "metrics": [
+          {
+            "resource": {
+              "name": "cpu",
+              "target": {
+                "averageUtilization": 70,
+                "type": "Utilization"
+              }
+            },
+            "type": "Resource"
+          }
+        ],
+        "minReplicas": 2,
+        "scaleTargetRef": {
+          "apiVersion": "apps/v1",
+          "kind": "Deployment",
+          "name": "relaydesk-backend"
+        }
+      },
+      "status": {
+        "conditions": [
+          {
+            "lastTransitionTime": "2026-10-16T17:43:35Z",
+            "message": "recommended size matches current size",
+            "reason": "ReadyForNewScale",
+            "status": "True",
+            "type": "AbleToScale"
+          },
+          {
+            "lastTransitionTime": "2026-10-16T17:44:50Z",
+            "message": "the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)",
+            "reason": "ValidMetricFound",
+            "status": "True",
+            "type": "ScalingActive"
+          },
+          {
+            "lastTransitionTime": "2026-10-16T19:02:49Z",
+            "message": "the desired replica count is less than the minimum replica count",
+            "reason": "TooFewReplicas",
+            "status": "True",
+            "type": "ScalingLimited"
+          }
+        ],
+        "currentMetrics": [
+          {
+            "resource": {
+              "current": {
+                "averageUtilization": 4,
+                "averageValue": "4m"
+              },
+              "name": "cpu"
+            },
+            "type": "Resource"
+          }
+        ],
+        "currentReplicas": 2,
+        "desiredReplicas": 2
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "PersistentVolumeClaim",
+      "metadata": {
+        "annotations": {
+          "meta.helm.sh/release-name": "relaydesk",
+          "meta.helm.sh/release-namespace": "relaydesk",
+          "pv.kubernetes.io/bind-completed": "yes",
+          "pv.kubernetes.io/bound-by-controller": "yes",
+          "volume.beta.kubernetes.io/storage-provisioner": "ebs.csi.aws.com",
+          "volume.kubernetes.io/selected-node": "ip-10-42-1-229.ap-southeast-2.compute.internal",
+          "volume.kubernetes.io/storage-provisioner": "ebs.csi.aws.com"
+        },
+        "creationTimestamp": "2026-10-16T17:43:18Z",
+        "finalizers": [
+          "kubernetes.io/pvc-protection"
+        ],
+        "labels": {
+          "app.kubernetes.io/managed-by": "Helm"
+        },
+        "name": "relaydesk-postgres-data",
+        "namespace": "relaydesk",
+        "resourceVersion": "2322",
+        "uid": "e95372b1-b7cb-4b5f-822a-780ea33d054d"
+      },
+      "spec": {
+        "accessModes": [
+          "ReadWriteOnce"
+        ],
+        "resources": {
+          "requests": {
+            "storage": "2Gi"
+          }
+        },
+        "storageClassName": "relaydesk-gp3",
+        "volumeMode": "Filesystem",
+        "volumeName": "pvc-e95372b1-b7cb-4b5f-822a-780ea33d054d"
+      },
+      "status": {
+        "accessModes": [
+          "ReadWriteOnce"
+        ],
+        "capacity": {
+          "storage": "2Gi"
+        },
+        "phase": "Bound"
+      }
+    },
+    {
+      "apiVersion": "networking.k8s.io/v1",
+      "kind": "Ingress",
+      "metadata": {
+        "annotations": {
+          "meta.helm.sh/release-name": "relaydesk",
+          "meta.helm.sh/release-namespace": "relaydesk"
+        },
+        "creationTimestamp": "2026-10-16T17:43:21Z",
+        "generation": 1,
+        "labels": {
+          "app.kubernetes.io/managed-by": "Helm"
+        },
+        "name": "relaydesk",
+        "namespace": "relaydesk",
+        "resourceVersion": "3049",
+        "uid": "2a8062ad-778d-4497-ac77-2850a2719ec5"
+      },
+      "spec": {
+        "ingressClassName": "traefik",
+        "rules": [
+          {
+            "http": {
+              "paths": [
+                {
+                  "backend": {
+                    "service": {
+                      "name": "relaydesk-backend",
+                      "port": {
+                        "number": 8000
+                      }
+                    }
+                  },
+                  "path": "/api",
+                  "pathType": "Prefix"
+                },
+                {
+                  "backend": {
+                    "service": {
+                      "name": "relaydesk-frontend",
+                      "port": {
+                        "number": 80
+                      }
+                    }
+                  },
+                  "path": "/",
+                  "pathType": "Prefix"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "status": {
+        "loadBalancer": {
+          "ingress": [
+            {
+              "hostname": "af43a3e33d68945548232885350507ff-719760255.ap-southeast-2.elb.amazonaws.com"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "kind": "List",
+  "metadata": {
+    "resourceVersion": ""
+  }
+}

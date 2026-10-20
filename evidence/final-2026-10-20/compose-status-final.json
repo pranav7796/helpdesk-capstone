@@ -1,0 +1,115 @@
+[
+  {
+    "Command": "\"uvicorn app.main:ap\u2026\"",
+    "CreatedAt": "2026-10-20 23:24:00 +0530 IST",
+    "Engine": "",
+    "ExitCode": 0,
+    "Health": "healthy",
+    "ID": "99ded8a5e2ae",
+    "Image": "relaydesk-backend:local",
+    "Labels": "com.docker.compose.version=5.5.1,com.docker.compose.container-number=1,com.docker.compose.depends_on=migrate:service_completed_successfully:false,com.docker.compose.oneoff=False,com.docker.compose.project.working_dir=/home/pranav/Projects/helpdesk-capstone,com.docker.compose.config-hash=2a9c194f5bb7d024aaccf34e6ec3b63e8635f24aa0ff899f888224ced15c268b,com.docker.compose.image=sha256:a6baae92961910e535c502ed491d0bd2ede22bfb53dd737e7acdaaf10bc0ee77,com.docker.compose.project=relaydesk,com.docker.compose.project.config_files=/home/pranav/Projects/helpdesk-capstone/docker-compose.yml,com.docker.compose.replace=backend-1,com.docker.compose.service=backend",
+    "LocalVolumes": "0",
+    "Mounts": "",
+    "Name": "relaydesk-backend-1",
+    "Names": "relaydesk-backend-1",
+    "Networks": "relaydesk_default",
+    "Ports": "127.0.0.1:8000->8000/tcp",
+    "Project": "relaydesk",
+    "Publishers": [
+      {
+        "URL": "127.0.0.1",
+        "TargetPort": 8000,
+        "PublishedPort": 8000,
+        "Protocol": "tcp"
+      }
+    ],
+    "RunningFor": "57 seconds ago",
+    "Service": "backend",
+    "Size": "0B",
+    "State": "running",
+    "Status": "Up 50 seconds (healthy)"
+  },
+  {
+    "Command": "\"/docker-entrypoint.\u2026\"",
+    "CreatedAt": "2026-10-20 23:24:00 +0530 IST",
+    "Engine": "",
+    "ExitCode": 0,
+    "Health": "healthy",
+    "ID": "36033c90658c",
+    "Image": "relaydesk-frontend:local",
+    "Labels": "com.docker.compose.config-hash=8daa6910b21dbc4af345cc02ce224ece3b0106dbaf18bf0f751b605ef0d16b7c,com.docker.compose.oneoff=False,com.docker.compose.project=relaydesk,com.docker.compose.project.config_files=/home/pranav/Projects/helpdesk-capstone/docker-compose.yml,com.docker.compose.version=5.5.1,org.opencontainers.image.licenses=Apache-2.0,org.opencontainers.image.source=https://github.com/nginx/docker-nginx-unprivileged,org.opencontainers.image.version=1.30.6-alpine,org.opencontainers.image.description=Unprivileged NGINX Dockerfiles,org.opencontainers.image.revision=bb7393196554e11f7ba95452856d8b5faff217bf,maintainer=NGINX Docker Maintainers <docker-maint@nginx.com>,org.opencontainers.image.created=2026-10-19T01:52:08.083Z,com.docker.compose.depends_on=backend:service_healthy:false,com.docker.compose.project.working_dir=/home/pranav/Projects/helpdesk-capstone,com.docker.compose.service=frontend,org.opencontainers.image.title=docker-nginx-unprivileged,com.docker.compose.container-number=1,com.docker.compose.image=sha256:11195ea9b74d293d061ee57971a8e24fcf87b565e9d4277cfeb4a42eeece5a7d,com.docker.compose.replace=frontend-1,org.opencontainers.image.url=https://github.com/nginx/docker-nginx-unprivileged",
+    "LocalVolumes": "0",
+    "Mounts": "",
+    "Name": "relaydesk-frontend-1",
+    "Names": "relaydesk-frontend-1",
+    "Networks": "relaydesk_default",
+    "Ports": "127.0.0.1:3000->8080/tcp",
+    "Project": "relaydesk",
+    "Publishers": [
+      {
+        "URL": "127.0.0.1",
+        "TargetPort": 8080,
+        "PublishedPort": 3000,
+        "Protocol": "tcp"
+      }
+    ],
+    "RunningFor": "57 seconds ago",
+    "Service": "frontend",
+    "Size": "0B",
+    "State": "running",
+    "Status": "Up 44 seconds (healthy)"
+  },
+  {
+    "Command": "\"alembic upgrade head\"",
+    "CreatedAt": "2026-10-20 23:24:00 +0530 IST",
+    "Engine": "",
+    "ExitCode": 0,
+    "Health": "",
+    "ID": "e97ca40ec1a6",
+    "Image": "relaydesk-backend:local",
+    "Labels": "com.docker.compose.config-hash=aab9ef42d032d64c3083ad49c8b1c836f97c9b1621a0d7f11d6c42d53c45d96a,com.docker.compose.image=sha256:a6baae92961910e535c502ed491d0bd2ede22bfb53dd737e7acdaaf10bc0ee77,com.docker.compose.oneoff=False,com.docker.compose.project=relaydesk,com.docker.compose.project.config_files=/home/pranav/Projects/helpdesk-capstone/docker-compose.yml,com.docker.compose.replace=migrate-1,com.docker.compose.container-number=1,com.docker.compose.depends_on=postgres:service_healthy:false,com.docker.compose.project.working_dir=/home/pranav/Projects/helpdesk-capstone,com.docker.compose.service=migrate,com.docker.compose.version=5.5.1",
+    "LocalVolumes": "0",
+    "Mounts": "",
+    "Name": "relaydesk-migrate-1",
+    "Names": "relaydesk-migrate-1",
+    "Networks": "relaydesk_default",
+    "Ports": "",
+    "Project": "relaydesk",
+    "Publishers": [],
+    "RunningFor": "57 seconds ago",
+    "Service": "migrate",
+    "Size": "0B",
+    "State": "exited",
+    "Status": "Exited (0) 50 seconds ago"
+  },
+  {
+    "Command": "\"docker-entrypoint.s\u2026\"",
+    "CreatedAt": "2026-10-16 10:50:25 +0530 IST",
+    "Engine": "",
+    "ExitCode": 0,
+    "Health": "healthy",
+    "ID": "4166e8c4674f",
+    "Image": "postgres:17-alpine",
+    "Labels": "com.docker.compose.config-hash=80d34efafab61632b941372edf8c0d06867f7a537af1ede3a8fbcf97db44f8b2,com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.image=sha256:aa90e97ee862e558111d34cfb8b2c4bec768c2b039fb791341686928560263b3,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/home/pranav/Projects/helpdesk-capstone/docker-compose.yml,com.docker.compose.project.working_dir=/home/pranav/Projects/helpdesk-capstone,com.docker.compose.service=postgres,com.docker.compose.project=relaydesk,com.docker.compose.version=5.5.1",
+    "LocalVolumes": "1",
+    "Mounts": "relaydesk_post\u2026",
+    "Name": "relaydesk-postgres-1",
+    "Names": "relaydesk-postgres-1",
+    "Networks": "relaydesk_default",
+    "Ports": "5432/tcp",
+    "Project": "relaydesk",
+    "Publishers": [
+      {
+        "URL": "",
+        "TargetPort": 5432,
+        "PublishedPort": 0,
+        "Protocol": "tcp"
+      }
+    ],
+    "RunningFor": "4 days ago",
+    "Service": "postgres",
+    "Size": "0B",
+    "State": "running",
+    "Status": "Up 56 seconds (healthy)"
+  }
+]

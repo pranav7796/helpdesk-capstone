@@ -1,0 +1,164 @@
+{
+  "Subnets": [
+    {
+      "AvailabilityZoneId": "apse2-az1",
+      "MapCustomerOwnedIpOnLaunch": false,
+      "OwnerId": "525426877661",
+      "AssignIpv6AddressOnCreation": false,
+      "Ipv6CidrBlockAssociationSet": [],
+      "Tags": [
+        {
+          "Key": "Name",
+          "Value": "relaydesk-capstone-private-ap-southeast-2a"
+        },
+        {
+          "Key": "kubernetes.io/role/internal-elb",
+          "Value": "1"
+        },
+        {
+          "Key": "Project",
+          "Value": "relaydesk-capstone"
+        }
+      ],
+      "SubnetArn": "arn:aws:ec2:ap-southeast-2:525426877661:subnet/subnet-047411b20e305b76e",
+      "EnableDns64": false,
+      "Ipv6Native": false,
+      "PrivateDnsNameOptionsOnLaunch": {
+        "HostnameType": "ip-name",
+        "EnableResourceNameDnsARecord": false,
+        "EnableResourceNameDnsAAAARecord": false
+      },
+      "BlockPublicAccessStates": {
+        "InternetGatewayBlockMode": "off"
+      },
+      "SubnetId": "subnet-047411b20e305b76e",
+      "State": "available",
+      "VpcId": "vpc-0f1334a144012db46",
+      "CidrBlock": "10.42.1.0/24",
+      "AvailableIpAddressCount": 232,
+      "AvailabilityZone": "ap-southeast-2a",
+      "DefaultForAz": false,
+      "MapPublicIpOnLaunch": false
+    },
+    {
+      "AvailabilityZoneId": "apse2-az1",
+      "MapCustomerOwnedIpOnLaunch": false,
+      "OwnerId": "525426877661",
+      "AssignIpv6AddressOnCreation": false,
+      "Ipv6CidrBlockAssociationSet": [],
+      "Tags": [
+        {
+          "Key": "kubernetes.io/role/elb",
+          "Value": "1"
+        },
+        {
+          "Key": "Project",
+          "Value": "relaydesk-capstone"
+        },
+        {
+          "Key": "Name",
+          "Value": "relaydesk-capstone-public-ap-southeast-2a"
+        }
+      ],
+      "SubnetArn": "arn:aws:ec2:ap-southeast-2:525426877661:subnet/subnet-0ae52b6d9a2d553e1",
+      "EnableDns64": false,
+      "Ipv6Native": false,
+      "PrivateDnsNameOptionsOnLaunch": {
+        "HostnameType": "ip-name",
+        "EnableResourceNameDnsARecord": false,
+        "EnableResourceNameDnsAAAARecord": false
+      },
+      "BlockPublicAccessStates": {
+        "InternetGatewayBlockMode": "off"
+      },
+      "SubnetId": "subnet-0ae52b6d9a2d553e1",
+      "State": "available",
+      "VpcId": "vpc-0f1334a144012db46",
+      "CidrBlock": "10.42.100.0/24",
+      "AvailableIpAddressCount": 249,
+      "AvailabilityZone": "ap-southeast-2a",
+      "DefaultForAz": false,
+      "MapPublicIpOnLaunch": true
+    },
+    {
+      "AvailabilityZoneId": "apse2-az3",
+      "MapCustomerOwnedIpOnLaunch": false,
+      "OwnerId": "525426877661",
+      "AssignIpv6AddressOnCreation": false,
+      "Ipv6CidrBlockAssociationSet": [],
+      "Tags": [
+        {
+          "Key": "Name",
+          "Value": "relaydesk-capstone-public-ap-southeast-2b"
+        },
+        {
+          "Key": "kubernetes.io/role/elb",
+          "Value": "1"
+        },
+        {
+          "Key": "Project",
+          "Value": "relaydesk-capstone"
+        }
+      ],
+      "SubnetArn": "arn:aws:ec2:ap-southeast-2:525426877661:subnet/subnet-08fe728994f8400fc",
+      "EnableDns64": false,
+      "Ipv6Native": false,
+      "PrivateDnsNameOptionsOnLaunch": {
+        "HostnameType": "ip-name",
+        "EnableResourceNameDnsARecord": false,
+        "EnableResourceNameDnsAAAARecord": false
+      },
+      "BlockPublicAccessStates": {
+        "InternetGatewayBlockMode": "off"
+      },
+      "SubnetId": "subnet-08fe728994f8400fc",
+      "State": "available",
+      "VpcId": "vpc-0f1334a144012db46",
+      "CidrBlock": "10.42.101.0/24",
+      "AvailableIpAddressCount": 250,
+      "AvailabilityZone": "ap-southeast-2b",
+      "DefaultForAz": false,
+      "MapPublicIpOnLaunch": true
+    },
+    {
+      "AvailabilityZoneId": "apse2-az3",
+      "MapCustomerOwnedIpOnLaunch": false,
+      "OwnerId": "525426877661",
+      "AssignIpv6AddressOnCreation": false,
+      "Ipv6CidrBlockAssociationSet": [],
+      "Tags": [
+        {
+          "Key": "kubernetes.io/role/internal-elb",
+          "Value": "1"
+        },
+        {
+          "Key": "Name",
+          "Value": "relaydesk-capstone-private-ap-southeast-2b"
+        },
+        {
+          "Key": "Project",
+          "Value": "relaydesk-capstone"
+        }
+      ],
+      "SubnetArn": "arn:aws:ec2:ap-southeast-2:525426877661:subnet/subnet-085043332babdbe89",
+      "EnableDns64": false,
+      "Ipv6Native": false,
+      "PrivateDnsNameOptionsOnLaunch": {
+        "HostnameType": "ip-name",
+        "EnableResourceNameDnsARecord": false,
+        "EnableResourceNameDnsAAAARecord": false
+      },
+      "BlockPublicAccessStates": {
+        "InternetGatewayBlockMode": "off"
+      },
+      "SubnetId": "subnet-085043332babdbe89",
+      "State": "available",
+      "VpcId": "vpc-0f1334a144012db46",
+      "CidrBlock": "10.42.2.0/24",
+      "AvailableIpAddressCount": 232,
+      "AvailabilityZone": "ap-southeast-2b",
+      "DefaultForAz": false,
+      "MapPublicIpOnLaunch": false
+    }
+  ]
+}

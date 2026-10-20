@@ -1,0 +1,18 @@
+[
+  {
+    "revision": 1,
+    "updated": "2026-10-16T23:13:02.143966383+05:30",
+    "status": "superseded",
+    "chart": "relaydesk-1.0.0",
+    "app_version": "1.0.0",
+    "description": "Install complete"
+  },
+  {
+    "revision": 2,
+    "updated": "2026-10-16T23:51:16.855659476+05:30",
+    "status": "deployed",
+    "chart": "relaydesk-1.0.0",
+    "app_version": "1.0.0",
+    "description": "Upgrade complete"
+  }
+]

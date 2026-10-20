@@ -1,0 +1,218 @@
+[
+  {
+    "name": "ingress-frontend",
+    "url": "http://af43a3e33d68945548232885350507ff-719760255.ap-southeast-2.elb.amazonaws.com/",
+    "method": "GET",
+    "status": 200,
+    "content_type": "text/html",
+    "captured_at_utc": "2026-10-20T17:51:26.743381+00:00",
+    "body_sha256": "5b2b876405699e469240c33e01fb1c02242ca5791f0365516f155e0689656d9b"
+  },
+  {
+    "name": "frontend-asset-0",
+    "url": "http://af43a3e33d68945548232885350507ff-719760255.ap-southeast-2.elb.amazonaws.com/assets/index-DdSn_eRG.js",
+    "method": "GET",
+    "status": 200,
+    "content_type": "application/javascript",
+    "captured_at_utc": "2026-10-20T17:51:27.761030+00:00",
+    "body_sha256": "ab1c51b935a019b5478983695291a4054b9fc23964cb3d931fc9a8af6a864dd8"
+  },
+  {
+    "name": "frontend-asset-1",
+    "url": "http://af43a3e33d68945548232885350507ff-719760255.ap-southeast-2.elb.amazonaws.com/assets/index-DM_eMdz7.css",
+    "method": "GET",
+    "status": 200,
+    "content_type": "text/css",
+    "captured_at_utc": "2026-10-20T17:51:30.219348+00:00",
+    "body_sha256": "d0d5117da85804ec67e69c1e2a3bdc311bc0008e60dd64ca9b74b9e89f8f0de8"
+  },
+  {
+    "name": "backend-health",
+    "url": "http://127.0.0.1:8001/health",
+    "method": "GET",
+    "status": 200,
+    "content_type": "application/json",
+    "captured_at_utc": "2026-10-20T17:51:31.037849+00:00",
+    "body_sha256": "0552c3f0195433c9bc8b40a3aef9a3b0d844db8c5ab43164a054bd849bc99d3b"
+  },
+  {
+    "name": "backend-ready",
+    "url": "http://127.0.0.1:8001/ready",
+    "method": "GET",
+    "status": 200,
+    "content_type": "application/json",
+    "captured_at_utc": "2026-10-20T17:51:32.265933+00:00",
+    "body_sha256": "11bec2db0e99977c840a5df4b17be528421aadd5f4aa79d3622c126c481397fb"
+  },
+  {
+    "name": "backend-metrics",
+    "url": "http://127.0.0.1:8001/metrics",
+    "method": "GET",
+    "status": 200,
+    "content_type": "text/plain; version=1.0.0; charset=utf-8",
+    "captured_at_utc": "2026-10-20T17:51:33.495510+00:00",
+    "body_sha256": "300747debfac9e805747d68c6301a500d849b23d9d310c04fde31bd768b411da"
+  },
+  {
+    "name": "ingress-tickets-before",
+    "url": "http://af43a3e33d68945548232885350507ff-719760255.ap-southeast-2.elb.amazonaws.com/api/tickets",
+    "method": "GET",
+    "status": 200,
+    "content_type": "application/json",
+    "captured_at_utc": "2026-10-20T17:51:34.725116+00:00",
+    "body_sha256": "9d57de398c21acfa51fea5c93a0119ab81b71051b986e3389758204a23830a40"
+  },
+  {
+    "name": "crud-create",
+    "url": "http://af43a3e33d68945548232885350507ff-719760255.ap-southeast-2.elb.amazonaws.com/api/tickets",
+    "method": "POST",
+    "status": 201,
+    "content_type": "application/json",
+    "captured_at_utc": "2026-10-20T17:51:35.544002+00:00",
+    "body_sha256": "81376f8a5d8375f9d01929cd9f66cda9a3eb1df50f238ace185e8fc41bdd78b3"
+  },
+  {
+    "name": "crud-get",
+    "url": "http://af43a3e33d68945548232885350507ff-719760255.ap-southeast-2.elb.amazonaws.com/api/tickets/7",
+    "method": "GET",
+    "status": 200,
+    "content_type": "application/json",
+    "captured_at_utc": "2026-10-20T17:51:36.469033+00:00",
+    "body_sha256": "81376f8a5d8375f9d01929cd9f66cda9a3eb1df50f238ace185e8fc41bdd78b3"
+  },
+  {
+    "name": "crud-update",
+    "url": "http://af43a3e33d68945548232885350507ff-719760255.ap-southeast-2.elb.amazonaws.com/api/tickets/7",
+    "method": "PUT",
+    "status": 200,
+    "content_type": "application/json",
+    "captured_at_utc": "2026-10-20T17:51:37.285790+00:00",
+    "body_sha256": "9b74919ab4a57a490e4818a11e6ed7a45f42b8dc58eb18d35d4177bfee138243"
+  },
+  {
+    "name": "crud-filter",
+    "url": "http://af43a3e33d68945548232885350507ff-719760255.ap-southeast-2.elb.amazonaws.com/api/tickets?status=IN_PROGRESS",
+    "method": "GET",
+    "status": 200,
+    "content_type": "application/json",
+    "captured_at_utc": "2026-10-20T17:51:38.135022+00:00",
+    "body_sha256": "c7c9cb85368e4a674308cd62beca8b84375a1b73fe1a82012dfddcdb90a2b25d"
+  },
+  {
+    "name": "crud-invalid-input",
+    "url": "http://af43a3e33d68945548232885350507ff-719760255.ap-southeast-2.elb.amazonaws.com/api/tickets",
+    "method": "POST",
+    "status": 422,
+    "content_type": "application/json",
+    "captured_at_utc": "2026-10-20T17:51:42.540162+00:00",
+    "body_sha256": "5f0b522634810159ced270e68d64041207f92bf0c91a72b0b2cfa6c7a3775190"
+  },
+  {
+    "name": "crud-delete",
+    "url": "http://af43a3e33d68945548232885350507ff-719760255.ap-southeast-2.elb.amazonaws.com/api/tickets/7",
+    "method": "DELETE",
+    "status": 204,
+    "content_type": "",
+    "captured_at_utc": "2026-10-20T17:51:43.432463+00:00",
+    "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "crud-deleted-404",
+    "url": "http://af43a3e33d68945548232885350507ff-719760255.ap-southeast-2.elb.amazonaws.com/api/tickets/7",
+    "method": "GET",
+    "status": 404,
+    "content_type": "application/json",
+    "captured_at_utc": "2026-10-20T17:51:44.351578+00:00",
+    "body_sha256": "618686b2fc9c532f837ca82a2b8aefe98890b1885e2e3661f6a36b07849ceaa3"
+  },
+  {
+    "name": "ingress-tickets-after",
+    "url": "http://af43a3e33d68945548232885350507ff-719760255.ap-southeast-2.elb.amazonaws.com/api/tickets",
+    "method": "GET",
+    "status": 200,
+    "content_type": "application/json",
+    "captured_at_utc": "2026-10-20T17:51:45.169199+00:00",
+    "body_sha256": "9d57de398c21acfa51fea5c93a0119ab81b71051b986e3389758204a23830a40"
+  },
+  {
+    "name": "prometheus-ready",
+    "url": "http://127.0.0.1:9091/-/ready",
+    "method": "GET",
+    "status": 200,
+    "content_type": "text/plain; charset=utf-8",
+    "captured_at_utc": "2026-10-20T17:51:46.022338+00:00",
+    "body_sha256": "6ae2244847eb26de55cd1ebd355f656a5824b2b8a8a66d8d19cf6b1517c4831b"
+  },
+  {
+    "name": "prometheus-targets",
+    "url": "http://127.0.0.1:9091/api/v1/targets",
+    "method": "GET",
+    "status": 200,
+    "content_type": "application/json",
+    "captured_at_utc": "2026-10-20T17:51:47.309721+00:00",
+    "body_sha256": "1a20a2ba68f2aea91f6f479dd517c479dbe3dc2c8fe240a33361dc8ad13a0a0a"
+  },
+  {
+    "name": "prometheus-up",
+    "url": "http://127.0.0.1:9091/api/v1/query?query=up%7Bjob%3D%22relaydesk-backend%22%2Cscrape_mode%3D%22pod%22%7D",
+    "method": "GET",
+    "status": 200,
+    "content_type": "application/json",
+    "captured_at_utc": "2026-10-20T17:51:48.447464+00:00",
+    "body_sha256": "5eae90634819a35ce2d8ec15e172c1e188ac0f7a4b8326d9c7d26ddf2900379b"
+  },
+  {
+    "name": "prometheus-rates",
+    "url": "http://127.0.0.1:9091/api/v1/query?query=sum+by+%28route%29+%28rate%28relaydesk_http_requests_total%7Bjob%3D%22relaydesk-backend%22%2Cscrape_mode%3D%22pod%22%7D%5B2m%5D%29%29",
+    "method": "GET",
+    "status": 200,
+    "content_type": "application/json",
+    "captured_at_utc": "2026-10-20T17:51:49.674828+00:00",
+    "body_sha256": "20eb6f420107309c3399aa25a5b75ae1e292e01f1041e88cdd183ac49fd1cf35"
+  },
+  {
+    "name": "prometheus-resets",
+    "url": "http://127.0.0.1:9091/api/v1/query?query=resets%28relaydesk_http_requests_total%7Bjob%3D%22relaydesk-backend%22%2Cscrape_mode%3D%22pod%22%7D%5B5m%5D%29",
+    "method": "GET",
+    "status": 200,
+    "content_type": "application/json",
+    "captured_at_utc": "2026-10-20T17:51:50.894099+00:00",
+    "body_sha256": "fe46f6d31564355491fc101f464a02ec6ffb605be2ad3da31757866ef83900e4"
+  },
+  {
+    "name": "grafana-health",
+    "url": "http://127.0.0.1:3002/api/health",
+    "method": "GET",
+    "status": 200,
+    "content_type": "application/json; charset=UTF-8",
+    "captured_at_utc": "2026-10-20T17:51:52.022538+00:00",
+    "body_sha256": "6016cdf48123131f3abaa0761122e9d96d0910c9f86933fcadec39734db6a2b1"
+  },
+  {
+    "name": "grafana-dashboard",
+    "url": "http://127.0.0.1:3002/api/dashboards/uid/relaydesk-http",
+    "method": "GET",
+    "status": 200,
+    "content_type": "application/json",
+    "captured_at_utc": "2026-10-20T17:51:53.097372+00:00",
+    "body_sha256": "0f5c51fceb3b95f53a2413746110fc6bb38acf35ec2b6a57d75650871680de0a"
+  },
+  {
+    "name": "grafana-datasource-health",
+    "url": "http://127.0.0.1:3002/api/datasources/uid/prometheus/health",
+    "method": "GET",
+    "status": 200,
+    "content_type": "application/json",
+    "captured_at_utc": "2026-10-20T17:51:54.283176+00:00",
+    "body_sha256": "d5d0391d4731646522f5d7ea4b7c047a02ee659c97a09ced7d1bce4ba319558a"
+  },
+  {
+    "name": "grafana-panel-query",
+    "url": "http://127.0.0.1:3002/api/ds/query",
+    "method": "POST",
+    "status": 200,
+    "content_type": "application/json",
+    "captured_at_utc": "2026-10-20T17:51:55.392317+00:00",
+    "body_sha256": "74892b357b288bade24cdb14ce83c828cb0a2a0c06c136475d00c7843cf28443"
+  }
+]

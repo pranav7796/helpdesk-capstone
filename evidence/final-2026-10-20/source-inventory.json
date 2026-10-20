@@ -1,0 +1,518 @@
+[
+  {
+    "path": ".env.example",
+    "bytes": 48,
+    "sha256": "649701653b71c8ae0436e00a24ecb9023745e15d4f977ce9c2af5cd612df4fac",
+    "text": true
+  },
+  {
+    "path": ".github/workflows/ci.yml",
+    "bytes": 4364,
+    "sha256": "854dee0d8c996c36119013dbea413e275540aac269134f5bb8782f1fe2f755b8",
+    "text": true
+  },
+  {
+    "path": ".gitignore",
+    "bytes": 365,
+    "sha256": "a47111ee1a3b6f588f7338780f54f0fddbb0dd4c040308b2798171e011299515",
+    "text": true
+  },
+  {
+    "path": ".trivyignore.yaml",
+    "bytes": 854,
+    "sha256": "a1ac876220e943d0df9a79fa3eec73683444b4e22795577f440b0cb6d63d3965",
+    "text": true
+  },
+  {
+    "path": "EVIDENCE-AUDIT.md",
+    "bytes": 22891,
+    "sha256": "39ea62d5055a9845e04804ae6476dd4ccf806d5c81ad557e3f72bd137cf38522",
+    "text": true
+  },
+  {
+    "path": "GRADING-CHECKLIST.md",
+    "bytes": 19757,
+    "sha256": "e7cc96913aa03ac4633a25cfa084b6cece77ed1ed25532f9298d77b22a78a8de",
+    "text": true
+  },
+  {
+    "path": "PROGRESS.md",
+    "bytes": 10562,
+    "sha256": "0e53305ed3bd18866b4efc25d634c85cc8b9cdae6666e2f5aa9c44ee5eda259e",
+    "text": true
+  },
+  {
+    "path": "README.md",
+    "bytes": 6310,
+    "sha256": "d3c83f498c392063090d2bc44fdd544a84be90686edd75f98d7525fff3b2a668",
+    "text": true
+  },
+  {
+    "path": "SUBMISSION.md",
+    "bytes": 10971,
+    "sha256": "aa6c8cfe6a4034f59daeaeb33116795ab4a707d60f22a25f6ed1ae0a5fb4c625",
+    "text": true
+  },
+  {
+    "path": "VERIFICATION.md",
+    "bytes": 10454,
+    "sha256": "1e58e384fd73c9674d5999d35a175cd15d6cf6236ecb33c1811b468bae1cfc51",
+    "text": true
+  },
+  {
+    "path": "backend/.dockerignore",
+    "bytes": 48,
+    "sha256": "fafd1ca7b574b71286d53c1116c713e2c77c72534e46468f9ddbe489343f84f0",
+    "text": true
+  },
+  {
+    "path": "backend/Dockerfile",
+    "bytes": 935,
+    "sha256": "155847f0b653991bc10f038fe986136d213711f69d9fcebb8882003297e2ea7a",
+    "text": true
+  },
+  {
+    "path": "backend/alembic.ini",
+    "bytes": 66,
+    "sha256": "1448cfbef9aa5c0f6f1f5b5a2198fc7efe51b3d65709db8d668d2f9f8dffc915",
+    "text": true
+  },
+  {
+    "path": "backend/alembic/env.py",
+    "bytes": 624,
+    "sha256": "ec20b173b82a4ac71d82708fea49a963f9174f1bc8008af9a4da51610d4ea83a",
+    "text": true
+  },
+  {
+    "path": "backend/alembic/versions/0001_tickets.py",
+    "bytes": 1189,
+    "sha256": "3ce10adcf14b1cd6943960589a6d078b03a8424949878d1f85ae3182394c1f73",
+    "text": true
+  },
+  {
+    "path": "backend/app/__init__.py",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "text": true
+  },
+  {
+    "path": "backend/app/api.py",
+    "bytes": 1898,
+    "sha256": "f30ebf9454441066361720ed7397173184a854310ebf98933cd6f22931095588",
+    "text": true
+  },
+  {
+    "path": "backend/app/database.py",
+    "bytes": 458,
+    "sha256": "5b88487f178229b47a228d918ec4b8e8e57ba917534b84f5b81e46abd6f4e5b9",
+    "text": true
+  },
+  {
+    "path": "backend/app/main.py",
+    "bytes": 1800,
+    "sha256": "63cb566931b24d455740e0f8d973e4b07a5e848be74afd13ecb9626ba39ec766",
+    "text": true
+  },
+  {
+    "path": "backend/app/models.py",
+    "bytes": 1187,
+    "sha256": "8bef2806d0752e92dba577326c819c1191560c5ac13ea4d8639483861db60630",
+    "text": true
+  },
+  {
+    "path": "backend/app/schemas.py",
+    "bytes": 902,
+    "sha256": "c3d4b78b5ff670cfab22aa8d3ebd82c27f918b36a42a7fbf40ad35119c6ec2cc",
+    "text": true
+  },
+  {
+    "path": "backend/pytest.ini",
+    "bytes": 56,
+    "sha256": "37b7898dd0df68d7bacac4726b4836010200403a1abe9542fe229caebe39b8a3",
+    "text": true
+  },
+  {
+    "path": "backend/requirements-dev.txt",
+    "bytes": 48,
+    "sha256": "d8051f37f45da475d5b993671bf8c0e87d980a5bcd5ca9aa3e7e3ce99079e1d3",
+    "text": true
+  },
+  {
+    "path": "backend/requirements.lock",
+    "bytes": 509,
+    "sha256": "2482a127688ddddd1397b30d1caad308140e49cb72bf9ac2f87435d8e0dba093",
+    "text": true
+  },
+  {
+    "path": "backend/requirements.txt",
+    "bytes": 111,
+    "sha256": "c98c54bef48b260582d4d1d2cf8f48331bb744a2ec36a97aeab59ef7e63f6653",
+    "text": true
+  },
+  {
+    "path": "backend/tests/conftest.py",
+    "bytes": 1004,
+    "sha256": "587cc41c2192852c6ad11b7546319a61ca4c5ed781d279e8bb09dc0197e1a3ae",
+    "text": true
+  },
+  {
+    "path": "backend/tests/test_tickets.py",
+    "bytes": 3487,
+    "sha256": "cf23aca2159b29f7124a16bbbb971a439a65cf41dec89e0a2d4cafef54066bac",
+    "text": true
+  },
+  {
+    "path": "docker-compose.yml",
+    "bytes": 1732,
+    "sha256": "1c4861bec2251e2b2b2d94cb94e37a1d56772ac5a20d1be9b3550fbcdcf08119",
+    "text": true
+  },
+  {
+    "path": "docs/AWS-PLAN.md",
+    "bytes": 10011,
+    "sha256": "f6bcb98466a592032a7025f8ae731fd90bf6883ca0a1598308afbe7988301795",
+    "text": true
+  },
+  {
+    "path": "docs/CLEANUP-REVIEW.md",
+    "bytes": 4016,
+    "sha256": "01f498a9ed0517831df20b2196163e46dd8b56d28915dde62b4969ae6e20c789",
+    "text": true
+  },
+  {
+    "path": "docs/EKS-RUNBOOK.md",
+    "bytes": 9453,
+    "sha256": "a3ca653d8ad45dca2d6e58c163809467f4285e128c9ff8bab4c39e7968b0ed56",
+    "text": true
+  },
+  {
+    "path": "docs/OBSERVABILITY.md",
+    "bytes": 3146,
+    "sha256": "5508d926ae0a4ac0c0994f25fef0a785a15939706657593db66ef9a952d7c7eb",
+    "text": true
+  },
+  {
+    "path": "docs/PRESENTATION.md",
+    "bytes": 4802,
+    "sha256": "6cc1d7c83f4cf0bb6100bce394aa527d619f60979cf67f262a79a98fb36d40d8",
+    "text": true
+  },
+  {
+    "path": "docs/SECURITY.md",
+    "bytes": 1496,
+    "sha256": "88d0c10bdeb8c9981e4ae20ea97c55aeea28daf1e155fbc30663f408a43dac68",
+    "text": true
+  },
+  {
+    "path": "docs/TEACHER-GRADING.md",
+    "bytes": 10742,
+    "sha256": "3385339a2676d80c6ab24a0331ebaaae9453bd6db75160abfb15da831dd379c7",
+    "text": true
+  },
+  {
+    "path": "docs/TROUBLESHOOTING.md",
+    "bytes": 4890,
+    "sha256": "dd70cc29efda79f835b444f684920ad2402a5375a77e9cf0525cc974b584db89",
+    "text": true
+  },
+  {
+    "path": "frontend/.dockerignore",
+    "bytes": 23,
+    "sha256": "51b683467baace87247effed923b8aaecc559168ba0efbb43fd4714a8dc19362",
+    "text": true
+  },
+  {
+    "path": "frontend/Dockerfile",
+    "bytes": 365,
+    "sha256": "959812f5378f29f99c882c6f09dff86152c26e1407997208982309e5a74a4588",
+    "text": true
+  },
+  {
+    "path": "frontend/index.html",
+    "bytes": 313,
+    "sha256": "c6e33eafef4e319b6c0cbd72e80d4149682bbf5c8800ea8904bdefe8284643ad",
+    "text": true
+  },
+  {
+    "path": "frontend/nginx.conf",
+    "bytes": 424,
+    "sha256": "78f099d3bd05bfa0435cd56857b9817297faf6134bba52b61ad5bc9b8bfdb155",
+    "text": true
+  },
+  {
+    "path": "frontend/package-lock.json",
+    "bytes": 60169,
+    "sha256": "a08808c557752becc7726b70ada4bc883d9bcb603c41972a7167aeb790b7e56b",
+    "text": true
+  },
+  {
+    "path": "frontend/package.json",
+    "bytes": 300,
+    "sha256": "2ffcbb927e7900367213569d87a87d91f762c28952a103bba85e366a4ad8cbf1",
+    "text": true
+  },
+  {
+    "path": "frontend/src/api.js",
+    "bytes": 510,
+    "sha256": "926541c0fb61c3b2159e5106664aa00f86483225688cb1f9376225b3bdd7572e",
+    "text": true
+  },
+  {
+    "path": "frontend/src/main.jsx",
+    "bytes": 8673,
+    "sha256": "2d7325bf61e0dc2aadacedb4ca15d0a9395fe4e31875c7b8fad003133960efe8",
+    "text": true
+  },
+  {
+    "path": "frontend/src/styles.css",
+    "bytes": 8206,
+    "sha256": "246ce6b86247cd3723ac013a0402b8c67e570c434b4d819e751c0baab5577900",
+    "text": true
+  },
+  {
+    "path": "frontend/vite.config.js",
+    "bytes": 188,
+    "sha256": "078f1ad73538f51218d4b3ea53b8e78dfe4360735e54e79007c1ef26b4f903b4",
+    "text": true
+  },
+  {
+    "path": "helm/helpdesk/Chart.yaml",
+    "bytes": 185,
+    "sha256": "38654c155f40ee35bb48555f9eeeaa2734875dd28869ac587e1c8f075e7e8a87",
+    "text": true
+  },
+  {
+    "path": "helm/helpdesk/templates/_helpers.tpl",
+    "bytes": 367,
+    "sha256": "8f25ad1f639ffe3812ee76d42103768cf56073fc0eaaa34f66ca412fb4e94063",
+    "text": true
+  },
+  {
+    "path": "helm/helpdesk/templates/backend.yaml",
+    "bytes": 2285,
+    "sha256": "872b322989bdbb71a0ec8aba9c15b2b98728713f0714bffafa5b8a822bc4b35f",
+    "text": true
+  },
+  {
+    "path": "helm/helpdesk/templates/frontend.yaml",
+    "bytes": 1323,
+    "sha256": "c774d0ad9fbb13009d68015f6ebe882f95647825cd0170e55b623a9ff4eded20",
+    "text": true
+  },
+  {
+    "path": "helm/helpdesk/templates/hpa.yaml",
+    "bytes": 505,
+    "sha256": "cfda79b1562bc43eaaecb5fa0bba2f990090fe3ec5c2524456734af065941459",
+    "text": true
+  },
+  {
+    "path": "helm/helpdesk/templates/ingress.yaml",
+    "bytes": 624,
+    "sha256": "6d79ea3ec1caaea045d7f1eb85be8a4fdc6c3916cb57f64fc8a91b3c517b1c0b",
+    "text": true
+  },
+  {
+    "path": "helm/helpdesk/templates/postgres.yaml",
+    "bytes": 2407,
+    "sha256": "3369b1ccb6345d557e647e79b401c416b76aa6c1298ce36a1108942365943512",
+    "text": true
+  },
+  {
+    "path": "helm/helpdesk/templates/servicemonitor.yaml",
+    "bytes": 403,
+    "sha256": "0740730a5054237ffb43ef13a6238b995746b752a10e0a4414a7a9a3ee627aba",
+    "text": true
+  },
+  {
+    "path": "helm/helpdesk/values-eks.yaml",
+    "bytes": 457,
+    "sha256": "47aed12c70ba15e95e440bdc21a1f6de4473f5b1079ab875e125ca4d29915aba",
+    "text": true
+  },
+  {
+    "path": "helm/helpdesk/values-local.yaml",
+    "bytes": 323,
+    "sha256": "f66465ca49582565998bbdb9f82d6d08ff892ec0c1dc851a5d41f0bd16a650c7",
+    "text": true
+  },
+  {
+    "path": "helm/helpdesk/values.yaml",
+    "bytes": 851,
+    "sha256": "a23cd979503a5b93b769fa470554a52998201bdfeb32d22bf0f937be003a9eee",
+    "text": true
+  },
+  {
+    "path": "k8s/namespace.yaml",
+    "bytes": 110,
+    "sha256": "2f9edd93c7fe4544a313cf3828d4ff40b14b95c4503a8f89043ee14622b19cf9",
+    "text": true
+  },
+  {
+    "path": "k8s/storage-eks.yaml",
+    "bytes": 243,
+    "sha256": "24de0ec0375b56feed4d4a7c09dcf34d56cb3cfb7c69b3d6b0c9f254b84251e4",
+    "text": true
+  },
+  {
+    "path": "k8s/traefik-values-eks.yaml",
+    "bytes": 787,
+    "sha256": "82a4bb0e6cfbb5f208a37d2c2066b504c64be7381021c02663261e7d4d8175eb",
+    "text": true
+  },
+  {
+    "path": "monitoring/kustomization.yaml",
+    "bytes": 978,
+    "sha256": "2a6b90f6872b20d7f0a4b28186480fbd8ca4c8c01c00aecb097142c00bb49200",
+    "text": true
+  },
+  {
+    "path": "monitoring/local-stack.yaml",
+    "bytes": 4414,
+    "sha256": "5886fa976fc3ac1ca51ec90893c4adb3420f710bac718c26fca3cdd69a075daf",
+    "text": true
+  },
+  {
+    "path": "monitoring/prometheus-values.yaml",
+    "bytes": 429,
+    "sha256": "68d0b08e23b14fe7d9d0b997d0b5babfc4b1a2bf645a1e2e18e9f78f94414a7e",
+    "text": true
+  },
+  {
+    "path": "monitoring/relaydesk-dashboard.json",
+    "bytes": 598,
+    "sha256": "5440d862d627431887e599c2e9c64135caae576b7bc81be18fb4e58cbd8b10bd",
+    "text": true
+  },
+  {
+    "path": "monitoring/servicemonitor.yaml",
+    "bytes": 344,
+    "sha256": "69d2ae33d0de86146f32087165e550c7bdfa3ae69b89e83a8d8b21f73137b616",
+    "text": true
+  },
+  {
+    "path": "scripts/audit-aws.py",
+    "bytes": 4346,
+    "sha256": "17000c042433d13e6a3b645751e461f948392219b7d05156a0807bd6e084363e",
+    "text": true
+  },
+  {
+    "path": "scripts/audit-evidence.py",
+    "bytes": 4949,
+    "sha256": "c1e32c95724ec16855a24ff59e0c4685617f53c847186a16feff5526d7d207db",
+    "text": true
+  },
+  {
+    "path": "scripts/audit-plan.py",
+    "bytes": 2178,
+    "sha256": "0a6c3bcfa1ef710b72bfb7ff787add32064d64560ebc92289ae449b1bbaa71fc",
+    "text": true
+  },
+  {
+    "path": "scripts/deploy-eks.sh",
+    "bytes": 2263,
+    "sha256": "42b921f529ef6feb6da52cb9e7064c56ed8696c313f158882b9e4fe2f9e51de6",
+    "text": true
+  },
+  {
+    "path": "scripts/estimate-cost.py",
+    "bytes": 1669,
+    "sha256": "e29034b1ec29fe5ee3a57ccace71220ca9a77243456dff812adac02bd0e69026",
+    "text": true
+  },
+  {
+    "path": "scripts/smoke.py",
+    "bytes": 1498,
+    "sha256": "5fedf2281e8771c5d663b33f3b7e8750fc652d7012ca301223bf3676f79878c8",
+    "text": true
+  },
+  {
+    "path": "scripts/terraform-readonly.sh",
+    "bytes": 711,
+    "sha256": "e341e788a6c3bbb28880156ab1ddc1e90c700cf225150a2bb0dd7653f8749ffa",
+    "text": true
+  },
+  {
+    "path": "scripts/troubleshooting-lab.py",
+    "bytes": 7798,
+    "sha256": "df0e0b155fc381581aded0bbf638e2278a1a1c16ba78b39f4647bd324d52d975",
+    "text": true
+  },
+  {
+    "path": "scripts/verify-eks.py",
+    "bytes": 6868,
+    "sha256": "c4cc1acb764ff05cad6e2872eb5e4943aaefacf175aeea1aaa40e7eeac37752a",
+    "text": true
+  },
+  {
+    "path": "terraform/.gitignore",
+    "bytes": 102,
+    "sha256": "1235986fd71a5c055a4c840595c17a2707b17dfe9b29d28a9016b8f752eabd40",
+    "text": true
+  },
+  {
+    "path": "terraform/.terraform.lock.hcl",
+    "bytes": 1408,
+    "sha256": "2409429f454364408175f9bfaa3b8f191f2c03e97d2e04f4e807f5adfd25259a",
+    "text": true
+  },
+  {
+    "path": "terraform/README.md",
+    "bytes": 1754,
+    "sha256": "2d0f2ce7e9802a3376d492cdbb400550657e27734d4f0c36fb8d3363db458c8d",
+    "text": true
+  },
+  {
+    "path": "terraform/addons.tf",
+    "bytes": 2046,
+    "sha256": "fb64fd376a68dfda33a8458b613f36fe8e523ed4ba9692bbb90a63bd9ed89386",
+    "text": true
+  },
+  {
+    "path": "terraform/aws-login.config",
+    "bytes": 283,
+    "sha256": "39eff96083a6ba8512cda9aa881d52b45212927c0844f2d14753b04c307236e9",
+    "text": true
+  },
+  {
+    "path": "terraform/main.tf",
+    "bytes": 4766,
+    "sha256": "1a2dee6aa74d59b3d959b407658c8357ffd9ab4a5bae0c1242bc2cb9cb2e779c",
+    "text": true
+  },
+  {
+    "path": "terraform/outputs.tf",
+    "bytes": 475,
+    "sha256": "4cd10e277faedfc42fe87a324928607a4ad1611b09a3995f3a1bdd2522a34359",
+    "text": true
+  },
+  {
+    "path": "terraform/terraform.tfvars.example",
+    "bytes": 329,
+    "sha256": "9f10cdd212dcb4f3ce44c3ea554799af14ebe5300a0dfa46299754b321d42f4c",
+    "text": true
+  },
+  {
+    "path": "terraform/variables.tf",
+    "bytes": 959,
+    "sha256": "2b458808fcedb8c2c6606781ae0c3ade53a52872422d6009647ab1d82622497a",
+    "text": true
+  },
+  {
+    "path": "terraform/versions.tf",
+    "bytes": 269,
+    "sha256": "8833f4de8fb307563de0f40dcf36e99b93eaffcb84381dbe94652ca9486ccc76",
+    "text": true
+  },
+  {
+    "path": "troubleshooting/broken-image.yaml",
+    "bytes": 586,
+    "sha256": "744b78d2a6c99cb5abb5fdaa71a9f5f98352423f3b3ae369e52c4cfb7fed57ee",
+    "text": true
+  },
+  {
+    "path": "troubleshooting/broken-service.yaml",
+    "bytes": 181,
+    "sha256": "2bffbda0fe7576b6112722ea1cbe0077f8eaafe750e8a502e371d4ef94ecb5e0",
+    "text": true
+  }
+]

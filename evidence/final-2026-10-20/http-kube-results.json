@@ -1,0 +1,25 @@
+[
+  {
+    "name": "postgres-audit-row",
+    "command": [
+      "kubectl",
+      "--context",
+      "relaydesk-sydney",
+      "--request-timeout=12s",
+      "-n",
+      "relaydesk",
+      "exec",
+      "relaydesk-postgres-0",
+      "--",
+      "sh",
+      "-c",
+      "psql -U \"$POSTGRES_USER\" -d \"$POSTGRES_DB\" -c \"SELECT id, status, priority FROM tickets WHERE id = 7;\""
+    ],
+    "cwd": "/home/pranav/Projects/helpdesk-capstone",
+    "started_at_utc": "2026-10-20T17:51:39.035128+00:00",
+    "finished_at_utc": "2026-10-20T17:51:42.540006+00:00",
+    "exit_code": 0,
+    "stdout": "postgres-audit-row.txt",
+    "stderr": ""
+  }
+]

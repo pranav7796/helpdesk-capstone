@@ -1,0 +1,35 @@
+{
+  "Vpcs": [
+    {
+      "OwnerId": "525426877661",
+      "InstanceTenancy": "default",
+      "CidrBlockAssociationSet": [
+        {
+          "AssociationId": "vpc-cidr-assoc-07b8fab897f6f5d13",
+          "CidrBlock": "10.42.0.0/16",
+          "CidrBlockState": {
+            "State": "associated"
+          }
+        }
+      ],
+      "IsDefault": false,
+      "Tags": [
+        {
+          "Key": "Name",
+          "Value": "relaydesk-capstone-vpc"
+        },
+        {
+          "Key": "Project",
+          "Value": "relaydesk-capstone"
+        }
+      ],
+      "BlockPublicAccessStates": {
+        "InternetGatewayBlockMode": "off"
+      },
+      "VpcId": "vpc-0f1334a144012db46",
+      "State": "available",
+      "CidrBlock": "10.42.0.0/16",
+      "DhcpOptionsId": "dopt-080dcad61eb4a884d"
+    }
+  ]
+}

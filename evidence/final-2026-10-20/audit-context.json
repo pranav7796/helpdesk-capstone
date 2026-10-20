@@ -1,0 +1,47 @@
+{
+  "audit_date": "2026-10-20",
+  "account": "525426877661",
+  "profile": "devops-new",
+  "region": "ap-southeast-2",
+  "source_commit": "a52cd91e80de186831b6ca67dc5a7fc7c8fb929c",
+  "aws_kubernetes_mutations": "None",
+  "application_mutations": "Disposable audit ticket #7 created/updated/deleted; existing records unchanged",
+  "local_changes": "Compose build/start; docs/evidence updates; isolated build/test artifacts",
+  "additional_executed_commands": [
+    {
+      "command": "guarded terraform plan -input=false -no-color -detailed-exitcode -var=cluster_admin_cidr=202.131.146.146/32",
+      "exit_code": 0,
+      "stdout": "terraform-plan.txt"
+    },
+    {
+      "command": "docker compose up --build -d --wait",
+      "exit_code": 0,
+      "stdout": "compose-build.txt"
+    },
+    {
+      "command": "gh run view 38998365240 --repo pranav7796/helpdesk-capstone --json databaseId,headSha,status,conclusion,url,jobs; gh run view 38998365240 --repo pranav7796/helpdesk-capstone --log",
+      "result": "Metadata and complete log retrieved; three jobs successful"
+    }
+  ],
+  "ui_capture": {
+    "status": "BLOCKED",
+    "observed_inventory": {
+      "apps": [],
+      "browsers": []
+    },
+    "open_attempt": "Browser is not available: chrome",
+    "new_screenshots": 0,
+    "new_recordings": 0
+  },
+  "publication": "Owner subsequently authorized Git publication of this audit package; teacher-form submission remains unverified.",
+  "credentials": "Known private passwords/database URLs redacted; auth headers never recorded; private state/plan/kubeconfig excluded",
+  "failures_resolved": [
+    "aws-nat used --filters instead of --filter; corrected aws-nat-retry succeeds",
+    "Initial Kubernetes API/TLS timeouts; raw readyz then API and top-nodes retries succeed"
+  ],
+  "freshly_visual_reviewed_existing_screenshots": [
+    "evidence/screenshots/2026-10-17-application-eks.png",
+    "evidence/screenshots/2026-10-17-prometheus-replicas-up.png",
+    "evidence/screenshots/2026-10-17-grafana-corrected-rates.png"
+  ]
+}

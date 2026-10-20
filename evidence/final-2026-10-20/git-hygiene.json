@@ -1,0 +1,42 @@
+{
+  "tracked_files": 518,
+  "non_evidence_files_read": 86,
+  "sensitive_signature_or_known_password_paths": [],
+  "ignore_checks": [
+    {
+      "path": ".env",
+      "ignored": true
+    },
+    {
+      "path": "backend/__pycache__/check.pyc",
+      "ignored": true
+    },
+    {
+      "path": "frontend/node_modules/check",
+      "ignored": true
+    },
+    {
+      "path": "backend/.venv/check",
+      "ignored": true
+    },
+    {
+      "path": "terraform/terraform.tfvars",
+      "ignored": true
+    },
+    {
+      "path": "terraform/terraform.tfstate",
+      "ignored": true
+    },
+    {
+      "path": "terraform/test.tfplan",
+      "ignored": true
+    },
+    {
+      "path": "evidence/private/kubeconfig-sydney",
+      "ignored": true
+    }
+  ],
+  "history_commits_scanned": 24,
+  "history_signature_matches": [],
+  "limitation": "Signature-based check and known private passwords; not a comprehensive secret-security certification."
+}

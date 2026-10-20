@@ -1,0 +1,10 @@
+{
+  "uid": 10001,
+  "health": {
+    "status": "UP",
+    "service": "relaydesk"
+  },
+  "ready": {
+    "status": "READY"
+  }
+}

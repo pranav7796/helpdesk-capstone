@@ -1,0 +1,70 @@
+{
+  "cluster": {
+    "name": "relaydesk-capstone",
+    "arn": "arn:aws:eks:ap-southeast-2:525426877661:cluster/relaydesk-capstone",
+    "createdAt": "2026-10-16T22:59:40.905000+05:30",
+    "version": "1.35",
+    "endpoint": "https://5C2368D6B26ECD097E70F8D209704F30.gr7.ap-southeast-2.eks.amazonaws.com",
+    "roleArn": "arn:aws:iam::525426877661:role/relaydesk-capstone-cluster-role",
+    "resourcesVpcConfig": {
+      "subnetIds": [
+        "subnet-0ae52b6d9a2d553e1",
+        "subnet-047411b20e305b76e",
+        "subnet-08fe728994f8400fc",
+        "subnet-085043332babdbe89"
+      ],
+      "securityGroupIds": [],
+      "clusterSecurityGroupId": "sg-095a81a0bee5e0fa6",
+      "vpcId": "vpc-0f1334a144012db46",
+      "endpointPublicAccess": true,
+      "endpointPrivateAccess": true,
+      "publicAccessCidrs": [
+        "202.131.146.146/32"
+      ]
+    },
+    "kubernetesNetworkConfig": {
+      "serviceIpv4Cidr": "172.20.0.0/16",
+      "ipFamily": "ipv4",
+      "elasticLoadBalancing": {
+        "enabled": false
+      }
+    },
+    "logging": {
+      "clusterLogging": [
+        {
+          "types": [
+            "api",
+            "audit",
+            "authenticator",
+            "controllerManager",
+            "scheduler"
+          ],
+          "enabled": false
+        }
+      ]
+    },
+    "identity": {
+      "oidc": {
+        "issuer": "https://oidc.eks.ap-southeast-2.amazonaws.com/id/5C2368D6B26ECD097E70F8D209704F30"
+      }
+    },
+    "status": "ACTIVE",
+    "certificateAuthority": {
+      "data": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURNakNDQWhxZ0F3SUJBZ0lSQU5YU0pkaWh2TzUveGdRV0RaL3RDUFF3RFFZSktvWklodmNOQVFFTEJRQXcKSnpFUU1BNEdBMVVFQ2hNSFFWZFRJRVZMVXpFVE1CRUdBMVVFQXhNS2EzVmlaWEp1WlhSbGN6QWVGdzB5TmpFdwpNVFl4TnpJNU5UUmFGdzB6TVRFd01UVXhOekk1TlRSYU1DY3hFREFPQmdOVkJBb1RCMEZYVXlCRlMxTXhFekFSCkJnTlZCQU1UQ210MVltVnlibVYwWlhNd2dnRWlNQTBHQ1NxR1NJYjNEUUVCQVFVQUE0SUJEd0F3Z2dFS0FvSUIKQVFEQjJtWW8xb3lJcXdUMzJsdEhuanozeUw3L3ZnQzN0SDgvU2dhRlAvU001SGlZaHJoK3FBdUgwZlNYT2trRgpYL1VsVEhlc2UvZmdSSERMN1ljSGVVRnU3cjYyRnNzMzJSWGsrYUV4VUtkVnN3ZVpHU2kvanRndmQ4M09QelJKClVDQy8ra1Y3YVVwOVZXUEw0L1loMUlZQ1dYZk9TVmRPdnF3eHFPVTdMVW1QZ0QyT2V4aUhGazdDL05xYUozYmoKZk83SzBObFE2QStKT2RTbGNmRTE5WktEeFhDaitUNHVSWkx0eCtaUVI2cGs3UmU0bU9saFRnVjRhY2E1d1NZbwp3YjBtQXM0a3FTRWFENTBRY01BUnFBc01CajZwV01KcnloaEREUVRvT0NVSlRVSXFaRHp3dnNja1ZyMXVkQ0RUCkZnY05aWTUrblpYZUZqV1lyTS9iMDh5VkFnTUJBQUdqV1RCWE1BNEdBMVVkRHdFQi93UUVBd0lDcERBUEJnTlYKSFJNQkFmOEVCVEFEQVFIL01CMEdBMVVkRGdRV0JCU3VyY25GOWVSRTAybytMR3VvNC9VcXlERUlXVEFWQmdOVgpIUkVFRGpBTWdncHJkV0psY201bGRHVnpNQTBHQ1NxR1NJYjNEUUVCQ3dVQUE0SUJBUUNSL2gzOVdQZmFzYzlOClNGVEpZeU9kdnBmRWZyMDRTSzNodGJMc2FqUk9TaXQxa1lranQrV1ZPQWl2YlUzSktOTW9uaXpmNGZqblowN2gKRWhZVldudGxYS0d1Wkh0NFhjdTRTMEtwbDVhWGFUSW56U1BWdVplTTNQcktFMjZxNkM0QzFZNmdpQ3ZXQnZsWgprU3owNExjUWd0U0dSR2duOEY0clR6MWh3NE42dDUrcWRtMzEwMC9VUFZ3ZWVlc3gySjFnVStFYXhuTUNOL1R2CkU2aG1WZDB6VEpCQyt4Qm0xbkd1UXYwQmhRRUE0eG5BYml3R0o4L0ZVMUt0c09rblU0RVhFVUlVTTBtcVM2MHAKZWJxSGlVbWRvMWhGNUc3NmhqS2syQzBydGpmd3hXS0JPOTAzVis0d0h0a3k3dnphcEpkODd2clVtdUNFUTZ6awpRa0x6UDQxNAotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg=="
+    },
+    "platformVersion": "eks.25",
+    "tags": {
+      "Project": "relaydesk-capstone"
+    },
+    "accessConfig": {
+      "authenticationMode": "API"
+    },
+    "upgradePolicy": {
+      "supportType": "EXTENDED"
+    },
+    "deletionProtection": false,
+    "controlPlaneScalingConfig": {
+      "tier": "standard"
+    }
+  }
+}

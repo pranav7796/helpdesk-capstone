@@ -1,0 +1,10 @@
+ version_num  
+--------------
+ 0001_tickets
+(1 row)
+
+ tickets 
+---------
+       7
+(1 row)
+

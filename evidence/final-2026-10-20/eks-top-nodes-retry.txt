@@ -1,0 +1,3 @@
+NAME                                             CPU(cores)   CPU(%)   MEMORY(bytes)   MEMORY(%)   
+ip-10-42-1-229.ap-southeast-2.compute.internal   102m         5%       1643Mi          49%         
+ip-10-42-2-118.ap-southeast-2.compute.internal   89m          4%       829Mi           25%         

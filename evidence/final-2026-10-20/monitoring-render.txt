@@ -1,0 +1,240 @@
+apiVersion: v1
+data:
+  relaydesk-dashboard.json: |
+    {
+      "title": "Relaydesk HTTP traffic",
+      "uid": "relaydesk-http",
+      "schemaVersion": 39,
+      "version": 1,
+      "refresh": "10s",
+      "panels": [
+        {"id":1,"title":"HTTP requests per second","type":"timeseries","datasource":{"type":"prometheus","uid":"prometheus"},"targets":[{"expr":"sum by (route) (rate(relaydesk_http_requests_total{job=\"relaydesk-backend\",scrape_mode=\"pod\"}[2m]))","legendFormat":"{{route}}"}],"gridPos":{"h":9,"w":24,"x":0,"y":0},"fieldConfig":{"defaults":{"unit":"reqps"},"overrides":[]}}
+      ],
+      "time":{"from":"now-30m","to":"now"},"timepicker":{},"templating":{"list":[]}
+    }
+kind: ConfigMap
+metadata:
+  name: grafana-dashboard
+  namespace: relaydesk
+---
+apiVersion: v1
+data:
+  dashboards.yaml: |
+    apiVersion: 1
+    providers:
+      - name: Relaydesk
+        orgId: 1
+        folder: Relaydesk
+        type: file
+        disableDeletion: false
+        editable: true
+        options:
+          path: /var/lib/grafana/dashboards
+kind: ConfigMap
+metadata:
+  name: grafana-dashboard-provider
+  namespace: relaydesk
+---
+apiVersion: v1
+data:
+  prometheus.yaml: |
+    apiVersion: 1
+    datasources:
+      - name: Prometheus
+        uid: prometheus
+        type: prometheus
+        access: proxy
+        url: http://prometheus:9090
+        isDefault: true
+        editable: false
+kind: ConfigMap
+metadata:
+  name: grafana-datasource
+  namespace: relaydesk
+---
+apiVersion: v1
+data:
+  prometheus.yml: |
+    global:
+      scrape_interval: 15s
+    scrape_configs:
+      - job_name: relaydesk-backend
+        metrics_path: /metrics
+        # Discover each replica so unrelated process counters never share an instance.
+        dns_sd_configs:
+          - names: [relaydesk-backend-metrics.relaydesk.svc.cluster.local]
+            type: A
+            port: 8000
+            refresh_interval: 15s
+        relabel_configs:
+          - target_label: scrape_mode
+            replacement: pod
+kind: ConfigMap
+metadata:
+  name: prometheus-config
+  namespace: relaydesk
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: grafana
+  namespace: relaydesk
+spec:
+  ports:
+  - name: web
+    port: 3000
+    targetPort: web
+  selector:
+    app: grafana
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus
+  namespace: relaydesk
+spec:
+  ports:
+  - name: web
+    port: 9090
+    targetPort: web
+  selector:
+    app: prometheus
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: relaydesk-backend-metrics
+  namespace: relaydesk
+spec:
+  clusterIP: None
+  ports:
+  - name: http
+    port: 8000
+    targetPort: 8000
+  selector:
+    app: relaydesk-backend
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: grafana
+  name: grafana
+  namespace: relaydesk
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grafana
+  template:
+    metadata:
+      labels:
+        app: grafana
+    spec:
+      containers:
+      - env:
+        - name: GF_SECURITY_ADMIN_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: password
+              name: grafana-admin
+        - name: GF_AUTH_ANONYMOUS_ENABLED
+          value: "false"
+        - name: GF_SECURITY_ADMIN_USER
+          value: admin
+        - name: GF_AUTH_ANONYMOUS_ORG_ROLE
+          value: Viewer
+        image: grafana/grafana:latest
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          httpGet:
+            path: /api/health
+            port: web
+          initialDelaySeconds: 15
+        name: grafana
+        ports:
+        - containerPort: 3000
+          name: web
+        readinessProbe:
+          httpGet:
+            path: /api/health
+            port: web
+          initialDelaySeconds: 10
+        resources:
+          limits:
+            cpu: 700m
+            memory: 768Mi
+          requests:
+            cpu: 100m
+            memory: 256Mi
+        volumeMounts:
+        - mountPath: /etc/grafana/provisioning/datasources
+          name: datasource
+        - mountPath: /etc/grafana/provisioning/dashboards
+          name: provider
+        - mountPath: /var/lib/grafana/dashboards
+          name: dashboard
+      volumes:
+      - configMap:
+          name: grafana-datasource
+        name: datasource
+      - configMap:
+          name: grafana-dashboard-provider
+        name: provider
+      - configMap:
+          name: grafana-dashboard
+        name: dashboard
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: prometheus
+  name: prometheus
+  namespace: relaydesk
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prometheus
+  template:
+    metadata:
+      labels:
+        app: prometheus
+    spec:
+      containers:
+      - args:
+        - --config.file=/etc/prometheus/prometheus.yml
+        - --storage.tsdb.path=/prometheus
+        image: prom/prometheus:latest
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          httpGet:
+            path: /-/healthy
+            port: web
+          initialDelaySeconds: 10
+        name: prometheus
+        ports:
+        - containerPort: 9090
+          name: web
+        readinessProbe:
+          httpGet:
+            path: /-/ready
+            port: web
+          initialDelaySeconds: 5
+        resources:
+          limits:
+            cpu: 700m
+            memory: 768Mi
+          requests:
+            cpu: 100m
+            memory: 256Mi
+        volumeMounts:
+        - mountPath: /etc/prometheus
+          name: config
+      volumes:
+      - configMap:
+          name: prometheus-config
+        name: config

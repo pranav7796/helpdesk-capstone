@@ -1,0 +1,20 @@
+{
+  "addon": {
+    "addonName": "aws-ebs-csi-driver",
+    "clusterName": "relaydesk-capstone",
+    "status": "ACTIVE",
+    "addonVersion": "v1.67.0-eksbuild.1",
+    "health": {
+      "issues": []
+    },
+    "addonArn": "arn:aws:eks:ap-southeast-2:525426877661:addon/relaydesk-capstone/aws-ebs-csi-driver/56d0a2e6-4e19-4763-a582-9851495cfd04",
+    "createdAt": "2026-10-16T23:09:59.830000+05:30",
+    "modifiedAt": "2026-10-16T23:10:30.481000+05:30",
+    "tags": {
+      "Project": "relaydesk-capstone"
+    },
+    "namespaceConfig": {
+      "namespace": "kube-system"
+    }
+  }
+}

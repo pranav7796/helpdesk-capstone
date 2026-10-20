@@ -1,0 +1,20 @@
+a52cd91 Finalize rubric audit, authentic evidence folders and submission guide
+2fbc484 Scrape backend replicas independently to correct HTTP request rates
+3679f58 Capture real commit-to-EKS release demonstration and presentation evidence
+0410804 Clarify that priority summary includes high and urgent tickets
+9211a45 Record successful deployment commit pipeline and final evidence audit
+20c2401 Deploy approved Sydney EKS stack and record genuine cloud verification
+e633ecf docs(evidence): record final successful pinned-runner verification
+d5ad1ab ci: pin verified runner for deadline and save Sydney release evidence
+e33b8bd feat(eks): prepare guarded Sydney deployment and verify failure recovery
+79b27b9 docs(evidence): audit rubric screenshots and disclose submission gaps
+15b303b docs(evidence): add responsive mobile screenshot
+e49cc86 docs(submission): record passing CI and live SHA rollout
+d07bca6 docs(evidence): capture verified local deployment and monitoring
+aae7ffa security(container): gate images with patched dependency inventory
+3f965a0 fix(terraform): allow a no-refresh regional EKS plan
+54ecf40 fix(kubernetes): repair local services and database storage initialization
+fb194c1 security(backend): upgrade Python libraries flagged by the Trivy scan
+593c303 build(platform): package Relaydesk in Helm and gate CI with Trivy scans
+ecec4bb infra(terraform): define tagged VPC network and isolated EKS worker deployment
+32076dd build(containers): add non-root images and health-gated PostgreSQL Compose stack

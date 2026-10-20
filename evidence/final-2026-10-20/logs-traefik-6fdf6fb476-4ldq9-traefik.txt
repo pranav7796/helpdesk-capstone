@@ -1,0 +1,1 @@
+[90m2026-10-20T17:45:41Z[0m [33mWRN[0m [1mA new release of Traefik has been found: 3.7.16. Please consider updating.[0m

@@ -1,0 +1,5 @@
+ id |   status    | priority 
+----+-------------+----------
+  7 | IN_PROGRESS | URGENT
+(1 row)
+

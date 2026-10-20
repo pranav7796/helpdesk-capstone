@@ -1,0 +1,20 @@
+[
+  {
+    "name": "relaydesk",
+    "namespace": "relaydesk",
+    "revision": "2",
+    "updated": "2026-10-16 23:51:16.855659476 +0530 IST",
+    "status": "deployed",
+    "chart": "relaydesk-1.0.0",
+    "app_version": "1.0.0"
+  },
+  {
+    "name": "traefik",
+    "namespace": "ingress-system",
+    "revision": "1",
+    "updated": "2026-10-16 23:15:13.054726357 +0530 IST",
+    "status": "deployed",
+    "chart": "traefik-42.0.0",
+    "app_version": "v3.7.14"
+  }
+]

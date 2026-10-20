@@ -1,0 +1,54 @@
+{
+  "apiVersion": "v1",
+  "items": [
+    {
+      "apiVersion": "v1",
+      "data": {
+        "prometheus.yml": "global:\n  scrape_interval: 15s\nscrape_configs:\n  - job_name: relaydesk-backend\n    metrics_path: /metrics\n    # Discover each replica so unrelated process counters never share an instance.\n    dns_sd_configs:\n      - names: [relaydesk-backend-metrics.relaydesk.svc.cluster.local]\n        type: A\n        port: 8000\n        refresh_interval: 15s\n    relabel_configs:\n      - target_label: scrape_mode\n        replacement: pod\n"
+      },
+      "kind": "ConfigMap",
+      "metadata": {
+        "annotations": {},
+        "creationTimestamp": "2026-10-16T17:46:24Z",
+        "name": "prometheus-config",
+        "namespace": "relaydesk",
+        "resourceVersion": "123175",
+        "uid": "c922ae31-6583-4b68-be58-87ec13f95ae0"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "data": {
+        "relaydesk-dashboard.json": "{\n  \"title\": \"Relaydesk HTTP traffic\",\n  \"uid\": \"relaydesk-http\",\n  \"schemaVersion\": 39,\n  \"version\": 1,\n  \"refresh\": \"10s\",\n  \"panels\": [\n    {\"id\":1,\"title\":\"HTTP requests per second\",\"type\":\"timeseries\",\"datasource\":{\"type\":\"prometheus\",\"uid\":\"prometheus\"},\"targets\":[{\"expr\":\"sum by (route) (rate(relaydesk_http_requests_total{job=\\\"relaydesk-backend\\\",scrape_mode=\\\"pod\\\"}[2m]))\",\"legendFormat\":\"{{route}}\"}],\"gridPos\":{\"h\":9,\"w\":24,\"x\":0,\"y\":0},\"fieldConfig\":{\"defaults\":{\"unit\":\"reqps\"},\"overrides\":[]}}\n  ],\n  \"time\":{\"from\":\"now-30m\",\"to\":\"now\"},\"timepicker\":{},\"templating\":{\"list\":[]}\n}\n"
+      },
+      "kind": "ConfigMap",
+      "metadata": {
+        "annotations": {},
+        "creationTimestamp": "2026-10-16T17:46:20Z",
+        "name": "grafana-dashboard",
+        "namespace": "relaydesk",
+        "resourceVersion": "123165",
+        "uid": "dd901e19-111b-4f62-8ea7-fdc180b4cf03"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "data": {
+        "prometheus.yaml": "apiVersion: 1\ndatasources:\n  - name: Prometheus\n    uid: prometheus\n    type: prometheus\n    access: proxy\n    url: http://prometheus:9090\n    isDefault: true\n    editable: false\n"
+      },
+      "kind": "ConfigMap",
+      "metadata": {
+        "annotations": {},
+        "creationTimestamp": "2026-10-16T17:46:23Z",
+        "name": "grafana-datasource",
+        "namespace": "relaydesk",
+        "resourceVersion": "3218",
+        "uid": "18e149d6-2b55-45bd-b9dd-043e7626a040"
+      }
+    }
+  ],
+  "kind": "List",
+  "metadata": {
+    "resourceVersion": ""
+  }
+}

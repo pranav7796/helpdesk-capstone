@@ -1,0 +1,16 @@
+{
+  "result": "PASS",
+  "synthetic_ticket_id": 7,
+  "synthetic_ticket_deleted": true,
+  "initial_ids": [
+    5,
+    3,
+    1
+  ],
+  "final_ids": [
+    5,
+    3,
+    1
+  ],
+  "preexisting_records_preserved": true
+}

@@ -1,5 +1,8 @@
 # Relaydesk — Helpdesk Ticket Management
 
+Latest audit: **[October 20 final report](docs/FINAL-REPORT.md)** — 44 PASS, 2 BLOCKED criteria; live AWS/Kubernetes, ingress CRUD/SQL, monitoring APIs, local tests/build/Compose and Terraform no-drift checks pass. Form receipt and actual approved destroy remain outstanding. Existing screenshots/videos keep their Oct 16/17 dates; this commit includes the audit report and sanitized evidence. [Current submission guide](SUBMISSION.md).
+
+
 Relaydesk is an independently built helpdesk application for creating, searching, prioritizing, editing, and resolving support tickets. React and Vite provide the responsive agent inbox; FastAPI exposes the API; SQLAlchemy and PostgreSQL store tickets; Alembic manages schema changes.
 
 ## Run locally
@@ -71,7 +74,7 @@ The first security scan found a `setuptools` path-traversal CVE and stale versio
 - Screenshots and captured outputs are in [`evidence/`](evidence/).
 - Teacher rubric and source snapshot reference: [`docs/TEACHER-GRADING.md`](docs/TEACHER-GRADING.md).
 
-The current AWS target is account `525426877661`, profile `devops-new`, Sydney `ap-southeast-2`. The owner-approved 28-resource plan was applied successfully on October 16. EKS has two Ready workers; application CRUD, persistent PostgreSQL, Ingress, Prometheus and Grafana are verified. Cleanup awaits separate approval after the demonstration. The old Mumbai/account restriction evidence is historical. See [scope and current costs](docs/AWS-PLAN.md), [deployment runbook](docs/EKS-RUNBOOK.md), and [grading checklist](GRADING-CHECKLIST.md). Deadline: October 19, 2026.
+The current AWS target is account `525426877661`, profile `devops-new`, Sydney `ap-southeast-2`. The owner-approved 28-resource plan was applied successfully on October 16. EKS has two Ready workers; application CRUD, persistent PostgreSQL, Ingress, Prometheus and Grafana are verified. Cleanup awaits separate approval after the demonstration. The old Mumbai/account restriction evidence is historical. See [scope and current costs](docs/AWS-PLAN.md), [deployment runbook](docs/EKS-RUNBOOK.md), and [grading checklist](GRADING-CHECKLIST.md). Owner target was October 19, 2026; the accepted deadline/extension remains unverified.
 
 Recorded release demonstration: [real commit → green CI → EKS Helm rollout → changed application](evidence/videos/m10-real-release-walkthrough.webm), [completed result continuation](evidence/videos/m10-release-result-continuation.webm), and [presentation notes](docs/PRESENTATION.md). Current EKS frontend SHA is `04108043563d24dfc2ceb70e050fd56b5e9cc577` (Helm revision 2); the EKS backend and Minikube retain their documented d07 release. Compose was rebuilt from current source during the October 17 audit.
 

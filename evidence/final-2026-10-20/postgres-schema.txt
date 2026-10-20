@@ -1,0 +1,23 @@
+ version_num  
+--------------
+ 0001_tickets
+(1 row)
+
+ tickets 
+---------
+       3
+(1 row)
+
+ column_name |        data_type         
+-------------+--------------------------
+ id          | integer
+ subject     | character varying
+ description | text
+ requester   | character varying
+ assignee    | character varying
+ status      | character varying
+ priority    | character varying
+ created_at  | timestamp with time zone
+ updated_at  | timestamp with time zone
+(9 rows)
+
